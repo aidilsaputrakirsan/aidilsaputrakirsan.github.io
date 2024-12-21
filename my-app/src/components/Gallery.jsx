@@ -7,16 +7,14 @@ const Gallery = () => {
   ];
 
   return (
-    <section id="gallery" className="py-12 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-6">Galeri Gambar</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <section id="gallery" className="py-20 bg-gray-50">
+      <div className="container mx-auto px-6 text-center">
+        <h2 className="text-4xl font-extrabold mb-8 text-gray-800">Galeri Gambar</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {images.map((image, index) => (
-            <div key={index} className="shadow-md rounded overflow-hidden">
+            <div key={index} className="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105">
               <img src={image.src} alt={image.caption} className="w-full" />
-              <div className="p-4 text-center bg-white">
-                <p>{image.caption}</p>
-              </div>
+              <p className="bg-white py-4 text-lg font-semibold text-gray-800">{image.caption}</p>
             </div>
           ))}
         </div>
