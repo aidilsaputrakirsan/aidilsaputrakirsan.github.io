@@ -1,16 +1,137 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { ArrowUp, Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
 
 const Footer = () => {
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-gradient-to-r from-blue-800 to-purple-800 text-white py-8">
-      <div className="container mx-auto px-6 text-center">
-        <p className="mb-4 text-lg">© 2024 Aidil Saputra Kirsan. All rights reserved.</p>
-        <div className="flex justify-center space-x-8">
-          <a href="https://linkedin.com/in/aidil" className="hover:text-yellow-300 text-lg transition">LinkedIn</a>
-          <a href="https://github.com/aidilsaputrakirsan" className="hover:text-yellow-300 text-lg transition">GitHub</a>
-          <a href="mailto:aidil@lecturer.itk.ac.id" className="hover:text-yellow-300 text-lg transition">Email</a>
+    <footer className="bg-gray-900 text-gray-300">
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* About Section */}
+          <div>
+            <h3 className="text-xl font-bold text-white mb-4">Aidil Saputra Kirsan</h3>
+            <p className="mb-4 text-gray-400">
+              Lecturer at Institut Teknologi Kalimantan (ITK) with expertise in Information Systems 
+              and Full Stack Development.
+            </p>
+            <div className="flex space-x-4">
+              <a
+                href="https://github.com/aidilsaputrakirsan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+              >
+                <Github className="w-6 h-6" />
+              </a>
+              <a
+                href="#linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+              >
+                <Linkedin className="w-6 h-6" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-xl font-bold text-white mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#about" className="hover:text-white transition-colors">About</a>
+              </li>
+              <li>
+                <a href="#skills" className="hover:text-white transition-colors">Skills</a>
+              </li>
+              <li>
+                <a href="#experience" className="hover:text-white transition-colors">Experience</a>
+              </li>
+              <li>
+                <a href="#projects" className="hover:text-white transition-colors">Projects</a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-xl font-bold text-white mb-4">Contact Info</h3>
+            <ul className="space-y-4">
+              <li className="flex items-center space-x-3">
+                <Mail className="w-5 h-5 text-blue-400" />
+                <a
+                  href="mailto:aidil@lecturer.itk.ac.id"
+                  className="hover:text-white transition-colors"
+                >
+                  aidil@lecturer.itk.ac.id
+                </a>
+              </li>
+              <li className="flex items-center space-x-3">
+                <Phone className="w-5 h-5 text-blue-400" />
+                <a
+                  href="tel:+6285398952880"
+                  className="hover:text-white transition-colors"
+                >
+                  +62 853 9895 2880
+                </a>
+              </li>
+              <li className="flex items-start space-x-3">
+                <MapPin className="w-5 h-5 text-blue-400" />
+                <span>
+                  Sepinggan Pratama Blok G12 No.9 Street,
+                  <br />
+                  Balikpapan, Indonesia
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
+
+      {/* Copyright */}
+      <div className="border-t border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm">
+              © {currentYear} Aidil Saputra Kirsan. All rights reserved.
+            </p>
+            <p className="text-sm mt-2 md:mt-0">
+              Lecturer at Institut Teknologi Kalimantan
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          aria-label="Back to top"
+        >
+          <ArrowUp className="w-6 h-6" />
+        </button>
+      )}
     </footer>
   );
 };

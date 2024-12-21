@@ -2,20 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Jika Anda ingin menambahkan CSS kustom */
-body {
-  margin: 0;
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: #242424;
-  color: rgba(255, 255, 255, 0.87);
+html {
+  scroll-behavior: smooth;
 }
 
-a {
-  font-weight: 500;
-  text-decoration: none;
-  color: #646cff;
+/* Untuk dark mode */
+.dark {
+  color-scheme: dark;
 }
 
-a:hover {
-  color: #535bf2;
+/* Untuk scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Custom styles untuk form inputs */
+input, textarea {
+  @apply px-4 py-2;
 }
