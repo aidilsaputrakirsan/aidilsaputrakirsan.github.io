@@ -98,7 +98,7 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-blue-400" />
                 <span>
-                  Sepinggan Pratama Street,
+                  Sepinggan Baru, Balikpapan Selatan
                   <br />
                   Balikpapan, Indonesia
                 </span>

@@ -18,9 +18,9 @@ const About = () => {
             <div className="flex items-center justify-center mb-6">
               <div className="w-32 h-32 rounded-full overflow-hidden">
                 <img
-                  src="./assets/icon.png"
+                  src="https://i.imgur.com/5JKdbmA.png"
                   alt="Profile"
-                  className="w-full h-full object-cover"
+                  className="w-32 h-32 object-cover"
                 />
               </div>
             </div>
@@ -42,7 +42,7 @@ const About = () => {
                   href="tel:+6285398952880"
                   className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                 >
-                  +62 853 9895 2880
+                  +62 853 9895 xxxx
                 </a>
               </div>
 

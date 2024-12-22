@@ -5,14 +5,14 @@ import {
   Award as AwardIcon 
 } from 'lucide-react';
 
-const TimelineItem = ({ date, title, subtitle, description, isLeft }) => {
+const TimelineItem = ({ index, title, subtitle, description, isLeft }) => {
   return (
     <div className={`mb-8 flex justify-between items-center w-full ${
       isLeft ? 'flex-row-reverse' : ''
     }`}>
       <div className="order-1 w-5/12"></div>
       <div className="z-20 flex items-center order-1 bg-blue-600 shadow-xl w-8 h-8 rounded-full">
-        <h1 className="mx-auto font-semibold text-lg text-white">{date[0]}</h1>
+        <h1 className="mx-auto font-semibold text-lg text-white">{index + 1}</h1>
       </div>
       <div className={`order-1 w-5/12 px-6 py-4 bg-white dark:bg-gray-900 rounded-lg shadow-xl 
         transform transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
@@ -146,15 +146,15 @@ const Experience = () => {
           
           {/* Timeline Items */}
           {activeTab === 'career' && career.map((item, index) => (
-            <TimelineItem key={index} {...item} isLeft={index % 2 === 0} />
+            <TimelineItem key={index} {...item} index={index} isLeft={index % 2 === 0} />
           ))}
           
           {activeTab === 'education' && education.map((item, index) => (
-            <TimelineItem key={index} {...item} isLeft={index % 2 === 0} />
+            <TimelineItem key={index} {...item} index={index} isLeft={index % 2 === 0} />
           ))}
           
           {activeTab === 'achievements' && achievements.map((item, index) => (
-            <TimelineItem key={index} {...item} isLeft={index % 2 === 0} />
+            <TimelineItem key={index} {...item} index={index} isLeft={index % 2 === 0} />
           ))}
         </div>
       </div>

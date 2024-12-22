@@ -57,12 +57,20 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Smart Home IoT Devices",
-      description: "Developed IoT devices for home automation with power monitoring and control capabilities.",
+      title: "Smart Home System for Electrical Switches",
+      description: "Developed a smart home IoT-based system for controlling and monitoring electrical switches remotely.",
+      category: "iot",
+      location: "Balikpapan, Indonesia",
+      year: "2024",
+      image: "https://i.imgur.com/qkcNTup.jpeg"
+    },
+    {
+      title: "Early Fire Detection System for Homes",
+      description: "Developed a smart home IoT-based system for early fire detection with monitoring and automated control capabilities.",
       category: "iot",
       location: "Balikpapan, Indonesia",
       year: "2023",
-      image: "/api/placeholder/400/200"
+      image: "https://i.imgur.com/Kt2oJor.jpeg"
     },
     {
       title: "West Papua Command Center",
@@ -70,7 +78,7 @@ const Projects = () => {
       category: "web",
       location: "Manokwari, Indonesia",
       year: "2022",
-      image: "/api/placeholder/400/200"
+      image: "https://i.imgur.com/4iIXYKr.jpeg"
     },
     {
       title: "SIAKAD Al-Azhar",
@@ -78,7 +86,7 @@ const Projects = () => {
       category: "mobile",
       location: "Balikpapan, Indonesia",
       year: "2021",
-      image: "/api/placeholder/400/200"
+      image: "https://i.imgur.com/DHLAUOF.png"
     },
     {
       title: "LEACH Routing Protocol",
@@ -86,7 +94,7 @@ const Projects = () => {
       category: "iot",
       location: "Atsugi, Japan",
       year: "2019",
-      image: "/api/placeholder/400/200"
+      image: "https://i.imgur.com/Fhh4m8H.png"
     },
     {
       title: "VANET Safety Application",
@@ -94,16 +102,9 @@ const Projects = () => {
       category: "iot",
       location: "Makassar, Indonesia",
       year: "2017",
-      image: "/api/placeholder/400/200"
+      image: "https://i.imgur.com/fc0hYFD.jpeg"
     },
-    {
-      title: "Islamic University Data Center",
-      description: "Developed web-based data center system for Islamic University of Makassar.",
-      category: "web",
-      location: "Makassar, Indonesia",
-      year: "2015",
-      image: "/api/placeholder/400/200"
-    }
+    
   ];
 
   const filteredProjects = activeFilter === 'all' 
