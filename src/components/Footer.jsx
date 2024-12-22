@@ -92,13 +92,13 @@ const Footer = () => {
                   href="tel:+6285398952880"
                   className="hover:text-white transition-colors"
                 >
-                  +62 853 9895 2880
+                  +62 853 9895 xxxx
                 </a>
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-blue-400" />
                 <span>
-                  Sepinggan Pratama Blok G12 No.9 Street,
+                  Sepinggan Pratama Street,
                   <br />
                   Balikpapan, Indonesia
                 </span>

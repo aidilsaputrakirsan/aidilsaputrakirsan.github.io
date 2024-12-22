@@ -18,7 +18,7 @@ const About = () => {
             <div className="flex items-center justify-center mb-6">
               <div className="w-32 h-32 rounded-full overflow-hidden">
                 <img
-                  src="/api/placeholder/128/128"
+                  src="./assets/icon.png"
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />

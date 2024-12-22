@@ -71,8 +71,8 @@ const Contact = () => {
                 <ContactCard
                   icon={Phone}
                   title="Phone"
-                  value="+62 853 9895 2880"
-                  link="tel:+6285398952880"
+                  value="+62 853 9895 xxxx"
+                  link="tel:+628539895xxx"
                 />
                 
                 <ContactCard
@@ -97,7 +97,7 @@ const Contact = () => {
                     <Github className="w-6 h-6 text-gray-700 dark:text-gray-300" />
                   </a>
                   <a
-                    href="#linkedin"
+                    href="https://id.linkedin.com/in/aidil-saputra-kirsan-0808911bb"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
