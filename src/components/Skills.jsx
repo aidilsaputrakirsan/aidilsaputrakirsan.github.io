@@ -1,10 +1,12 @@
+// Ganti cara import
 import React, { useState } from 'react';
+import { LucideProps } from 'lucide-react';
 import { 
-  Code2, // ganti Code dengan Code2
-  Server,
-  Database,
-  Monitor,
-  Network
+  Code as CodeIcon,  // Rename untuk menghindari konflik
+  Server as ServerIcon,
+  Database as DatabaseIcon,
+  Monitor as MonitorIcon,
+  Network as NetworkIcon 
 } from 'lucide-react';
 
 // Lalu gunakan icons seperti biasa dalam komponen

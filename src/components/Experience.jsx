@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { Briefcase, GraduationCap, Award } from 'lucide-react';
+import { 
+  Briefcase as BriefcaseIcon,
+  GraduationCap as GraduationCapIcon,
+  Award as AwardIcon 
+} from 'lucide-react';
 
 
 const TimelineItem = ({ date, title, subtitle, description, isLeft }) => {
