@@ -87,9 +87,7 @@ const About = () => {
                 Professional Overview
               </h3>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                A dedicated and versatile professional with expertise in Information Systems and Computer Engineering. 
-                Currently serving as a Lecturer at Institut Teknologi Kalimantan (ITK) while maintaining an active 
-                presence in freelance application development across web, mobile, and IoT platforms.
+                A dedicated and adaptable professional specializing in Information Systems and Computer Engineering. Currently serving as a Lecturer at Institut Teknologi Kalimantan (ITK), contributing to academic excellence through teaching and research. Actively involved in freelance application development with a proven track record of delivering innovative solutions across web, mobile, and IoT platforms
               </p>
             </div>
 
@@ -100,23 +98,23 @@ const About = () => {
               <ul className="space-y-3 text-gray-600 dark:text-gray-300">
                 <li className="flex items-center space-x-2">
                   <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                  <span>Fast learner with strong adaptability skills</span>
+                  <span>Quick to Learn and Adapt to New Challenges</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                  <span>Committed to continuous learning and professional growth</span>
+                  <span>Committed to Lifelong Learning and Professional Development</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                  <span>Dedicated and hardworking professional</span>
+                  <span>Highly Motivated and Results-Oriented Professional</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                  <span>Strong focus on honesty and discipline</span>
+                  <span>Strong Ethical Foundation and Discipline</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                  <span>Proven track record of responsibility and reliability</span>
+                  <span>Proven History of Reliability and Accountability</span>
                 </li>
               </ul>
             </div>

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { 
-  Code as CodeIcon,     // Rename untuk menghindari konflik
-  Server as ServerIcon,
-  Database as DatabaseIcon,
-  Monitor as MonitorIcon,
-  Network as NetworkIcon 
+  Code as CodeIcon,         
+  Server as ServerIcon,    
+  Database as DatabaseIcon,  
+  Network as NetworkIcon,
+  Cloud as CloudIcon,
+  ScreenShare as ScreenShareIcon,   
 } from 'lucide-react';
 
 // Komponen SkillCard
@@ -42,7 +43,6 @@ const SkillCard = ({ icon: Icon, title, skills }) => {
 const Skills = () => {
   const [activeTab, setActiveTab] = useState('all');
 
-  // Pastikan setiap icon di sini menggunakan alias yang sudah diimpor di atas
   const skillCategories = {
     programming: {
       icon: CodeIcon,
@@ -50,41 +50,66 @@ const Skills = () => {
       skills: [
         { name: "Web Development (HTML, CSS, PHP)", level: 90 },
         { name: "JavaScript", level: 85 },
-        { name: "Python", level: 80 },
-        { name: "C++ & C#", level: 75 },
-        { name: "Database (MySQL, Oracle)", level: 85 }
+        { name: "Python", level: 90 },
+        { name: "C++ & C#", level: 75 }
+      ]
+    },
+    frontend: {
+      icon: ScreenShareIcon,
+      title: "Frontend Development",
+      skills: [
+        { name: "React", level: 90 },
+        { name: "React Native", level: 80 },
+        { name: "Vue.js", level: 65 }
+      ]
+    },
+    backend: {
+      icon: ServerIcon, 
+      title: "Backend Development",
+      skills: [
+        { name: "Node.js", level: 75 },
+        { name: "Express.js", level: 70 },
+        { name: "Laravel", level: 85 },
+        { name: "CodeIgniter", level: 80 },
+        { name: "RESTful API", level: 75 },
+      ]
+    },
+    database: {
+      icon: DatabaseIcon, 
+      title: "Database Management",
+      skills: [
+        { name: "MySQL", level: 90 },
+        { name: "PostgreSQL", level: 85 },
+        { name: "Oracle", level: 80 },
+        { name: "Firebase Realtime Database", level: 70 }
       ]
     },
     network: {
-      icon: NetworkIcon,
+      icon: NetworkIcon, 
       title: "Network & Infrastructure",
       skills: [
-        { name: "Cisco Appliance Configuration", level: 90 },
-        { name: "Basic Routing & Switching", level: 85 },
-        { name: "Wireless Networking", level: 80 },
-        { name: "Mikrotik MTCNA", level: 85 },
-        { name: "Server Administration", level: 80 }
+        { name: "Network Design & Implementation", level: 95 },
+        { name: "LAN/WAN Configuration", level: 85 },
+        { name: "Firewall Configuration (Cisco, Mikrotik)", level: 85 },
+        { name: "Cloud Networking (AWS, GCP)", level: 75 },
+        { name: "Network Monitoring (Nagios, Zabbix)", level: 60 }
       ]
     },
-    virtualization: {
-      icon: ServerIcon,
-      title: "Virtualization Technology",
+    tools: {
+      icon: CloudIcon, 
+      title: "Platforms & Tools",
       skills: [
-        { name: "VMware", level: 85 },
-        { name: "Virtual Box", level: 80 },
-        { name: "PROXMOX VE", level: 75 }
-      ]
-    },
-    operating: {
-      icon: MonitorIcon,
-      title: "Operating Systems",
-      skills: [
-        { name: "Linux (Debian, Ubuntu, Kali)", level: 90 },
-        { name: "Windows Server", level: 85 },
-        { name: "Open WRT", level: 80 }
+        { name: "Docker", level: 85 },
+        { name: "Git", level: 85 },
+        { name: "Jenkins", level: 70 },
+        { name: "Proxmox VE", level: 75 },
+        { name: "VirtualBox", level: 90 },
+        { name: "VMware", level: 90 }
       ]
     }
   };
+
+
 
   return (
     <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-800">
