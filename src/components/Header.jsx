@@ -62,7 +62,7 @@ const Header = () => {
                       Practicals
                     </a>
                     <a
-                      href="https://aidilsaputrakirsan.github.io/Pengajaran-Tugas"
+                      href="https://aidilsaputrakirsan.github.io/Pengajaran-Tugas/Pengumpulan"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
