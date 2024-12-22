@@ -1,16 +1,13 @@
-// Ganti cara import
 import React, { useState } from 'react';
-import { LucideProps } from 'lucide-react';
 import { 
-  Code as CodeIcon,  // Rename untuk menghindari konflik
+  Code as CodeIcon,     // Rename untuk menghindari konflik
   Server as ServerIcon,
   Database as DatabaseIcon,
   Monitor as MonitorIcon,
   Network as NetworkIcon 
 } from 'lucide-react';
 
-// Lalu gunakan icons seperti biasa dalam komponen
-
+// Komponen SkillCard
 const SkillCard = ({ icon: Icon, title, skills }) => {
   return (
     <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 transform hover:scale-105 transition-all duration-300">
@@ -45,9 +42,10 @@ const SkillCard = ({ icon: Icon, title, skills }) => {
 const Skills = () => {
   const [activeTab, setActiveTab] = useState('all');
 
+  // Pastikan setiap icon di sini menggunakan alias yang sudah diimpor di atas
   const skillCategories = {
     programming: {
-      icon: Code,
+      icon: CodeIcon,
       title: "Programming & Development",
       skills: [
         { name: "Web Development (HTML, CSS, PHP)", level: 90 },
@@ -58,7 +56,7 @@ const Skills = () => {
       ]
     },
     network: {
-      icon: Network,
+      icon: NetworkIcon,
       title: "Network & Infrastructure",
       skills: [
         { name: "Cisco Appliance Configuration", level: 90 },
@@ -69,7 +67,7 @@ const Skills = () => {
       ]
     },
     virtualization: {
-      icon: Server,
+      icon: ServerIcon,
       title: "Virtualization Technology",
       skills: [
         { name: "VMware", level: 85 },
@@ -78,7 +76,7 @@ const Skills = () => {
       ]
     },
     operating: {
-      icon: Monitor,
+      icon: MonitorIcon,
       title: "Operating Systems",
       skills: [
         { name: "Linux (Debian, Ubuntu, Kali)", level: 90 },

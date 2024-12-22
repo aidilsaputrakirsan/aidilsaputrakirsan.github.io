@@ -5,7 +5,6 @@ import {
   Award as AwardIcon 
 } from 'lucide-react';
 
-
 const TimelineItem = ({ date, title, subtitle, description, isLeft }) => {
   return (
     <div className={`mb-8 flex justify-between items-center w-full ${
@@ -16,7 +15,8 @@ const TimelineItem = ({ date, title, subtitle, description, isLeft }) => {
         <h1 className="mx-auto font-semibold text-lg text-white">{date[0]}</h1>
       </div>
       <div className={`order-1 w-5/12 px-6 py-4 bg-white dark:bg-gray-900 rounded-lg shadow-xl 
-        transform transition-all duration-300 hover:scale-105 hover:shadow-2xl`}>
+        transform transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
+      >
         <h3 className="mb-3 font-bold text-gray-900 dark:text-white text-xl">{title}</h3>
         <h4 className="mb-3 text-blue-600 dark:text-blue-400 text-md">{subtitle}</h4>
         {description && (

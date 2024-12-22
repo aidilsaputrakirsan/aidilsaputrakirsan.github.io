@@ -62,7 +62,7 @@ const Projects = () => {
       category: "iot",
       location: "Balikpapan, Indonesia",
       year: "2023",
-      image: "/api/placeholder/400/200" // Replace with actual image
+      image: "/api/placeholder/400/200"
     },
     {
       title: "West Papua Command Center",
@@ -70,7 +70,7 @@ const Projects = () => {
       category: "web",
       location: "Manokwari, Indonesia",
       year: "2022",
-      image: "/api/placeholder/400/200" // Replace with actual image
+      image: "/api/placeholder/400/200"
     },
     {
       title: "SIAKAD Al-Azhar",
@@ -78,7 +78,7 @@ const Projects = () => {
       category: "mobile",
       location: "Balikpapan, Indonesia",
       year: "2021",
-      image: "/api/placeholder/400/200" // Replace with actual image
+      image: "/api/placeholder/400/200"
     },
     {
       title: "LEACH Routing Protocol",
