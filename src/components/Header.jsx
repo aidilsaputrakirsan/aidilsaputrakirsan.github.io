@@ -40,7 +40,7 @@ const Header = () => {
               <a href="#projects" className="hover:text-blue-600 dark:text-white transition-colors">Projects</a>
               <div className="relative group">
                 <button className="hover:text-blue-600 dark:text-white transition-colors">
-                  Teaching Materials
+                  Educational Resources
                 </button>
                 <div className="absolute left-0 mt-2 w-60 rounded-md shadow-lg bg-white dark:bg-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform">
                   <div className="rounded-md ring-1 ring-black ring-opacity-5 py-1">
@@ -50,23 +50,40 @@ const Header = () => {
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      Materi Teori
+                      Theory
                     </a>
                     <a
-                      href="https://aidilsaputrakirsan.github.io/Pengajaran-Tugas-Pemeriksaan"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      Tugas Pemeriksaan
-                    </a>
-                    <a
+                   
                       href="https://github.com/aidilsaputrakirsan/Pengajaran-Modul-Praktikum"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      Modul Praktikum
+                      Practicals
+                    </a>
+                    <a
+                      href="https://aidilsaputrakirsan.github.io/Pengajaran-Tugas"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      Assignments
+                    </a>
+                    <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      Quizzes
+                    </a>
+                    <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      Examinations
                     </a>
                   </div>
                 </div>

@@ -58,7 +58,7 @@ const Projects = () => {
   const projects = [
     {
       title: "Smart Home System for Electrical Switches",
-      description: "Developed a smart home IoT-based system for controlling and monitoring electrical switches remotely.",
+      description: "Developed a smart home IoT-based system for controlling and monitoring electrical switches remotely in collaboration with [Anugerah Deagung].",
       category: "iot",
       location: "Balikpapan, Indonesia",
       year: "2024",
@@ -66,7 +66,7 @@ const Projects = () => {
     },
     {
       title: "Early Fire Detection System for Homes",
-      description: "Developed a smart home IoT-based system for early fire detection with monitoring and automated control capabilities.",
+      description: "Developed a smart home IoT-based system for early fire detection with monitoring and automated control capabilities in collaboration with [Alvian].",
       category: "iot",
       location: "Balikpapan, Indonesia",
       year: "2023",
