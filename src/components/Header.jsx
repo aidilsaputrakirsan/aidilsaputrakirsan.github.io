@@ -122,33 +122,61 @@ const Header = () => {
               <a href="#experience" className="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-white">Experience</a>
               <a href="#projects" className="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-white">Projects</a>
               <div className="px-3 py-2">
-                <span className="block text-sm font-medium text-gray-400">Teaching Materials</span>
+                <span className="block text-sm font-medium text-gray-400">Educational Resources</span>
                 <a 
                   href="https://aidilsaputrakirsan.github.io/Pengajaran-Materi-Teori"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-white"
                 >
-                  Materi Teori
+                  Theory
                 </a>
+
                 <a 
                   href="https://aidilsaputrakirsan.github.io/Pengajaran-Tugas-Pemeriksaan"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-white"
                 >
-                  Tugas Pemeriksaan
+                  <span>Practicals</span>
+                  <span className="text-gray-400 text-xs"> (Members Only)</span>
                 </a>
                 <a 
-                  href="https://github.com/aidilsaputrakirsan/Pengajaran-Modul-Praktikum"
+                  href="https://aidilsaputrakirsan.github.io/Pengajaran-Tugas/Pengumpulan"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-white"
                 >
-                  Modul Praktikum
+                  Assignments
                 </a>
+
+                <a 
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-white"
+                >
+                  Quizzes
+                </a>
+
+                <a 
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-white"
+                >
+                  Examinations
+                </a>
+
+                
               </div>
               <a href="#contact" className="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-white">Contact</a>
+              <button
+                onClick={toggleDarkMode}
+                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              >
+                {darkMode ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-gray-600" />}
+              </button>
             </div>
           </div>
         )}
