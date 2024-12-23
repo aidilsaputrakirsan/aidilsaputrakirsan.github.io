@@ -98,15 +98,15 @@ const About = () => {
               <ul className="space-y-3 text-gray-600 dark:text-gray-300">
                 <li className="flex items-center space-x-2">
                   <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
+                  <span>Dedicated to Faith and Gratitude to Allah</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
                   <span>Quick to Learn and Adapt to New Challenges</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
                   <span>Committed to Lifelong Learning and Professional Development</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                  <span>Highly Motivated and Results-Oriented Professional</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
