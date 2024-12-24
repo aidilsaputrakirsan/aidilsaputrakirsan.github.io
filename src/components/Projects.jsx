@@ -54,14 +54,39 @@ const FilterButton = ({ active, icon: Icon, title, onClick }) => (
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [showMore, setShowMore] = useState(false);
 
   const projects = [
+    {
+      title: "FORENSI Electronic Form for Fish Species Examination",
+      description: "Developed a mobile application for the Ministry of Marine Affairs and Fisheries to streamline and document fish species examination processes efficiently in collaboration with [Achmad Rifa'i].",
+      category: "mobile",
+      location: "Pontianak, Indonesia",
+      year: "2025",
+      image: "https://i.imgur.com/H4F3aHV.jpeg"
+    },
+    {
+      title: "Metaverse for Integrated Campus Lab Introduction at ITK",
+      description: "Developed a metaverse-based platform to enhance the introduction of integrated campus laboratories at ITK, providing an immersive virtual experience for users in collaboration with [Feriyanto].",
+      category: "web",
+      location: "Balikpapan, Indonesia",
+      year: "2024",
+      image: "https://i.imgur.com/OBvoFbF.jpeg"
+    },
+    {
+      title: "ITK Legal Service System",
+      description: "Developed a legal service platform to facilitate consultations and access to legal information for ITK's academic community in collaboration with [Fahmi Fauzan].",
+      category: "web",
+      location: "Balikpapan, Indonesia",
+      year: "2024",
+      image: "https://i.imgur.com/YPZ2u6C.jpeg"
+    },
     {
       title: "Smart Home System for Electrical Switches",
       description: "Developed a smart home IoT-based system for controlling and monitoring electrical switches remotely in collaboration with [Anugerah Deagung].",
       category: "iot",
       location: "Balikpapan, Indonesia",
-      year: "2024",
+      year: "2023",
       image: "https://i.imgur.com/qkcNTup.jpeg"
     },
     {
@@ -111,6 +136,8 @@ const Projects = () => {
     ? projects 
     : projects.filter(project => project.category === activeFilter);
 
+  const projectsToDisplay = showMore ? filteredProjects : filteredProjects.slice(0, 6);
+
   return (
     <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -151,10 +178,22 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
+          {projectsToDisplay.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
         </div>
+
+        {/* Read More Button */}
+        {filteredProjects.length > 6 && (
+          <div className="text-center mt-8">
+            <button
+              onClick={() => setShowMore(!showMore)}
+              className="px-6 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300"
+            >
+              {showMore ? 'Show Less' : 'Read More'}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
