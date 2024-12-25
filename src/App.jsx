@@ -1,3 +1,5 @@
+// src/App.jsx
+
 import React from 'react';
 import Header from './components/Header';
 import About from './components/About';
@@ -9,7 +11,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="bg-white dark:bg-gray-900">
+    <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
       <About />
       <Skills />

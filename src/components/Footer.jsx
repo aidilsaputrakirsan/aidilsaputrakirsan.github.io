@@ -1,3 +1,5 @@
+// src/components/Footer.jsx
+
 import React, { useState, useEffect } from 'react';
 import { ArrowUp, Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
 
@@ -20,14 +22,14 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors duration-300">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-4">Aidil Saputra Kirsan</h3>
-            <p className="mb-4 text-gray-400">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Aidil Saputra Kirsan</h3>
+            <p className="mb-4 text-gray-600 dark:text-gray-400">
               Lecturer at Institut Teknologi Kalimantan (ITK) with expertise in Information Systems 
               and Full Stack Development.
             </p>
@@ -36,15 +38,15 @@ const Footer = () => {
                 href="https://github.com/aidilsaputrakirsan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
+                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <Github className="w-6 h-6" />
               </a>
               <a
-                href="#linkedin"
+                href="https://linkedin.com/in/aidilsaputrakirsan" // Pastikan link LinkedIn benar
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
+                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <Linkedin className="w-6 h-6" />
               </a>
@@ -53,35 +55,35 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-4">Quick Links</h3>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#about" className="hover:text-white transition-colors">About</a>
+                <a href="#about" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
               </li>
               <li>
-                <a href="#skills" className="hover:text-white transition-colors">Skills</a>
+                <a href="#skills" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Skills</a>
               </li>
               <li>
-                <a href="#experience" className="hover:text-white transition-colors">Experience</a>
+                <a href="#experience" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Experience</a>
               </li>
               <li>
-                <a href="#projects" className="hover:text-white transition-colors">Projects</a>
+                <a href="#projects" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+                <a href="#contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
               </li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-4">Contact Info</h3>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Contact Info</h3>
             <ul className="space-y-4">
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-blue-400" />
                 <a
                   href="mailto:aidil@lecturer.itk.ac.id"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   aidil@lecturer.itk.ac.id
                 </a>
@@ -90,7 +92,7 @@ const Footer = () => {
                 <Phone className="w-5 h-5 text-blue-400" />
                 <a
                   href="tel:+6285398952880"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   +62 853 9895 xxxx
                 </a>
@@ -109,7 +111,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-gray-800">
+      <div className="border-t border-gray-300 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm">
