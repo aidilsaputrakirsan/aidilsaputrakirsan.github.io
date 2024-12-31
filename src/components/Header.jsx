@@ -4,6 +4,7 @@ import { Link } from 'react-scroll';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import { simpleConfig } from "./particlesConfig";
+import Typed from 'react-typed';
 
 const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -187,9 +188,13 @@ const Header = () => {
         <div className="relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
             <div className="text-center">
-              <h1 className="text-4xl tracking-tight font-extrabold text-[#E0E0E0] dark:text-[#212121] sm:text-5xl md:text-6xl">
-                <span className="block">Aidil Saputra Kirsan</span>
-                <span className="block text-[#4CAF50] dark:text-[#FF5722]">Full Stack Developer</span>
+              <h1 className="text-4xl tracking-tight font-extrabold text-[#4CAF50] dark:text-[#FF5722] sm:text-5xl md:text-6xl">
+                <Typed
+                  strings={["Aidil Saputra Kirsan", "Full Stack Developer"]}
+                  typeSpeed={80}
+                  backSpeed={60}
+                  loop
+                />
               </h1>
               <p className="mt-3 max-w-md mx-auto text-base text-gray-300 dark:text-gray-700 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                 Fast-learner, willing to learn, hard-worker, honest, discipline, responsible, and adapt quickly.
