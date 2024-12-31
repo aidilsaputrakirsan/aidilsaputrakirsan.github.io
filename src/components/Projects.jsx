@@ -145,7 +145,7 @@ const Projects = () => {
           <h2 className="text-3xl font-extrabold text-[#E0E0E0] dark:text-[#212121] sm:text-4xl">
             Featured Projects
           </h2>
-          <div className="mt-4 w-16 h-1 bg-[#4CAF50] mx-auto rounded"></div>
+          <div className="mt-4 w-16 h-1 bg-[#4CAF50] dark:bg-[#FF5722] mx-auto rounded"></div>
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 mb-12">
