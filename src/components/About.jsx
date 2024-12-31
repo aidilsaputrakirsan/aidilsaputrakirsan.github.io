@@ -9,7 +9,7 @@ const About = () => {
           <h2 className="text-3xl font-extrabold text-[#E0E0E0] dark:text-[#212121] sm:text-4xl">
             About Me
           </h2>
-          <div className="mt-4 w-16 h-1 bg-[#4CAF50] mx-auto rounded"></div>
+          <div className="mt-4 w-16 h-1 bg-[#4CAF50] dark:bg-[#FF5722] mx-auto rounded"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -95,23 +95,23 @@ const About = () => {
               </h3>
               <ul className="space-y-3 text-[#A9A9A9] dark:text-[#757575]">
                 <li className="flex items-center space-x-2">
-                  <span className="w-2 h-2 bg-[#4CAF50] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#4CAF50] dark:bg-[#FF5722] rounded-full"></span>
                   <span>Dedicated to Faith and Gratitude to Allah</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <span className="w-2 h-2 bg-[#4CAF50] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#4CAF50] dark:bg-[#FF5722] rounded-full"></span>
                   <span>Quick to Learn and Adapt to New Challenges</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <span className="w-2 h-2 bg-[#4CAF50] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#4CAF50] dark:bg-[#FF5722] rounded-full"></span>
                   <span>Committed to Lifelong Learning and Professional Development</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <span className="w-2 h-2 bg-[#4CAF50] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#4CAF50] dark:bg-[#FF5722] rounded-full"></span>
                   <span>Strong Ethical Foundation and Discipline</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <span className="w-2 h-2 bg-[#4CAF50] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#4CAF50] dark:bg-[#FF5722] rounded-full"></span>
                   <span>Proven History of Reliability and Accountability</span>
                 </li>
               </ul>
