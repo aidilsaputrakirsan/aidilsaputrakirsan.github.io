@@ -3,22 +3,22 @@ import { Globe, Smartphone, Cpu, ExternalLink } from 'lucide-react';
 
 const ProjectCard = ({ title, description, image, category, location, year, link }) => {
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+    <div className="bg-[#232323] dark:bg-[#F7F7F7] rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
       <div className="relative h-48 overflow-hidden">
         <img
           src={image || "/api/placeholder/400/200"}
           alt={title}
           className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
         />
-        <div className="absolute top-2 right-2 bg-blue-600 text-white text-sm px-2 py-1 rounded">
+        <div className="absolute top-2 right-2 bg-[#4CAF50] dark:bg-[#FF5722] text-[#E0E0E0] dark:text-[#212121] text-sm px-2 py-1 rounded">
           {year}
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{title}</h3>
-        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{description}</p>
+        <h3 className="text-xl font-bold text-[#E0E0E0] dark:text-[#212121] mb-2">{title}</h3>
+        <p className="text-[#A9A9A9] dark:text-[#757575] text-sm mb-4">{description}</p>
         <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
+          <span className="text-sm text-[#A9A9A9] dark:text-[#757575] flex items-center gap-1">
             <Globe className="w-4 h-4" /> {location}
           </span>
           {link && (
@@ -26,7 +26,7 @@ const ProjectCard = ({ title, description, image, category, location, year, link
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+              className="flex items-center text-[#4CAF50] hover:text-[#388E3C] dark:text-[#FF5722] dark:hover:text-[#E64A19]"
             >
               <ExternalLink className="w-4 h-4 mr-1" />
               View Project
@@ -43,8 +43,8 @@ const FilterButton = ({ active, icon: Icon, title, onClick }) => (
     onClick={onClick}
     className={`flex items-center space-x-2 px-6 py-3 rounded-lg transition-all duration-300 ${
       active 
-        ? 'bg-blue-600 text-white shadow-lg' 
-        : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+        ? 'bg-[#4CAF50] dark:bg-[#FF5722] text-[#E0E0E0] dark:text-[#212121] shadow-lg' 
+        : 'bg-[#2C2C2C] dark:bg-[#E0E0E0] text-[#A9A9A9] dark:text-[#757575] hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]'
     }`}
   >
     <Icon className="w-5 h-5" />
@@ -139,16 +139,15 @@ const Projects = () => {
   const projectsToDisplay = showMore ? filteredProjects : filteredProjects.slice(0, 6);
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="projects" className="py-20 bg-[#181818] dark:bg-[#FFFFFF]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+          <h2 className="text-3xl font-extrabold text-[#E0E0E0] dark:text-[#212121] sm:text-4xl">
             Featured Projects
           </h2>
-          <div className="mt-4 w-16 h-1 bg-blue-600 mx-auto rounded"></div>
+          <div className="mt-4 w-16 h-1 bg-[#4CAF50] mx-auto rounded"></div>
         </div>
 
-        {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           <FilterButton
             active={activeFilter === 'all'}
@@ -176,19 +175,17 @@ const Projects = () => {
           />
         </div>
 
-        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsToDisplay.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
         </div>
 
-        {/* Read More Button */}
         {filteredProjects.length > 6 && (
           <div className="text-center mt-8">
             <button
               onClick={() => setShowMore(!showMore)}
-              className="px-6 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300"
+              className="px-6 py-3 bg-[#4CAF50] text-[#E0E0E0] font-bold rounded-lg shadow-lg hover:bg-[#388E3C] dark:bg-[#FF5722] dark:hover:bg-[#E64A19] transition-all duration-300"
             >
               {showMore ? 'Show Less' : 'Read More'}
             </button>
