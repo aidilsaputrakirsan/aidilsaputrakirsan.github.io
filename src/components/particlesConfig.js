@@ -1,9 +1,7 @@
-// src/components/particlesConfig.js
-
-export const simpleConfig = {
+export const simpleConfig = (isDarkMode) => ({
   background: {
     color: {
-      value: "transparent", // Pastikan latar belakang Particles transparan
+      value: "transparent", // Latar belakang Particles tetap transparan
     },
   },
   particles: {
@@ -15,7 +13,7 @@ export const simpleConfig = {
       },
     },
     color: {
-      value: "#007BFF", // Warna Particles
+      value: isDarkMode ? "#FF5722" : "#4CAF50", // Hijau untuk mode gelap, Oranye untuk mode terang
     },
     shape: {
       type: "circle",
@@ -59,4 +57,4 @@ export const simpleConfig = {
     },
   },
   detectRetina: true,
-};
+});
