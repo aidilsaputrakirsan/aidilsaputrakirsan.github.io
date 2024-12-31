@@ -8,28 +8,27 @@ import {
   ScreenShare as ScreenShareIcon,   
 } from 'lucide-react';
 
-// Komponen SkillCard
 const SkillCard = ({ icon: Icon, title, skills }) => {
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 transform hover:scale-105 transition-all duration-300">
+    <div className="bg-[#232323] dark:bg-[#F7F7F7] rounded-lg shadow-lg p-6 transform hover:scale-105 transition-all duration-300">
       <div className="flex items-center space-x-3 mb-4">
-        <Icon className="w-6 h-6 text-blue-600" />
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white">{title}</h3>
+        <Icon className="w-6 h-6 text-[#4CAF50] dark:text-[#FF5722]" />
+        <h3 className="text-xl font-bold text-[#E0E0E0] dark:text-[#212121]">{title}</h3>
       </div>
       <div className="space-y-4">
         {skills.map((skill, index) => (
           <div key={index}>
             <div className="flex justify-between items-center mb-1">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              <span className="text-sm font-medium text-[#A9A9A9] dark:text-[#757575]">
                 {skill.name}
               </span>
-              <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <span className="text-sm font-medium text-[#A9A9A9] dark:text-[#757575]">
                 {skill.level}%
               </span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+            <div className="w-full bg-[#2C2C2C] dark:bg-[#E0E0E0] rounded-full h-2.5">
               <div
-                className="bg-blue-600 h-2.5 rounded-full transition-all duration-500 ease-out"
+                className="bg-[#4CAF50] dark:bg-[#FF5722] h-2.5 rounded-full transition-all duration-500 ease-out"
                 style={{ width: `${skill.level}%` }}
               ></div>
             </div>
@@ -67,11 +66,11 @@ const Skills = () => {
       icon: ServerIcon, 
       title: "Backend Development",
       skills: [
-        { name: "Node.js", level: 75 },
-        { name: "Express.js", level: 70 },
+        { name: "Node.js", level: 85 },
+        { name: "Express.js", level: 80 },
         { name: "Laravel", level: 85 },
         { name: "CodeIgniter", level: 80 },
-        { name: "RESTful API", level: 75 },
+        { name: "RESTful API", level: 90 },
       ]
     },
     database: {
@@ -80,7 +79,7 @@ const Skills = () => {
       skills: [
         { name: "MySQL", level: 90 },
         { name: "PostgreSQL", level: 85 },
-        { name: "Oracle", level: 80 },
+        { name: "Oracle", level: 70 },
         { name: "Firebase Realtime Database", level: 70 }
       ]
     },
@@ -112,23 +111,22 @@ const Skills = () => {
 
 
   return (
-    <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="skills" className="py-20 bg-[#181818] dark:bg-[#FFFFFF]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+          <h2 className="text-3xl font-extrabold text-[#E0E0E0] dark:text-[#212121] sm:text-4xl">
             Technical Skills
           </h2>
-          <div className="mt-4 w-16 h-1 bg-blue-600 mx-auto rounded"></div>
+          <div className="mt-4 w-16 h-1 bg-[#4CAF50] mx-auto rounded"></div>
         </div>
 
-        {/* Category Tabs */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           <button
             onClick={() => setActiveTab('all')}
             className={`px-6 py-2 rounded-full transition-colors ${
               activeTab === 'all'
-                ? 'bg-blue-600 text-white'
-                : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                ? 'bg-[#4CAF50] text-[#E0E0E0] dark:bg-[#FF5722] dark:text-[#212121]'
+                : 'bg-[#2C2C2C] dark:bg-[#E0E0E0] text-[#A9A9A9] dark:text-[#757575] hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]'
             }`}
           >
             All Skills
@@ -139,8 +137,8 @@ const Skills = () => {
               onClick={() => setActiveTab(category)}
               className={`px-6 py-2 rounded-full transition-colors ${
                 activeTab === category
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                  ? 'bg-[#4CAF50] text-[#E0E0E0] dark:bg-[#FF5722] dark:text-[#212121]'
+                  : 'bg-[#2C2C2C] dark:bg-[#E0E0E0] text-[#A9A9A9] dark:text-[#757575] hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]'
               }`}
             >
               {skillCategories[category].title}
@@ -148,7 +146,6 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Skills Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {Object.entries(skillCategories).map(([key, category]) => (
             (activeTab === 'all' || activeTab === key) && (
