@@ -40,7 +40,7 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <span className="text-2xl font-bold text-[#4CAF50] dark:text-[#FF5722]">ADL</span>
+              <span className="text-2xl font-bold text-[#4CAF50] dark:text-[#FF5722] animate-fade-in">ADL</span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
               {['About', 'Skills', 'Experience', 'Projects', 'Contact'].map((section) => (
@@ -49,13 +49,13 @@ const Header = () => {
                   to={section.toLowerCase()}
                   smooth={true}
                   duration={500}
-                  className="cursor-pointer text-gray-200 dark:text-gray-800 hover:text-[#4CAF50] dark:hover:text-[#FF5722] transition-colors"
+                  className="cursor-pointer text-gray-200 dark:text-gray-800 hover:text-[#4CAF50] dark:hover:text-[#FF5722] transition-colors animate-fade-in"
                 >
                   {section}
                 </Link>
               ))}
               <div className="relative group">
-                <button className="hover:text-[#4CAF50] dark:hover:text-[#FF5722] text-gray-200 dark:text-gray-800 transition-colors">
+                <button className="hover:text-[#4CAF50] dark:hover:text-[#FF5722] text-gray-200 dark:text-gray-800 transition-colors animate-fade-in">
                   Educational Resources
                 </button>
                 <div className="absolute left-0 mt-2 w-60 rounded-md shadow-lg bg-[#2C2C2C] dark:bg-[#E0E0E0] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform">
@@ -105,7 +105,7 @@ const Header = () => {
               </div>
               <button
                 onClick={toggleDarkMode}
-                className="p-2 rounded-full hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors"
+                className="p-2 rounded-full hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors animate-fade-in"
               >
                 {darkMode ? (
                   <Sun className="w-5 h-5 text-gray-600" />
@@ -137,12 +137,12 @@ const Header = () => {
                   to={section.toLowerCase()}
                   smooth={true}
                   duration={500}
-                  className="block px-3 py-2 rounded-md text-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-200 cursor-pointer"
+                  className="block px-3 py-2 rounded-md text-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-200 cursor-pointer animate-fade-in"
                 >
                   {section}
                 </Link>
               ))}
-              <div className="block px-3 py-2 rounded-md text-gray-200 dark:text-gray-800">
+              <div className="block px-3 py-2 rounded-md text-gray-200 dark:text-gray-800 animate-fade-in">
                 Educational Resources
                 <div className="ml-4">
                   {[
@@ -164,7 +164,7 @@ const Header = () => {
               </div>
               <button
                 onClick={toggleDarkMode}
-                className="flex items-center justify-center p-2 rounded-full bg-gray-700 dark:bg-gray-200 text-gray-200 dark:text-gray-800 hover:bg-gray-600 dark:hover:bg-gray-300 transition-colors"
+                className="flex items-center justify-center p-2 rounded-full bg-gray-700 dark:bg-gray-200 text-gray-200 dark:text-gray-800 hover:bg-gray-600 dark:hover:bg-gray-300 transition-colors animate-fade-in"
               >
                 {darkMode ? (
                   <Sun className="w-5 h-5 text-gray-600" />
@@ -188,16 +188,19 @@ const Header = () => {
         <div className="relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
             <div className="text-center">
-              <h1 className="text-4xl tracking-tight font-extrabold text-[#4CAF50] dark:text-[#FF5722] sm:text-5xl md:text-6xl">
+            <span className="text-4xl tracking-tight font-extrabold text-[#FFFFFF] dark:text-[#000000] sm:text-5xl md:text-6xl animate-fade-in">
+              Aidil Saputra Kirsan
+            </span>
+              <h1 className="text-4xl tracking-tight font-bold text-[#4CAF50] dark:text-[#FF5722] sm:text-5xl md:text-6xl animate-fade-in">
                 <Typed
-                  strings={["Aidil Saputra Kirsan", "Full Stack Developer"]}
+                  strings={["Full Stack Developer", "Information Systems Lecturer"]}
                   typeSpeed={80}
                   backSpeed={60}
                   loop
                 />
               </h1>
-              <p className="mt-3 max-w-md mx-auto text-base text-gray-300 dark:text-gray-700 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                Fast-learner, willing to learn, hard-worker, honest, discipline, responsible, and adapt quickly.
+              <p className="mt-3 max-w-md mx-auto text-base text-gray-300 dark:text-gray-700 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl animate-fade-in">
+                Fast learner, adaptable, disciplined, honest, responsible, and hardworking.
               </p>
               <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
                 <div className="rounded-md shadow">
@@ -205,7 +208,7 @@ const Header = () => {
                     to="contact"
                     smooth={true}
                     duration={500}
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-[#4CAF50] bg-white hover:bg-gray-100 dark:text-[#FF5722] dark:bg-[#2C2C2C] dark:hover:bg-[#383838] md:py-4 md:text-lg md:px-10 transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-[#4CAF50] bg-white hover:bg-[#4CAF50] hover:text-white dark:text-[#FF5722] dark:bg-[#2C2C2C] dark:hover:bg-[#383838] md:py-4 md:text-lg md:px-10 transition-colors cursor-pointer animate-fade-in"
                   >
                     Contact Me
                   </Link>
@@ -215,7 +218,7 @@ const Header = () => {
                     to="projects"
                     smooth={true}
                     duration={500}
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-[#4CAF50] bg-white hover:bg-gray-100 dark:text-[#FF5722] dark:bg-[#2C2C2C] dark:hover:bg-[#383838] md:py-4 md:text-lg md:px-10 transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#4CAF50] hover:bg-white hover:text-[#388E3C] dark:text-black dark:bg-[#FF5722] dark:hover:bg-[#FF5722] md:py-4 md:text-lg md:px-10 transition-colors cursor-pointer animate-fade-in"
                   >
                     View Projects
                   </Link>
