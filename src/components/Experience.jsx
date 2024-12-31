@@ -11,16 +11,16 @@ const TimelineItem = ({ index, title, subtitle, description, isLeft }) => {
       isLeft ? 'flex-row-reverse' : ''
     }`}>
       <div className="order-1 w-5/12"></div>
-      <div className="z-20 flex items-center order-1 bg-blue-600 shadow-xl w-8 h-8 rounded-full">
-        <h1 className="mx-auto font-semibold text-lg text-white">{index + 1}</h1>
+      <div className="z-20 flex items-center order-1 bg-[#4CAF50] dark:bg-[#FF5722] shadow-xl w-8 h-8 rounded-full">
+        <h1 className="mx-auto font-semibold text-lg text-[#E0E0E0] dark:text-[#212121]">{index + 1}</h1>
       </div>
-      <div className={`order-1 w-5/12 px-6 py-4 bg-white dark:bg-gray-900 rounded-lg shadow-xl 
+      <div className={`order-1 w-5/12 px-6 py-4 bg-[#232323] dark:bg-[#F7F7F7] rounded-lg shadow-xl 
         transform transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
       >
-        <h3 className="mb-3 font-bold text-gray-900 dark:text-white text-xl">{title}</h3>
-        <h4 className="mb-3 text-blue-600 dark:text-blue-400 text-md">{subtitle}</h4>
+        <h3 className="mb-3 font-bold text-[#E0E0E0] dark:text-[#212121] text-xl">{title}</h3>
+        <h4 className="mb-3 text-[#4CAF50] dark:text-[#FF5722] text-md">{subtitle}</h4>
         {description && (
-          <p className="text-sm leading-snug tracking-wide text-gray-600 dark:text-gray-300">
+          <p className="text-sm leading-snug tracking-wide text-[#A9A9A9] dark:text-[#757575]">
             {description}
           </p>
         )}
@@ -34,8 +34,8 @@ const TabButton = ({ active, icon: Icon, title, onClick }) => (
     onClick={onClick}
     className={`flex items-center space-x-2 px-6 py-3 rounded-lg transition-all duration-300 ${
       active 
-        ? 'bg-blue-600 text-white shadow-lg' 
-        : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+        ? 'bg-[#4CAF50] dark:bg-[#FF5722] text-[#E0E0E0] dark:text-[#212121] shadow-lg' 
+        : 'bg-[#2C2C2C] dark:bg-[#E0E0E0] text-[#A9A9A9] dark:text-[#757575] hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]'
     }`}
   >
     <Icon className="w-5 h-5" />
@@ -109,16 +109,15 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="experience" className="py-20 bg-[#181818] dark:bg-[#FFFFFF]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+          <h2 className="text-3xl font-extrabold text-[#E0E0E0] dark:text-[#212121] sm:text-4xl">
             Experience & Achievements
           </h2>
-          <div className="mt-4 w-16 h-1 bg-blue-600 mx-auto rounded"></div>
+          <div className="mt-4 w-16 h-1 bg-[#4CAF50] mx-auto rounded"></div>
         </div>
 
-        {/* Tab Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           <TabButton
             active={activeTab === 'career'}
@@ -140,11 +139,9 @@ const Experience = () => {
           />
         </div>
 
-        {/* Timeline Container */}
         <div className="relative wrap overflow-hidden">
-          <div className="absolute h-full border-2 border-blue-600 left-1/2 transform -translate-x-1/2"></div>
+          <div className="absolute h-full border-2 border-[#4CAF50] dark:border-[#FF5722] left-1/2 transform -translate-x-1/2"></div>
           
-          {/* Timeline Items */}
           {activeTab === 'career' && career.map((item, index) => (
             <TimelineItem key={index} {...item} index={index} isLeft={index % 2 === 0} />
           ))}
