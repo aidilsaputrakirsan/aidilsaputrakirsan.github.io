@@ -47,7 +47,7 @@ const Contact = () => {
           <h2 className="text-3xl font-extrabold text-[#E0E0E0] dark:text-[#212121] sm:text-4xl">
             Get in Touch
           </h2>
-          <div className="mt-4 w-16 h-1 bg-[#4CAF50] mx-auto rounded"></div>
+          <div className="mt-4 w-16 h-1 bg-[#4CAF50] dark:bg-[#FF5722] mx-auto rounded"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -171,7 +171,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-[#E0E0E0] dark:text-[#212121] bg-[#4CAF50] hover:bg-[#388E3C] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4CAF50] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-[#E0E0E0] dark:text-[#212121] bg-[#4CAF50] dark:bg-[#FF5722] hover:bg-[#388E3C] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4CAF50] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className={`w-5 h-5 ${isSubmitting ? 'animate-pulse' : ''}`} />
                 <span className="ml-2">{isSubmitting ? 'Sending...' : 'Send Message'}</span>
