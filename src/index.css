@@ -44,6 +44,35 @@ html {
   transition: transform 0.3s ease;
 }
 
+/* Glassmorphism khusus tombol Skills */
+.skill-button {
+  background: rgba(0, 0, 0, 0.6); /* Default untuk dark */
+  color: rgba(240, 240, 240, 0.9); /* Teks terang */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Border halus */
+  border-radius: 25px; /* Tombol melengkung */
+  padding: 10px 20px; /* Ruang tombol */
+  transition: all 0.3s ease; /* Efek transisi */
+}
+
+.skill-button.is-active,
+.skill-button:hover {
+  background: rgba(0, 128, 0, 0.7); /* Warna hijau transparan saat hover */
+  color: rgba(255, 255, 255, 1); /* Teks putih saat hover */
+  border-color: rgba(255, 255, 255, 0.4); /* Border saat hover */
+}
+
+
+.dark .skill-button {
+  background: rgba(255, 255, 255, 0.6); /* Default untuk light */
+  color: rgba(30, 30, 30, 0.9); /* Teks gelap */
+  border: 1px solid rgba(0, 0, 0, 0.2); /* Border halus */
+}
+.dark .skill-button.is-active,
+.dark .skill-button:hover {
+  background: rgba(255, 87, 34, 0.7); /* Warna oranye transparan saat hover */
+  color: rgba(30, 30, 30, 1); /* Teks gelap saat hover */
+  border-color: rgba(0, 0, 0, 0.4); /* Border saat hover */
+}
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
