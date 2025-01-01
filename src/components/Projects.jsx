@@ -3,22 +3,26 @@ import { Globe, Smartphone, Cpu, ExternalLink } from 'lucide-react';
 
 const ProjectCard = ({ title, description, image, category, location, year, link }) => {
   return (
-    <div className="bg-[#232323] dark:bg-[#F7F7F7] rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-      <div className="relative h-48 overflow-hidden">
+    <div className="about-glass overflow-hidden transform transition-all duration-300 hover:scale-105">
+      <div className="relative h-48 overflow-hidden rounded-t-lg">
         <img
           src={image || "/api/placeholder/400/200"}
           alt={title}
           className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
         />
-        <div className="absolute top-2 right-2 bg-[#4CAF50] dark:bg-[#FF5722] text-[#E0E0E0] dark:text-[#212121] text-sm px-2 py-1 rounded">
+        <div className="absolute top-2 right-2 rounded px-2 py-1 text-sm">
           {year}
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold text-[#E0E0E0] dark:text-[#212121] mb-2">{title}</h3>
-        <p className="text-[#A9A9A9] dark:text-[#757575] text-sm mb-4">{description}</p>
+        <h3 className="text-xl font-bold text-dark-primary dark:text-light-primary mb-2">
+          {title}
+        </h3>
+        <p className="text-dark-secondary dark:text-light-secondary text-sm mb-4">
+          {description}
+        </p>
         <div className="flex items-center justify-between">
-          <span className="text-sm text-[#A9A9A9] dark:text-[#757575] flex items-center gap-1">
+          <span className="text-sm flex items-center gap-1 text-dark-secondary dark:text-light-secondary">
             <Globe className="w-4 h-4" /> {location}
           </span>
           {link && (
@@ -41,11 +45,7 @@ const ProjectCard = ({ title, description, image, category, location, year, link
 const FilterButton = ({ active, icon: Icon, title, onClick }) => (
   <button
     onClick={onClick}
-    className={`flex items-center space-x-2 px-6 py-3 rounded-lg transition-all duration-300 ${
-      active 
-        ? 'bg-[#4CAF50] dark:bg-[#FF5722] text-[#E0E0E0] dark:text-[#212121] shadow-lg' 
-        : 'bg-[#2C2C2C] dark:bg-[#E0E0E0] text-[#A9A9A9] dark:text-[#757575] hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]'
-    }`}
+    className={`skill-button ${active ? 'is-active' : ''} flex justify-center items-center space-x-2`}
   >
     <Icon className="w-5 h-5" />
     <span>{title}</span>
@@ -129,7 +129,6 @@ const Projects = () => {
       year: "2017",
       image: "https://i.imgur.com/fc0hYFD.jpeg"
     },
-    
   ];
 
   const filteredProjects = activeFilter === 'all' 
@@ -185,7 +184,7 @@ const Projects = () => {
           <div className="text-center mt-8">
             <button
               onClick={() => setShowMore(!showMore)}
-              className="px-6 py-3 bg-[#4CAF50] text-[#E0E0E0] font-bold rounded-lg shadow-lg hover:bg-[#388E3C] dark:bg-[#FF5722] dark:hover:bg-[#E64A19] transition-all duration-300"
+              className="skill-button is-active"
             >
               {showMore ? 'Show Less' : 'Read More'}
             </button>
