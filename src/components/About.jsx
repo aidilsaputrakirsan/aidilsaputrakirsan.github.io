@@ -13,7 +13,8 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="bg-[#232323] dark:bg-[#F7F7F7] rounded-lg shadow-lg p-8 transform hover:scale-105 transition-transform duration-300">
+          {/* Left Section */}
+          <div className="about-glass shadow-lg p-8 transform hover:scale-105 transition-transform duration-300">
             <div className="flex items-center justify-center mb-6">
               <div className="w-32 h-32 rounded-full overflow-hidden">
                 <img
@@ -27,9 +28,9 @@ const About = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-[#FF9800]" />
-                <a 
+                <a
                   href="mailto:aidil@lecturer.itk.ac.id"
-                  className="text-[#A9A9A9] dark:text-[#757575] hover:text-[#FF9800] dark:hover:text-[#FF5722]"
+                  className="text-dark-secondary dark:text-light-secondary hover:text-[#4CAF50] dark:hover:text-[#FF5722]"
                 >
                   aidil@lecturer.itk.ac.id
                 </a>
@@ -37,9 +38,9 @@ const About = () => {
 
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-[#FF9800]" />
-                <a 
+                <a
                   href="tel:+6285398952880"
-                  className="text-[#A9A9A9] dark:text-[#757575] hover:text-[#FF9800] dark:hover:text-[#FF5722]"
+                  className="text-dark-secondary dark:text-light-secondary hover:text-[#4CAF50] dark:hover:text-[#FF5722]"
                 >
                   +62 853 9895 xxxx
                 </a>
@@ -47,17 +48,16 @@ const About = () => {
 
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-[#FF9800] mt-1" />
-                <span className="text-[#A9A9A9] dark:text-[#757575]">
-                  Sepinggan Baru, Balikpapan Selatan,
-                  Balikpapan – Indonesia
+                <span className="text-dark-secondary dark:text-light-secondary">
+                  Sepinggan Baru, Balikpapan Selatan, Balikpapan – Indonesia
                 </span>
               </div>
 
               <div className="border-t border-[#2C2C2C] dark:border-[#E0E0E0] pt-4 mt-4">
-                <h3 className="text-lg font-semibold text-[#E0E0E0] dark:text-[#212121] mb-2">
+                <h3 className="text-lg font-semibold text-dark-primary dark:text-light-primary mb-2">
                   Personal Information
                 </h3>
-                <div className="grid grid-cols-2 gap-4 text-[#A9A9A9] dark:text-[#757575]">
+                <div className="grid grid-cols-2 gap-4 text-dark-secondary dark:text-light-secondary">
                   <div>
                     <p className="font-medium">Date of Birth</p>
                     <p>March 17th, 1994</p>
@@ -79,21 +79,22 @@ const About = () => {
             </div>
           </div>
 
+          {/* Right Section */}
           <div className="space-y-6">
-            <div className="bg-[#232323] dark:bg-[#F7F7F7] rounded-lg shadow-lg p-8 transform hover:scale-105 transition-transform duration-300">
-              <h3 className="text-2xl font-bold text-[#E0E0E0] dark:text-[#212121] mb-4">
+            <div className="about-glass shadow-lg p-8 transform hover:scale-105 transition-transform duration-300">
+              <h3 className="text-2xl font-bold text-dark-primary dark:text-light-primary mb-4">
                 Professional Overview
               </h3>
-              <p className="text-[#A9A9A9] dark:text-[#757575] leading-relaxed">
-                A dedicated and adaptable professional specializing in Information Systems and Computer Engineering. Currently serving as a Lecturer at Institut Teknologi Kalimantan (ITK), contributing to academic excellence through teaching and research. Actively involved in freelance application development with a proven track record of delivering innovative solutions across web, mobile, and IoT platforms
+              <p className="text-dark-secondary dark:text-light-secondary leading-relaxed">
+                A dedicated and adaptable professional specializing in Information Systems and Computer Engineering. Currently serving as a Lecturer at Institut Teknologi Kalimantan (ITK), contributing to academic excellence through teaching and research. Actively involved in freelance application development with a proven track record of delivering innovative solutions across web, mobile, and IoT platforms.
               </p>
             </div>
 
-            <div className="bg-[#232323] dark:bg-[#F7F7F7] rounded-lg shadow-lg p-8 transform hover:scale-105 transition-transform duration-300">
-              <h3 className="text-2xl font-bold text-[#E0E0E0] dark:text-[#212121] mb-4">
+            <div className="about-glass shadow-lg p-8 transform hover:scale-105 transition-transform duration-300">
+              <h3 className="text-2xl font-bold text-dark-primary dark:text-light-primary mb-4">
                 Key Attributes
               </h3>
-              <ul className="space-y-3 text-[#A9A9A9] dark:text-[#757575]">
+              <ul className="space-y-3 text-dark-secondary dark:text-light-secondary">
                 <li className="flex items-center space-x-2">
                   <span className="w-2 h-2 bg-[#4CAF50] dark:bg-[#FF5722] rounded-full"></span>
                   <span>Dedicated to Faith and Gratitude to Allah</span>
