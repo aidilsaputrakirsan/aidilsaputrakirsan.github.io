@@ -10,9 +10,11 @@ const ProjectCard = ({ title, description, image, category, location, year, link
           alt={title}
           className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
         />
-        <div className="absolute top-2 right-2 rounded px-2 py-1 text-sm">
+        <div className="absolute top-2 right-2 rounded px-2 py-1 text-sm border bg-[#4CAF50] text-[#E0E0E0] dark:bg-[#FF5722] dark:text-[#212121]">
           {year}
         </div>
+
+
       </div>
       <div className="p-6">
         <h3 className="text-xl font-bold text-dark-primary dark:text-light-primary mb-2">
@@ -80,6 +82,14 @@ const Projects = () => {
       location: "Balikpapan, Indonesia",
       year: "2024",
       image: "https://i.imgur.com/YPZ2u6C.jpeg"
+    },
+    {
+      title: "Operation & Maintenance Information System (SIRINE)",
+      description: "Developed a web-based information system to optimize operation and maintenance workflows for PGN SOR III, featuring real-time data monitoring and reporting tools in collaboration with [Sallie Trixie].",
+      category: "web",
+      location: "Surabaya, Indonesia",
+      year: "2023",
+      image: "https://i.imgur.com/OeC4GFD.jpeg"
     },
     {
       title: "Smart Home System for Electrical Switches",
