@@ -77,7 +77,7 @@ const Header = () => {
                       Practicals <span className="text-gray-400 text-xs">(Members Only)</span>
                     </a>
                     <a
-                      href="#"
+                      href="https://aidilsaputrakirsan.github.io/Pengajaran-Tugas/Pengumpulan/index.html"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-sm text-gray-200 dark:text-gray-800 hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]"
@@ -148,7 +148,7 @@ const Header = () => {
                   {[
                     { name: "Theory", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Materi-Teori" },
                     { name: "Practicals", href: "https://github.com/aidilsaputrakirsan/Pengajaran-Modul-Praktikum" },
-                    { name: "Assignments", href: "#" },
+                    { name: "Assignments", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Tugas/Pengumpulan/index.html" },
                     { name: "Quizzes", href: "#" },
                     { name: "Examinations", href: "#" },
                   ].map((resource, idx) => (
