@@ -6,12 +6,46 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Untuk dark mode */
 .dark {
   color-scheme: dark;
 }
 
-/* Untuk scrollbar styling */
+/* Glassmorphism khusus About */
+.about-glass {
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.7), /* Lebih gelap untuk teks terang */
+    rgba(255, 255, 255, 0.1) /* Sedikit lebih terang */
+  );
+  backdrop-filter: blur(2px); /* Blur tetap diterapkan */
+  -webkit-backdrop-filter: blur(2px); /* Safari support */
+  border-radius: 25px; /* Sudut melengkung */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Border halus */
+  color: rgba(240, 240, 240, 0.9); /* Teks terang tetapi tidak terlalu mencolok */
+  padding: 20px; /* Menambahkan padding untuk ruang */
+}
+
+.dark .about-glass {
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.7), /* Sama seperti mode light */
+    rgba(0, 0, 0, 0.1)
+  );
+  backdrop-filter: blur(2px); /* Blur tetap */
+  -webkit-backdrop-filter: blur(2px); /* Safari support */
+  border-radius: 25px; /* Sudut melengkung */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Border konsisten */
+  color: rgba(30, 30, 30, 0.8); /* Warna teks terang konsisten */
+  padding: 20px; /* Padding sama dengan light */
+}
+
+.about-glass:hover {
+  transform: scale(1.02); /* Efek zoom saat hover */
+  transition: transform 0.3s ease;
+}
+
+
+/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 10px;
 }
