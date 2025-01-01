@@ -65,19 +65,19 @@ const Experience = () => {
       date: "2020",
       title: "Lecturer of Information Systems",
       subtitle: "Institut Teknologi Kalimantan (ITK)",
-      description: "Teaching and conducting research in Information Systems department."
+      description: "Delivering lectures and conducting advanced research in the field of Information Systems, with a focus on innovation and technology integration to enhance academic and institutional growth."
     },
     {
       date: "2014",
       title: "Freelance Application Developer",
       subtitle: "Self-employed",
-      description: "Developing custom web, mobile, and IoT applications for clients."
+      description: "Designing and developing customized web, mobile, and IoT applications tailored to meet client requirements, ensuring optimal functionality and user experience."
     },
     {
       date: "2015",
-      title: "Network and Application Administrator",
+      title: "IT Network and Systems Administrator",
       subtitle: "Politeknik Negeri Ujung Pandang (PNUP)",
-      description: "Managing network infrastructure and applications for the institution."
+      description: "Managed and maintained IT network infrastructure, ensuring seamless connectivity and system performance."
     }
   ];
 
