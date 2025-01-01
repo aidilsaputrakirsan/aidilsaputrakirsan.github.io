@@ -10,30 +10,32 @@ import {
 
 const SkillCard = ({ icon: Icon, title, skills }) => {
   return (
-    <div className="bg-[#232323] dark:bg-[#F7F7F7] rounded-lg shadow-lg p-6 transform hover:scale-105 transition-all duration-300">
-      <div className="flex items-center space-x-3 mb-4">
-        <Icon className="w-6 h-6 text-[#4CAF50] dark:text-[#FF5722]" />
-        <h3 className="text-xl font-bold text-[#E0E0E0] dark:text-[#212121]">{title}</h3>
-      </div>
-      <div className="space-y-4">
-        {skills.map((skill, index) => (
-          <div key={index}>
-            <div className="flex justify-between items-center mb-1">
-              <span className="text-sm font-medium text-[#A9A9A9] dark:text-[#757575]">
-                {skill.name}
-              </span>
-              <span className="text-sm font-medium text-[#A9A9A9] dark:text-[#757575]">
-                {skill.level}%
-              </span>
+    <div className="about-glass shadow-lg transform hover:scale-105 transition-all duration-300">
+      <div className="p-6">
+        <div className="flex items-center space-x-3 mb-4">
+          <Icon className="w-6 h-6 text-[#4CAF50] dark:text-[#FF5722]" />
+          <h3 className="text-xl font-bold text-dark-primary dark:text-light-primary">{title}</h3>
+        </div>
+        <div className="space-y-4">
+          {skills.map((skill, index) => (
+            <div key={index}>
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-sm font-medium text-dark-secondary dark:text-light-secondary">
+                  {skill.name}
+                </span>
+                <span className="text-sm font-medium text-dark-secondary dark:text-light-secondary">
+                  {skill.level}%
+                </span>
+              </div>
+              <div className="w-full bg-[#2C2C2C] dark:bg-[#E0E0E0] rounded-full h-2.5">
+                <div
+                  className="bg-[#4CAF50] dark:bg-[#FF5722] h-2.5 rounded-full transition-all duration-500 ease-out"
+                  style={{ width: `${skill.level}%` }}
+                ></div>
+              </div>
             </div>
-            <div className="w-full bg-[#2C2C2C] dark:bg-[#E0E0E0] rounded-full h-2.5">
-              <div
-                className="bg-[#4CAF50] dark:bg-[#FF5722] h-2.5 rounded-full transition-all duration-500 ease-out"
-                style={{ width: `${skill.level}%` }}
-              ></div>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -108,8 +110,6 @@ const Skills = () => {
     }
   };
 
-
-
   return (
     <section id="skills" className="py-20 bg-[#181818] dark:bg-[#FFFFFF]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,11 +123,7 @@ const Skills = () => {
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           <button
             onClick={() => setActiveTab('all')}
-            className={`px-6 py-2 rounded-full transition-colors ${
-              activeTab === 'all'
-                ? 'bg-[#4CAF50] text-[#E0E0E0] dark:bg-[#FF5722] dark:text-[#212121]'
-                : 'bg-[#2C2C2C] dark:bg-[#E0E0E0] text-[#A9A9A9] dark:text-[#757575] hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]'
-            }`}
+            className={`skill-button ${activeTab === 'all' ? 'is-active' : ''}`}
           >
             All Skills
           </button>
@@ -135,11 +131,7 @@ const Skills = () => {
             <button
               key={category}
               onClick={() => setActiveTab(category)}
-              className={`px-6 py-2 rounded-full transition-colors ${
-                activeTab === category
-                  ? 'bg-[#4CAF50] text-[#E0E0E0] dark:bg-[#FF5722] dark:text-[#212121]'
-                  : 'bg-[#2C2C2C] dark:bg-[#E0E0E0] text-[#A9A9A9] dark:text-[#757575] hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]'
-              }`}
+              className={`skill-button ${activeTab === category ? 'is-active' : ''}`}
             >
               {skillCategories[category].title}
             </button>
