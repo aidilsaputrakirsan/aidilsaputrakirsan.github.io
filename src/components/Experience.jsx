@@ -7,18 +7,33 @@ import {
 
 const TimelineItem = ({ index, title, subtitle, description, isLeft }) => {
   return (
-    <div className={`mb-8 flex justify-between items-center w-full ${
-      isLeft ? 'flex-row-reverse' : ''
-    }`}>
-      <div className="order-1 w-5/12"></div>
-      <div className="z-20 flex items-center order-1 bg-[#4CAF50] dark:bg-[#FF5722] shadow-xl w-8 h-8 rounded-full">
-        <h1 className="mx-auto font-semibold text-lg text-[#E0E0E0] dark:text-[#212121]">{index + 1}</h1>
+    <div
+      className={`mb-8 flex justify-between items-center w-full ${
+        isLeft ? 'flex-row-reverse' : ''
+      }`}
+    >
+      {/* Area kosong di sisi kiri/kanan */}
+      <div className={`order-1 w-5/12 ${isLeft ? 'mr-4' : 'ml-4'}`}></div>
+
+      {/* Lingkaran nomor */}
+      <div className="z-20 flex items-center order-1 shadow-lg w-8 h-8 rounded-full bg-[#4CAF50] dark:bg-[#FF5722]">
+        <h1 className="mx-auto font-semibold text-lg text-[#E0E0E0] dark:text-[#212121]">
+          {index + 1}
+        </h1>
       </div>
-      <div className={`order-1 w-5/12 px-6 py-4 bg-[#232323] dark:bg-[#F7F7F7] rounded-lg shadow-xl 
-        transform transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
+
+      {/* Kotakan */}
+      <div
+        className={`order-1 w-5/12 px-6 py-4 about-glass transform transition-all duration-300 hover:scale-105 ${
+          isLeft ? 'translate-x-2 mt-4' : '-translate-x-2'
+        }`}
       >
-        <h3 className="mb-3 font-bold text-[#E0E0E0] dark:text-[#212121] text-xl">{title}</h3>
-        <h4 className="mb-3 text-[#4CAF50] dark:text-[#FF5722] text-md">{subtitle}</h4>
+        <h3 className="mb-3 font-bold text-[#E0E0E0] dark:text-[#212121] text-xl">
+          {title}
+        </h3>
+        <h4 className="mb-3 text-[#4CAF50] dark:text-[#FF5722] text-md">
+          {subtitle}
+        </h4>
         {description && (
           <p className="text-sm leading-snug tracking-wide text-[#A9A9A9] dark:text-[#757575]">
             {description}
@@ -29,19 +44,18 @@ const TimelineItem = ({ index, title, subtitle, description, isLeft }) => {
   );
 };
 
+
+
 const TabButton = ({ active, icon: Icon, title, onClick }) => (
   <button
     onClick={onClick}
-    className={`flex items-center space-x-2 px-6 py-3 rounded-lg transition-all duration-300 ${
-      active 
-        ? 'bg-[#4CAF50] dark:bg-[#FF5722] text-[#E0E0E0] dark:text-[#212121] shadow-lg' 
-        : 'bg-[#2C2C2C] dark:bg-[#E0E0E0] text-[#A9A9A9] dark:text-[#757575] hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]'
-    }`}
+    className={`skill-button ${active ? 'is-active' : ''} flex justify-center items-center space-x-2`}
   >
     <Icon className="w-5 h-5" />
     <span>{title}</span>
   </button>
 );
+
 
 const Experience = () => {
   const [activeTab, setActiveTab] = useState('career');
