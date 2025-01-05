@@ -12,7 +12,7 @@ const LikeButton = () => {
   const [message, setMessage] = useState(''); // Untuk pesan setelah like
 
   // URL backend Express.js
-  const BACKEND_URL = 'http://localhost:5000/api/likes'; // Ganti jika berbeda
+  const BACKEND_URL = 'https://aidilsaputrakirsan-github-io.vercel.app/api/likes.js'; // Ganti jika berbeda
   const MAX_LIKES = 3; // Batas maksimal like per perangkat
 
   useEffect(() => {
