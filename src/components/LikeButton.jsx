@@ -12,7 +12,7 @@ const LikeButton = () => {
   const [message, setMessage] = useState(''); // Untuk pesan setelah like
 
   // URL backend Express.js
-  const BACKEND_URL = 'https://aidilsaputrakirsan-github-io.vercel.app/api/likes.js'; // Ganti jika berbeda
+  const BACKEND_URL = 'https://aidilsaputrakirsan-github-io.vercel.app/api/likes'; // Ganti jika berbeda
   const MAX_LIKES = 3; // Batas maksimal like per perangkat
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const LikeButton = () => {
         data-tooltip-content={
           likeCount >= MAX_LIKES
             ? 'You have reached the like limit'
-            : 'Click to support my work!'
+            : ''
         }
       >
         <span role="img" aria-label="like">
@@ -88,7 +88,7 @@ const LikeButton = () => {
         <motion.p
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-2 text-green-500"
+          className="mt-2 text-green-500 dark:text-black"
         >
           {message}
         </motion.p>
