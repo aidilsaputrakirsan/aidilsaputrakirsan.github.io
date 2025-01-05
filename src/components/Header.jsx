@@ -5,6 +5,7 @@ import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import { simpleConfig } from "./particlesConfig";
 import Typed from 'react-typed';
+import LikeButton from './LikeButton';
 
 const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -202,6 +203,7 @@ const Header = () => {
               <p className="mt-3 max-w-md mx-auto text-base text-gray-300 dark:text-gray-700 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl animate-fade-in">
                 Fast learner, adaptable, disciplined, honest, responsible, and hardworking.
               </p>
+              
               <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
                 <div className="rounded-md shadow">
                   <Link
@@ -223,6 +225,10 @@ const Header = () => {
                     View Projects
                   </Link>
                 </div>
+              </div>
+              <br /><br />
+              <div className="mt-4 flex flex-col items-center">
+                <LikeButton /> 
               </div>
             </div>
           </div>
