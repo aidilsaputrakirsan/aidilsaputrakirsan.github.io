@@ -160,7 +160,7 @@ const Header = () => {
                     >
                       {resource.name}
                       {resource.name === "Practicals" && (
-                        <span className="text-gray-400 text-xs sm:hidden">(Members Only)</span>
+                        <span className="text-gray-400 text-xs"> (Members Only)</span>
                       )}
                     </a>
                   ))}
