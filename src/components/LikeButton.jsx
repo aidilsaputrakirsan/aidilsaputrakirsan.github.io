@@ -44,7 +44,7 @@ const LikeButton = () => {
       localStorage.setItem('likeCount', newLikeCount.toString());
 
       // Menampilkan pesan terima kasih
-      setMessage('Thank you for your support!');
+      setMessage('Thank you for your support! 😎');
 
       // Menghapus pesan setelah beberapa detik
       setTimeout(() => {
