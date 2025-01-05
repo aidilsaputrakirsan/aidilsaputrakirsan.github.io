@@ -3,8 +3,19 @@
 const axios = require('axios');
 
 module.exports = async (req, res) => {
-  // Izinkan CORS dari GitHub Pages
-  res.setHeader('Access-Control-Allow-Origin', 'https://aidilsaputrakirsan.github.io');
+  const allowedOrigins = [
+    'https://aidilsaputrakirsan.github.io',
+    'http://localhost:5173'
+  ];
+
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', 'https://aidilsaputrakirsan.github.io'); // Fallback ke origin produksi
+  }
+
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
