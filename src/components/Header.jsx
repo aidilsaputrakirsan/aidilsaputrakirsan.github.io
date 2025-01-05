@@ -61,7 +61,7 @@ const Header = () => {
                 <div className="absolute left-0 mt-2 w-60 rounded-md shadow-lg bg-[#2C2C2C] dark:bg-[#E0E0E0] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform">
                   <div className="rounded-md ring-1 ring-black ring-opacity-5 py-1">
                     <a
-                      href="https://aidilsaputrakirsan.github.io/Pengajaran-Materi-Teori"
+                      href="https://aidilsaputrakirsan.github.io/Pengajaran-Presentasi"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-sm text-gray-200 dark:text-gray-800 hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]"
@@ -77,7 +77,7 @@ const Header = () => {
                       Practicals <span className="text-gray-400 text-xs">(Members Only)</span>
                     </a>
                     <a
-                      href="https://aidilsaputrakirsan.github.io/Pengajaran-Tugas/Pengumpulan/index.html"
+                      href="https://aidilsaputrakirsan.github.io/Pengajaran-Tugas/Pengumpulan"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-sm text-gray-200 dark:text-gray-800 hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]"
@@ -85,7 +85,7 @@ const Header = () => {
                       Assignments
                     </a>
                     <a
-                      href="#"
+                      href="https://aidilsaputrakirsan.github.io/Pengajaran-Kuis"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-sm text-gray-200 dark:text-gray-800 hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]"
@@ -146,10 +146,10 @@ const Header = () => {
                 Educational Resources
                 <div className="ml-4">
                   {[
-                    { name: "Theory", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Materi-Teori" },
+                    { name: "Theory", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Presentasi" },
                     { name: "Practicals", href: "https://github.com/aidilsaputrakirsan/Pengajaran-Modul-Praktikum" },
-                    { name: "Assignments", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Tugas/Pengumpulan/index.html" },
-                    { name: "Quizzes", href: "#" },
+                    { name: "Assignments", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Tugas/Pengumpulan" },
+                    { name: "Quizzes", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Kuis" },
                     { name: "Examinations", href: "#" },
                   ].map((resource, idx) => (
                     <a
