@@ -159,6 +159,9 @@ const Header = () => {
                       className="block text-sm hover:text-[#4CAF50] dark:hover:text-[#FF5722]"
                     >
                       {resource.name}
+                      {resource.name === "Practicals" && (
+                        <span className="text-gray-400 text-xs sm:hidden">(Members Only)</span>
+                      )}
                     </a>
                   ))}
                 </div>
