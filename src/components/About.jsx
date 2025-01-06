@@ -60,7 +60,7 @@ const About = () => {
                 <div className="grid grid-cols-2 gap-4 text-dark-secondary dark:text-light-secondary">
                   <div>
                     <p className="font-medium">Date of Birth</p>
-                    <p>March 17th, 1994</p>
+                    <p> 1994</p>
                   </div>
                   <div>
                     <p className="font-medium">Nationality</p>
