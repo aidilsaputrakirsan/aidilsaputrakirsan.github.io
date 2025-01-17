@@ -70,7 +70,7 @@ const Header = () => {
                       Theory
                     </a>
                     <a
-                      href="https://github.com/aidilsaputrakirsan/Pengajaran-Modul-Praktikum"
+                      href="https://praktikum.mystadl.my.id"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-sm text-gray-200 dark:text-gray-800 hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]"
@@ -148,7 +148,7 @@ const Header = () => {
                 <div className="ml-4">
                   {[
                     { name: "Theory", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Presentasi" },
-                    { name: "Practicals", href: "https://github.com/aidilsaputrakirsan/Pengajaran-Modul-Praktikum" },
+                    { name: "Practicals", href: "https://praktikum.mystadl.my.id" },
                     { name: "Assignments", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Tugas/Pengumpulan" },
                     { name: "Quizzes", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Kuis" },
                     { name: "Examinations", href: "#" },
