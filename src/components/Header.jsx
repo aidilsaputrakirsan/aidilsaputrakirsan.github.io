@@ -75,7 +75,7 @@ const Header = () => {
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-sm text-gray-200 dark:text-gray-800 hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]"
                     >
-                      Practicals <span className="text-gray-400 text-xs">(Members Only)</span>
+                      Practicals <span className="text-[#76FF03] text-xs">(Members Only)</span>
                     </a>
                     <a
                       href="https://aidilsaputrakirsan.github.io/Pengajaran-Tugas/Pengumpulan"
@@ -99,7 +99,23 @@ const Header = () => {
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-sm text-gray-200 dark:text-gray-800 hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]"
                     >
-                      Examinations
+                      Examinations <span className="text-[#03A9F4] text-xs">(Coming Soon)</span>
+                    </a>
+                    <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-sm text-gray-200 dark:text-gray-800 hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]"
+                    >
+                      Live Grades <span className="text-[#03A9F4] text-xs">(Coming Soon)</span>
+                    </a>
+                    <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-sm text-gray-200 dark:text-gray-800 hover:bg-[#4CAF50] dark:hover:bg-[#FF5722]"
+                    >
+                      Attendance <span className="text-[#03A9F4] text-xs">(Coming Soon)</span>
                     </a>
                   </div>
                 </div>
@@ -151,7 +167,9 @@ const Header = () => {
                     { name: "Practicals", href: "https://praktikum.mystadl.my.id/" },
                     { name: "Assignments", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Tugas/Pengumpulan" },
                     { name: "Quizzes", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Kuis" },
-                    { name: "Examinations", href: "#" },
+                    { name: "Examinations", href: "#", note: "(Coming Soon)" },
+                    { name: "Live Grades", href: "#", note: "(Coming Soon)" },
+                    { name: "Attendance", href: "#", note: "(Coming Soon)" },
                   ].map((resource, idx) => (
                     <a
                       key={idx}
