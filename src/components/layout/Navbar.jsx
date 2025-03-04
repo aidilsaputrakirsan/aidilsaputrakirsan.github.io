@@ -60,7 +60,7 @@ function Navbar() {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <a href="#" className="text-2xl font-bold">
-          <span className="text-gradient">ADL</span>
+          <span className="text-gradient"></span>
         </a>
 
         {/* Desktop Menu */}
