@@ -30,11 +30,11 @@ export const skillCategories = [
     { name: 'REST API', value: 85, category: 'backend' },
     
     // Database
-    { name: 'MySQL', value: 85, category: 'database' },
-    { name: 'PostgreSQL', value: 75, category: 'database' },
-    { name: 'MongoDB', value: 70, category: 'database' },
-    { name: 'Redis', value: 60, category: 'database' },
-    { name: 'Firebase', value: 75, category: 'database' },
+    { name: 'MySQL', value: 80, category: 'database' },
+    { name: 'PostgreSQL', value: 90, category: 'database' },
+    { name: 'MongoDB', value: 30, category: 'database' },
+    { name: 'Redis', value: 30, category: 'database' },
+    { name: 'Firebase', value: 50, category: 'database' },
     
     // Networking
     { name: 'TCP/IP', value: 80, category: 'networking' },
@@ -54,11 +54,11 @@ export const skillCategories = [
     
     // Research & Tools
     { name: 'Git', value: 85, category: 'research' },
-    { name: 'Docker', value: 70, category: 'research' },
+    { name: 'Docker', value: 80, category: 'research' },
     { name: 'AWS', value: 60, category: 'research' },
-    { name: 'Agile/Scrum', value: 80, category: 'research' },
-    { name: 'UI/UX Design', value: 75, category: 'research' },
-    { name: 'Figma', value: 75, category: 'research' },
+    { name: 'Agile/Scrum', value: 75, category: 'research' },
+    { name: 'UI/UX Design', value: 80, category: 'research' },
+    { name: 'Figma', value: 50, category: 'research' },
     { name: 'Linux', value: 70, category: 'research' },
     { name: 'Academic Writing', value: 80, category: 'research' },
     { name: 'Data Analysis', value: 75, category: 'research' },
@@ -70,7 +70,7 @@ export const skillCategories = [
     datasets: [
       {
         label: 'Skill Level',
-        data: [88, 75, 73, 78, 81, 75],
+        data: [95, 70, 60, 85, 80, 75],
         backgroundColor: 'rgba(123, 104, 238, 0.2)',
         borderColor: 'rgba(123, 104, 238, 1)',
         pointBackgroundColor: 'rgba(123, 104, 238, 1)',
