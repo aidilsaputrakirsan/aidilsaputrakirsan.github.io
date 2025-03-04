@@ -132,15 +132,16 @@ function Hero() {
             className="relative"
           >
             <div className="w-60 h-60 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-accentPrimary shadow-lg shadow-accentPrimary/20 animate-pulse-slow">
-              <img 
-                src="/images/profile.jpg" 
-                alt="Aidil Saputra Kirsan" 
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/400x400?text=Aidil+Saputra+Kirsan';
-                }}
-              />
+                <img 
+                    src="./aidil.png" 
+                    alt="Aidil Saputra Kirsan" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                    e.target.src = 'https://i.imgur.com/2QcQ3te.png';
+                    }}
+                />
             </div>
+
             
             {/* Decorative elements */}
             <div className="absolute -top-4 -right-4 w-20 h-20 bg-accentPrimary/20 rounded-full blur-xl"></div>

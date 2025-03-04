@@ -70,7 +70,7 @@ export const skillCategories = [
     datasets: [
       {
         label: 'Skill Level',
-        data: [82, 75, 73, 78, 79, 75],
+        data: [88, 75, 73, 78, 81, 75],
         backgroundColor: 'rgba(123, 104, 238, 0.2)',
         borderColor: 'rgba(123, 104, 238, 1)',
         pointBackgroundColor: 'rgba(123, 104, 238, 1)',
@@ -79,18 +79,4 @@ export const skillCategories = [
         pointHoverBorderColor: 'rgba(123, 104, 238, 1)',
       },
     ],
-  };
-  
-  // Function to calculate average skill values by category (for reference)
-  const calculateAverages = () => {
-    const categories = [...new Set(skillsData.map(skill => skill.category))];
-    const averages = {};
-    
-    categories.forEach(category => {
-      const skills = skillsData.filter(skill => skill.category === category);
-      const sum = skills.reduce((total, skill) => total + skill.value, 0);
-      averages[category] = Math.round(sum / skills.length);
-    });
-    
-    return averages;
   };

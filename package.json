@@ -2,7 +2,7 @@
   "name": "aidilsaputrakirsan3.github.io",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://aidilsaputrakirsan3.github.io/",
+  "homepage": "https://aidilsaputrakirsan.github.io/",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -1,6 +1,5 @@
-// src/components/layout/Navbar.jsx
 import { useState, useEffect } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaGraduationCap } from 'react-icons/fa';
 
 const navLinks = [
   { title: 'Home', href: '#hero' },
@@ -8,6 +7,7 @@ const navLinks = [
   { title: 'Skills', href: '#skills' },
   { title: 'Experience', href: '#experience' },
   { title: 'Projects', href: '#projects' },
+  { title: 'Resources', href: '#educational-resources', icon: <FaGraduationCap /> },
   { title: 'Contact', href: '#contact' },
 ];
 
@@ -65,16 +65,20 @@ function Navbar() {
 
         {/* Desktop Menu */}
         <nav className="hidden md:block">
-          <ul className="flex space-x-8">
+          <ul className="flex space-x-6">
             {navLinks.map((link) => (
               <li key={link.title}>
                 <a 
                   href={link.href} 
-                  className={`hover:text-accentPrimary transition-colors ${
+                  className={`hover:text-accentPrimary transition-colors flex items-center ${
                     activeLink === link.href.slice(1) ? 'text-accentPrimary font-medium' : 'text-textSecondary'
                   }`}
                 >
+                  {link.icon && <span className="mr-1">{link.icon}</span>}
                   {link.title}
+                  {link.title === 'Resources' && (
+                    <span className="ml-1 px-1.5 py-0.5 text-xs rounded-full bg-accentPrimary/20 text-accentPrimary">New</span>
+                  )}
                 </a>
               </li>
             ))}
@@ -107,12 +111,16 @@ function Navbar() {
                 <li key={link.title}>
                   <a 
                     href={link.href} 
-                    className={`block text-lg hover:text-accentPrimary transition-colors ${
+                    className={`block text-lg hover:text-accentPrimary transition-colors flex items-center ${
                       activeLink === link.href.slice(1) ? 'text-accentPrimary font-medium' : 'text-textSecondary'
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
+                    {link.icon && <span className="mr-2">{link.icon}</span>}
                     {link.title}
+                    {link.title === 'Resources' && (
+                      <span className="ml-2 px-1.5 py-0.5 text-xs rounded-full bg-accentPrimary/20 text-accentPrimary">New</span>
+                    )}
                   </a>
                 </li>
               ))}
