@@ -26,7 +26,7 @@ function About() {
             
             <div className="flex flex-wrap gap-4">
               <a href="#contact" className="btn btn-primary">Contact Me</a>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Download CV</a>
+              <a href="/cv-AidilSaputraKirsan.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Download CV</a>
             </div>
           </div>
           
