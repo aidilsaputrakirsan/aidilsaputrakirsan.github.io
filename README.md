@@ -2,7 +2,7 @@
 
 A modern, responsive portfolio website showcasing the professional profile, skills, projects, and educational resources of Aidil Saputra Kirsan, an Information System Lecturer & Full Stack Developer.
 
-![Portfolio Preview](https://i.imgur.com/2QcQ3te.png)
+![Portfolio Preview](/public/image.png)
 
 ## 📋 Project Overview
 
