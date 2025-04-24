@@ -5,7 +5,7 @@ const educationalResources = [
   { name: "Theory", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Presentasi", icon: "📚" },
   { name: "Practicals", href: "https://praktikum.mystadl.my.id/", badge: "Members Only", icon: "🔬" },
   { name: "Assignments", href: "https://aidilsaputrakirsan.github.io/Pengajaran-Tugas", icon: "📝" },
-  { name: "Quizzes", href: "https://aidilsaputrakirsan.github.io/PrePost-Test", icon: "❓" },
+  { name: "Quizzes", href: "https://prepost-test.vercel.app", icon: "🎯" },
   { name: "Examinations", href: "#", badge: "Coming Soon", icon: "📊" },
   { name: "Live Grades", href: "https://aidilsaputrakirsan.github.io/LiveGrades/", icon: "📈" },
   { name: "Attendance", href: "https://aidilsaputrakirsan.github.io/Attendance/", icon: "✅" }
