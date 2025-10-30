@@ -9,6 +9,54 @@ export const categories = [
   export const projectsData = [
     {
       id: 1,
+      title: "Sitasi-ITK",
+      description: "A comprehensive thesis management system for Information Systems program at Institut Teknologi Kalimantan, featuring automated administrative processes, plagiarism detection, thesis submission workflow, and review management for streamlined academic operations.",
+      image: "https://i.imgur.com/Ra6xnb8.png",
+      technologies: ["Laravel", "Inertia.js", "Vue.js", "MySQL", "Tailwind CSS"],
+      category: "web",
+      demoLink: "#",
+      codeLink: "#",
+      year: "2025",
+      location: "Balikpapan, Indonesia"
+    },
+    {
+      id: 2,
+      title: "StudyVerse",
+      description: "A personal Learning Management System (LMS) with a unique feature for reviewing Markdown files. Provides comprehensive course management, interactive learning materials, and integrated Markdown editor for enhanced educational content creation and review.",
+      image: "https://i.imgur.com/LuVguqt.png",
+      technologies: ["React", "Node.js", "Express", "MongoDB", "Markdown Parser"],
+      category: "web",
+      demoLink: "#",
+      codeLink: "#",
+      year: "2025",
+      location: "Balikpapan, Indonesia"
+    },
+    {
+      id: 3,
+      title: "BrainVerse",
+      description: "An interactive quiz application inspired by Kahoot, designed for engaging educational experiences. Features real-time multiplayer quizzes, live leaderboards, customizable question sets, and gamification elements to enhance student participation and learning.",
+      image: "https://i.imgur.com/qrLTBth.png",
+      technologies: ["React", "Socket.io", "Node.js", "PostgreSQL", "WebSocket"],
+      category: "web",
+      demoLink: "#",
+      codeLink: "#",
+      year: "2025",
+      location: "Balikpapan, Indonesia"
+    },
+    {
+      id: 4,
+      title: "Layanan FSTI",
+      description: "A comprehensive administrative service system for the Faculty of Science and Information Technology (FSTI) at Institut Teknologi Kalimantan, streamlining faculty operations including document management, service requests, and administrative workflows.",
+      image: "https://i.imgur.com/DLtRQGC.png",
+      technologies: ["Laravel", "Vue.js", "MySQL", "Tailwind CSS", "REST API"],
+      category: "web",
+      demoLink: "#",
+      codeLink: "#",
+      year: "2025",
+      location: "Balikpapan, Indonesia"
+    },
+    {
+      id: 5,
       title: "FORENSI Electronic Form for Fish Species Examination",
       description: "Developed a mobile application for the Ministry of Marine Affairs and Fisheries to streamline and document fish species examination processes efficiently in collaboration with Achmad Rifa'i.",
       image: "https://i.imgur.com/H4F3aHV.jpeg",
@@ -20,7 +68,7 @@ export const categories = [
       location: "Pontianak, Indonesia"
     },
     {
-      id: 2,
+      id: 6,
       title: "Metaverse for Integrated Campus Lab Introduction at ITK",
       description: "Developed a metaverse-based platform to enhance the introduction of integrated campus laboratories at ITK, providing an immersive virtual experience for users in collaboration with Feriyanto.",
       image: "https://i.imgur.com/OBvoFbF.jpeg",
@@ -32,7 +80,7 @@ export const categories = [
       location: "Balikpapan, Indonesia"
     },
     {
-      id: 3,
+      id: 7,
       title: "ITK Legal Service System",
       description: "Developed a legal service platform to facilitate consultations and access to legal information for ITK's academic community in collaboration with Fahmi Fauzan.",
       image: "https://i.imgur.com/YPZ2u6C.jpeg",
@@ -44,7 +92,7 @@ export const categories = [
       location: "Balikpapan, Indonesia"
     },
     {
-      id: 4,
+      id: 8,
       title: "Operation & Maintenance Information System (SIRINE)",
       description: "Developed a web-based information system to optimize operation and maintenance workflows for PGN SOR III, featuring real-time data monitoring and reporting tools in collaboration with Sallie Trixie.",
       image: "https://i.imgur.com/OeC4GFD.jpeg",
@@ -56,7 +104,7 @@ export const categories = [
       location: "Surabaya, Indonesia"
     },
     {
-      id: 5,
+      id: 9,
       title: "Smart Home System for Electrical Switches",
       description: "Developed a smart home IoT-based system for controlling and monitoring electrical switches remotely in collaboration with Anugerah Deagung.",
       image: "https://i.imgur.com/qkcNTup.jpeg",
@@ -68,7 +116,7 @@ export const categories = [
       location: "Balikpapan, Indonesia"
     },
     {
-      id: 6,
+      id: 10,
       title: "Early Fire Detection System for Homes",
       description: "Developed a smart home IoT-based system for early fire detection with monitoring and automated control capabilities in collaboration with Alvian.",
       image: "https://i.imgur.com/Kt2oJor.jpeg",
@@ -80,7 +128,7 @@ export const categories = [
       location: "Balikpapan, Indonesia"
     },
     {
-      id: 7,
+      id: 11,
       title: "West Papua Command Center",
       description: "Built a comprehensive web-based command center system for West Papua province.",
       image: "https://i.imgur.com/4iIXYKr.jpeg",
@@ -92,7 +140,7 @@ export const categories = [
       location: "Manokwari, Indonesia"
     },
     {
-      id: 8,
+      id: 12,
       title: "SIAKAD Al-Azhar",
       description: "Developed web and mobile academic information system for Al Azhar 58 Balikpapan.",
       image: "https://i.imgur.com/DHLAUOF.png",
@@ -104,7 +152,7 @@ export const categories = [
       location: "Balikpapan, Indonesia"
     },
     {
-      id: 9,
+      id: 13,
       title: "LEACH Routing Protocol",
       description: "Research on Remaining Energy for Cluster Head Selection using LEACH routing protocol in WSN.",
       image: "https://i.imgur.com/Fhh4m8H.png",
@@ -116,7 +164,7 @@ export const categories = [
       location: "Atsugi, Japan"
     },
     {
-      id: 10,
+      id: 14,
       title: "VANET Safety Application",
       description: "Implemented Vehicle Warning System for VANET Safety Application.",
       image: "https://i.imgur.com/fc0hYFD.jpeg",
