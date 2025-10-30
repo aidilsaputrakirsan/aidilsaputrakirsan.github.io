@@ -24,6 +24,7 @@ export const skillCategories = [
     { name: 'Express.js', value: 80, category: 'backend' },
     { name: 'PHP', value: 85, category: 'backend' },
     { name: 'Laravel', value: 80, category: 'backend' },
+    { name: 'Inertia.js', value: 75, category: 'backend' },
     { name: 'Django', value: 65, category: 'backend' },
     { name: 'Python', value: 70, category: 'backend' },
     { name: 'Java', value: 60, category: 'backend' },
@@ -32,8 +33,8 @@ export const skillCategories = [
     // Database
     { name: 'MySQL', value: 80, category: 'database' },
     { name: 'PostgreSQL', value: 90, category: 'database' },
-    { name: 'MongoDB', value: 30, category: 'database' },
-    { name: 'Redis', value: 30, category: 'database' },
+    { name: 'MongoDB', value: 65, category: 'database' },
+    { name: 'Redis', value: 60, category: 'database' },
     { name: 'Firebase', value: 50, category: 'database' },
     
     // Networking
@@ -47,6 +48,7 @@ export const skillCategories = [
     // IoT
     { name: 'Arduino', value: 85, category: 'iot' },
     { name: 'ESP32/ESP8266', value: 80, category: 'iot' },
+    { name: 'Raspberry Pi', value: 75, category: 'iot' },
     { name: 'Sensors Integration', value: 85, category: 'iot' },
     { name: 'IoT Protocols', value: 80, category: 'iot' },
     { name: 'IoT Architecture', value: 75, category: 'iot' },

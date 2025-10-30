@@ -15,12 +15,6 @@ export const experienceData = [
       description: "Teaching courses in Web Programming, Database Systems, and Software Engineering. Developed practical curriculum focusing on industry-relevant skills and mentored student projects.",
     },
     {
-      title: "Web Developer",
-      company: "Digital Agency",
-      period: "2018 - 2021",
-      description: "Created responsive websites and web applications for various clients. Specialized in frontend development using JavaScript frameworks and collaborated with UX designers to implement user-friendly interfaces.",
-    },
-    {
       title: "IT Consultant",
       company: "IT Center PNUP",
       period: "2017 - 2018",
