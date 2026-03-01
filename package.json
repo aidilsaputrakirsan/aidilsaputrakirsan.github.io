@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "animejs": "^4.3.6",
     "aos": "^2.3.4",
     "chart.js": "^4.4.8",
     "framer-motion": "^10.18.0",
@@ -23,6 +24,7 @@
     "react-intersection-observer": "^9.5.3",
     "react-particles": "^2.12.2",
     "react-type-animation": "^3.2.0",
+    "three": "^0.183.2",
     "tsparticles-slim": "^2.12.0"
   },
   "devDependencies": {

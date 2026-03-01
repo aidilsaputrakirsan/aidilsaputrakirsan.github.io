@@ -1,0 +1,23 @@
+
+> aidilsaputrakirsan3.github.io@0.0.0 build
+> vite build
+
+[36mvite v5.4.14 [32mbuilding for production...[36m[39m
+transforming...
+Browserslist: browsers data (caniuse-lite) is 12 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[32m✓[39m 41 modules transformed.
+[31mx[39m Build failed in 950ms
+[31merror during build:
+[31m[commonjs--resolver] Missing "./lib/anime.es.js" specifier in "animejs" package[31m
+    at e (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/vite/dist/node/chunks/dep-CHZK6zbr.js:46042:25)
+    at n (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/vite/dist/node/chunks/dep-CHZK6zbr.js:46042:627)
+    at o (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/vite/dist/node/chunks/dep-CHZK6zbr.js:46042:1297)
+    at resolveExportsOrImports (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/vite/dist/node/chunks/dep-CHZK6zbr.js:46663:18)
+    at resolveDeepImport (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/vite/dist/node/chunks/dep-CHZK6zbr.js:46686:25)
+    at tryNodeResolve (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/vite/dist/node/chunks/dep-CHZK6zbr.js:46451:16)
+    at Object.resolveId (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/vite/dist/node/chunks/dep-CHZK6zbr.js:46201:19)
+    at file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/rollup/dist/es/shared/node-entry.js:21835:40
+    at async PluginDriver.hookFirstAndGetPlugin (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/rollup/dist/es/shared/node-entry.js:21735:28)
+    at async resolveId (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/rollup/dist/es/shared/node-entry.js:20335:26)[39m

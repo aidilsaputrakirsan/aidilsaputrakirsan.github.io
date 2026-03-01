@@ -1,74 +1,63 @@
-import { useState } from 'react';
-import SkillChart from '../ui/SkillChart';
-import { skillCategories, skillsData, radarChartData } from '../../data/skills';
+/* eslint-disable no-unused-vars */
+import { motion } from 'framer-motion';
+
+const skillsList = [
+  { name: 'Backend Development', level: 85, color: '#ff4c4c' },
+  { name: 'IoT & Microcontrollers', level: 82, color: '#18FF92' },
+  { name: 'Educational Technology', level: 80, color: '#ffffff' },
+  { name: 'Frontend Development', level: 78, color: '#39C0FB' },
+  { name: 'Cloud & Virtualization', level: 75, color: '#F9E858' }
+];
 
 function Skills() {
-  const [activeCategory, setActiveCategory] = useState('all');
-
-  const filteredSkills = activeCategory === 'all' 
-    ? skillsData 
-    : skillsData.filter(skill => skill.category === activeCategory);
-
   return (
-    <section id="skills" className="py-20">
-      <div className="section-container">
-        <h2 className="section-title" data-aos="fade-right">Technical Skills</h2>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
-          {/* Radar Chart */}
-          <div data-aos="fade-up" data-aos-delay="100" className="card p-6">
-            <h3 className="text-2xl font-semibold mb-6 text-center">Skill Categories</h3>
-            <SkillChart data={radarChartData} />
-          </div>
-          
-          {/* Skill Categories */}
-          <div data-aos="fade-up" data-aos-delay="200">
-            <h3 className="text-2xl font-semibold mb-6">My Skills</h3>
-            <p className="text-textSecondary mb-6">
-              I've acquired a versatile skill set throughout my career as both a developer and educator.
-              Here's a breakdown of my technical expertise in various domains.
-            </p>
-            
-            {/* Category Filter */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {skillCategories.map(category => (
-                <button
-                  key={category.id}
-                  className={`px-4 py-2 rounded-full transition-all ${
-                    activeCategory === category.id
-                      ? 'bg-accentPrimary text-white'
-                      : 'bg-bgSecondary text-textSecondary hover:bg-bgSecondary/80'
-                  }`}
-                  onClick={() => setActiveCategory(category.id)}
-                >
-                  {category.name}
-                </button>
+    <section id="skills" className="py-32 bg-[#111111] overflow-hidden relative border-t border-[#222]">
+
+      {/* Myst-Tech Grid Accent */}
+      <div className="absolute top-0 right-[10%] w-[1px] h-full bg-[#ff4c4c] opacity-10"></div>
+
+      <div className="container mx-auto px-6 max-w-[1200px] relative z-10 flex flex-col justify-center min-h-[50vh]">
+
+        <div className="relative z-10 w-full flex justify-end">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="w-[100%] md:w-3/4 lg:w-2/3 backdrop-blur-sm bg-[#111111]/60 p-6 md:p-12 rounded-xl border border-[#333]"
+          >
+            <h3 className="text-4xl md:text-5xl font-bold text-[#ffffff] mb-12 tracking-tight flex items-center gap-4">
+              <span className="text-animeRed font-mono text-2xl">&lt;/&gt;</span> Core Competencies
+            </h3>
+
+            <div className="flex flex-col gap-10">
+              {skillsList.map((skill, index) => (
+                <div key={index} className="flex flex-col gap-3">
+                  <div className="flex justify-between items-end font-mono uppercase tracking-widest text-[#888888] text-sm md:text-base">
+                    <span>{skill.name}</span>
+                    <span style={{ color: skill.color }}>{skill.level}%</span>
+                  </div>
+                  {/* Bar Track */}
+                  <div className="h-[2px] w-full bg-[#333333] relative overflow-hidden">
+                    {/* Animated Fill controlled by framer-motion */}
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 1.5, delay: index * 0.1, ease: "easeOut" }}
+                      className="absolute top-0 left-0 h-full"
+                      style={{
+                        backgroundColor: skill.color,
+                        boxShadow: `0 0 10px ${skill.color}`
+                      }}
+                    />
+                  </div>
+                </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-        
-        {/* Skill Progress Bars */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
-          {filteredSkills.map((skill, index) => (
-            <div 
-              key={skill.name} 
-              data-aos="fade-up" 
-              data-aos-delay={100 + (index % 6) * 100}
-            >
-              <div className="flex justify-between mb-1">
-                <span>{skill.name}</span>
-                <span className="text-accentPrimary">{skill.value}%</span>
-              </div>
-              <div className="skill-bar">
-                <div 
-                  className="skill-progress transition-all duration-1000"
-                  style={{ width: `${skill.value}%` }}
-                ></div>
-              </div>
-            </div>
-          ))}
-        </div>
+
       </div>
     </section>
   );

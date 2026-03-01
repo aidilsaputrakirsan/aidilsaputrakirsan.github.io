@@ -1,0 +1,31 @@
+
+> aidilsaputrakirsan3.github.io@0.0.0 build
+> vite build
+
+[36mvite v5.4.14 [32mbuilding for production...[36m[39m
+transforming...
+Browserslist: browsers data (caniuse-lite) is 12 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[32m✓[39m 400 modules transformed.
+[31mx[39m Build failed in 1.97s
+[31merror during build:
+[31msrc/components/ui/AnimeHeroGraphic.jsx (2:7): "default" is not exported by "node_modules/animejs/dist/modules/index.js", imported by "src/components/ui/AnimeHeroGraphic.jsx".[31m
+file: [36mC:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/src/components/ui/AnimeHeroGraphic.jsx:2:7[31m
+[33m
+1: import { useEffect, useRef } from 'react';
+2: import anime from 'animejs';
+          ^
+3: 
+4: const AnimeHeroGraphic = () => {
+[31m
+    at getRollupError (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/rollup/dist/es/shared/parseAst.js:397:41)
+    at error (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/rollup/dist/es/shared/parseAst.js:393:42)
+    at Module.error (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/rollup/dist/es/shared/node-entry.js:16603:16)
+    at Module.traceVariable (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/rollup/dist/es/shared/node-entry.js:17052:29)
+    at ModuleScope.findVariable (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/rollup/dist/es/shared/node-entry.js:14709:39)
+    at ReturnValueScope.findVariable (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/rollup/dist/es/shared/node-entry.js:5582:38)
+    at FunctionBodyScope.findVariable (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/rollup/dist/es/shared/node-entry.js:5582:38)
+    at ReturnValueScope.findVariable (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/rollup/dist/es/shared/node-entry.js:5582:38)
+    at FunctionBodyScope.findVariable (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/rollup/dist/es/shared/node-entry.js:5582:38)
+    at MemberExpression.bind (file:///C:/laragon/www/Materi-Presentasi/aidilsaputrakirsan.github.io/node_modules/rollup/dist/es/shared/node-entry.js:7285:49)[39m

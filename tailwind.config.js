@@ -6,27 +6,28 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "bgPrimary": "#0F0F1A",
-        "bgSecondary": "#1A1A2E",
-        "accentPrimary": "#7B68EE",
-        "accentSecondary": "#A390FF",
-        "textPrimary": "#F2F2F2",
-        "textSecondary": "#A0A0B9",
+        "bgDark": "#182121",
+        "bgDarker": "#111111",
+        "bgCard": "#1c1c1c",
+        "bgLight": "#fbfbfb",
+        "textLight": "#ffffff",
+        "textMuted": "#888888",
+        "textDark": "#111111",
+        "animeRed": "#ff4c4c",
+        "animeGreen": "#18FF92",
+        "animeYellow": "#F9E858",
+        "animeBlue": "#39C0FB",
+      },
+      fontFamily: {
+        sans: ['"Inter"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
       },
       animation: {
-        'float': 'float 3s ease-in-out infinite',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        }
       },
       backgroundImage: {
         'gradient-cosmic': 'linear-gradient(135deg, #7B68EE, #3672F8)',
       },
-    },
+    }
   },
   plugins: [],
 }

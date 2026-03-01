@@ -7,8 +7,6 @@ const navLinks = [
   { title: 'Skills', href: '#skills' },
   { title: 'Experience', href: '#experience' },
   { title: 'Projects', href: '#projects' },
-  { title: 'Resources', href: '#educational-resources', icon: <FaGraduationCap /> },
-  { title: 'Contact', href: '#contact' },
 ];
 
 function Navbar() {
@@ -31,54 +29,42 @@ function Navbar() {
 
   // Handle active link based on scroll position
   const [activeLink, setActiveLink] = useState('hero');
-  
+
   useEffect(() => {
     const handleScrollSpy = () => {
       const sections = document.querySelectorAll('section[id]');
       const scrollPosition = window.scrollY + 100;
-      
+
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
         const sectionId = section.getAttribute('id');
-        
+
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
           setActiveLink(sectionId);
         }
       });
     };
-    
+
     window.addEventListener('scroll', handleScrollSpy);
     return () => window.removeEventListener('scroll', handleScrollSpy);
   }, []);
 
   return (
-    <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-bgSecondary/90 backdrop-blur-sm py-3 shadow-lg' : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#" className="text-2xl font-bold">
-          <span className="text-gradient"></span>
-        </a>
+    <header className="fixed top-0 left-0 w-full z-50 py-6 px-10 transition-colors pointer-events-none">
+      <div className="flex justify-end items-center pointer-events-auto">
 
         {/* Desktop Menu */}
         <nav className="hidden md:block">
           <ul className="flex space-x-6">
             {navLinks.map((link) => (
               <li key={link.title}>
-                <a 
-                  href={link.href} 
-                  className={`hover:text-accentPrimary transition-colors flex items-center ${
-                    activeLink === link.href.slice(1) ? 'text-accentPrimary font-medium' : 'text-textSecondary'
-                  }`}
+                <a
+                  href={link.href}
+                  className={`text-sm uppercase tracking-wider font-semibold hover:text-textLight transition-colors flex items-center ${activeLink === link.href.slice(1) ? 'text-textLight' : 'text-textMuted'
+                    }`}
                 >
-                  {link.icon && <span className="mr-1">{link.icon}</span>}
                   {link.title}
-                  {link.title === 'Resources' && (
-                    <span className="ml-1 px-1.5 py-0.5 text-xs rounded-full bg-accentPrimary/20 text-accentPrimary">New</span>
-                  )}
                 </a>
               </li>
             ))}
@@ -86,7 +72,7 @@ function Navbar() {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           className="md:hidden text-2xl focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
         >
@@ -94,12 +80,11 @@ function Navbar() {
         </button>
 
         {/* Mobile Menu */}
-        <div className={`fixed top-0 right-0 h-full w-64 bg-bgSecondary shadow-lg transform transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        } md:hidden`}>
+        <div className={`fixed top-0 right-0 h-full w-64 bg-bgDark shadow-lg transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'
+          } md:hidden`}>
           <div className="p-6">
             <div className="flex justify-end">
-              <button 
+              <button
                 onClick={() => setIsOpen(false)}
                 className="text-2xl focus:outline-none"
               >
@@ -109,18 +94,13 @@ function Navbar() {
             <ul className="mt-8 space-y-6">
               {navLinks.map((link) => (
                 <li key={link.title}>
-                  <a 
-                    href={link.href} 
-                    className={`block text-lg hover:text-accentPrimary transition-colors flex items-center ${
-                      activeLink === link.href.slice(1) ? 'text-accentPrimary font-medium' : 'text-textSecondary'
-                    }`}
+                  <a
+                    href={link.href}
+                    className={`block text-lg hover:text-textLight transition-colors flex items-center ${activeLink === link.href.slice(1) ? 'text-textLight' : 'text-textMuted'
+                      }`}
                     onClick={() => setIsOpen(false)}
                   >
-                    {link.icon && <span className="mr-2">{link.icon}</span>}
                     {link.title}
-                    {link.title === 'Resources' && (
-                      <span className="ml-2 px-1.5 py-0.5 text-xs rounded-full bg-accentPrimary/20 text-accentPrimary">New</span>
-                    )}
                   </a>
                 </li>
               ))}

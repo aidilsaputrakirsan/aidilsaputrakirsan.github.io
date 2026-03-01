@@ -1,107 +1,72 @@
-// src/components/sections/About.jsx
-import { FaCode, FaLaptopCode, FaChalkboardTeacher, FaBook } from 'react-icons/fa';
+/* eslint-disable no-unused-vars */
+import { motion } from 'framer-motion';
 
 function About() {
   return (
-    <section id="about" className="py-20 bg-bgSecondary">
-      <div className="section-container">
-        <h2 className="section-title" data-aos="fade-right">About Me</h2>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <div data-aos="fade-up" data-aos-delay="100">
-            <h3 className="text-2xl font-semibold mb-4">Get to know me</h3>
-            <p className="text-textSecondary mb-4">
-              I'm an Information System Lecturer and Full Stack Developer with a passion for creating
-              innovative digital solutions and educating the next generation of IT professionals.
-            </p>
-            <p className="text-textSecondary mb-4">
-              With over 5 years of experience in both academia and industry, I specialize in modern web
-              technologies, database design, system analysis, and software development methodologies.
-            </p>
-            <p className="text-textSecondary mb-6">
-              I believe in continuous learning and staying updated with the latest technological trends.
-              My teaching approach combines theoretical knowledge with practical, real-world applications
-              to prepare students for successful careers in the IT industry.
-            </p>
-            
-            <div className="flex flex-wrap gap-4">
-              <a href="#contact" className="btn btn-primary">Contact Me</a>
-              <a href="/cv-AidilSaputraKirsan.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Download CV</a>
+    <section id="about" className="py-32 bg-[#e4e2dd] text-[#111111] overflow-hidden relative">
+      <div className="container mx-auto px-6 max-w-[1200px]">
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center mb-16">
+
+          {/* Left: Portrait Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="md:col-span-4 lg:col-span-5 flex justify-center md:justify-end"
+          >
+            <div className="relative w-64 h-80 md:w-full md:max-w-md md:h-[500px] overflow-hidden bg-[#1a1a1a] shadow-2xl border border-[#333333]">
+              <img
+                src="/fotoku.png"
+                alt="Aidil Saputra Kirsan Portrait"
+                className="w-full h-full object-cover contrast-[1.15] saturate-[0.6] hover:saturate-100 transition-all duration-700 opacity-90 hover:opacity-100"
+              />
+              {/* Subtle aesthetic overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/80 to-transparent pointer-events-none mix-blend-multiply"></div>
             </div>
-          </div>
-          
-          <div>
-            <h3 className="text-2xl font-semibold mb-6" data-aos="fade-up" data-aos-delay="200">
-              My Expertise
-            </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div 
-                className="card card-hover" 
-                data-aos="zoom-in" 
-                data-aos-delay="300"
-              >
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-accentPrimary/20 flex items-center justify-center mr-4">
-                    <FaCode className="text-2xl text-accentPrimary" />
-                  </div>
-                  <h4 className="text-xl font-medium">Web Development</h4>
-                </div>
-                <p className="text-textSecondary">
-                  Building responsive, modern web applications using the latest frameworks and technologies.
-                </p>
-              </div>
-              
-              <div 
-                className="card card-hover" 
-                data-aos="zoom-in" 
-                data-aos-delay="400"
-              >
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-accentPrimary/20 flex items-center justify-center mr-4">
-                    <FaLaptopCode className="text-2xl text-accentPrimary" />
-                  </div>
-                  <h4 className="text-xl font-medium">Full Stack Solutions</h4>
-                </div>
-                <p className="text-textSecondary">
-                  End-to-end application development with expertise in both frontend and backend technologies.
-                </p>
-              </div>
-              
-              <div 
-                className="card card-hover" 
-                data-aos="zoom-in" 
-                data-aos-delay="500"
-              >
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-accentPrimary/20 flex items-center justify-center mr-4">
-                    <FaChalkboardTeacher className="text-2xl text-accentPrimary" />
-                  </div>
-                  <h4 className="text-xl font-medium">Education</h4>
-                </div>
-                <p className="text-textSecondary">
-                  Teaching information systems, programming, and database design with a focus on practical skills.
-                </p>
-              </div>
-              
-              <div 
-                className="card card-hover" 
-                data-aos="zoom-in" 
-                data-aos-delay="600"
-              >
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-accentPrimary/20 flex items-center justify-center mr-4">
-                    <FaBook className="text-2xl text-accentPrimary" />
-                  </div>
-                  <h4 className="text-xl font-medium">Research</h4>
-                </div>
-                <p className="text-textSecondary">
-                  Conducting research in information systems, data analysis, and emerging technologies.
-                </p>
-              </div>
-            </div>
-          </div>
+          </motion.div>
+
+          {/* Right: Massive Name Typography */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="md:col-span-8 lg:col-span-7 flex flex-col justify-center text-center md:text-left"
+          >
+            <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] uppercase">
+              Aidil<br />
+              Saputra<br />
+              <span className="text-animeRed">Kirsan.</span>
+            </h2>
+          </motion.div>
+
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="flex flex-col items-center md:items-start md:ml-[33%] lg:ml-[41%] gap-8"
+        >
+          <p className="text-xl md:text-3xl font-medium max-w-3xl leading-relaxed opacity-90">
+            Full Stack Developer & Information System Lecturer
+          </p>
+
+          <div className="w-24 h-[2px] bg-[#111111] opacity-20 my-4"></div>
+
+          <p className="text-lg md:text-xl text-center max-w-4xl leading-relaxed opacity-75 font-mono">
+            Based in Balikpapan, Indonesia. I combine teaching and development — with over 5 years of experience building software while inspiring the next generation of IT professionals.
+            Currently working on <span className="text-[#ff4c4c] font-bold">Sitasi-ITK</span>, <span className="text-[#39C0FB] font-bold">StudyVerse</span>, and <span className="text-[#F46GR5S] font-bold">BrainVerse</span>.
+          </p>
+
+          <a href="mailto:aidil@lecturer.itk.ac.id" className="mt-8 font-mono text-sm tracking-widest uppercase border border-[#111111] px-8 py-4 hover:bg-[#111111] hover:text-[#e4e2dd] transition-colors duration-300">
+            aidil@lecturer.itk.ac.id
+          </a>
+        </motion.div>
+
       </div>
     </section>
   );

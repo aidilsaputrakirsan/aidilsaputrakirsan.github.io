@@ -7,9 +7,9 @@ import About from './components/sections/About';
 import Skills from './components/sections/Skills';
 import Experience from './components/sections/Experience';
 import Projects from './components/sections/Projects';
-import EducationalResources from './components/sections/EducationalResources';
-import Contact from './components/sections/Contact';
 import CursorEffect from './components/ui/CursorEffect';
+
+import ScrollProgress from './components/ui/ScrollProgress';
 
 function App() {
   useEffect(() => {
@@ -23,6 +23,7 @@ function App() {
 
   return (
     <>
+      <ScrollProgress />
       <CursorEffect />
       <Layout>
         <main>
@@ -31,8 +32,6 @@ function App() {
           <Skills />
           <Experience />
           <Projects />
-          <EducationalResources />
-          <Contact />
         </main>
       </Layout>
     </>

@@ -7,82 +7,86 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: #111111;
   }
-  
+
   body {
-    @apply bg-bgPrimary text-textPrimary font-sans;
+    @apply bg-bgDarker text-textLight font-sans antialiased;
   }
 }
 
 @layer components {
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32;
   }
-  
+
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-8 relative inline-block;
+    @apply text-4xl md:text-5xl font-bold mb-8 md:mb-12;
+    letter-spacing: -0.02em;
   }
-  
-  .section-title::after {
-    content: '';
-    @apply absolute left-0 -bottom-2 h-1 w-1/2 rounded-full bg-gradient-cosmic;
-  }
-  
+
   .skill-bar {
-    @apply h-2 rounded-full bg-bgSecondary overflow-hidden;
+    @apply h-[2px] w-full bg-bgCard overflow-hidden mt-2;
   }
-  
+
   .skill-progress {
-    @apply h-full rounded-full bg-gradient-cosmic;
+    @apply h-full bg-textLight transition-all duration-1000 ease-out;
   }
-  
+
   .btn {
     @apply px-6 py-3 rounded-md font-medium transition-all duration-300 inline-block;
   }
-  
+
   .btn-primary {
-    @apply bg-accentPrimary hover:bg-accentSecondary text-white;
+    @apply bg-bgCard text-textLight border border-bgCard hover:border-textMuted;
   }
-  
+
   .btn-outline {
-    @apply border-2 border-accentPrimary text-accentPrimary hover:bg-accentPrimary hover:text-white;
+    @apply border border-textMuted text-textMuted hover:text-textLight hover:border-textLight;
   }
-  
+
   .card {
-    @apply bg-bgSecondary rounded-lg p-6 transition-all duration-300;
+    @apply bg-bgCard rounded-none p-6 transition-all duration-300;
   }
-  
+
   .card-hover {
-    @apply hover:shadow-lg hover:shadow-accentPrimary/20 hover:-translate-y-1;
+    @apply hover:-translate-y-1 hover:shadow-2xl hover:bg-[#222222];
   }
-  
-  .timeline-item {
-    @apply relative pl-8 pb-8 border-l-2 border-accentPrimary;
-  }
-  
-  .timeline-dot {
-    @apply absolute -left-[9px] w-4 h-4 rounded-full bg-accentPrimary;
-  }
-  
+
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-cosmic;
+    /* No generic cosmic gradients in this theme. We use solid neons. */
+    @apply text-textLight;
   }
 }
 
 /* Custom cursor effect */
 .cursor-dot {
-  @apply fixed w-3 h-3 rounded-full bg-accentPrimary z-50 pointer-events-none transition-transform duration-150;
+  @apply fixed w-3 h-3 rounded-full bg-textLight z-50 pointer-events-none transition-transform duration-150;
   mix-blend-mode: difference;
 }
 
 .cursor-outline {
-  @apply fixed w-8 h-8 rounded-full border border-accentPrimary z-40 pointer-events-none transition-transform duration-300;
+  @apply fixed w-8 h-8 rounded-full border border-textLight z-40 pointer-events-none transition-transform duration-300;
   mix-blend-mode: difference;
 }
 
 /* Animation delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
