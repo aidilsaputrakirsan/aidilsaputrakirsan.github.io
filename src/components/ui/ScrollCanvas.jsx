@@ -188,11 +188,7 @@ const ScrollCanvas = ({
             <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
 
                 {/* Loading Indicator */}
-                {imagesLoaded < frameCount && (
-                    <div className="absolute z-50 text-white font-mono text-sm tracking-widest bg-black/80 px-4 py-2 rounded">
-                        LOADING FRAMES... {Math.round((imagesLoaded / frameCount) * 100)}%
-                    </div>
-                )}
+
 
                 {/* The Canvas itself */}
                 <canvas
