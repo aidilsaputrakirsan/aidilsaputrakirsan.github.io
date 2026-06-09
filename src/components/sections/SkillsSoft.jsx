@@ -1,6 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion';
 import Marquee from '../ui/Marquee';
+import {
+  SiReact, SiVuedotjs, SiLaravel, SiNodedotjs, SiExpress, SiPostgresql, SiMysql,
+  SiMongodb, SiDocker, SiPython, SiEspressif, SiMqtt, SiTailwindcss, SiGit, SiThreedotjs,
+} from 'react-icons/si';
 
 const competencies = [
   { name: 'Backend Development', level: 85, color: '#E8835A' },
@@ -10,7 +14,30 @@ const competencies = [
   { name: 'Cloud & Virtualization', level: 75, color: '#7FA887' },
 ];
 
-const tools = ['React', 'Vue.js', 'Laravel', 'Node.js', 'Express', 'PostgreSQL', 'MySQL', 'MongoDB', 'Docker', 'Python', 'ESP32', 'MQTT', 'Tailwind', 'Git', 'Three.js'];
+const stack = [
+  { name: 'React', Icon: SiReact, color: '#61DAFB' },
+  { name: 'Vue.js', Icon: SiVuedotjs, color: '#4FC08D' },
+  { name: 'Laravel', Icon: SiLaravel, color: '#FF2D20' },
+  { name: 'Node.js', Icon: SiNodedotjs, color: '#5FA04E' },
+  { name: 'Express', Icon: SiExpress, color: '#2B2520' },
+  { name: 'PostgreSQL', Icon: SiPostgresql, color: '#4169E1' },
+  { name: 'MySQL', Icon: SiMysql, color: '#4479A1' },
+  { name: 'MongoDB', Icon: SiMongodb, color: '#47A248' },
+  { name: 'Docker', Icon: SiDocker, color: '#2496ED' },
+  { name: 'Python', Icon: SiPython, color: '#3776AB' },
+  { name: 'ESP32', Icon: SiEspressif, color: '#E7352C' },
+  { name: 'MQTT', Icon: SiMqtt, color: '#660066' },
+  { name: 'Tailwind', Icon: SiTailwindcss, color: '#06B6D4' },
+  { name: 'Git', Icon: SiGit, color: '#F05032' },
+  { name: 'Three.js', Icon: SiThreedotjs, color: '#2B2520' },
+];
+
+const toolItems = stack.map(({ name, Icon, color }) => (
+  <span key={name} className="inline-flex items-center gap-3">
+    <Icon style={{ color }} className="text-3xl" />
+    {name}
+  </span>
+));
 
 function SkillsSoft() {
   return (
@@ -58,7 +85,7 @@ function SkillsSoft() {
 
       {/* Moving tools marquee */}
       <div className="mt-20 border-y border-warmLine bg-warmCard py-5">
-        <Marquee items={tools} speed={40} />
+        <Marquee items={toolItems} speed={40} />
       </div>
     </section>
   );

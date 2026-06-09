@@ -1,9 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { motion, useScroll, useTransform, useReducedMotion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
 import { useRef } from 'react';
-import { FiArrowDownRight, FiMail } from 'react-icons/fi';
+import { FiArrowDownRight, FiMail, FiCode, FiBookOpen, FiCpu, FiWifi, FiSearch, FiMonitor, FiUsers } from 'react-icons/fi';
 import Counter from '../ui/Counter';
 import Marquee from '../ui/Marquee';
+import { projectsData } from '../../data/projects';
+
+// Year your professional career started — bump only if this changes.
+const CAREER_START_YEAR = 2020;
+// Mark which year counts as "currently in build".
+const BUILDING_YEAR = '2026';
 
 // Soft / Warm Hero — light, fast, mobile-friendly, lots of gentle motion.
 function HeroSoft() {
@@ -48,6 +54,22 @@ function HeroSoft() {
     { cls: 'bottom-40 left-[20%] h-5 w-5 rounded-md bg-warmSky rotate-12', dur: 8, d: 0.5 },
     { cls: 'bottom-32 right-[30%] h-3 w-3 rounded-full bg-warmPeach', dur: 5.5, d: 1.5 },
   ];
+
+  const roles = [
+    { label: 'Full-Stack Developer', Icon: FiCode },
+    { label: 'Information System Lecturer', Icon: FiBookOpen },
+    { label: 'AI Enthusiast', Icon: FiCpu },
+    { label: 'IoT Engineer', Icon: FiWifi },
+    { label: 'Researcher', Icon: FiSearch },
+    { label: 'Tech Educator', Icon: FiMonitor },
+    { label: 'Mentor', Icon: FiUsers },
+  ];
+  const roleItems = roles.map(({ label, Icon }) => (
+    <span key={label} className="inline-flex items-center gap-3">
+      <Icon className="text-2xl text-warmPeach" />
+      {label}
+    </span>
+  ));
 
   return (
     <section ref={ref} id="hero" className="relative overflow-hidden bg-warmBg text-warmInk min-h-screen flex items-center">
@@ -138,9 +160,9 @@ function HeroSoft() {
             {/* Mini stats with count-up */}
             <motion.div variants={item} className="mt-12 flex flex-wrap gap-x-10 gap-y-4">
               {[
-                { n: 5, s: '+', l: 'Years experience' },
-                { n: 20, s: '+', l: 'Projects shipped' },
-                { n: 3, s: '', l: 'Products in build' },
+                { n: new Date().getFullYear() - CAREER_START_YEAR, s: '+', l: 'Years experience' },
+                { n: projectsData.length, s: '+', l: 'Projects shipped' },
+                { n: projectsData.filter((p) => p.year === BUILDING_YEAR).length, s: '', l: 'Products in build' },
               ].map((x) => (
                 <div key={x.l}>
                   <div className="font-display text-3xl font-bold text-warmInk">
@@ -196,7 +218,7 @@ function HeroSoft() {
 
       {/* Moving marquee strip at the bottom */}
       <div className="absolute bottom-0 left-0 right-0 border-y border-warmLine bg-warmCard/60 py-4 backdrop-blur">
-        <Marquee items={['Full-Stack Developer', 'Information System Lecturer', 'AI Enthusiast', 'IoT Engineer', 'Researcher', 'Tech Educator', 'Mentor']} speed={36} />
+        <Marquee items={roleItems} speed={36} />
       </div>
     </section>
   );
