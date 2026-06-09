@@ -7,11 +7,15 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #111111;
+    background-color: #FAF6F0;
   }
 
   body {
-    @apply bg-bgDarker text-textLight font-sans antialiased;
+    @apply bg-warmBg text-warmInk font-body antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
 }
 

@@ -8,6 +8,42 @@ export const categories = [
   
   export const projectsData = [
     {
+      id: 17,
+      title: "Intersi-ITK",
+      description: "An internship (Kerja Praktik/KP) management system for the Information Systems study program at Institut Teknologi Kalimantan, digitizing internship registration, supervisor assignment, logbook submission, and assessment workflows for students and lecturers.",
+      image: "/images/projects/intersi.png",
+      technologies: ["Laravel", "Inertia.js", "Vue.js", "MySQL", "Tailwind CSS"],
+      category: "web",
+      demoLink: "#",
+      codeLink: "#",
+      year: "2026",
+      location: "Balikpapan, Indonesia"
+    },
+    {
+      id: 16,
+      title: "FSTI-ITK",
+      description: "The official company profile website for the Faculty of Science and Information Technology (FSTI) at Institut Teknologi Kalimantan, showcasing faculty programs, news, academic information, and resources in a modern, responsive interface.",
+      image: "/images/projects/fsti.png",
+      technologies: ["Laravel", "Vue.js", "MySQL", "Tailwind CSS", "REST API"],
+      category: "web",
+      demoLink: "#",
+      codeLink: "#",
+      year: "2026",
+      location: "Balikpapan, Indonesia"
+    },
+    {
+      id: 15,
+      title: "Klinik-ITK",
+      description: "A clinic management information system for the health clinic at Institut Teknologi Kalimantan, handling patient registration, medical records, queue management, and reporting to streamline campus healthcare services.",
+      image: "/images/projects/klinik.png",
+      technologies: ["Laravel", "Inertia.js", "Vue.js", "MySQL", "Tailwind CSS"],
+      category: "web",
+      demoLink: "#",
+      codeLink: "#",
+      year: "2026",
+      location: "Balikpapan, Indonesia"
+    },
+    {
       id: 1,
       title: "Sitasi-ITK",
       description: "A comprehensive thesis management system for Information Systems program at Institut Teknologi Kalimantan, featuring automated administrative processes, plagiarism detection, thesis submission workflow, and review management for streamlined academic operations.",
