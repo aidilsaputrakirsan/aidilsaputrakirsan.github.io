@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion';
 import { FiCode, FiCpu, FiBookOpen } from 'react-icons/fi';
+import { yearsOfExperience, currentProjects, formatList } from '../../data/site';
 
 const focusAreas = [
   {
@@ -55,10 +56,18 @@ function AboutSoft() {
           </h2>
           <p className="mt-5 font-body text-lg text-warmMuted leading-relaxed">
             Based in Balikpapan, Indonesia, I combine software development with teaching —
-            over 5 years building products while inspiring future IT professionals. Currently
-            working on <span className="font-semibold text-warmInk">Sitasi-ITK</span>,{' '}
-            <span className="font-semibold text-warmInk">StudyVerse</span>, and{' '}
-            <span className="font-semibold text-warmInk">BrainVerse</span>.
+            over {yearsOfExperience()} years building products while inspiring future IT professionals.
+            {currentProjects().length > 0 && (
+              <>
+                {' '}Currently working on{' '}
+                {currentProjects().map((p, i, arr) => (
+                  <span key={p.id}>
+                    <span className="font-semibold text-warmInk">{p.title}</span>
+                    {i < arr.length - 2 ? ', ' : i === arr.length - 2 ? ', and ' : '.'}
+                  </span>
+                ))}
+              </>
+            )}
           </p>
         </motion.div>
 

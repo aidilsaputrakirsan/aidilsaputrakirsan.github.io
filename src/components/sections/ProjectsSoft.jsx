@@ -55,12 +55,12 @@ function ProjectsSoft() {
                 whileHover={{ y: -8 }}
                 className="group flex flex-col overflow-hidden rounded-3xl border border-warmLine bg-warmCard shadow-soft transition-shadow duration-300 hover:shadow-soft-lg"
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-warmPeachSoft">
+                <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-warmPeachSoft to-warmSageSoft p-2">
                   <img
                     src={p.image}
                     alt={p.title}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="h-full w-full rounded-xl object-contain transition-transform duration-700 group-hover:scale-[1.03]"
                   />
                   <span className="absolute left-3 top-3 rounded-full bg-warmBg/90 px-3 py-1 font-body text-xs font-bold text-warmInk backdrop-blur">{p.year}</span>
                 </div>

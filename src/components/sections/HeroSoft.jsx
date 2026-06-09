@@ -5,11 +5,7 @@ import { FiArrowDownRight, FiMail, FiCode, FiBookOpen, FiCpu, FiWifi, FiSearch, 
 import Counter from '../ui/Counter';
 import Marquee from '../ui/Marquee';
 import { projectsData } from '../../data/projects';
-
-// Year your professional career started — bump only if this changes.
-const CAREER_START_YEAR = 2020;
-// Mark which year counts as "currently in build".
-const BUILDING_YEAR = '2026';
+import { yearsOfExperience, currentProjects } from '../../data/site';
 
 // Soft / Warm Hero — light, fast, mobile-friendly, lots of gentle motion.
 function HeroSoft() {
@@ -160,9 +156,9 @@ function HeroSoft() {
             {/* Mini stats with count-up */}
             <motion.div variants={item} className="mt-12 flex flex-wrap gap-x-10 gap-y-4">
               {[
-                { n: new Date().getFullYear() - CAREER_START_YEAR, s: '+', l: 'Years experience' },
+                { n: yearsOfExperience(), s: '+', l: 'Years experience' },
                 { n: projectsData.length, s: '+', l: 'Projects shipped' },
-                { n: projectsData.filter((p) => p.year === BUILDING_YEAR).length, s: '', l: 'Products in build' },
+                { n: currentProjects().length, s: '', l: 'Products in build' },
               ].map((x) => (
                 <div key={x.l}>
                   <div className="font-display text-3xl font-bold text-warmInk">

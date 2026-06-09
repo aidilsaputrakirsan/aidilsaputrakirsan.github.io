@@ -19,6 +19,31 @@
   }
 }
 
+/* Print: show only the CV document at A4, hide the whole site */
+@media print {
+  #root { display: none !important; }
+  #cv-overlay {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    background: #fff !important;
+    backdrop-filter: none !important;
+  }
+  #cv-overlay .cv-scroll {
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+  #cv-print {
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+  #cv-print, #cv-print * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  @page { size: A4; margin: 0; }
+}
+
 @layer components {
   .section-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32;

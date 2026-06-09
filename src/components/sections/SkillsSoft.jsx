@@ -5,6 +5,7 @@ import {
   SiReact, SiVuedotjs, SiLaravel, SiNodedotjs, SiExpress, SiPostgresql, SiMysql,
   SiMongodb, SiDocker, SiPython, SiEspressif, SiMqtt, SiTailwindcss, SiGit, SiThreedotjs,
 } from 'react-icons/si';
+import { yearsOfExperience } from '../../data/site';
 
 const competencies = [
   { name: 'Backend Development', level: 85, color: '#E8835A' },
@@ -52,7 +53,7 @@ function SkillsSoft() {
         >
           <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">Skills</span>
           <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight">Core competencies</h2>
-          <p className="mt-5 font-body text-lg text-warmMuted">A blend of engineering, hardware and teaching — refined across 5+ years.</p>
+          <p className="mt-5 font-body text-lg text-warmMuted">A blend of engineering, hardware and teaching — refined across {yearsOfExperience()}+ years.</p>
         </motion.div>
 
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-9">

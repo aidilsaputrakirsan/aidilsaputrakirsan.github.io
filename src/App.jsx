@@ -21,6 +21,7 @@ import ExperienceSoft from './components/sections/ExperienceSoft';
 import ProjectsSoft from './components/sections/ProjectsSoft';
 import ContactSoft from './components/sections/ContactSoft';
 import FooterSoft from './components/layout/FooterSoft';
+import CvModal from './components/cv/CvModal';
 
 // Toggle: true = new Soft/Warm site, false = original dark site
 const USE_SOFT = true;
@@ -43,6 +44,7 @@ function App() {
           <ContactSoft />
         </main>
         <FooterSoft />
+        <CvModal />
       </div>
     );
   }

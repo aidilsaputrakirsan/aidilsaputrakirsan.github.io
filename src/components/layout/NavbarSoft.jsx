@@ -55,13 +55,12 @@ function NavbarSoft() {
               </li>
             ))}
             <li>
-              <a
-                href="/cv-AidilSaputraKirsan.pdf"
-                target="_blank"
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent('open-cv'))}
                 className="ml-2 rounded-full bg-warmInk px-5 py-2 font-body text-sm font-semibold text-warmBg transition-transform hover:-translate-y-0.5"
               >
                 Download CV
-              </a>
+              </button>
             </li>
           </ul>
 
@@ -90,9 +89,15 @@ function NavbarSoft() {
                 </li>
               ))}
               <li>
-                <a href="/cv-AidilSaputraKirsan.pdf" target="_blank" className="block px-6 py-4 font-body font-semibold text-warmPeach">
+                <button
+                  onClick={() => {
+                    setOpen(false);
+                    window.dispatchEvent(new CustomEvent('open-cv'));
+                  }}
+                  className="block w-full px-6 py-4 text-left font-body font-semibold text-warmPeach"
+                >
                   Download CV ↗
-                </a>
+                </button>
               </li>
             </motion.ul>
           )}

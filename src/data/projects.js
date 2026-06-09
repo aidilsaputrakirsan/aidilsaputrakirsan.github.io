@@ -47,7 +47,7 @@ export const categories = [
       id: 1,
       title: "Sitasi-ITK",
       description: "A comprehensive thesis management system for Information Systems program at Institut Teknologi Kalimantan, featuring automated administrative processes, plagiarism detection, thesis submission workflow, and review management for streamlined academic operations.",
-      image: "https://i.imgur.com/Ra6xnb8.png",
+      image: "/images/projects/sitasi-itk.png",
       technologies: ["Laravel", "Inertia.js", "Vue.js", "MySQL", "Tailwind CSS"],
       category: "web",
       demoLink: "#",
