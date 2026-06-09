@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiEye } from 'react-icons/fi';
 
-// Visible visitor counter — reads the total from your own GoatCounter dashboard.
+// Visible visitor counter — reads the count from your own GoatCounter dashboard.
 // Tracking itself is done by the GoatCounter script in index.html.
-// NOTE: enable "Allow visitors to see the counts" in GoatCounter
-// Settings → Site settings, otherwise this endpoint returns 403.
-const GOATCOUNTER_TOTAL = 'https://aidilsaputrakirsan.goatcounter.com/counter/TOTAL.json';
+// NOTE: "Allow adding visitor counts" must be enabled in GoatCounter Settings.
+// This is a single-page site, so all hits land on path "/" (%2F). We read that
+// path instead of TOTAL.json because GoatCounter caches TOTAL far more
+// aggressively (it can lag at 0 for a long time).
+const GOATCOUNTER_COUNT = 'https://aidilsaputrakirsan.goatcounter.com/counter/%2F.json';
 
 function VisitorCounter() {
   const [count, setCount] = useState(null);
@@ -15,7 +17,7 @@ function VisitorCounter() {
   useEffect(() => {
     const controller = new AbortController();
 
-    fetch(GOATCOUNTER_TOTAL, { signal: controller.signal })
+    fetch(`${GOATCOUNTER_COUNT}?cache=${Date.now()}`, { signal: controller.signal })
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((d) => {
         // GoatCounter returns count as a formatted string e.g. "1,234"
