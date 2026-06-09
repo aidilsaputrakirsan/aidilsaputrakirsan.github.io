@@ -43,12 +43,12 @@ function SkillsSoft() {
               </div>
               <div className="mt-3 h-2.5 w-full overflow-hidden rounded-full bg-warmLine">
                 <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${s.level}%` }}
-                  viewport={{ once: true, margin: '-40px' }}
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 1.2, delay: 0.15 + i * 0.08, ease: 'easeOut' }}
-                  className="h-full rounded-full"
-                  style={{ backgroundColor: s.color }}
+                  className="h-full origin-left rounded-full"
+                  style={{ width: `${s.level}%`, backgroundColor: s.color }}
                 />
               </div>
             </motion.div>
