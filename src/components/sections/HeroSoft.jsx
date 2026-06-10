@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { motion, useScroll, useTransform, useReducedMotion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
 import { useRef } from 'react';
-import { FiArrowDownRight, FiMail, FiCode, FiBookOpen, FiCpu, FiWifi, FiSearch, FiMonitor, FiUsers } from 'react-icons/fi';
+import { FiArrowDownRight, FiMail, FiCode, FiBookOpen, FiCpu, FiWifi, FiSearch, FiMonitor, FiUsers, FiZap } from 'react-icons/fi';
 import Counter from '../ui/Counter';
 import Marquee from '../ui/Marquee';
 import { projectsData } from '../../data/projects';
@@ -54,6 +54,7 @@ function HeroSoft() {
   const roles = [
     { label: 'Full-Stack Developer', Icon: FiCode },
     { label: 'Information System Lecturer', Icon: FiBookOpen },
+    { label: 'Digital Innovation Lab Head', Icon: FiZap },
     { label: 'AI Enthusiast', Icon: FiCpu },
     { label: 'IoT Engineer', Icon: FiWifi },
     { label: 'Researcher', Icon: FiSearch },
@@ -204,8 +205,8 @@ function HeroSoft() {
                 transition={{ delay: 0.7, duration: 0.6 }}
                 className="absolute -bottom-5 -left-5 rounded-2xl bg-warmCard px-5 py-3 shadow-soft ring-1 ring-warmLine"
               >
-                <div className="font-display text-sm font-bold text-warmInk">Balikpapan, Indonesia 🇮🇩</div>
-                <div className="font-body text-xs text-warmMuted">Lecturer @ ITK</div>
+                <div className="font-display text-sm font-bold text-warmInk">Head of Digital Innovation Lab</div>
+                <div className="font-body text-xs text-warmMuted">Lecturer @ FSTI ITK · Balikpapan 🇮🇩</div>
               </motion.div>
             </motion.div>
           </motion.div>

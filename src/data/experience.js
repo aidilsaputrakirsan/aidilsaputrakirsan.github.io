@@ -3,6 +3,12 @@
 
 export const experienceData = [
     {
+      title: "Head of Digital Innovation Laboratory",
+      company: "Faculty of Science and Information Technology (FSTI), Institut Teknologi Kalimantan",
+      period: "2024 - Present",
+      description: "Lead the faculty's Digital Innovation Laboratory — setting its research and development direction, coordinating lab-based projects and student involvement, and driving collaboration on digital innovation initiatives across the faculty.",
+    },
+    {
       title: "Full Stack Developer",
       company: "Myst Tech",
       period: "2021 - Present",
