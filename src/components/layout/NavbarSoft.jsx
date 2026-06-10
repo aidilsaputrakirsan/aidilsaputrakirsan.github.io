@@ -14,6 +14,7 @@ const links = [
 function NavbarSoft() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('');
 
   // Top scroll-progress bar
   const { scrollYProgress } = useScroll();
@@ -24,6 +25,23 @@ function NavbarSoft() {
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Scroll-spy: highlight the section currently in the middle of the viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: '-35% 0px -55% 0px' }
+    );
+    ['hero', ...links.map(([, href]) => href.slice(1))].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -44,16 +62,29 @@ function NavbarSoft() {
           </a>
 
           <ul className="hidden md:flex items-center gap-1">
-            {links.map(([label, href]) => (
-              <li key={href}>
-                <a
-                  href={href}
-                  className="relative rounded-full px-4 py-2 font-body text-sm font-medium text-warmMuted transition-colors hover:text-warmInk"
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
+            {links.map(([label, href]) => {
+              const on = active === href.slice(1);
+              return (
+                <li key={href}>
+                  <a
+                    href={href}
+                    aria-current={on ? 'true' : undefined}
+                    className={`relative rounded-full px-4 py-2 font-body text-sm font-medium transition-colors ${
+                      on ? 'text-warmInk' : 'text-warmMuted hover:text-warmInk'
+                    }`}
+                  >
+                    {on && (
+                      <motion.span
+                        layoutId="navPill"
+                        className="absolute inset-0 rounded-full bg-warmPeachSoft"
+                        transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                      />
+                    )}
+                    <span className="relative z-10">{label}</span>
+                  </a>
+                </li>
+              );
+            })}
             <li>
               <button
                 onClick={() => window.dispatchEvent(new CustomEvent('open-cv'))}
@@ -82,7 +113,9 @@ function NavbarSoft() {
                   <a
                     href={href}
                     onClick={() => setOpen(false)}
-                    className="block px-6 py-4 font-body font-medium text-warmInk border-b border-warmLine/60"
+                    className={`block px-6 py-4 font-body font-medium border-b border-warmLine/60 ${
+                      active === href.slice(1) ? 'text-warmPeach' : 'text-warmInk'
+                    }`}
                   >
                     {label}
                   </a>

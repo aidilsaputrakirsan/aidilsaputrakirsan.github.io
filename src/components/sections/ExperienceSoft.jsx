@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { FiBriefcase, FiBookOpen, FiAward } from 'react-icons/fi';
 import { experienceData } from '../../data/experience';
 import { educationData } from '../../data/education';
@@ -22,6 +22,11 @@ function ExperienceSoft() {
   const [active, setActive] = useState('experience');
   const accent = tabs.find((t) => t.id === active).accent;
   const data = active === 'experience' ? experienceData : active === 'education' ? educationData : achievementsData;
+
+  // Timeline line fills in as it scrolls through the viewport
+  const timelineRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: timelineRef, offset: ['start 0.8', 'end 0.5'] });
+  const lineScale = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
 
   return (
     <section id="experience" className="relative bg-warmCard py-24 md:py-32 text-warmInk">
@@ -58,7 +63,12 @@ function ExperienceSoft() {
         </div>
 
         {/* Timeline */}
-        <div className="relative mt-12 border-l-2 pl-8" style={{ borderColor: accent + '40' }}>
+        <div ref={timelineRef} className="relative mt-12 pl-8">
+          <span className="absolute bottom-0 left-0 top-0 w-0.5 rounded-full" style={{ backgroundColor: accent + '30' }} />
+          <motion.span
+            className="absolute bottom-0 left-0 top-0 w-0.5 origin-top rounded-full"
+            style={{ backgroundColor: accent, scaleY: lineScale }}
+          />
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 16 }} transition={{ duration: 0.3 }} className="flex flex-col gap-10">
               {data.map((raw, i) => {
@@ -71,7 +81,7 @@ function ExperienceSoft() {
                     transition={{ duration: 0.45, delay: i * 0.08 }}
                     className="relative"
                   >
-                    <span className="absolute -left-[41px] top-1 h-4 w-4 rounded-full ring-4 ring-warmCard" style={{ backgroundColor: accent }} />
+                    <span className="absolute -left-[39px] top-1 h-4 w-4 rounded-full ring-4 ring-warmCard" style={{ backgroundColor: accent }} />
                     <span className="font-body text-xs font-bold uppercase tracking-widest" style={{ color: accent }}>{it.period}</span>
                     <h3 className="mt-1 font-display text-xl md:text-2xl font-bold">{it.title}</h3>
                     <span className="font-body text-warmMuted">{it.sub}</span>

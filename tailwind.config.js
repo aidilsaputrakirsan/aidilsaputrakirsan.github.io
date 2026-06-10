@@ -43,10 +43,15 @@ module.exports = {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-18px)' },
         },
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'floaty': 'floaty 7s ease-in-out infinite',
+        'marquee': 'marquee 26s linear infinite',
       },
       backgroundImage: {
         'gradient-cosmic': 'linear-gradient(135deg, #7B68EE, #3672F8)',

@@ -1,12 +1,23 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiGithub, FiArrowUpRight, FiMapPin } from 'react-icons/fi';
 import { projectsData, categories } from '../../data/projects';
+import ProjectModalSoft from './ProjectModalSoft';
 
 function ProjectsSoft() {
   const [filter, setFilter] = useState('all');
+  const [selected, setSelected] = useState(null);
   const list = filter === 'all' ? projectsData : projectsData.filter((p) => p.category === filter);
+
+  // Skill domain cards (SkillsSoft) jump here pre-filtered via this event.
+  useEffect(() => {
+    const onFilter = (e) => {
+      if (categories.some((c) => c.id === e.detail)) setFilter(e.detail);
+    };
+    window.addEventListener('filter-projects', onFilter);
+    return () => window.removeEventListener('filter-projects', onFilter);
+  }, []);
 
   return (
     <section id="projects" className="relative overflow-hidden bg-warmBg py-24 md:py-32 text-warmInk">
@@ -53,7 +64,17 @@ function ProjectsSoft() {
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.4, delay: (i % 3) * 0.06 }}
                 whileHover={{ y: -8 }}
-                className="group flex flex-col overflow-hidden rounded-3xl border border-warmLine bg-warmCard shadow-soft transition-shadow duration-300 hover:shadow-soft-lg"
+                role="button"
+                tabIndex={0}
+                aria-label={`View details of ${p.title}`}
+                onClick={() => setSelected(p)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelected(p);
+                  }
+                }}
+                className="group flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-warmLine bg-warmCard shadow-soft transition-shadow duration-300 hover:shadow-soft-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-warmPeach"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-warmPeachSoft to-warmSageSoft p-2">
                   <img
@@ -77,13 +98,23 @@ function ProjectsSoft() {
 
                   <div className="mt-5 flex items-center justify-between border-t border-warmLine pt-4">
                     <span className="inline-flex items-center gap-1 font-body text-xs text-warmMuted"><FiMapPin /> {p.location.split(',')[0]}</span>
-                    {p.codeLink && p.codeLink !== '#' ? (
-                      <a href={p.codeLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-body text-sm font-semibold text-warmInk transition-colors hover:text-warmPeach">
-                        <FiGithub /> Code
-                      </a>
-                    ) : (
-                      <span className="inline-flex items-center gap-1 font-body text-sm font-semibold text-warmPeach">View <FiArrowUpRight /></span>
-                    )}
+                    <span className="inline-flex items-center gap-2">
+                      {p.codeLink && p.codeLink !== '#' && (
+                        <a
+                          href={p.codeLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${p.title} source code on GitHub`}
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-lg text-warmMuted transition-colors hover:text-warmPeach"
+                        >
+                          <FiGithub />
+                        </a>
+                      )}
+                      <span className="inline-flex items-center gap-1 font-body text-sm font-semibold text-warmPeach">
+                        Details <FiArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </span>
+                    </span>
                   </div>
                 </div>
               </motion.article>
@@ -103,6 +134,8 @@ function ProjectsSoft() {
           </motion.a>
         </div>
       </div>
+
+      <ProjectModalSoft project={selected} onClose={() => setSelected(null)} />
     </section>
   );
 }
