@@ -47,7 +47,7 @@ function CvDocument() {
       <header className="mb-6 flex items-center justify-between gap-6 border-b-2 border-[#2B2520] pb-5">
         <div className="flex items-center gap-4">
           <img
-            src="/fotoku.png"
+            src="/FAidil.png"
             alt="Aidil Saputra Kirsan"
             className="h-[28mm] w-[24mm] shrink-0 rounded-lg object-cover ring-1 ring-[#E8835A]"
           />
