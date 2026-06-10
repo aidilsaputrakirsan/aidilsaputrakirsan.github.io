@@ -20,7 +20,7 @@ const focusAreas = [
     icon: FiBookOpen,
     title: 'Teaching & Research',
     desc: 'Information systems lecturer, academic writing & mentorship.',
-    tint: 'bg-[#E6EEF4] text-warmSky',
+    tint: 'bg-warmSkySoft text-warmSky',
   },
 ];
 

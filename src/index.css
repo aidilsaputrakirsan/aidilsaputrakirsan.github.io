@@ -5,9 +5,40 @@
 
 /* Custom styles */
 @layer base {
+  /* Soft/Warm palette as RGB triplets — consumed by tailwind.config.js via
+     rgb(var(--…) / <alpha-value>). Light is default; .dark on <html> (set by
+     the inline script in index.html + the navbar toggle) flips everything. */
+  :root {
+    --warm-bg: 250 246 240;        /* #FAF6F0 cream */
+    --warm-card: 255 255 255;      /* #FFFFFF */
+    --warm-ink: 43 37 32;          /* #2B2520 */
+    --warm-muted: 124 114 104;     /* #7C7268 */
+    --warm-line: 234 225 214;      /* #EAE1D6 */
+    --warm-peach: 232 131 90;      /* #E8835A */
+    --warm-peach-soft: 251 231 220;/* #FBE7DC */
+    --warm-sage: 127 168 135;      /* #7FA887 */
+    --warm-sage-soft: 230 240 230; /* #E6F0E6 */
+    --warm-sky: 123 167 201;       /* #7BA7C9 */
+    --warm-sky-soft: 230 238 244;  /* #E6EEF4 */
+  }
+
+  .dark {
+    --warm-bg: 32 27 22;           /* #201B16 warm near-black */
+    --warm-card: 42 36 29;         /* #2A241D */
+    --warm-ink: 242 234 224;       /* #F2EAE0 warm cream text */
+    --warm-muted: 164 152 138;     /* #A4988A */
+    --warm-line: 60 52 43;         /* #3C342B */
+    --warm-peach: 238 146 104;     /* #EE9268 brighter for contrast */
+    --warm-peach-soft: 65 46 34;   /* #412E22 */
+    --warm-sage: 146 186 154;      /* #92BA9A */
+    --warm-sage-soft: 39 49 42;    /* #27312A */
+    --warm-sky: 143 180 212;       /* #8FB4D4 */
+    --warm-sky-soft: 40 53 64;     /* #283540 */
+  }
+
   html {
     scroll-behavior: smooth;
-    background-color: #FAF6F0;
+    background-color: rgb(var(--warm-bg));
   }
 
   body {

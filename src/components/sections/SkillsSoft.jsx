@@ -1,18 +1,54 @@
 /* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion';
+import { FiArrowRight, FiBookOpen } from 'react-icons/fi';
 import Marquee from '../ui/Marquee';
 import {
   SiReact, SiVuedotjs, SiLaravel, SiNodedotjs, SiExpress, SiPostgresql, SiMysql,
-  SiMongodb, SiDocker, SiPython, SiEspressif, SiMqtt, SiTailwindcss, SiGit, SiThreedotjs,
+  SiMongodb, SiDocker, SiPython, SiEspressif, SiMqtt, SiTailwindcss, SiGit,
+  SiThreedotjs, SiArduino, SiFirebase,
 } from 'react-icons/si';
-import { yearsOfExperience } from '../../data/site';
+import { projectsData } from '../../data/projects';
+import { yearsOfExperience, CAREER_START_YEAR } from '../../data/site';
 
-const competencies = [
-  { name: 'Backend Development', level: 85, color: '#E8835A' },
-  { name: 'IoT & Microcontrollers', level: 82, color: '#7FA887' },
-  { name: 'Educational Technology', level: 80, color: '#7BA7C9' },
-  { name: 'Frontend Development', level: 78, color: '#E8835A' },
-  { name: 'Cloud & Virtualization', level: 75, color: '#7FA887' },
+// Skill domains tied to real project categories — counts and "since" years are
+// computed from projectsData, so they stay honest and auto-update.
+const domains = [
+  {
+    category: 'web',
+    title: 'Full-Stack Web',
+    desc: 'Academic systems, dashboards and realtime platforms — built end to end.',
+    tint: 'bg-warmPeachSoft text-warmPeach',
+    tools: [
+      { name: 'Laravel', Icon: SiLaravel, color: '#FF2D20' },
+      { name: 'Vue.js', Icon: SiVuedotjs, color: '#4FC08D' },
+      { name: 'React', Icon: SiReact, color: '#61DAFB' },
+      { name: 'Node.js', Icon: SiNodedotjs, color: '#5FA04E' },
+      { name: 'Tailwind', Icon: SiTailwindcss, color: '#06B6D4' },
+    ],
+  },
+  {
+    category: 'iot',
+    title: 'IoT & Embedded',
+    desc: 'Microcontrollers, sensors and network research for real-world systems.',
+    tint: 'bg-warmSageSoft text-warmSage',
+    tools: [
+      { name: 'ESP32', Icon: SiEspressif, color: '#E7352C' },
+      { name: 'Arduino', Icon: SiArduino, color: '#00878F' },
+      { name: 'MQTT', Icon: SiMqtt, color: '#660066' },
+      { name: 'Python', Icon: SiPython, color: '#3776AB' },
+    ],
+  },
+  {
+    category: 'mobile',
+    title: 'Mobile Apps',
+    desc: 'Cross-platform apps for field work, schools and government services.',
+    tint: 'bg-warmSkySoft text-warmSky',
+    tools: [
+      { name: 'React Native', Icon: SiReact, color: '#61DAFB' },
+      { name: 'Firebase', Icon: SiFirebase, color: '#DD2C00' },
+      { name: 'Laravel', Icon: SiLaravel, color: '#FF2D20' },
+    ],
+  },
 ];
 
 const stack = [
@@ -40,47 +76,112 @@ const toolItems = stack.map(({ name, Icon, color }) => (
   </span>
 ));
 
+function domainStats(category) {
+  const projects = projectsData.filter((p) => p.category === category);
+  const since = projects.length ? Math.min(...projects.map((p) => Number(p.year))) : null;
+  return { count: projects.length, since };
+}
+
+function exploreCategory(category) {
+  window.dispatchEvent(new CustomEvent('filter-projects', { detail: category }));
+  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+}
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
 function SkillsSoft() {
   return (
     <section id="skills" className="relative overflow-hidden bg-warmBg py-24 md:py-32 text-warmInk">
       <div className="container mx-auto px-6 max-w-[1100px]">
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6 }}
           className="max-w-2xl"
         >
           <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">Skills</span>
-          <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight">Core competencies</h2>
-          <p className="mt-5 font-body text-lg text-warmMuted">A blend of engineering, hardware and teaching — refined across {yearsOfExperience()}+ years.</p>
+          <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight">What I work in</h2>
+          <p className="mt-5 font-body text-lg text-warmMuted">
+            {yearsOfExperience()}+ years across web, hardware and the classroom.
+            Every number below comes from real shipped projects — tap a card to explore them.
+          </p>
         </motion.div>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-9">
-          {competencies.map((s, i) => (
-            <motion.div
-              key={s.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-            >
-              <div className="flex items-end justify-between font-body">
-                <span className="font-semibold">{s.name}</span>
-                <span className="text-sm font-bold" style={{ color: s.color }}>{s.level}%</span>
-              </div>
-              <div className="mt-3 h-2.5 w-full overflow-hidden rounded-full bg-warmLine">
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 1.2, delay: 0.15 + i * 0.08, ease: 'easeOut' }}
-                  className="h-full origin-left rounded-full"
-                  style={{ width: `${s.level}%`, backgroundColor: s.color }}
-                />
-              </div>
-            </motion.div>
-          ))}
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {domains.map((d, i) => {
+            const { count, since } = domainStats(d.category);
+            return (
+              <motion.button
+                key={d.category}
+                type="button"
+                custom={i}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: '-60px' }}
+                whileHover={{ y: -6 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => exploreCategory(d.category)}
+                className="group flex flex-col rounded-3xl border border-warmLine bg-warmCard p-6 text-left shadow-soft transition-shadow duration-300 hover:shadow-soft-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-warmPeach"
+              >
+                <div className={`inline-flex h-12 w-12 items-center justify-center self-start rounded-2xl ${d.tint}`}>
+                  <span className="font-display text-lg font-bold">{count}</span>
+                </div>
+                <h3 className="mt-5 font-display text-lg font-bold leading-snug">{d.title}</h3>
+                <p className="mt-2 flex-1 font-body text-sm leading-relaxed text-warmMuted">{d.desc}</p>
+
+                <div className="mt-4 flex items-center gap-2.5">
+                  {d.tools.map(({ name, Icon, color }) => (
+                    <Icon key={name} title={name} style={{ color }} className="text-xl" />
+                  ))}
+                </div>
+
+                <div className="mt-5 flex items-center justify-between border-t border-warmLine pt-4 font-body text-xs">
+                  <span className="text-warmMuted">
+                    {count} project{count === 1 ? '' : 's'}{since ? ` · since ${since}` : ''}
+                  </span>
+                  <span className="inline-flex items-center gap-1 font-semibold text-warmPeach">
+                    Explore <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </motion.button>
+            );
+          })}
+
+          {/* Teaching has no project category — it points to the journey instead */}
+          <motion.a
+            href="#experience"
+            custom={domains.length}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-60px' }}
+            whileHover={{ y: -6 }}
+            whileTap={{ scale: 0.98 }}
+            className="group flex flex-col rounded-3xl border border-warmLine bg-warmCard p-6 text-left shadow-soft transition-shadow duration-300 hover:shadow-soft-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-warmPeach"
+          >
+            <div className="inline-flex h-12 w-12 items-center justify-center self-start rounded-2xl bg-warmPeachSoft text-warmPeach">
+              <FiBookOpen className="text-xl" />
+            </div>
+            <h3 className="mt-5 font-display text-lg font-bold leading-snug">Teaching & Research</h3>
+            <p className="mt-2 flex-1 font-body text-sm leading-relaxed text-warmMuted">
+              Information systems lecturer at ITK — curricula, mentorship and published research.
+            </p>
+            <div className="mt-5 flex items-center justify-between border-t border-warmLine pt-4 font-body text-xs">
+              <span className="text-warmMuted">since {CAREER_START_YEAR}</span>
+              <span className="inline-flex items-center gap-1 font-semibold text-warmPeach">
+                Journey <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-0.5" />
+              </span>
+            </div>
+          </motion.a>
         </div>
       </div>
 

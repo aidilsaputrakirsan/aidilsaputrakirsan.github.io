@@ -1,6 +1,4 @@
 import { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 // Original (dark) site — kept for rollback
 import Layout from './components/layout/Layout';
@@ -28,7 +26,12 @@ const USE_SOFT = true;
 
 function App() {
   useEffect(() => {
-    AOS.init({ duration: 800, once: false, mirror: true });
+    if (USE_SOFT) return;
+    // AOS only animates the old dark theme — load it lazily on rollback so it
+    // stays out of the live bundle's critical path.
+    Promise.all([import('aos'), import('aos/dist/aos.css')]).then(([AOS]) => {
+      AOS.default.init({ duration: 800, once: false, mirror: true });
+    });
   }, []);
 
   if (USE_SOFT) {
