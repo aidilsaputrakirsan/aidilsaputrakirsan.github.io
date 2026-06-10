@@ -192,7 +192,7 @@ function HeroSoft() {
                 whileHover={{ scale: 1.03 }}
                 className="group relative overflow-hidden rounded-[1.75rem] bg-warmCard shadow-soft-lg ring-1 ring-warmLine"
               >
-                <img src="/fotoku.png" alt="Aidil Saputra Kirsan" loading="eager" className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/FAidil.png" alt="Aidil Saputra Kirsan" loading="eager" className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 {/* Cursor-following glare */}
                 <motion.div style={{ background: glare }} className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 mix-blend-soft-light" />
                 {/* Bottom gradient for depth */}

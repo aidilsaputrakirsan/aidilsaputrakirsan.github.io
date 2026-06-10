@@ -18,7 +18,7 @@ function About() {
           >
             <div className="relative w-64 h-80 md:w-full md:max-w-md md:h-[500px] overflow-hidden bg-[#1a1a1a] shadow-2xl border border-[#333333]">
               <img
-                src="/fotoku.png"
+                src="/FAidil.png"
                 alt="Aidil Saputra Kirsan Portrait"
                 className="w-full h-full object-cover contrast-[1.15] saturate-[0.6] hover:saturate-100 transition-all duration-700 opacity-90 hover:opacity-100"
               />
