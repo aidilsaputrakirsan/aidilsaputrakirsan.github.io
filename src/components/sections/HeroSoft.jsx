@@ -94,10 +94,10 @@ function HeroSoft() {
           />
         ))}
 
-      {/* Dotted texture */}
+      {/* Dotted texture (currentColor follows the theme's ink color) */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
-        style={{ backgroundImage: 'radial-gradient(#2B2520 1px, transparent 1px)', backgroundSize: '28px 28px' }}
+        className="pointer-events-none absolute inset-0 text-warmInk opacity-[0.06]"
+        style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '28px 28px' }}
       />
 
       <div className="relative z-10 container mx-auto px-6 max-w-[1200px] pt-28 pb-32 md:py-0">
@@ -196,7 +196,7 @@ function HeroSoft() {
                 {/* Cursor-following glare */}
                 <motion.div style={{ background: glare }} className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 mix-blend-soft-light" />
                 {/* Bottom gradient for depth */}
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-warmInk/20 to-transparent" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/20 to-transparent" />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 10 }}

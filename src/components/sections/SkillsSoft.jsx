@@ -42,7 +42,7 @@ const domains = [
     category: 'mobile',
     title: 'Mobile Apps',
     desc: 'Cross-platform apps for field work, schools and government services.',
-    tint: 'bg-[#E6EEF4] text-warmSky',
+    tint: 'bg-warmSkySoft text-warmSky',
     tools: [
       { name: 'React Native', Icon: SiReact, color: '#61DAFB' },
       { name: 'Firebase', Icon: SiFirebase, color: '#DD2C00' },

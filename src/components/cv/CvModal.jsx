@@ -34,7 +34,7 @@ function CvModal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex flex-col bg-warmInk/60 backdrop-blur-sm print:bg-white"
+          className="fixed inset-0 z-[100] flex flex-col bg-warmInk/60 backdrop-blur-sm dark:bg-black/70 print:bg-white"
         >
           {/* Toolbar (hidden when printing) */}
           <div className="flex items-center justify-between gap-4 bg-warmInk px-5 py-3 text-warmBg print:hidden">

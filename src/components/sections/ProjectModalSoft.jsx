@@ -36,7 +36,7 @@ function ProjectModalSoft({ project, onClose }) {
           role="dialog"
           aria-modal="true"
           aria-label={project.title}
-          className="fixed inset-0 z-[70] flex items-center justify-center bg-warmInk/40 p-4 backdrop-blur-sm sm:p-6"
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-warmInk/40 p-4 backdrop-blur-sm dark:bg-black/60 sm:p-6"
         >
           <motion.div
             initial={{ opacity: 0, y: 32, scale: 0.96 }}

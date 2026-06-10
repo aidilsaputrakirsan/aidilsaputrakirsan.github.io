@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/assets/aidil.png" />
+    <link rel="icon" type="image/png" href="/src/assets/aidil.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Aidil Saputra Kirsan - Information System Lecturer & Full Stack Developer" />
     <meta name="keywords" content="Aidil Saputra Kirsan, Web Developer, Information System, Lecturer, Portfolio" />
@@ -13,6 +13,15 @@
     <meta property="og:url" content="https://aidilsaputrakirsan3.github.io" />
     <meta property="og:image" content="https://aidilsaputrakirsan3.github.io/images/profile.jpg" />
     <title>Aidil Saputra Kirsan - Portfolio</title>
+    <!-- Apply saved/system theme before first paint to avoid a flash -->
+    <script>
+      (function () {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

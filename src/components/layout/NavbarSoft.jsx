@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
 
 const links = [
   ['About', '#about'],
@@ -15,6 +15,14 @@ function NavbarSoft() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
+  const [dark, setDark] = useState(() => document.documentElement.classList.contains('dark'));
+
+  const toggleTheme = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle('dark', next);
+    localStorage.setItem('theme', next ? 'dark' : 'light');
+  };
 
   // Top scroll-progress bar
   const { scrollYProgress } = useScroll();
@@ -61,7 +69,8 @@ function NavbarSoft() {
             Aidil<span className="text-warmPeach">.</span>
           </a>
 
-          <ul className="hidden md:flex items-center gap-1">
+          <div className="flex items-center gap-1">
+            <ul className="hidden md:flex items-center gap-1">
             {links.map(([label, href]) => {
               const on = active === href.slice(1);
               return (
@@ -93,11 +102,31 @@ function NavbarSoft() {
                 Download CV
               </button>
             </li>
-          </ul>
+            </ul>
 
-          <button className="md:hidden text-2xl text-warmInk" onClick={() => setOpen((v) => !v)} aria-label="Menu">
-            {open ? <FiX /> : <FiMenu />}
-          </button>
+            <button
+              onClick={toggleTheme}
+              aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-lg text-warmMuted transition-colors hover:bg-warmPeachSoft hover:text-warmPeach md:ml-1"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={dark ? 'sun' : 'moon'}
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex"
+                >
+                  {dark ? <FiSun /> : <FiMoon />}
+                </motion.span>
+              </AnimatePresence>
+            </button>
+
+            <button className="md:hidden text-2xl text-warmInk p-2" onClick={() => setOpen((v) => !v)} aria-label="Menu">
+              {open ? <FiX /> : <FiMenu />}
+            </button>
+          </div>
         </nav>
 
         <AnimatePresence>
