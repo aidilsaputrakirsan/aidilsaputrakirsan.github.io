@@ -1,5 +1,11 @@
 export const achievementsData = [
     {
+      title: "Rank I (First) — Outstanding Achievement, Civil Servant Candidate Basic Training (Latsar CPNS)",
+      organization: "Pusjar SKPP, Lembaga Administrasi Negara (LAN) RI - Samarinda, Indonesia",
+      year: "2026",
+      description: "Completed the Basic Training for Civil Servant Candidates (Pelatihan Dasar CPNS) and graduated first in the cohort with an 'Outstanding Achievement' (Prestasi Istimewa) distinction.",
+    },
+    {
       title: "Certificate of Competence - IT Auditor",
       organization: "BNSP - Jakarta, Indonesia",
       year: "2024",

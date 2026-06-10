@@ -6,7 +6,7 @@ import { projectsData } from '../../data/projects';
 import { yearsOfExperience } from '../../data/site';
 
 const profile =
-  `Full-Stack Developer and Information System Lecturer based in Balikpapan, Indonesia, with ${yearsOfExperience()}+ years of experience building dynamic, scalable digital products while teaching the next generation of IT professionals. Specialized in web development, IoT, and educational technology.`;
+  `Full-Stack Developer and Information System Lecturer based in Balikpapan, Indonesia, with ${yearsOfExperience()}+ years of experience building dynamic, scalable digital products while teaching the next generation of IT professionals and leading FSTI's Digital Innovation Laboratory at Institut Teknologi Kalimantan. Specialized in web development, IoT, and educational technology.`;
 
 const skillGroups = [
   { label: 'Frontend', items: 'React, Vue.js, Next.js, Tailwind CSS, Three.js' },
