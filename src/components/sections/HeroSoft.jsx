@@ -23,9 +23,9 @@ function HeroSoft() {
     return () => clearInterval(t);
   }, [reduce, badgePaused, liveRoles.length]);
   const badgeRole = liveRoles[roleIdx % liveRoles.length];
-  // Keep the small card readable: drop any descriptor before an em dash
-  const badgeTitle = badgeRole?.title.split('—').pop().trim();
-  const badgeCompany = badgeRole?.company.split(',')[0].trim();
+  // Prefer the hand-picked short labels; fall back to trimming the long ones
+  const badgeTitle = badgeRole?.shortTitle ?? badgeRole?.title.split('—').pop().trim();
+  const badgeCompany = badgeRole?.shortCompany ?? badgeRole?.company.split(',')[0].trim();
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   const yBlobA = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -100]);
@@ -225,7 +225,7 @@ function HeroSoft() {
                   role="button"
                   tabIndex={0}
                   aria-label="Current roles — click for the next one"
-                  className="absolute -bottom-5 -left-5 w-[230px] cursor-pointer rounded-2xl bg-warmCard px-5 py-3 shadow-soft ring-1 ring-warmLine"
+                  className="absolute -bottom-5 -left-5 w-[250px] cursor-pointer rounded-2xl bg-warmCard px-5 py-3 shadow-soft ring-1 ring-warmLine"
                 >
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
@@ -237,7 +237,7 @@ function HeroSoft() {
                       aria-live="polite"
                     >
                       <div className="truncate font-display text-sm font-bold text-warmInk">{badgeTitle}</div>
-                      <div className="truncate font-body text-xs text-warmMuted">{badgeCompany} · Balikpapan 🇮🇩</div>
+                      <div className="truncate font-body text-xs text-warmMuted">{badgeCompany}</div>
                     </motion.div>
                   </AnimatePresence>
                   {liveRoles.length > 1 && (

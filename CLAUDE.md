@@ -40,7 +40,8 @@ or a "currently working on" list again** — use these helpers:
   what powers "Currently working on …" (About) and "Products in build" (Hero).
 - `currentRoles()` = experience entries whose `period` contains "Present". Powers the
   **rotating badge on the hero photo** — add/end a role in `experience.js` and the badge
-  follows automatically.
+  follows automatically. Give entries an optional `shortTitle`/`shortCompany` so the
+  badge shows a hand-picked short label instead of truncating the long one.
 - `formatList([...])` = "A, B, and C".
 
 Implication: a project shows up under "currently working on" **only if its `year`
