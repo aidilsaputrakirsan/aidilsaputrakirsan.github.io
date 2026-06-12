@@ -1,16 +1,31 @@
 /* eslint-disable no-unused-vars */
-import { motion, useScroll, useTransform, useReducedMotion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform, useReducedMotion, useMotionValue, useSpring, useMotionTemplate, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 import { FiArrowDownRight, FiMail, FiCode, FiBookOpen, FiCpu, FiWifi, FiSearch, FiMonitor, FiUsers, FiZap } from 'react-icons/fi';
 import Counter from '../ui/Counter';
 import Marquee from '../ui/Marquee';
 import { projectsData } from '../../data/projects';
-import { yearsOfExperience, currentProjects } from '../../data/site';
+import { yearsOfExperience, currentProjects, currentRoles } from '../../data/site';
 
 // Soft / Warm Hero — light, fast, mobile-friendly, lots of gentle motion.
 function HeroSoft() {
   const ref = useRef(null);
   const reduce = useReducedMotion();
+
+  // Rotating photo badge — cycles through every ongoing role from
+  // experience.js. Pauses on hover; click/tap skips to the next role.
+  const liveRoles = currentRoles();
+  const [roleIdx, setRoleIdx] = useState(0);
+  const [badgePaused, setBadgePaused] = useState(false);
+  useEffect(() => {
+    if (reduce || badgePaused || liveRoles.length < 2) return undefined;
+    const t = setInterval(() => setRoleIdx((i) => (i + 1) % liveRoles.length), 3500);
+    return () => clearInterval(t);
+  }, [reduce, badgePaused, liveRoles.length]);
+  const badgeRole = liveRoles[roleIdx % liveRoles.length];
+  // Prefer the hand-picked short labels; fall back to trimming the long ones
+  const badgeTitle = badgeRole?.shortTitle ?? badgeRole?.title.split('—').pop().trim();
+  const badgeCompany = badgeRole?.shortCompany ?? badgeRole?.company.split(',')[0].trim();
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   const yBlobA = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -100]);
@@ -199,15 +214,46 @@ function HeroSoft() {
                 {/* Bottom gradient for depth */}
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/20 to-transparent" />
               </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.6 }}
-                className="absolute -bottom-5 -left-5 rounded-2xl bg-warmCard px-5 py-3 shadow-soft ring-1 ring-warmLine"
-              >
-                <div className="font-display text-sm font-bold text-warmInk">Head of Digital Innovation Lab</div>
-                <div className="font-body text-xs text-warmMuted">Lecturer @ FSTI ITK · Balikpapan 🇮🇩</div>
-              </motion.div>
+              {badgeRole && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7, duration: 0.6 }}
+                  onMouseEnter={() => setBadgePaused(true)}
+                  onMouseLeave={() => setBadgePaused(false)}
+                  onClick={() => setRoleIdx((i) => (i + 1) % liveRoles.length)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Current roles — click for the next one"
+                  className="absolute -bottom-5 -left-5 w-[250px] cursor-pointer rounded-2xl bg-warmCard px-5 py-3 shadow-soft ring-1 ring-warmLine"
+                >
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                      key={roleIdx}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.3, ease: 'easeOut' }}
+                      aria-live="polite"
+                    >
+                      <div className="truncate font-display text-sm font-bold text-warmInk">{badgeTitle}</div>
+                      <div className="truncate font-body text-xs text-warmMuted">{badgeCompany}</div>
+                    </motion.div>
+                  </AnimatePresence>
+                  {liveRoles.length > 1 && (
+                    <div className="mt-2 flex gap-1.5">
+                      {liveRoles.map((r, i) => (
+                        <span
+                          key={r.title}
+                          className={`h-1 rounded-full transition-all duration-300 ${
+                            i === roleIdx ? 'w-4 bg-warmPeach' : 'w-1.5 bg-warmLine'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              )}
             </motion.div>
           </motion.div>
         </div>

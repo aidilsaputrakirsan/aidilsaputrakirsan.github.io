@@ -1,5 +1,6 @@
 // Single source of truth for time-based, auto-updating values.
 import { projectsData } from './projects';
+import { experienceData } from './experience';
 
 // The year your professional career started. Bump ONLY if this fact changes.
 export const CAREER_START_YEAR = 2020;
@@ -12,6 +13,10 @@ export const buildingYear = () => String(new Date().getFullYear());
 
 // Projects tagged with the current year => what you're "currently working on".
 export const currentProjects = () => projectsData.filter((p) => p.year === buildingYear());
+
+// Roles still held today (period ends in "Present") — powers the rotating
+// badge on the hero photo. Update experience.js and the badge follows.
+export const currentRoles = () => experienceData.filter((e) => /present/i.test(e.period));
 
 // "A, B, and C" / "A and B" / "A"
 export const formatList = (arr) => {
