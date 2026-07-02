@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Buy Aidil Saputra Kirsan a coffee — scan the QRIS code." />
+    <meta property="og:title" content="Buy me a coffee — Aidil Saputra Kirsan" />
+    <meta property="og:description" content="Scan the QRIS code to support the work." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/png" href="/src/assets/aidil.png" />
+    <title>Buy me a coffee — Aidil Saputra Kirsan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script data-goatcounter="https://aidilsaputrakirsan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <style>
+      :root {
+        --warm-bg: #FAF6F0;
+        --warm-card: #FFFFFF;
+        --warm-ink: #2B2520;
+        --warm-muted: #7C7268;
+        --warm-line: #EAE1D6;
+        --warm-peach: #E8835A;
+        --warm-peach-soft: #FBE7DC;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: var(--warm-bg);
+        color: var(--warm-ink);
+        font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      }
+      .card {
+        width: 100%;
+        max-width: 380px;
+        background: var(--warm-card);
+        border: 1px solid var(--warm-line);
+        border-radius: 24px;
+        padding: 32px 28px;
+        text-align: center;
+        box-shadow: 0 24px 70px -20px rgba(43, 37, 32, 0.18);
+      }
+      .icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        background: var(--warm-peach-soft);
+        color: var(--warm-peach);
+        font-size: 22px;
+      }
+      h1 {
+        font-family: "Sora", sans-serif;
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin: 16px 0 8px;
+      }
+      p {
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--warm-muted);
+        margin: 0 0 22px;
+      }
+      .qris-frame {
+        border: 1px solid var(--warm-line);
+        border-radius: 16px;
+        background: #fff;
+        padding: 12px;
+      }
+      .qris-frame img {
+        width: 100%;
+        max-width: 260px;
+        border-radius: 12px;
+        display: block;
+        margin: 0 auto;
+      }
+      .thanks {
+        margin: 18px 0 0;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--warm-muted);
+      }
+      .back {
+        display: inline-block;
+        margin-top: 22px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--warm-peach);
+        text-decoration: none;
+      }
+      .back:hover { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <span class="icon">♥</span>
+      <h1>Buy me a coffee</h1>
+      <p>
+        If something here helped you out, a coffee is always appreciated.
+        Scan the QRIS code below with any e-wallet or mobile banking app —
+        GoPay, OVO, DANA, ShopeePay, all supported.
+      </p>
+      <div class="qris-frame">
+        <img src="/qris.jpeg" alt="QRIS payment code for Aidil Saputra Kirsan" />
+      </div>
+      <p class="thanks">Thank you for the support ✦</p>
+      <a class="back" href="/">← Back to portfolio</a>
+    </main>
+  </body>
+</html>
