@@ -108,7 +108,7 @@ function NavbarSoft() {
               onClick={() => window.dispatchEvent(new CustomEvent('open-support'))}
               aria-label="Buy me a coffee"
               title="Buy me a coffee"
-              className="hidden md:inline-flex h-10 w-10 items-center justify-center rounded-full text-lg text-warmMuted transition-colors hover:bg-warmPeachSoft hover:text-warmPeach"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-lg text-warmMuted transition-colors hover:bg-warmPeachSoft hover:text-warmPeach"
             >
               <FiCoffee />
             </button>
@@ -116,7 +116,7 @@ function NavbarSoft() {
             <button
               onClick={toggleTheme}
               aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-lg text-warmMuted transition-colors hover:bg-warmPeachSoft hover:text-warmPeach md:ml-1"
+              className="hidden md:inline-flex h-10 w-10 items-center justify-center rounded-full text-lg text-warmMuted transition-colors hover:bg-warmPeachSoft hover:text-warmPeach md:ml-1"
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
@@ -172,13 +172,10 @@ function NavbarSoft() {
               </li>
               <li>
                 <button
-                  onClick={() => {
-                    setOpen(false);
-                    window.dispatchEvent(new CustomEvent('open-support'));
-                  }}
+                  onClick={toggleTheme}
                   className="flex w-full items-center gap-2 px-6 py-4 text-left font-body font-semibold text-warmInk"
                 >
-                  <FiCoffee /> Buy me a coffee
+                  {dark ? <FiSun /> : <FiMoon />} {dark ? 'Light mode' : 'Dark mode'}
                 </button>
               </li>
             </motion.ul>

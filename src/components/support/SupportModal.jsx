@@ -15,11 +15,11 @@ function SupportModal() {
     const onKey = (e) => e.key === 'Escape' && setOpen(false);
     window.addEventListener('keydown', onKey);
 
-    // Deep link support: myst-tech.com/#support auto-opens the modal, so
+    // Deep link support: myst-tech.com/?support auto-opens the modal, so
     // IG bio/story links can jump straight here without landing on the homepage first.
-    if (window.location.hash === '#support') {
+    if (new URLSearchParams(window.location.search).has('support')) {
       setOpen(true);
-      history.replaceState(null, '', window.location.pathname + window.location.search);
+      history.replaceState(null, '', window.location.pathname);
     }
 
     return () => {
