@@ -1,4 +1,4 @@
-import { FiGithub, FiLinkedin, FiArrowUp } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiArrowUp, FiCoffee } from 'react-icons/fi';
 import VisitorCounter from '../ui/VisitorCounter';
 
 function FooterSoft() {
@@ -15,6 +15,14 @@ function FooterSoft() {
 
           <div className="flex items-center gap-3">
             <VisitorCounter />
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('open-support'))}
+              aria-label="Buy me a coffee"
+              title="Buy me a coffee"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-warmLine hover:border-warmPeach hover:text-warmPeach"
+            >
+              <FiCoffee />
+            </button>
             <a href="https://github.com/aidilsaputrakirsan" target="_blank" rel="noreferrer" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-warmLine hover:border-warmPeach hover:text-warmPeach"><FiGithub /></a>
             <a href="https://id.linkedin.com/in/aidil-saputra-kirsan-0808911bb" target="_blank" rel="noreferrer" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-warmLine hover:border-warmPeach hover:text-warmPeach"><FiLinkedin /></a>
             <a href="#hero" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-warmInk text-warmBg hover:-translate-y-0.5 transition-transform"><FiArrowUp /></a>

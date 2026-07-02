@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
+import { FiMenu, FiX, FiSun, FiMoon, FiCoffee } from 'react-icons/fi';
 
 const links = [
   ['About', '#about'],
@@ -105,6 +105,15 @@ function NavbarSoft() {
             </ul>
 
             <button
+              onClick={() => window.dispatchEvent(new CustomEvent('open-support'))}
+              aria-label="Buy me a coffee"
+              title="Buy me a coffee"
+              className="hidden md:inline-flex h-10 w-10 items-center justify-center rounded-full text-lg text-warmMuted transition-colors hover:bg-warmPeachSoft hover:text-warmPeach"
+            >
+              <FiCoffee />
+            </button>
+
+            <button
               onClick={toggleTheme}
               aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
               className="inline-flex h-10 w-10 items-center justify-center rounded-full text-lg text-warmMuted transition-colors hover:bg-warmPeachSoft hover:text-warmPeach md:ml-1"
@@ -159,6 +168,17 @@ function NavbarSoft() {
                   className="block w-full px-6 py-4 text-left font-body font-semibold text-warmPeach"
                 >
                   Download CV ↗
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    setOpen(false);
+                    window.dispatchEvent(new CustomEvent('open-support'));
+                  }}
+                  className="flex w-full items-center gap-2 px-6 py-4 text-left font-body font-semibold text-warmInk"
+                >
+                  <FiCoffee /> Buy me a coffee
                 </button>
               </li>
             </motion.ul>
