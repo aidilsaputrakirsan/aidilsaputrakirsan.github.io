@@ -6,10 +6,61 @@ export const categories = [
     { id: 'other', name: 'Other' },
   ];
   
+  // `featured: true` => rendered as a big "Products" card (poster + live link)
+  // at the top of the Portfolio section instead of the compact works list.
+  // `status`: 'live' | 'building' — powers the badge on featured cards.
+  // `internal: true` => shows an "Internal system" chip in the works list
+  // (explains why there is no public demo link).
   export const projectsData = [
+    {
+      id: 18,
+      title: "Sistem Manajemen RT",
+      description: "A multi-tenant SaaS platform that digitizes Indonesian neighborhood (RT) administration — automated resident letters with tidy numbering, resident & demographic records, dues collection, and auto-generated monthly reports, with secure role-based access for administrators and residents. Live with a public demo mode.",
+      image: "/images/projects/poster-rt.jpeg",
+      technologies: ["Laravel", "Inertia.js", "Vue.js", "Tailwind CSS", "MySQL"],
+      category: "web",
+      demoLink: "https://rt.myst-tech.com/",
+      codeLink: "#",
+      year: "2026",
+      location: "Indonesia",
+      featured: true,
+      status: "live",
+      tagline: "Solusi digital untuk RT Indonesia",
+    },
+    {
+      id: 19,
+      title: "Asdos-AI",
+      description: "An AI teaching-assistant platform for lecturers — grades weekly student answers against the lecturer's own rubric with personalised feedback, transcribes handwritten answer sheets, surfaces class-weakness insights and at-risk student alerts, generates targeted remedial questions, and exports tidy Excel recaps. AI recommends, the lecturer decides.",
+      image: "/images/projects/poster-asdosai.png",
+      technologies: ["Laravel", "Livewire", "MySQL", "AI"],
+      category: "web",
+      demoLink: "https://asdos.myst-tech.com/",
+      codeLink: "#",
+      year: "2026",
+      location: "Indonesia",
+      featured: true,
+      status: "live",
+      tagline: "Asisten dosen AI untuk koreksi & umpan balik mingguan",
+    },
+    {
+      id: 20,
+      title: "Jarvis Myst",
+      description: "A personal AI assistant platform for the Myst ecosystem, currently in active development. Details will be published as the product approaches launch.",
+      image: null, // poster not ready yet — featured card shows a monogram panel
+      technologies: ["AI", "Automation"],
+      category: "web",
+      demoLink: "#",
+      codeLink: "#",
+      year: "2026",
+      location: "Indonesia",
+      featured: true,
+      status: "building",
+      tagline: "Personal AI assistant — coming soon",
+    },
     {
       id: 17,
       title: "Intersi-ITK",
+      internal: true,
       description: "An internship (Kerja Praktik/KP) management system for the Information Systems study program at Institut Teknologi Kalimantan, digitizing internship registration, supervisor assignment, logbook submission, and assessment workflows for students and lecturers.",
       image: "/images/projects/intersi.png",
       technologies: ["Laravel", "Inertia.js", "Vue.js", "MySQL", "Tailwind CSS"],
@@ -22,6 +73,7 @@ export const categories = [
     {
       id: 16,
       title: "FSTI-ITK",
+      internal: true,
       description: "The official company profile website for the Faculty of Science and Information Technology (FSTI) at Institut Teknologi Kalimantan, showcasing faculty programs, news, academic information, and resources in a modern, responsive interface.",
       image: "/images/projects/fsti.png",
       technologies: ["Laravel", "Vue.js", "MySQL", "Tailwind CSS", "REST API"],
@@ -34,6 +86,7 @@ export const categories = [
     {
       id: 15,
       title: "Klinik-ITK",
+      internal: true,
       description: "A clinic management information system for the health clinic at Institut Teknologi Kalimantan, handling patient registration, medical records, queue management, and reporting to streamline campus healthcare services.",
       image: "/images/projects/klinik.png",
       technologies: ["Laravel", "Inertia.js", "Vue.js", "MySQL", "Tailwind CSS"],
@@ -46,6 +99,7 @@ export const categories = [
     {
       id: 1,
       title: "Sitasi-ITK",
+      internal: true,
       description: "A comprehensive thesis management system for Information Systems program at Institut Teknologi Kalimantan, featuring automated administrative processes, plagiarism detection, thesis submission workflow, and review management for streamlined academic operations.",
       image: "/images/projects/sitasi-itk.png",
       technologies: ["Laravel", "Inertia.js", "Vue.js", "MySQL", "Tailwind CSS"],
@@ -82,6 +136,7 @@ export const categories = [
     {
       id: 4,
       title: "Layanan FSTI",
+      internal: true,
       description: "A comprehensive administrative service system for the Faculty of Science and Information Technology (FSTI) at Institut Teknologi Kalimantan, streamlining faculty operations including document management, service requests, and administrative workflows.",
       image: "https://i.imgur.com/DLtRQGC.png",
       technologies: ["Laravel", "Vue.js", "MySQL", "Tailwind CSS", "REST API"],
@@ -130,6 +185,7 @@ export const categories = [
     {
       id: 8,
       title: "Operation & Maintenance Information System (SIRINE)",
+      internal: true,
       description: "Developed a web-based information system to optimize operation and maintenance workflows for PGN SOR III, featuring real-time data monitoring and reporting tools in collaboration with Sallie Trixie.",
       image: "https://i.imgur.com/OeC4GFD.jpeg",
       technologies: ["Laravel", "MySQL", "Bootstrap", "jQuery", "REST API"],
@@ -178,6 +234,7 @@ export const categories = [
     {
       id: 12,
       title: "SIAKAD Al-Azhar",
+      internal: true,
       description: "Developed web and mobile academic information system for Al Azhar 58 Balikpapan.",
       image: "https://i.imgur.com/DHLAUOF.png",
       technologies: ["React", "React Native", "Laravel", "MySQL", "REST API"],

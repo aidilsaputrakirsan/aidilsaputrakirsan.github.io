@@ -65,8 +65,28 @@ matches the current year**. If an older project is still active, bump its `year`
      year: "2026",           // current year => counts as "currently working on"
    }
    ```
-3. Nothing else to wire. Hero "Projects shipped" count, the Projects grid + filter,
+3. Nothing else to wire. Hero "Projects shipped" count, the Projects section + filter,
    the "currently working on" text, and the CV "Selected Projects" all update automatically.
+
+### Portfolio section layout (two tiers)
+[ProjectsSoft.jsx](src/components/sections/ProjectsSoft.jsx) renders projects in two tiers:
+- **"Products"** — entries with `featured: true`: big poster card (portrait poster in
+  `public/images/projects/`, e.g. `poster-rt.jpeg`) + live link. Extra fields:
+  `status: "live" | "building"` (badge), `tagline` (short line under the title),
+  and `demoLink` = the real public URL. Poster click opens the raw image in a new
+  tab (products don't use the detail modal).
+  If the poster isn't ready yet, set `image: null` — the card renders a monogram
+  panel instead (drop the poster in later and just fill `image`). No demo/code link
+  → the card shows a "Launching soon" pill (used while `status: "building"`).
+- **"Selected works"** — everything else: compact image-free list rows (the `image`
+  field is only shown in the detail modal). `internal: true` shows an
+  "Internal system" chip explaining why there's no public demo.
+- Tech-stack chips are deliberately **not** shown on cards/list rows (too noisy) —
+  `technologies` still matters: it feeds the detail modal's "Built with" and the CV.
+
+**To add a new product later:** add one entry at the top of `projectsData` with
+`featured: true`, `status`, `tagline`, real `demoLink`, and a poster (or `image: null`
+until it's ready). Everything else (Hero stats, "currently working on", CV) follows.
 
 ## CV (Download CV)
 - Built from the same data files — [src/components/cv/CvDocument.jsx](src/components/cv/CvDocument.jsx).

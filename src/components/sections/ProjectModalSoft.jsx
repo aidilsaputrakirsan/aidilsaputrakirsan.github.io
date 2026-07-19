@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiX, FiGithub, FiExternalLink, FiMapPin, FiCalendar, FiTag } from 'react-icons/fi';
+import { FiX, FiGithub, FiExternalLink, FiMapPin, FiCalendar, FiTag, FiLock } from 'react-icons/fi';
 import { categories } from '../../data/projects';
 
 // Case-study overlay for a single project. Opened by clicking a card in
@@ -55,13 +55,15 @@ function ProjectModalSoft({ project, onClose }) {
             </button>
 
             <div className="overflow-y-auto overscroll-contain">
-              <div className="bg-gradient-to-br from-warmPeachSoft to-warmSageSoft p-3">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="mx-auto max-h-[40vh] w-full rounded-2xl object-contain"
-                />
-              </div>
+              {project.image && (
+                <div className="bg-gradient-to-br from-warmPeachSoft to-warmSageSoft p-3">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="mx-auto max-h-[40vh] w-full rounded-2xl object-contain"
+                  />
+                </div>
+              )}
 
               <div className="p-6 sm:p-8">
                 <div className="flex flex-wrap items-center gap-2 font-body text-xs font-semibold text-warmMuted">
@@ -74,6 +76,11 @@ function ProjectModalSoft({ project, onClose }) {
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-warmBg px-3 py-1">
                     <FiMapPin /> {project.location}
                   </span>
+                  {project.internal && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-warmBg px-3 py-1">
+                      <FiLock /> Internal system
+                    </span>
+                  )}
                 </div>
 
                 <h3 className="mt-4 font-display text-2xl font-bold tracking-tight sm:text-3xl">
@@ -108,7 +115,7 @@ function ProjectModalSoft({ project, onClose }) {
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 rounded-full bg-warmInk px-6 py-3 font-body text-sm font-semibold text-warmBg shadow-soft transition-transform hover:-translate-y-0.5"
                       >
-                        <FiExternalLink /> Live demo
+                        <FiExternalLink /> {project.featured ? 'Visit site' : 'Live demo'}
                       </a>
                     )}
                     {code && (
