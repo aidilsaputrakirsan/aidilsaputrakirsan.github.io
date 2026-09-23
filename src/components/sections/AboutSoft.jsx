@@ -5,26 +5,26 @@ import { yearsOfExperience, currentProjects, formatList } from '../../data/site'
 
 const focusAreas = [
   {
-    icon: FiCode,
-    title: 'Full-Stack Development',
-    desc: 'React, Laravel & Node.js — building scalable web apps end to end.',
+    icon: FiCpu,
+    title: 'AI Product Engineering',
+    desc: 'LLM gateways, RAG, vision/OCR and structured output — shipped in products real teachers and students use.',
     tint: 'bg-warmPeachSoft text-warmPeach',
   },
   {
-    icon: FiCpu,
-    title: 'IoT & Networking',
-    desc: 'ESP32, MQTT and sensor systems for real-world smart solutions.',
+    icon: FiCode,
+    title: 'Full-Stack Development',
+    desc: 'Laravel, Livewire, Vue & React — multi-tenant SaaS and campus systems, built end to end.',
     tint: 'bg-warmSageSoft text-warmSage',
   },
   {
     icon: FiBookOpen,
     title: 'Teaching & Research',
-    desc: 'Information systems lecturer, academic writing & mentorship.',
+    desc: 'Information systems lecturer — IoT & sensor-network research, now applied AI in education.',
     tint: 'bg-warmSkySoft text-warmSky',
   },
 ];
 
-const stack = ['React', 'Laravel', 'Node.js', 'PostgreSQL', 'Tailwind', 'Docker', 'ESP32', 'Python'];
+const stack = ['Laravel', 'Livewire', 'LLM APIs', 'RAG', 'React', 'Vue.js', 'MySQL', 'PostgreSQL', 'Tailwind', 'Docker'];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -52,11 +52,11 @@ function AboutSoft() {
             About me
           </span>
           <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight leading-tight">
-            Bridging code and the classroom.
+            Bridging AI, code, and the classroom.
           </h2>
           <p className="mt-5 font-body text-lg text-warmMuted leading-relaxed">
-            Based in Balikpapan, Indonesia, I combine software development with teaching —
-            over {yearsOfExperience()} years building products while inspiring future IT professionals.
+            Based in Balikpapan, Indonesia, I combine building AI products with teaching —
+            over {yearsOfExperience()} years shipping software while inspiring future IT professionals.
             {currentProjects().length > 0 && (
               <>
                 {' '}Currently working on{' '}

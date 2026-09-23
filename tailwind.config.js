@@ -2,6 +2,7 @@ module.exports = {
   darkMode: 'class',
   content: [
     "./index.html",
+    "./aidil/index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -51,11 +52,22 @@ module.exports = {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(-50%)' },
         },
+        // Myst-Core diagram connectors: dashes flowing toward the next box
+        'flow-x': {
+          from: { backgroundPosition: '0 0' },
+          to: { backgroundPosition: '24px 0' },
+        },
+        'flow-y': {
+          from: { backgroundPosition: '0 0' },
+          to: { backgroundPosition: '0 24px' },
+        },
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'floaty': 'floaty 7s ease-in-out infinite',
         'marquee': 'marquee 26s linear infinite',
+        'flow-x': 'flow-x 0.9s linear infinite',
+        'flow-y': 'flow-y 0.9s linear infinite',
       },
       backgroundImage: {
         'gradient-cosmic': 'linear-gradient(135deg, #7B68EE, #3672F8)',

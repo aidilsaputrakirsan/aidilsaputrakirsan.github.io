@@ -6,6 +6,12 @@ export const achievementsData = [
       description: "Completed the Basic Training for Civil Servant Candidates (Pelatihan Dasar CPNS) and graduated first in the cohort with an 'Outstanding Achievement' (Prestasi Istimewa) distinction.",
     },
     {
+      title: "Mentor — Hackathon Category Winners, Kideco Innovation Challenge 2026",
+      organization: "Kideco Innovation Challenge 2026 · Kalimantan Region",
+      year: "2026",
+      description: "Mentored the ITK Information Systems student teams that swept the hackathon category at the regional (Kalimantan) final.",
+    },
+    {
       title: "Certificate of Competence - IT Auditor",
       organization: "BNSP - Jakarta, Indonesia",
       year: "2024",

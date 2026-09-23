@@ -10,13 +10,15 @@ import Projects from './components/sections/Projects';
 import CursorEffect from './components/ui/CursorEffect';
 import ScrollProgress from './components/ui/ScrollProgress';
 
-// New Soft/Warm site
+// New Soft/Warm site — this is the founder profile page at /aidil/
+// (entry: src/main-profile.jsx). The Myst Tech hub at / lives in HubApp.jsx.
 import NavbarSoft from './components/layout/NavbarSoft';
 import HeroSoft from './components/sections/HeroSoft';
 import AboutSoft from './components/sections/AboutSoft';
 import SkillsSoft from './components/sections/SkillsSoft';
 import ExperienceSoft from './components/sections/ExperienceSoft';
 import ProjectsSoft from './components/sections/ProjectsSoft';
+import ResearchSoft from './components/sections/ResearchSoft';
 import ContactSoft from './components/sections/ContactSoft';
 import FooterSoft from './components/layout/FooterSoft';
 import CvModal from './components/cv/CvModal';
@@ -38,11 +40,12 @@ function App() {
   if (USE_SOFT) {
     return (
       <div className="bg-warmBg font-body text-warmInk">
-        <NavbarSoft />
+        <NavbarSoft back={{ label: 'Myst Tech', href: '/' }} />
         <main>
           <HeroSoft />
           <AboutSoft />
           <SkillsSoft />
+          <ResearchSoft />
           <ExperienceSoft />
           <ProjectsSoft />
           <ContactSoft />

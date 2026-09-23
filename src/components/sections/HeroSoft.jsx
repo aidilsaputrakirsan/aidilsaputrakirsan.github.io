@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { motion, useScroll, useTransform, useReducedMotion, useMotionValue, useSpring, useMotionTemplate, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { FiArrowDownRight, FiMail, FiCode, FiBookOpen, FiCpu, FiWifi, FiSearch, FiMonitor, FiUsers, FiZap } from 'react-icons/fi';
+import { FiArrowDownRight, FiCode, FiBookOpen, FiCpu, FiWifi, FiSearch, FiMonitor, FiUsers, FiZap } from 'react-icons/fi';
 import Counter from '../ui/Counter';
 import Marquee from '../ui/Marquee';
-import { projectsData } from '../../data/projects';
-import { yearsOfExperience, currentProjects, currentRoles } from '../../data/site';
+import { liveProducts } from '../../data/products';
+import { yearsOfExperience, currentRoles, publicationCount } from '../../data/site';
 
 // Soft / Warm Hero — light, fast, mobile-friendly, lots of gentle motion.
 function HeroSoft() {
@@ -67,10 +67,11 @@ function HeroSoft() {
   ];
 
   const roles = [
-    { label: 'Full-Stack Developer', Icon: FiCode },
+    { label: 'Founder · Myst Tech', Icon: FiZap },
+    { label: 'AI Product Engineer', Icon: FiCpu },
     { label: 'Information System Lecturer', Icon: FiBookOpen },
+    { label: 'Full-Stack Developer', Icon: FiCode },
     { label: 'Digital Innovation Lab Head', Icon: FiZap },
-    { label: 'AI Enthusiast', Icon: FiCpu },
     { label: 'IoT Engineer', Icon: FiWifi },
     { label: 'Researcher', Icon: FiSearch },
     { label: 'Tech Educator', Icon: FiMonitor },
@@ -144,8 +145,8 @@ function HeroSoft() {
             </motion.h1>
 
             <motion.p variants={item} className="mt-6 max-w-xl font-body text-lg md:text-xl text-warmMuted leading-relaxed">
-              Full-Stack Developer & Information System Lecturer. I build dynamic,
-              intelligent, and scalable digital products — and teach the next
+              Founder of Myst Tech & Information System Lecturer. I build AI products
+              for Indonesian teachers, lecturers, and students — and teach the next
               generation of IT professionals.
             </motion.p>
 
@@ -160,12 +161,12 @@ function HeroSoft() {
                 <FiArrowDownRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
               </motion.a>
               <motion.a
-                href="#contact"
+                href="/"
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center gap-2 rounded-full border border-warmLine bg-warmCard px-7 py-3.5 font-body font-semibold text-warmInk hover:border-warmPeach hover:text-warmPeach"
               >
-                <FiMail /> Get in touch
+                <img src="/myst-mark.svg" alt="" className="h-5 w-5" /> Myst Tech apps
               </motion.a>
             </motion.div>
 
@@ -173,8 +174,8 @@ function HeroSoft() {
             <motion.div variants={item} className="mt-12 flex flex-wrap gap-x-10 gap-y-4">
               {[
                 { n: yearsOfExperience(), s: '+', l: 'Years experience' },
-                { n: projectsData.length, s: '+', l: 'Projects shipped' },
-                { n: currentProjects().length, s: '', l: 'Products in build' },
+                { n: liveProducts().length, s: '', l: 'Live AI & SaaS products' },
+                { n: publicationCount(), s: '', l: 'Publications' },
               ].map((x) => (
                 <div key={x.l}>
                   <div className="font-display text-3xl font-bold text-warmInk">

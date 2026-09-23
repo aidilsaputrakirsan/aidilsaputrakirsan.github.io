@@ -1,11 +1,11 @@
-// Entry for / — Myst Tech hub (see index.html)
+// Entry for /aidil/ — founder profile page (see aidil/index.html)
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import HubApp from './HubApp.jsx';
+import App from './App.jsx';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <HubApp />
+    <App />
   </React.StrictMode>,
 );

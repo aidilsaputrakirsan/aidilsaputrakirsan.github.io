@@ -3,16 +3,30 @@
 Guidance for any AI/new chat working on this repo. Read this first.
 
 ## What this is
-Personal portfolio / company-profile site for **Aidil Saputra Kirsan** (Full-Stack
-Developer & Information System Lecturer, Balikpapan). React + Vite + Tailwind +
-Framer Motion. Deployed to GitHub Pages (`npm run deploy`).
+**myst-tech.com** — the "one gate" hub for every Myst Tech app (GuruPintar,
+SkripsiPintar, Asdos-AI, Sistem Manajemen RT, …) plus the founder profile of
+**Aidil Saputra Kirsan** (Founder of Myst Tech, AI product engineer & Information
+System Lecturer, Balikpapan). React + Vite + Tailwind + Framer Motion + three.js.
+Deployed to GitHub Pages (`npm run deploy`).
 
-## Active design = "Soft / Warm" (light theme)
+## Two pages (Vite multi-page, no router)
+| URL | HTML | Entry | Root component | Language |
+|---|---|---|---|---|
+| `/` | [index.html](index.html) | [src/main.jsx](src/main.jsx) | [src/HubApp.jsx](src/HubApp.jsx) — Myst Tech hub | Bahasa Indonesia |
+| `/aidil/` | [aidil/index.html](aidil/index.html) | [src/main-profile.jsx](src/main-profile.jsx) | [src/App.jsx](src/App.jsx) — founder profile + CV | English |
+
+Both are listed in `build.rollupOptions.input` in [vite.config.js](vite.config.js);
+GitHub Pages serves `/aidil/index.html` natively. Hub sections live in
+[src/components/hub/](src/components/hub/) (Hero with 3D orbit → Aplikasi launcher →
+Myst-Core → Founder → Kontak). `NavbarSoft`/`FooterSoft` are shared and take props
+(`links`, `brand`, `cta`, `back`, `labels`).
+
+## Active design = "Soft / Warm" (light + warm-dark theme)
 The site was redesigned. The current live design is the **Soft/Warm** light theme.
 The original dark theme is **kept for rollback, not used**.
 
-- Toggle lives in [src/App.jsx](src/App.jsx): `const USE_SOFT = true`.
-  - `true` → new Soft/Warm site (Navbar/Hero/About/Skills/Experience/Projects/Contact/Footer + CV).
+- Toggle lives in [src/App.jsx](src/App.jsx) (profile page): `const USE_SOFT = true`.
+  - `true` → Soft/Warm profile (Navbar/Hero/About/Skills/Research/Experience/Projects/Contact/Footer + CV).
   - `false` → original dark site (old components).
 - New components are suffixed **`*Soft`** (e.g. `HeroSoft.jsx`). Old ones have no suffix.
 - **When editing the live site, edit the `*Soft` components**, not the old ones.
@@ -24,7 +38,9 @@ All real content lives in [src/data/](src/data/). Change data → UI + CV update
 
 | Content | File |
 |---|---|
-| Projects | [src/data/projects.js](src/data/projects.js) |
+| **Myst apps (hub launcher, 3D orbit, CV)** | [src/data/products.js](src/data/products.js) |
+| Research, publications, grants, pengabdian, teaching | [src/data/research.js](src/data/research.js) |
+| Works / client & campus systems | [src/data/projects.js](src/data/projects.js) |
 | Work experience | [src/data/experience.js](src/data/experience.js) |
 | Education | [src/data/education.js](src/data/education.js) |
 | Achievements/certs | [src/data/achievements.js](src/data/achievements.js) |
@@ -36,8 +52,9 @@ or a "currently working on" list again** — use these helpers:
 
 - `yearsOfExperience()` = current year − `CAREER_START_YEAR` (2020). Used in Hero stats,
   About paragraph, Skills subtitle, and CV profile.
-- `currentProjects()` = projects whose `year` === the **current calendar year**. This is
-  what powers "Currently working on …" (About) and "Products in build" (Hero).
+- `currentProjects()` = products + projects whose `year` === the **current calendar year**.
+  Powers "Currently working on …" (About).
+- `publicationCount()` = `publications.length` (hero/founder stats); `shippedCount()`.
 - `currentRoles()` = experience entries whose `period` contains "Present". Powers the
   **rotating badge on the hero photo** — add/end a role in `experience.js` and the badge
   follows automatically. Give entries an optional `shortTitle`/`shortCompany` so the
@@ -47,10 +64,27 @@ or a "currently working on" list again** — use these helpers:
 Implication: a project shows up under "currently working on" **only if its `year`
 matches the current year**. If an older project is still active, bump its `year`.
 
-## HOW TO: add a new project (most common task)
-1. Put the image in [public/images/projects/](public/images/projects/) (e.g. `myproject.png`).
-   Compress large images (<~500KB). Cards use `object-contain`, so the full image shows
-   (no crop); odd aspect ratios get letterboxed — that's expected.
+## HOW TO: add a new Myst app (most common task)
+Add one entry to `productsData` in [src/data/products.js](src/data/products.js) (field
+docs are at the top of that file): `id`, `title`, `tagline`, `pitch` (ID), `description`
+(EN, for profile/CV), `audience` (+ `audienceLabel`), `features`, `url`, `poster`,
+`color` (brand hex), `icon` (key from [productIcons.js](src/components/hub/productIcons.js)),
+`status: 'live' | 'building'`, `poweredByCore`, `ai`, `year`, `technologies`.
+Nothing else to wire: the hub hero badge + quick-launch chips + marquee, the 3D orbit
+(new planet in the app's color; `poweredByCore` adds a beam to the core), the launcher
+cards + audience filter, the Myst-Core diagram, the footer, the profile page's
+"Products I run" strip, Skills "AI Product Engineering" count and the CV all update.
+Put posters in `public/images/projects/` (compress, <~500KB). Not released yet →
+`status: 'building'`, `url: ''`, `poster: null`.
+
+## HOW TO: add a publication / research / pengabdian
+Add to `publications`, `researchGrants` or `communityService` in
+[src/data/research.js](src/data/research.js). Newest first. The profile Research
+section, counters and the CV "Publications" list update automatically. Entries with
+`verify: true` were collected from public indexes and still need checking.
+
+## HOW TO: add a work / project (non-Myst system)
+1. Optional image in [public/images/projects/](public/images/projects/) (only shown in the detail modal).
 2. Add an entry at the **top** of `projectsData` in [src/data/projects.js](src/data/projects.js):
    ```js
    {
@@ -62,31 +96,25 @@ matches the current year**. If an older project is still active, bump its `year`
      category: "web",        // one of: web | mobile | iot | other
      demoLink: "#",
      codeLink: "#",          // GitHub URL or "#"
-     year: "2026",           // current year => counts as "currently working on"
+     year: "2026",
+     location: "Balikpapan, Indonesia",
+     internal: true,         // optional: "Internal system" chip
    }
    ```
-3. Nothing else to wire. Hero "Projects shipped" count, the Projects section + filter,
-   the "currently working on" text, and the CV "Selected Projects" all update automatically.
+It shows in the profile's "Selected works" list (+ filter), Skills domain counts and
+the CV "Selected Projects" (top 8).
 
-### Portfolio section layout (two tiers)
-[ProjectsSoft.jsx](src/components/sections/ProjectsSoft.jsx) renders projects in two tiers:
-- **"Products"** — entries with `featured: true`: big poster card (portrait poster in
-  `public/images/projects/`, e.g. `poster-rt.jpeg`) + live link. Extra fields:
-  `status: "live" | "building"` (badge), `tagline` (short line under the title),
-  and `demoLink` = the real public URL. Poster click opens the raw image in a new
-  tab (products don't use the detail modal).
-  If the poster isn't ready yet, set `image: null` — the card renders a monogram
-  panel instead (drop the poster in later and just fill `image`). No demo/code link
-  → the card shows a "Launching soon" pill (used while `status: "building"`).
-- **"Selected works"** — everything else: compact image-free list rows (the `image`
-  field is only shown in the detail modal). `internal: true` shows an
-  "Internal system" chip explaining why there's no public demo.
-- Tech-stack chips are deliberately **not** shown on cards/list rows (too noisy) —
-  `technologies` still matters: it feeds the detail modal's "Built with" and the CV.
-
-**To add a new product later:** add one entry at the top of `projectsData` with
-`featured: true`, `status`, `tagline`, real `demoLink`, and a poster (or `image: null`
-until it's ready). Everything else (Hero stats, "currently working on", CV) follows.
+## 3D orbit (hub hero)
+- [src/components/three/MystOrbit.jsx](src/components/three/MystOrbit.jsx) (React wrapper, DOM
+  labels, static fallback) lazy-imports
+  [createOrbitScene.js](src/components/three/createOrbitScene.js) (plain three.js, no R3F)
+  after first paint → separate ~130KB-gzip chunk that never blocks the page.
+- Myst-Core = the core sphere; AI apps (`poweredByCore`) orbit the inner ring with
+  beams + request "packets"; other apps on the outer ring. Colors follow `products.js`
+  and the light/dark theme (reads the `--warm-*` CSS vars).
+- Pauses off-screen / in hidden tabs; `prefers-reduced-motion` → static, render-on-demand.
+  No WebGL → the static CSS fallback stays. Keep it light: no textures/GLB unless
+  compressed and small.
 
 ## CV (Download CV)
 - Built from the same data files — [src/components/cv/CvDocument.jsx](src/components/cv/CvDocument.jsx).
@@ -95,9 +123,10 @@ until it's ready). Everything else (Hero stats, "currently working on", CV) foll
 - Print CSS in [src/index.css](src/index.css): hides `#root`, shows only `#cv-overlay`/`#cv-print`.
   (Don't revert to `visibility:hidden` — it caused many blank pages.)
 - Hand-written bits in `CvDocument.jsx` (not from data): the `profile` paragraph,
-  `skillGroups`, and `contacts`. The website URL there is `myst-tech.com`.
-- CV currently spans ~2 pages by choice (bigger font/spacing). Selected Projects shows the
-  top 10 (`projectsData.slice(0, 10)`).
+  `skillGroups` (AI Engineering first), and `contacts`. Website there: `myst-tech.com/aidil`.
+- Sections from data: Experience, Education, Products (live apps from products.js),
+  Selected Projects (`projectsData.slice(0, 8)`), Publications, Achievements.
+- CvModal is mounted on both pages (hub "Unduh CV" works too).
 
 ## Marquees (the moving text strips)
 - Hero (first): **roles** with Feather icons — text identity. In [HeroSoft.jsx](src/components/sections/HeroSoft.jsx).

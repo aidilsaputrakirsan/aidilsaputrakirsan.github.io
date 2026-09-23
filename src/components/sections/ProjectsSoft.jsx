@@ -1,19 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiGithub, FiArrowUpRight, FiMapPin, FiExternalLink, FiLock, FiCalendar } from 'react-icons/fi';
+import { FiGithub, FiArrowUpRight, FiMapPin, FiLock } from 'react-icons/fi';
 import { projectsData, categories } from '../../data/projects';
+import { productsData as products } from '../../data/products';
+import { productIcon } from '../hub/productIcons';
 import ProjectModalSoft from './ProjectModalSoft';
 
-// Featured products (featured: true in projects.js) get big poster cards with a
-// live link; everything else renders as a compact image-free works list.
-const products = projectsData.filter((p) => p.featured);
-const works = projectsData.filter((p) => !p.featured);
-
-const statusBadge = {
-  live: { label: 'Live', dot: 'bg-emerald-500', text: 'text-emerald-700', bg: 'bg-emerald-50 ring-emerald-200' },
-  building: { label: 'In development', dot: 'bg-amber-500', text: 'text-amber-700', bg: 'bg-amber-50 ring-amber-200' },
-};
+// Myst products (products.js) render as a compact strip linking to each app;
+// works (projects.js) render as a compact image-free list with a detail modal.
+const works = projectsData;
 
 function ProjectsSoft() {
   const [filter, setFilter] = useState('all');
@@ -39,100 +35,52 @@ function ProjectsSoft() {
           transition={{ duration: 0.6 }}
         >
           <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">Portfolio</span>
-          <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight">Products</h2>
-          <p className="mt-3 max-w-xl font-body text-warmMuted leading-relaxed">
-            Ready-to-use platforms I build and run — live, public, and open to try.
-          </p>
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight">Products I run</h2>
+              <p className="mt-3 max-w-xl font-body text-warmMuted leading-relaxed">
+                Live platforms under Myst Tech — public, and open to try.
+              </p>
+            </div>
+            <a href="/#produk" className="inline-flex items-center gap-1 font-body text-sm font-semibold text-warmPeach hover:underline">
+              All apps at myst-tech.com <FiArrowUpRight />
+            </a>
+          </div>
         </motion.div>
 
-        {/* Featured product cards */}
-        <div className="mt-12 flex flex-col gap-8">
+        {/* Myst products — compact strip; the full launcher lives on the hub */}
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((p, i) => {
-            const badge = statusBadge[p.status] ?? statusBadge.live;
-            const demo = p.demoLink && p.demoLink !== '#' ? p.demoLink : null;
+            const Icon = productIcon(p.icon);
+            const live = p.status === 'live' && p.url;
+            const Tag = live ? motion.a : motion.div;
             return (
-              <motion.article
+              <Tag
                 key={p.id}
-                initial={{ opacity: 0, y: 32 }}
+                {...(live ? { href: p.url, target: '_blank', rel: 'noreferrer' } : {})}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="grid overflow-hidden rounded-3xl border border-warmLine bg-warmCard shadow-soft md:grid-cols-[minmax(0,380px)_1fr]"
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, delay: i * 0.06 }}
+                className={`group flex items-center gap-4 rounded-2xl border bg-warmCard p-4 shadow-soft transition-all duration-300 ${
+                  live ? 'border-warmLine hover:-translate-y-1 hover:shadow-soft-lg' : 'border-dashed border-warmLine'
+                }`}
               >
-                {p.image ? (
-                  // Poster opens the raw image in a new tab (no modal for products).
-                  <a
-                    href={p.image}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`Open ${p.title} poster in a new tab`}
-                    className="group relative bg-gradient-to-br from-warmPeachSoft to-warmSageSoft p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-warmPeach"
-                  >
-                    <img
-                      src={p.image}
-                      alt={`${p.title} poster`}
-                      loading="lazy"
-                      className="mx-auto max-h-[420px] w-full rounded-2xl object-contain shadow-soft transition-transform duration-500 group-hover:scale-[1.02]"
-                    />
-                    <span className="absolute bottom-6 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 rounded-full bg-warmInk/80 px-3 py-1 font-body text-xs font-semibold text-warmBg opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
-                      <FiExternalLink /> Open poster in new tab
-                    </span>
-                  </a>
-                ) : (
-                  // No poster yet — monogram panel keeps the card balanced.
-                  <div className="flex min-h-[220px] items-center justify-center bg-gradient-to-br from-warmPeachSoft to-warmSageSoft p-4 md:min-h-[320px]">
-                    <div className="text-center">
-                      <span className="font-display text-6xl font-bold text-warmInk/20 md:text-7xl">
-                        {p.title.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase()}
-                      </span>
-                      <p className="mt-2 font-body text-xs font-semibold uppercase tracking-widest text-warmMuted">{p.title}</p>
-                    </div>
+                <span
+                  className={`inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl text-white transition-transform duration-500 group-hover:rotate-[-6deg] ${live ? '' : 'opacity-60'}`}
+                  style={{ background: p.color, boxShadow: `0 12px 28px -12px ${p.color}` }}
+                >
+                  <Icon />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <h3 className="truncate font-display text-base font-bold">{p.title}</h3>
+                    <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${live ? 'bg-emerald-500' : 'bg-amber-500'}`} title={live ? 'Live' : 'In development'} />
                   </div>
-                )}
-
-                <div className="flex flex-col justify-center p-7 md:p-10">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-body text-xs font-bold ring-1 ${badge.bg} ${badge.text}`}>
-                      <span className={`h-1.5 w-1.5 rounded-full ${badge.dot}`} /> {badge.label}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-warmBg px-3 py-1 font-body text-xs font-semibold text-warmMuted">
-                      <FiCalendar /> {p.year}
-                    </span>
-                  </div>
-
-                  <h3 className="mt-4 font-display text-2xl md:text-3xl font-bold tracking-tight">{p.title}</h3>
-                  {p.tagline && <p className="mt-1 font-body text-sm font-semibold text-warmPeach">{p.tagline}</p>}
-                  <p className="mt-3 font-body text-sm md:text-base text-warmMuted leading-relaxed">{p.description}</p>
-
-                  <div className="mt-7 flex flex-wrap gap-3">
-                    {demo && (
-                      <a
-                        href={demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-warmInk px-6 py-3 font-body text-sm font-semibold text-warmBg shadow-soft transition-transform hover:-translate-y-0.5"
-                      >
-                        <FiExternalLink /> Visit site
-                      </a>
-                    )}
-                    {p.codeLink && p.codeLink !== '#' && (
-                      <a
-                        href={p.codeLink}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-warmLine bg-warmCard px-6 py-3 font-body text-sm font-semibold text-warmInk transition-colors hover:border-warmPeach hover:text-warmPeach"
-                      >
-                        <FiGithub /> Source code
-                      </a>
-                    )}
-                    {!demo && (!p.codeLink || p.codeLink === '#') && (
-                      <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-warmLine px-6 py-3 font-body text-sm font-semibold text-warmMuted">
-                        Launching soon
-                      </span>
-                    )}
-                  </div>
+                  <p className="truncate font-body text-sm text-warmMuted">{live ? p.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'Coming soon'}</p>
                 </div>
-              </motion.article>
+                {live && <FiArrowUpRight className="shrink-0 text-warmMuted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-warmPeach" />}
+              </Tag>
             );
           })}
         </div>
