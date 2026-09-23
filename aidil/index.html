@@ -14,9 +14,10 @@
     <meta property="og:type" content="profile" />
     <meta property="og:url" content="https://myst-tech.com/aidil/" />
     <meta property="og:image" content="https://myst-tech.com/FAidil.png" />
-    <!-- Apply saved/system theme before first paint to avoid a flash -->
+    <!-- Apply saved theme + language before first paint to avoid a flash -->
     <script>
       (function () {
+        try { var l = localStorage.getItem('lang'); if (l === 'id' || l === 'en') document.documentElement.lang = l; } catch (e) {}
         var t = localStorage.getItem('theme');
         if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark');

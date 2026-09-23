@@ -3,29 +3,42 @@ import { motion } from 'framer-motion';
 import { FiArrowUpRight, FiLayers, FiUserCheck, FiActivity, FiShield, FiInfo } from 'react-icons/fi';
 import { productIcon } from './productIcons';
 import { productsData, mystCore } from '../../data/products';
+import { useLang } from '../../i18n/LangContext';
 
 const coreApps = productsData.filter((p) => p.poweredByCore);
 
 const principles = [
   {
     Icon: FiLayers,
-    title: 'Aplikasi meminta tier, bukan nama model',
-    desc: 'Mengganti model di belakang layar tidak menyentuh satu baris pun kode fitur.',
+    title: { en: 'Apps ask for a tier, not a model name', id: 'Aplikasi meminta tier, bukan nama model' },
+    desc: {
+      en: 'Swapping the model behind the scenes never touches a single line of feature code.',
+      id: 'Mengganti model di belakang layar tidak menyentuh satu baris pun kode fitur.',
+    },
   },
   {
     Icon: FiUserCheck,
-    title: 'Setiap output adalah draf',
-    desc: 'Tidak ada jalur dari jawaban AI ke keputusan final tanpa manusia di antaranya.',
+    title: { en: 'Every output is a draft', id: 'Setiap output adalah draf' },
+    desc: {
+      en: "There is no path from an AI answer to a final decision without a human in between.",
+      id: 'Tidak ada jalur dari jawaban AI ke keputusan final tanpa manusia di antaranya.',
+    },
   },
   {
     Icon: FiActivity,
-    title: 'Pemakaian tercatat, tanpa mengganggu',
-    desc: 'Setiap panggilan dicatat per fitur — dan kegagalan mencatat tidak pernah menggagalkan jawaban.',
+    title: { en: 'Usage is metered, never in the way', id: 'Pemakaian tercatat, tanpa mengganggu' },
+    desc: {
+      en: 'Every call is logged per feature — and a failed log never fails the answer.',
+      id: 'Setiap panggilan dicatat per fitur — dan kegagalan mencatat tidak pernah menggagalkan jawaban.',
+    },
   },
   {
     Icon: FiShield,
-    title: 'Sandbox tanpa jaringan',
-    desc: 'Mode uji yang tidak menyentuh mesin AI sama sekali, untuk pengembangan yang aman.',
+    title: { en: 'Offline sandbox', id: 'Sandbox tanpa jaringan' },
+    desc: {
+      en: 'A test mode that never touches an AI engine — for safe development.',
+      id: 'Mode uji yang tidak menyentuh mesin AI sama sekali, untuk pengembangan yang aman.',
+    },
   },
 ];
 
@@ -52,17 +65,20 @@ const reveal = {
 };
 
 function CoreHub() {
+  const { t } = useLang();
   return (
     <section id="core" className="relative overflow-hidden bg-warmCard py-24 text-warmInk md:py-32">
       <div className="container mx-auto max-w-[1200px] px-6">
         <motion.div {...reveal} transition={{ duration: 0.6 }} className="max-w-2xl">
-          <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">Di balik layar</span>
+          <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">{t({ en: 'Behind the scenes', id: 'Di balik layar' })}</span>
           <h2 className="mt-3 font-display text-4xl font-bold tracking-tight md:text-5xl">
-            Myst-Core: satu lapisan AI untuk semua aplikasi.
+            {t({ en: 'Myst-Core: one AI layer for every app.', id: 'Myst-Core: satu lapisan AI untuk semua aplikasi.' })}
           </h2>
           <p className="mt-5 font-body text-lg leading-relaxed text-warmMuted">
-            Aplikasi Myst Tech tidak berbicara langsung dengan mesin AI mana pun. Semuanya lewat Myst-Core —
-            gateway privat yang mengatur pemilihan model, prompt, pencatatan pemakaian, dan mode uji.
+            {t({
+              en: "Myst Tech apps never talk to an AI engine directly. Everything goes through Myst-Core — a private gateway that handles model selection, prompts, usage metering, and test mode.",
+              id: 'Aplikasi Myst Tech tidak berbicara langsung dengan mesin AI mana pun. Semuanya lewat Myst-Core — gateway privat yang mengatur pemilihan model, prompt, pencatatan pemakaian, dan mode uji.',
+            })}
           </p>
         </motion.div>
 
@@ -70,7 +86,7 @@ function CoreHub() {
         <div className="mt-14 grid grid-cols-1 items-stretch lg:grid-cols-[1fr_auto_1.3fr_auto_1fr]">
           {/* Apps */}
           <motion.div {...reveal} transition={{ duration: 0.5 }} className="rounded-3xl border border-warmLine bg-warmBg p-6">
-            <p className="font-body text-xs font-semibold uppercase tracking-widest text-warmMuted">Aplikasi</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest text-warmMuted">{t({ en: 'Apps', id: 'Aplikasi' })}</p>
             <ul className="mt-4 space-y-2.5">
               {coreApps.map((p) => {
                 const Icon = productIcon(p.icon);
@@ -80,7 +96,7 @@ function CoreHub() {
                       <Icon />
                     </span>
                     <span className="font-body text-sm font-semibold">{p.title}</span>
-                    {p.status !== 'live' && <span className="ml-auto font-body text-[10px] uppercase tracking-wide text-warmMuted">segera</span>}
+                    {p.status !== 'live' && <span className="ml-auto font-body text-[10px] uppercase tracking-wide text-warmMuted">{t({ en: 'soon', id: 'segera' })}</span>}
                   </li>
                 );
               })}
@@ -107,23 +123,23 @@ function CoreHub() {
                 </span>
                 <div>
                   <p className="font-display text-xl font-bold">Myst-Core</p>
-                  <p className="font-body text-xs opacity-70">gateway · perutean tier · metering</p>
+                  <p className="font-body text-xs opacity-70">{t({ en: 'gateway · tier routing · metering', id: 'gateway · perutean tier · metering' })}</p>
                 </div>
               </div>
 
               <div className="mt-6 space-y-2">
-                {mystCore.tiers.map((t) => (
-                  <div key={t.id} className="flex items-center justify-between gap-3 rounded-2xl bg-warmBg/10 px-4 py-2.5">
-                    <code className="font-mono text-sm font-semibold text-warmPeach">{t.id}</code>
-                    <span className="text-right font-body text-xs opacity-80">{t.desc}</span>
+                {mystCore.tiers.map((tier) => (
+                  <div key={tier.id} className="flex items-center justify-between gap-3 rounded-2xl bg-warmBg/10 px-4 py-2.5">
+                    <code className="shrink-0 whitespace-nowrap font-mono text-sm font-semibold text-warmPeach">{tier.id}</code>
+                    <span className="text-right font-body text-xs opacity-80">{t(tier.desc)}</span>
                   </div>
                 ))}
               </div>
 
               <div className="mt-5 flex flex-wrap gap-1.5">
                 {mystCore.capabilities.map((c) => (
-                  <span key={c} className="rounded-full border border-warmBg/20 px-2.5 py-1 font-body text-[11px] font-medium opacity-90">
-                    {c}
+                  <span key={c.en} className="rounded-full border border-warmBg/20 px-2.5 py-1 font-body text-[11px] font-medium opacity-90">
+                    {t(c)}
                   </span>
                 ))}
               </div>
@@ -134,21 +150,24 @@ function CoreHub() {
 
           {/* Inference engines — deliberately unnamed */}
           <motion.div {...reveal} transition={{ duration: 0.5, delay: 0.2 }} className="rounded-3xl border border-warmLine bg-warmBg p-6">
-            <p className="font-body text-xs font-semibold uppercase tracking-widest text-warmMuted">Mesin inferensi</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest text-warmMuted">{t({ en: 'Inference engines', id: 'Mesin inferensi' })}</p>
             <div className="mt-4 space-y-2.5">
-              {['Model utama', 'Cadangan', 'Cadangan'].map((m, i) => (
+              {[t({ en: 'Primary model', id: 'Model utama' }), t({ en: 'Backup', id: 'Cadangan' }), t({ en: 'Backup', id: 'Cadangan' })].map((m, i) => (
                 <div
                   key={i}
                   className={`flex items-center gap-3 rounded-2xl px-3 py-2.5 ${i === 0 ? 'bg-warmCard shadow-soft' : 'border border-dashed border-warmLine'}`}
                 >
                   <span className={`h-2.5 w-2.5 rounded-full ${i === 0 ? 'bg-emerald-500' : 'bg-warmLine'}`} />
                   <span className="font-body text-sm font-semibold">{m}</span>
-                  <span className="ml-auto font-body text-[10px] uppercase tracking-wide text-warmMuted">{i === 0 ? 'dicoba dulu' : `fallback ${i}`}</span>
+                  <span className="ml-auto font-body text-[10px] uppercase tracking-wide text-warmMuted">{i === 0 ? t({ en: 'tried first', id: 'dicoba dulu' }) : `fallback ${i}`}</span>
                 </div>
               ))}
             </div>
             <p className="mt-4 font-body text-xs leading-relaxed text-warmMuted">
-              Bila satu mesin penuh, permintaan otomatis pindah ke cadangan berikutnya. Susunan mesin adalah detail operasional yang tidak dipublikasikan.
+              {t({
+                en: 'When one engine is at capacity, requests move to the next backup automatically. The engine lineup is an operational detail we don’t publish.',
+                id: 'Bila satu mesin penuh, permintaan otomatis pindah ke cadangan berikutnya. Susunan mesin adalah detail operasional yang tidak dipublikasikan.',
+              })}
             </p>
           </motion.div>
         </div>
@@ -157,7 +176,7 @@ function CoreHub() {
         <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {principles.map(({ Icon, title, desc }, i) => (
             <motion.div
-              key={title}
+              key={title.en}
               {...reveal}
               transition={{ duration: 0.5, delay: i * 0.07 }}
               className="rounded-3xl border border-warmLine bg-warmBg p-6"
@@ -165,8 +184,8 @@ function CoreHub() {
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-warmPeachSoft text-lg text-warmPeach">
                 <Icon />
               </span>
-              <h3 className="mt-4 font-display text-base font-bold leading-snug">{title}</h3>
-              <p className="mt-2 font-body text-sm leading-relaxed text-warmMuted">{desc}</p>
+              <h3 className="mt-4 font-display text-base font-bold leading-snug">{t(title)}</h3>
+              <p className="mt-2 font-body text-sm leading-relaxed text-warmMuted">{t(desc)}</p>
             </motion.div>
           ))}
         </div>
@@ -179,8 +198,11 @@ function CoreHub() {
           <p className="flex items-start gap-2.5 font-body text-sm leading-relaxed text-warmMuted">
             <FiInfo className="mt-0.5 shrink-0 text-warmPeach" />
             <span>
-              <span className="font-semibold text-warmInk">Yang tidak kami klaim:</span> Myst-Core bukan model bahasa yang kami latih sendiri —
-              ia platform inferensi di atas mesin model.
+              <span className="font-semibold text-warmInk">{t({ en: 'What we don’t claim:', id: 'Yang tidak kami klaim:' })}</span>{' '}
+              {t({
+                en: 'Myst-Core is not a language model we trained ourselves — it is an inference platform on top of model engines.',
+                id: 'Myst-Core bukan model bahasa yang kami latih sendiri — ia platform inferensi di atas mesin model.',
+              })}
             </span>
           </p>
           <a
@@ -189,7 +211,7 @@ function CoreHub() {
             rel="noreferrer"
             className="inline-flex shrink-0 items-center gap-2 self-start rounded-full bg-warmInk px-5 py-2.5 font-body text-sm font-semibold text-warmBg transition-transform hover:-translate-y-0.5 sm:self-auto"
           >
-            Dokumentasi Myst-Core <FiArrowUpRight />
+            {t({ en: 'Myst-Core docs', id: 'Dokumentasi Myst-Core' })} <FiArrowUpRight />
           </a>
         </motion.div>
       </div>

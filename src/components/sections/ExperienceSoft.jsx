@@ -5,11 +5,12 @@ import { FiBriefcase, FiBookOpen, FiAward } from 'react-icons/fi';
 import { experienceData } from '../../data/experience';
 import { educationData } from '../../data/education';
 import { achievementsData } from '../../data/achievements';
+import { useLang } from '../../i18n/LangContext';
 
 const tabs = [
-  { id: 'experience', label: 'Experience', icon: FiBriefcase, accent: '#E8835A' },
-  { id: 'education', label: 'Education', icon: FiBookOpen, accent: '#7BA7C9' },
-  { id: 'achievements', label: 'Achievements', icon: FiAward, accent: '#7FA887' },
+  { id: 'experience', label: { en: 'Experience', id: 'Pengalaman' }, icon: FiBriefcase, accent: '#E8835A' },
+  { id: 'education', label: { en: 'Education', id: 'Pendidikan' }, icon: FiBookOpen, accent: '#7BA7C9' },
+  { id: 'achievements', label: { en: 'Achievements', id: 'Prestasi' }, icon: FiAward, accent: '#7FA887' },
 ];
 
 function row(item, type) {
@@ -19,8 +20,9 @@ function row(item, type) {
 }
 
 function ExperienceSoft() {
+  const { t, lang } = useLang();
   const [active, setActive] = useState('experience');
-  const accent = tabs.find((t) => t.id === active).accent;
+  const accent = tabs.find((tab) => tab.id === active).accent;
   const data = active === 'experience' ? experienceData : active === 'education' ? educationData : achievementsData;
 
   // Timeline line fills in as it scrolls through the viewport
@@ -37,26 +39,26 @@ function ExperienceSoft() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
         >
-          <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">Journey</span>
-          <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight">Background</h2>
+          <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">{t({ en: 'Journey', id: 'Perjalanan' })}</span>
+          <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight">{t({ en: 'Background', id: 'Latar belakang' })}</h2>
         </motion.div>
 
         {/* Tabs */}
         <div className="mt-10 flex flex-wrap gap-3">
-          {tabs.map((t) => {
-            const on = active === t.id;
+          {tabs.map((tab) => {
+            const on = active === tab.id;
             return (
               <button
-                key={t.id}
-                onClick={() => setActive(t.id)}
+                key={tab.id}
+                onClick={() => setActive(tab.id)}
                 className={`relative inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-body text-sm font-semibold transition-colors ${
                   on ? 'text-warmBg' : 'text-warmMuted hover:text-warmInk'
                 }`}
               >
                 {on && (
-                  <motion.span layoutId="tabPill" className="absolute inset-0 rounded-full" style={{ backgroundColor: t.accent }} transition={{ type: 'spring', stiffness: 400, damping: 32 }} />
+                  <motion.span layoutId="tabPill" className="absolute inset-0 rounded-full" style={{ backgroundColor: tab.accent }} transition={{ type: 'spring', stiffness: 400, damping: 32 }} />
                 )}
-                <span className="relative z-10 flex items-center gap-2"><t.icon /> {t.label}</span>
+                <span className="relative z-10 flex items-center gap-2"><tab.icon /> {t(tab.label)}</span>
               </button>
             );
           })}
@@ -82,10 +84,12 @@ function ExperienceSoft() {
                     className="relative"
                   >
                     <span className="absolute -left-[39px] top-1 h-4 w-4 rounded-full ring-4 ring-warmCard" style={{ backgroundColor: accent }} />
-                    <span className="font-body text-xs font-bold uppercase tracking-widest" style={{ color: accent }}>{it.period}</span>
-                    <h3 className="mt-1 font-display text-xl md:text-2xl font-bold">{it.title}</h3>
+                    <span className="font-body text-xs font-bold uppercase tracking-widest" style={{ color: accent }}>
+                      {lang === 'id' ? String(it.period).replace('Present', 'Sekarang') : it.period}
+                    </span>
+                    <h3 className="mt-1 font-display text-xl md:text-2xl font-bold">{t(it.title)}</h3>
                     <span className="font-body text-warmMuted">{it.sub}</span>
-                    <p className="mt-3 max-w-2xl font-body text-warmMuted leading-relaxed">{it.desc}</p>
+                    <p className="mt-3 max-w-2xl font-body text-warmMuted leading-relaxed">{t(it.desc)}</p>
                   </motion.div>
                 );
               })}

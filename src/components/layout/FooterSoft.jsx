@@ -1,5 +1,6 @@
 import { FiGithub, FiLinkedin, FiArrowUp, FiCoffee } from 'react-icons/fi';
 import VisitorCounter from '../ui/VisitorCounter';
+import { useLang } from '../../i18n/LangContext';
 
 const defaultBrand = (
   <span>
@@ -9,11 +10,12 @@ const defaultBrand = (
 
 function FooterSoft({
   brand = defaultBrand,
-  tagline = 'Founder of Myst Tech & Lecturer · Balikpapan, Indonesia',
-  copyright = 'Aidil Saputra Kirsan. All rights reserved.',
-  coffeeLabel = 'Buy me a coffee',
+  tagline = { en: 'Founder of Myst Tech & Lecturer · Balikpapan, Indonesia', id: 'Founder Myst Tech & Dosen · Balikpapan, Indonesia' },
+  copyright = { en: 'Aidil Saputra Kirsan. All rights reserved.', id: 'Aidil Saputra Kirsan. Hak cipta dilindungi.' },
+  coffeeLabel = { en: 'Buy me a coffee', id: 'Traktir kopi' },
   children = null,
 }) {
+  const { t } = useLang();
   return (
     <footer className="border-t border-warmLine bg-warmBg text-warmInk">
       <div className="container mx-auto px-6 max-w-[1100px] py-12">
@@ -22,15 +24,15 @@ function FooterSoft({
             <a href="#hero" className="inline-flex items-center gap-2 font-display text-xl font-extrabold tracking-tight">
               {brand}
             </a>
-            <p className="mt-1 font-body text-sm text-warmMuted">{tagline}</p>
+            <p className="mt-1 font-body text-sm text-warmMuted">{t(tagline)}</p>
           </div>
 
           <div className="flex items-center gap-3">
             <VisitorCounter />
             <button
               onClick={() => window.dispatchEvent(new CustomEvent('open-support'))}
-              aria-label={coffeeLabel}
-              title={coffeeLabel}
+              aria-label={t(coffeeLabel)}
+              title={t(coffeeLabel)}
               className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-warmLine hover:border-warmPeach hover:text-warmPeach"
             >
               <FiCoffee />
@@ -44,7 +46,7 @@ function FooterSoft({
         {children}
 
         <div className="mt-8 border-t border-warmLine pt-6 text-center font-body text-sm text-warmMuted">
-          © {new Date().getFullYear()} {copyright}
+          © {new Date().getFullYear()} {t(copyright)}
         </div>
       </div>
     </footer>

@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/myst-mark.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Myst Tech — Satu pintu ke semua aplikasi Myst</title>
-    <meta name="description" content="Myst Tech: asisten AI untuk guru, dosen, mahasiswa, dan pengurus RT — GuruPintar, SkripsiPintar, Asdos-AI, Sistem Manajemen RT. Dibangun di Balikpapan, ditenagai Myst-Core." />
+    <title>Myst Tech — One gate to every Myst app</title>
+    <meta name="description" content="Myst Tech: AI assistants for teachers, lecturers, students, and neighborhood officers — GuruPintar, SkripsiPintar, Asdos-AI, Sistem Manajemen RT. Built in Balikpapan, powered by Myst-Core." />
     <meta name="keywords" content="Myst Tech, GuruPintar, SkripsiPintar, Asdos-AI, Sistem Manajemen RT, Myst-Core, AI pendidikan, Aidil Saputra Kirsan" />
     <meta name="author" content="Aidil Saputra Kirsan" />
     <link rel="canonical" href="https://myst-tech.com/" />
-    <meta property="og:title" content="Myst Tech — Satu pintu ke semua aplikasi Myst" />
-    <meta property="og:description" content="Asisten AI untuk guru, dosen, mahasiswa, dan pengurus RT. Dibangun di Balikpapan." />
+    <meta property="og:title" content="Myst Tech — One gate to every Myst app" />
+    <meta property="og:description" content="AI assistants for teachers, lecturers, students, and neighborhood officers. Built in Balikpapan." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://myst-tech.com/" />
     <meta property="og:image" content="https://myst-tech.com/images/projects/poster-gurupintar.jpeg" />
-    <!-- Apply saved/system theme before first paint to avoid a flash -->
+    <!-- Apply saved theme + language before first paint to avoid a flash -->
     <script>
       (function () {
+        try { var l = localStorage.getItem('lang'); if (l === 'id' || l === 'en') document.documentElement.lang = l; } catch (e) {}
         var t = localStorage.getItem('theme');
         if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark');

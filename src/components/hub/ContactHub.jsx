@@ -1,12 +1,14 @@
 /* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion';
 import { FiMail, FiMessageCircle, FiInstagram } from 'react-icons/fi';
+import { useLang } from '../../i18n/LangContext';
 
 // Phone number is the one already printed on every product poster.
 const WHATSAPP = 'https://wa.me/6285398952880';
 const EMAIL = 'aidil@lecturer.itk.ac.id';
 
 function ContactHub() {
+  const { t } = useLang();
   return (
     <section id="kontak" className="bg-warmCard py-20 text-warmInk md:py-28">
       <div className="container mx-auto max-w-[1100px] px-6">
@@ -22,10 +24,15 @@ function ContactHub() {
 
           <div className="relative grid grid-cols-1 items-center gap-10 md:grid-cols-5">
             <div className="md:col-span-3">
-              <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">Kontak</span>
-              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-5xl">Mau coba di sekolah, kampus, atau RT Anda?</h2>
+              <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">{t({ en: 'Contact', id: 'Kontak' })}</span>
+              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-5xl">
+                {t({ en: 'Want to try it at your school, campus, or neighborhood?', id: 'Mau coba di sekolah, kampus, atau RT Anda?' })}
+              </h2>
               <p className="mt-4 max-w-lg font-body text-lg leading-relaxed opacity-80">
-                Demo gratis dan pendampingan awal. Hubungi langsung — biasanya dibalas di hari yang sama.
+                {t({
+                  en: 'Free demo and onboarding help. Reach out directly — usually answered the same day.',
+                  id: 'Demo gratis dan pendampingan awal. Hubungi langsung — biasanya dibalas di hari yang sama.',
+                })}
               </p>
             </div>
             <div className="flex flex-col gap-3 md:col-span-2">

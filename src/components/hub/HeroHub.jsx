@@ -6,9 +6,11 @@ import Marquee from '../ui/Marquee';
 import MystOrbit from '../three/MystOrbit';
 import { productIcon } from './productIcons';
 import { productsData, liveProducts, buildingProducts } from '../../data/products';
+import { useLang } from '../../i18n/LangContext';
 
 // Hub hero: headline + quick launcher on the left, 3D Myst Orbit on the right.
 function HeroHub() {
+  const { t } = useLang();
   const ref = useRef(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
@@ -30,7 +32,7 @@ function HeroHub() {
       <span key={p.id} className="inline-flex items-center gap-3">
         <Icon style={{ color: p.color }} className="text-2xl" />
         {p.title}
-        <span className="font-body text-base font-medium text-warmMuted">{p.tagline}</span>
+        <span className="font-body text-base font-medium text-warmMuted">{t(p.tagline)}</span>
       </span>
     );
   });
@@ -63,16 +65,17 @@ function HeroHub() {
               className="inline-flex items-center gap-2 rounded-full border border-warmLine bg-warmCard/70 px-4 py-1.5 font-body text-sm font-medium text-warmMuted shadow-soft backdrop-blur"
             >
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-              {live.length} aplikasi live{building.length > 0 && ` · ${building.length} segera hadir`}
+              {t({ en: `${live.length} live apps`, id: `${live.length} aplikasi live` })}
+              {building.length > 0 && t({ en: ` · ${building.length} coming soon`, id: ` · ${building.length} segera hadir` })}
             </motion.span>
 
             <motion.h1
               variants={item}
               className="mt-6 font-display text-[2.6rem] font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.1rem]"
             >
-              Satu pintu ke semua aplikasi{' '}
+              {t({ en: 'One gate to all', id: 'Satu pintu ke semua aplikasi' })}{' '}
               <span className="relative inline-block">
-                <span className="relative z-10">Myst Tech.</span>
+                <span className="relative z-10">{t({ en: 'Myst Tech apps.', id: 'Myst Tech.' })}</span>
                 <motion.span
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
@@ -84,9 +87,12 @@ function HeroHub() {
             </motion.h1>
 
             <motion.p variants={item} className="mt-6 max-w-xl font-body text-lg leading-relaxed text-warmMuted md:text-xl">
-              Asisten AI untuk guru, dosen, mahasiswa, dan pengurus RT — dibangun di Balikpapan,
-              ditenagai satu lapisan AI yang sama: <span className="font-semibold text-warmInk">Myst-Core</span>.
-              AI menyiapkan draf, keputusan tetap di tangan Anda.
+              {t({
+                en: 'AI assistants for teachers, lecturers, students, and neighborhood officers — built in Balikpapan, powered by one shared AI layer:',
+                id: 'Asisten AI untuk guru, dosen, mahasiswa, dan pengurus RT — dibangun di Balikpapan, ditenagai satu lapisan AI yang sama:',
+              })}{' '}
+              <span className="font-semibold text-warmInk">Myst-Core</span>.{' '}
+              {t({ en: 'AI drafts, you decide.', id: 'AI menyiapkan draf, keputusan tetap di tangan Anda.' })}
             </motion.p>
 
             <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-4">
@@ -96,7 +102,7 @@ function HeroHub() {
                 whileTap={{ scale: 0.97 }}
                 className="group inline-flex items-center gap-2 rounded-full bg-warmInk px-7 py-3.5 font-body font-semibold text-warmBg shadow-soft hover:shadow-soft-lg"
               >
-                Jelajahi aplikasi
+                {t({ en: 'Explore the apps', id: 'Jelajahi aplikasi' })}
                 <FiArrowDownRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
               </motion.a>
               <motion.a
@@ -105,13 +111,13 @@ function HeroHub() {
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center gap-2 rounded-full border border-warmLine bg-warmCard px-7 py-3.5 font-body font-semibold text-warmInk hover:border-warmPeach hover:text-warmPeach"
               >
-                <FiCpu /> Cara kerja AI kami
+                <FiCpu /> {t({ en: 'How our AI works', id: 'Cara kerja AI kami' })}
               </motion.a>
             </motion.div>
 
             {/* Quick launcher — returning users jump straight in */}
             <motion.div variants={item} className="mt-10">
-              <p className="font-body text-xs font-semibold uppercase tracking-widest text-warmMuted">Langsung buka</p>
+              <p className="font-body text-xs font-semibold uppercase tracking-widest text-warmMuted">{t({ en: 'Jump straight in', id: 'Langsung buka' })}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {live.map((p) => {
                   const Icon = productIcon(p.icon);

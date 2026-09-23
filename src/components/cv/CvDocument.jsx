@@ -6,6 +6,10 @@ import { projectsData } from '../../data/projects';
 import { productsData } from '../../data/products';
 import { publications } from '../../data/research';
 import { yearsOfExperience } from '../../data/site';
+import { resolve } from '../../i18n/LangContext';
+
+// The CV is always English — bilingual data is resolved to `en`.
+const en = (v) => resolve(v, 'en');
 
 const profile =
   `Founder of Myst Tech and Information System Lecturer at Institut Teknologi Kalimantan (Balikpapan, Indonesia) with ${yearsOfExperience()}+ years of experience. Builds and runs AI products for Indonesian education and communities — GuruPintar, SkripsiPintar, and Asdos-AI — on Myst-Core, a self-designed private AI layer (LLM gateway, tier routing with fallback chains, prompt registry, vision/OCR, usage metering). Heads FSTI's Digital Innovation Laboratory; research background in wireless sensor networks and IoT, now applied AI in education.`;
@@ -78,11 +82,11 @@ function CvDocument() {
           {experienceData.map((e, i) => (
             <div key={i}>
               <div className="flex items-baseline justify-between">
-                <h3 className="text-[12px] font-bold">{e.title}</h3>
+                <h3 className="text-[12px] font-bold">{en(e.title)}</h3>
                 <span className="text-[10px] font-semibold text-[#888]">{e.period}</span>
               </div>
               <p className="text-[11px] font-medium text-[#E8835A]">{e.company}</p>
-              <p className="mt-1 text-[11px] leading-relaxed text-[#555]">{e.description}</p>
+              <p className="mt-1 text-[11px] leading-relaxed text-[#555]">{en(e.description)}</p>
             </div>
           ))}
         </div>
@@ -93,11 +97,11 @@ function CvDocument() {
           {educationData.map((e, i) => (
             <div key={i}>
               <div className="flex items-baseline justify-between">
-                <h3 className="text-[12px] font-bold">{e.degree}</h3>
+                <h3 className="text-[12px] font-bold">{en(e.degree)}</h3>
                 <span className="text-[10px] font-semibold text-[#888]">{e.period}</span>
               </div>
               <p className="text-[11px] font-medium text-[#E8835A]">{e.institution}</p>
-              <p className="mt-1 text-[11px] leading-relaxed text-[#555]">{e.description}</p>
+              <p className="mt-1 text-[11px] leading-relaxed text-[#555]">{en(e.description)}</p>
             </div>
           ))}
         </div>
@@ -139,7 +143,7 @@ function CvDocument() {
             <div key={p.title} className="flex items-baseline justify-between gap-3">
               <p className="text-[10.5px]">
                 <span className="font-bold">{p.title}</span>
-                <span className="text-[#777]"> — {p.venue}{p.indexing ? ` (${p.indexing})` : ''}</span>
+                <span className="text-[#777]"> — {en(p.venue)}{p.indexing ? ` (${p.indexing})` : ''}</span>
               </p>
               <span className="shrink-0 text-[10px] font-semibold text-[#888]">{p.year}</span>
             </div>
@@ -152,7 +156,7 @@ function CvDocument() {
           {achievementsData.map((a, i) => (
             <div key={i} className="flex items-baseline justify-between gap-3">
               <p className="text-[10.5px]">
-                <span className="font-bold">{a.title}</span>
+                <span className="font-bold">{en(a.title)}</span>
                 <span className="text-[#777]"> — {a.organization}</span>
               </p>
               <span className="shrink-0 text-[10px] font-semibold text-[#888]">{a.year}</span>

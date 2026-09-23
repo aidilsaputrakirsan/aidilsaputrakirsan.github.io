@@ -6,12 +6,14 @@ import { projectsData, categories } from '../../data/projects';
 import { productsData as products } from '../../data/products';
 import { productIcon } from '../hub/productIcons';
 import ProjectModalSoft from './ProjectModalSoft';
+import { useLang } from '../../i18n/LangContext';
 
 // Myst products (products.js) render as a compact strip linking to each app;
 // works (projects.js) render as a compact image-free list with a detail modal.
 const works = projectsData;
 
 function ProjectsSoft() {
+  const { t } = useLang();
   const [filter, setFilter] = useState('all');
   const [selected, setSelected] = useState(null);
   const list = filter === 'all' ? works : works.filter((p) => p.category === filter);
@@ -34,16 +36,16 @@ function ProjectsSoft() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
         >
-          <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">Portfolio</span>
+          <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">{t({ en: 'Portfolio', id: 'Portofolio' })}</span>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight">Products I run</h2>
+              <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight">{t({ en: 'Products I run', id: 'Produk yang saya kelola' })}</h2>
               <p className="mt-3 max-w-xl font-body text-warmMuted leading-relaxed">
-                Live platforms under Myst Tech — public, and open to try.
+                {t({ en: 'Live platforms under Myst Tech — public, and open to try.', id: 'Platform live di bawah Myst Tech — publik dan bisa langsung dicoba.' })}
               </p>
             </div>
             <a href="/#produk" className="inline-flex items-center gap-1 font-body text-sm font-semibold text-warmPeach hover:underline">
-              All apps at myst-tech.com <FiArrowUpRight />
+              {t({ en: 'All apps at myst-tech.com', id: 'Semua aplikasi di myst-tech.com' })} <FiArrowUpRight />
             </a>
           </div>
         </motion.div>
@@ -75,9 +77,9 @@ function ProjectsSoft() {
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
                     <h3 className="truncate font-display text-base font-bold">{p.title}</h3>
-                    <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${live ? 'bg-emerald-500' : 'bg-amber-500'}`} title={live ? 'Live' : 'In development'} />
+                    <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${live ? 'bg-emerald-500' : 'bg-amber-500'}`} title={live ? 'Live' : t({ en: 'In development', id: 'Sedang dibangun' })} />
                   </div>
-                  <p className="truncate font-body text-sm text-warmMuted">{live ? p.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'Coming soon'}</p>
+                  <p className="truncate font-body text-sm text-warmMuted">{live ? p.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : t({ en: 'Coming soon', id: 'Segera hadir' })}</p>
                 </div>
                 {live && <FiArrowUpRight className="shrink-0 text-warmMuted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-warmPeach" />}
               </Tag>
@@ -94,9 +96,12 @@ function ProjectsSoft() {
           className="mt-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
         >
           <div>
-            <h3 className="font-display text-3xl md:text-4xl font-bold tracking-tight">Selected works</h3>
+            <h3 className="font-display text-3xl md:text-4xl font-bold tracking-tight">{t({ en: 'Selected works', id: 'Karya pilihan' })}</h3>
             <p className="mt-2 max-w-xl font-body text-sm text-warmMuted leading-relaxed">
-              Systems built for institutions and clients — most run privately on internal networks.
+              {t({
+                en: 'Systems built for institutions and clients — most run privately on internal networks.',
+                id: 'Sistem yang dibangun untuk institusi dan klien — sebagian besar berjalan privat di jaringan internal.',
+              })}
             </p>
           </div>
 
@@ -110,7 +115,7 @@ function ProjectsSoft() {
                   className={`relative rounded-full px-4 py-2 font-body text-sm font-semibold transition-colors ${on ? 'text-warmBg' : 'text-warmMuted hover:text-warmInk'}`}
                 >
                   {on && <motion.span layoutId="projPill" className="absolute inset-0 rounded-full bg-warmInk" transition={{ type: 'spring', stiffness: 400, damping: 32 }} />}
-                  <span className="relative z-10">{c.name}</span>
+                  <span className="relative z-10">{t(c.name)}</span>
                 </button>
               );
             })}
@@ -130,7 +135,7 @@ function ProjectsSoft() {
                 transition={{ duration: 0.35, delay: Math.min(i, 6) * 0.04 }}
                 role="button"
                 tabIndex={0}
-                aria-label={`View details of ${p.title}`}
+                aria-label={t({ en: `View details of ${p.title}`, id: `Lihat detail ${p.title}` })}
                 onClick={() => setSelected(p)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -148,7 +153,7 @@ function ProjectsSoft() {
                       <h4 className="font-display text-base font-bold leading-snug">{p.title}</h4>
                       {p.internal && (
                         <span className="inline-flex items-center gap-1 rounded-full bg-warmBg px-2 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-warmMuted">
-                          <FiLock className="text-[10px]" /> Internal system
+                          <FiLock className="text-[10px]" /> {t({ en: 'Internal system', id: 'Sistem internal' })}
                         </span>
                       )}
                     </div>
@@ -170,7 +175,7 @@ function ProjectsSoft() {
                       </a>
                     )}
                     <span className="inline-flex items-center gap-1 font-body text-sm font-semibold text-warmPeach">
-                      Details <FiArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      {t({ en: 'Details', id: 'Detail' })} <FiArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
                   </div>
                 </div>
@@ -187,7 +192,7 @@ function ProjectsSoft() {
             whileHover={{ y: -3 }}
             className="inline-flex items-center gap-2 rounded-full border border-warmLine bg-warmCard px-7 py-3.5 font-body font-semibold text-warmInk shadow-soft hover:border-warmPeach hover:text-warmPeach"
           >
-            <FiGithub /> View more on GitHub
+            <FiGithub /> {t({ en: 'View more on GitHub', id: 'Lihat lainnya di GitHub' })}
           </motion.a>
         </div>
       </div>

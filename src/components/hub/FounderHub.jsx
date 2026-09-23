@@ -4,13 +4,15 @@ import { FiArrowRight, FiFileText } from 'react-icons/fi';
 import Counter from '../ui/Counter';
 import { yearsOfExperience, publicationCount } from '../../data/site';
 import { liveProducts } from '../../data/products';
+import { useLang } from '../../i18n/LangContext';
 
 // Short founder story on the hub — the full profile lives at /aidil/.
 function FounderHub() {
+  const { t } = useLang();
   const stats = [
-    { n: yearsOfExperience(), s: '+', l: 'tahun pengalaman' },
-    { n: liveProducts().length, s: '', l: 'aplikasi live' },
-    { n: publicationCount(), s: '', l: 'publikasi ilmiah' },
+    { n: yearsOfExperience(), s: '+', l: t({ en: 'years of experience', id: 'tahun pengalaman' }) },
+    { n: liveProducts().length, s: '', l: t({ en: 'live apps', id: 'aplikasi live' }) },
+    { n: publicationCount(), s: '', l: t({ en: 'publications', id: 'publikasi ilmiah' }) },
   ];
 
   return (
@@ -43,14 +45,20 @@ function FounderHub() {
             className="md:col-span-7"
           >
             <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">Founder</span>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight md:text-5xl">Dibangun dari masalah yang dialami sendiri.</h2>
+            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight md:text-5xl">{t({ en: 'Built from problems lived firsthand.', id: 'Dibangun dari masalah yang dialami sendiri.' })}</h2>
             <p className="mt-5 font-body text-lg leading-relaxed text-warmMuted">
-              Myst Tech dirintis oleh <span className="font-semibold text-warmInk">Aidil Saputra Kirsan</span> — dosen Sistem Informasi di
-              Institut Teknologi Kalimantan, Kepala Laboratorium Inovasi Digital FSTI, sekaligus Ketua RT di Balikpapan.
+              {t({ en: 'Myst Tech was founded by', id: 'Myst Tech dirintis oleh' })}{' '}
+              <span className="font-semibold text-warmInk">Aidil Saputra Kirsan</span>{' '}
+              {t({
+                en: '— Information Systems lecturer at Institut Teknologi Kalimantan, Head of the FSTI Digital Innovation Lab, and a neighborhood (RT) head in Balikpapan.',
+                id: '— dosen Sistem Informasi di Institut Teknologi Kalimantan, Kepala Laboratorium Inovasi Digital FSTI, sekaligus Ketua RT di Balikpapan.',
+              })}
             </p>
             <p className="mt-4 font-body leading-relaxed text-warmMuted">
-              Mengoreksi ratusan jawaban tiap minggu melahirkan Asdos-AI. Membimbing skripsi melahirkan SkripsiPintar.
-              Mengurus administrasi warga melahirkan Sistem Manajemen RT.
+              {t({
+                en: 'Grading hundreds of answers every week gave birth to Asdos-AI. Supervising theses gave birth to SkripsiPintar. Running neighborhood admin gave birth to Sistem Manajemen RT.',
+                id: 'Mengoreksi ratusan jawaban tiap minggu melahirkan Asdos-AI. Membimbing skripsi melahirkan SkripsiPintar. Mengurus administrasi warga melahirkan Sistem Manajemen RT.',
+              })}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-x-10 gap-y-4">
@@ -70,7 +78,7 @@ function FounderHub() {
                 whileHover={{ y: -3 }}
                 className="group inline-flex items-center gap-2 rounded-full bg-warmInk px-6 py-3 font-body font-semibold text-warmBg shadow-soft"
               >
-                Profil, riset & publikasi <FiArrowRight className="transition-transform group-hover:translate-x-0.5" />
+                {t({ en: 'Profile, research & publications', id: 'Profil, riset & publikasi' })} <FiArrowRight className="transition-transform group-hover:translate-x-0.5" />
               </motion.a>
               <motion.button
                 type="button"
@@ -78,7 +86,7 @@ function FounderHub() {
                 onClick={() => window.dispatchEvent(new CustomEvent('open-cv'))}
                 className="inline-flex items-center gap-2 rounded-full border border-warmLine bg-warmCard px-6 py-3 font-body font-semibold text-warmInk hover:border-warmPeach hover:text-warmPeach"
               >
-                <FiFileText /> Unduh CV
+                <FiFileText /> {t({ en: 'Download CV', id: 'Unduh CV' })}
               </motion.button>
             </div>
           </motion.div>

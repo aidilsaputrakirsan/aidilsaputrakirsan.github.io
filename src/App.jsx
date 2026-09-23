@@ -23,6 +23,7 @@ import ContactSoft from './components/sections/ContactSoft';
 import FooterSoft from './components/layout/FooterSoft';
 import CvModal from './components/cv/CvModal';
 import SupportModal from './components/support/SupportModal';
+import { LangProvider } from './i18n/LangContext';
 
 // Toggle: true = new Soft/Warm site, false = original dark site
 const USE_SOFT = true;
@@ -39,21 +40,23 @@ function App() {
 
   if (USE_SOFT) {
     return (
-      <div className="bg-warmBg font-body text-warmInk">
-        <NavbarSoft back={{ label: 'Myst Tech', href: '/' }} />
-        <main>
-          <HeroSoft />
-          <AboutSoft />
-          <SkillsSoft />
-          <ResearchSoft />
-          <ExperienceSoft />
-          <ProjectsSoft />
-          <ContactSoft />
-        </main>
-        <FooterSoft />
-        <CvModal />
-        <SupportModal />
-      </div>
+      <LangProvider>
+        <div className="bg-warmBg font-body text-warmInk">
+          <NavbarSoft back={{ label: 'Myst Tech', href: '/' }} />
+          <main>
+            <HeroSoft />
+            <AboutSoft />
+            <SkillsSoft />
+            <ResearchSoft />
+            <ExperienceSoft />
+            <ProjectsSoft />
+            <ContactSoft />
+          </main>
+          <FooterSoft />
+          <CvModal />
+          <SupportModal />
+        </div>
+      </LangProvider>
     );
   }
 

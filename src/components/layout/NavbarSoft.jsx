@@ -2,15 +2,17 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { FiMenu, FiX, FiSun, FiMoon, FiCoffee, FiArrowLeft } from 'react-icons/fi';
+import LangToggle from '../ui/LangToggle';
+import { useLang } from '../../i18n/LangContext';
 
 // Defaults = the profile page (/aidil/). The hub passes its own links/brand/cta.
 const defaultLinks = [
-  ['About', '#about'],
-  ['Skills', '#skills'],
-  ['Research', '#research'],
-  ['Journey', '#experience'],
-  ['Work', '#projects'],
-  ['Contact', '#contact'],
+  [{ en: 'About', id: 'Tentang' }, '#about'],
+  [{ en: 'Skills', id: 'Keahlian' }, '#skills'],
+  [{ en: 'Research', id: 'Riset' }, '#research'],
+  [{ en: 'Journey', id: 'Perjalanan' }, '#experience'],
+  [{ en: 'Work', id: 'Karya' }, '#projects'],
+  [{ en: 'Contact', id: 'Kontak' }, '#contact'],
 ];
 
 const defaultBrand = (
@@ -19,13 +21,20 @@ const defaultBrand = (
   </span>
 );
 
-const defaultCta = { label: 'Download CV', onClick: () => window.dispatchEvent(new CustomEvent('open-cv')) };
+const defaultCta = { label: { en: 'Download CV', id: 'Unduh CV' }, onClick: () => window.dispatchEvent(new CustomEvent('open-cv')) };
 
-const defaultLabels = { coffee: 'Buy me a coffee', light: 'Light mode', dark: 'Dark mode', menu: 'Menu' };
+const defaultLabels = {
+  coffee: { en: 'Buy me a coffee', id: 'Traktir kopi' },
+  light: { en: 'Light mode', id: 'Mode terang' },
+  dark: { en: 'Dark mode', id: 'Mode gelap' },
+  menu: 'Menu',
+};
 
+// Every label may be bilingual ({ en, id }) — resolved with the current language.
 // cta: { label, href } (link) or { label, onClick } (button)
 // back: optional { label, href } — small "← Myst Tech" chip on the profile page
 function NavbarSoft({ links = defaultLinks, brand = defaultBrand, cta = defaultCta, back = null, labels = defaultLabels }) {
+  const { t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
@@ -88,7 +97,7 @@ function NavbarSoft({ links = defaultLinks, brand = defaultBrand, cta = defaultC
                 href={back.href}
                 className="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-warmLine px-3 py-1 font-body text-xs font-semibold text-warmMuted transition-colors hover:border-warmPeach hover:text-warmPeach"
               >
-                <FiArrowLeft /> {back.label}
+                <FiArrowLeft /> {t(back.label)}
               </a>
             )}
           </div>
@@ -113,7 +122,7 @@ function NavbarSoft({ links = defaultLinks, brand = defaultBrand, cta = defaultC
                         transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                       />
                     )}
-                    <span className="relative z-10">{label}</span>
+                    <span className="relative z-10">{t(label)}</span>
                   </a>
                 </li>
               );
@@ -124,23 +133,27 @@ function NavbarSoft({ links = defaultLinks, brand = defaultBrand, cta = defaultC
                   href={cta.href}
                   className="ml-2 inline-block rounded-full bg-warmInk px-5 py-2 font-body text-sm font-semibold text-warmBg transition-transform hover:-translate-y-0.5"
                 >
-                  {cta.label}
+                  {t(cta.label)}
                 </a>
               ) : (
                 <button
                   onClick={cta.onClick}
                   className="ml-2 rounded-full bg-warmInk px-5 py-2 font-body text-sm font-semibold text-warmBg transition-transform hover:-translate-y-0.5"
                 >
-                  {cta.label}
+                  {t(cta.label)}
                 </button>
               )}
             </li>
             </ul>
 
+            <div className="ml-2 mr-1">
+              <LangToggle />
+            </div>
+
             <button
               onClick={() => window.dispatchEvent(new CustomEvent('open-support'))}
-              aria-label={labels.coffee}
-              title={labels.coffee}
+              aria-label={t(labels.coffee)}
+              title={t(labels.coffee)}
               className="inline-flex h-10 w-10 items-center justify-center rounded-full text-lg text-warmMuted transition-colors hover:bg-warmPeachSoft hover:text-warmPeach"
             >
               <FiCoffee />
@@ -148,7 +161,7 @@ function NavbarSoft({ links = defaultLinks, brand = defaultBrand, cta = defaultC
 
             <button
               onClick={toggleTheme}
-              aria-label={dark ? labels.light : labels.dark}
+              aria-label={dark ? t(labels.light) : t(labels.dark)}
               className="hidden md:inline-flex h-10 w-10 items-center justify-center rounded-full text-lg text-warmMuted transition-colors hover:bg-warmPeachSoft hover:text-warmPeach md:ml-1"
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -165,7 +178,7 @@ function NavbarSoft({ links = defaultLinks, brand = defaultBrand, cta = defaultC
               </AnimatePresence>
             </button>
 
-            <button className="md:hidden text-2xl text-warmInk p-2" onClick={() => setOpen((v) => !v)} aria-label={labels.menu}>
+            <button className="md:hidden text-2xl text-warmInk p-2" onClick={() => setOpen((v) => !v)} aria-label={t(labels.menu)}>
               {open ? <FiX /> : <FiMenu />}
             </button>
           </div>
@@ -188,14 +201,14 @@ function NavbarSoft({ links = defaultLinks, brand = defaultBrand, cta = defaultC
                       active === href.slice(1) ? 'text-warmPeach' : 'text-warmInk'
                     }`}
                   >
-                    {label}
+                    {t(label)}
                   </a>
                 </li>
               ))}
               <li>
                 {cta.href ? (
                   <a href={cta.href} className="block px-6 py-4 font-body font-semibold text-warmPeach border-b border-warmLine/60">
-                    {cta.label} ↗
+                    {t(cta.label)} ↗
                   </a>
                 ) : (
                   <button
@@ -205,14 +218,14 @@ function NavbarSoft({ links = defaultLinks, brand = defaultBrand, cta = defaultC
                     }}
                     className="block w-full px-6 py-4 text-left font-body font-semibold text-warmPeach border-b border-warmLine/60"
                   >
-                    {cta.label} ↗
+                    {t(cta.label)} ↗
                   </button>
                 )}
               </li>
               {back && (
                 <li>
                   <a href={back.href} className="flex items-center gap-2 px-6 py-4 font-body font-semibold text-warmInk border-b border-warmLine/60">
-                    <FiArrowLeft /> {back.label}
+                    <FiArrowLeft /> {t(back.label)}
                   </a>
                 </li>
               )}
@@ -221,7 +234,7 @@ function NavbarSoft({ links = defaultLinks, brand = defaultBrand, cta = defaultC
                   onClick={toggleTheme}
                   className="flex w-full items-center gap-2 px-6 py-4 text-left font-body font-semibold text-warmInk"
                 >
-                  {dark ? <FiSun /> : <FiMoon />} {dark ? labels.light : labels.dark}
+                  {dark ? <FiSun /> : <FiMoon />} {dark ? t(labels.light) : t(labels.dark)}
                 </button>
               </li>
             </motion.ul>

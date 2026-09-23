@@ -3,12 +3,14 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { productIcon } from '../hub/productIcons';
+import { useLang } from '../../i18n/LangContext';
 
 // Interactive 3D orbit of every Myst product around Myst-Core.
 // three.js is loaded lazily (separate chunk) after first paint. Until it is
 // ready — or if WebGL is unavailable — a static CSS version of the same
 // layout is shown, so the hero never looks empty.
 function MystOrbit({ products }) {
+  const { t } = useLang();
   const reduce = useReducedMotion();
   const stageRef = useRef(null);
   const labelRefs = useRef([]);
@@ -131,7 +133,7 @@ function MystOrbit({ products }) {
           >
             <Icon style={{ color: p.color }} className="text-sm" />
             {p.title}
-            {!live && <span className="rounded-full bg-warmBg px-1.5 text-[9px] uppercase tracking-wide text-warmMuted">segera</span>}
+            {!live && <span className="rounded-full bg-warmBg px-1.5 text-[9px] uppercase tracking-wide text-warmMuted">{t({ en: 'soon', id: 'segera' })}</span>}
           </Tag>
         );
       })}
@@ -153,10 +155,10 @@ function MystOrbit({ products }) {
                   {current.title}
                 </div>
                 <div className="font-body text-xs text-warmMuted">
-                  {current.tagline}
+                  {t(current.tagline)}
                   {current.status === 'live' && current.url && (
                     <span className="ml-1 inline-flex items-center font-semibold text-warmInk">
-                      · klik untuk membuka <FiArrowUpRight />
+                      · {t({ en: 'click to open', id: 'klik untuk membuka' })} <FiArrowUpRight />
                     </span>
                   )}
                 </div>
@@ -164,8 +166,8 @@ function MystOrbit({ products }) {
             ) : (
               <div className="font-body text-xs text-warmMuted">
                 {touch
-                  ? 'Ketuk nama aplikasi untuk membukanya.'
-                  : 'Arahkan ke sebuah planet untuk melihat aplikasinya — klik untuk membuka.'}
+                  ? t({ en: 'Tap an app name to open it.', id: 'Ketuk nama aplikasi untuk membukanya.' })
+                  : t({ en: 'Hover a planet to see its app — click to open.', id: 'Arahkan ke sebuah planet untuk melihat aplikasinya — klik untuk membuka.' })}
               </div>
             )}
           </motion.div>

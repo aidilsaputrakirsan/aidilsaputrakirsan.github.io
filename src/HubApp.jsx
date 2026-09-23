@@ -1,5 +1,6 @@
 // Myst Tech hub — myst-tech.com/
 // One gate to every Myst app. Content comes from src/data/products.js.
+// Bilingual (EN default / ID) via src/i18n/LangContext.jsx.
 import NavbarSoft from './components/layout/NavbarSoft';
 import FooterSoft from './components/layout/FooterSoft';
 import HeroHub from './components/hub/HeroHub';
@@ -10,12 +11,13 @@ import ContactHub from './components/hub/ContactHub';
 import CvModal from './components/cv/CvModal';
 import SupportModal from './components/support/SupportModal';
 import { liveProducts } from './data/products';
+import { LangProvider, useLang } from './i18n/LangContext';
 
 const links = [
-  ['Aplikasi', '#produk'],
+  [{ en: 'Apps', id: 'Aplikasi' }, '#produk'],
   ['Myst-Core', '#core'],
   ['Founder', '#founder'],
-  ['Kontak', '#kontak'],
+  [{ en: 'Contact', id: 'Kontak' }, '#kontak'],
 ];
 
 const brand = (
@@ -25,12 +27,13 @@ const brand = (
   </>
 );
 
-const labels = { coffee: 'Traktir kopi', light: 'Mode terang', dark: 'Mode gelap', menu: 'Menu' };
+const coffee = { en: 'Buy me a coffee', id: 'Traktir kopi' };
 
-function HubApp() {
+function Hub() {
+  const { t } = useLang();
   return (
     <div className="bg-warmBg font-body text-warmInk">
-      <NavbarSoft links={links} brand={brand} cta={{ label: 'Profil Aidil', href: '/aidil/' }} labels={labels} />
+      <NavbarSoft links={links} brand={brand} cta={{ label: { en: "Aidil's profile", id: 'Profil Aidil' }, href: '/aidil/' }} />
       <main>
         <HeroHub />
         <ProductsHub />
@@ -40,11 +43,14 @@ function HubApp() {
       </main>
       <FooterSoft
         brand={brand}
-        tagline="Aplikasi AI untuk pendidikan & komunitas · Balikpapan, Indonesia"
+        tagline={{
+          en: 'AI apps for education & communities · Balikpapan, Indonesia',
+          id: 'Aplikasi AI untuk pendidikan & komunitas · Balikpapan, Indonesia',
+        }}
         copyright="Myst Tech · Aidil Saputra Kirsan."
-        coffeeLabel={labels.coffee}
+        coffeeLabel={coffee}
       >
-        <nav aria-label="Semua aplikasi" className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 md:justify-start">
+        <nav aria-label={t({ en: 'All apps', id: 'Semua aplikasi' })} className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 md:justify-start">
           {liveProducts().map((p) => (
             <a key={p.id} href={p.url} target="_blank" rel="noreferrer" className="font-body text-sm font-medium text-warmMuted hover:text-warmInk">
               {p.title}
@@ -54,13 +60,21 @@ function HubApp() {
             Myst-Core Docs
           </a>
           <a href="/aidil/" className="font-body text-sm font-medium text-warmMuted hover:text-warmInk">
-            Profil Founder
+            {t({ en: 'Founder profile', id: 'Profil Founder' })}
           </a>
         </nav>
       </FooterSoft>
       <CvModal />
       <SupportModal />
     </div>
+  );
+}
+
+function HubApp() {
+  return (
+    <LangProvider>
+      <Hub />
+    </LangProvider>
   );
 }
 

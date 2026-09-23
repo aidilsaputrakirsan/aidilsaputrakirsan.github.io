@@ -3,17 +3,21 @@
 // (peluncur aplikasi + orbit 3D), strip produk di halaman profil, dan CV.
 //
 // Tambah aplikasi baru = tambah satu entri di sini. Urutan array = urutan tampil.
+// Teks dua bahasa ditulis { en: '...', id: '...' } (lihat src/i18n/LangContext.jsx).
 //
 // Field:
 //   id            slug unik (huruf kecil, tanpa spasi)
 //   title         nama aplikasi
-//   tagline       satu baris singkat (Bahasa Indonesia)
-//   pitch         1–2 kalimat untuk kartu peluncur (Bahasa Indonesia)
-//   description   versi Inggris untuk halaman profil/CV
+//   tagline       satu baris singkat            { en, id }
+//   pitch         1–2 kalimat untuk kartu        { en, id }
+//   description   versi Inggris panjang untuk CV
 //   audience      id dari `audiences` di bawah (dipakai filter)
-//   audienceLabel label target pengguna yang tampil di kartu
-//   features      3–4 poin fitur utama (pendek)
+//   audienceLabel label target pengguna          { en, id }
+//   features      3–4 poin fitur utama           [{ en, id }, ...]
 //   url           alamat publik aplikasi — kosongkan ('') jika belum rilis
+//   screenshot    screenshot landing page di public/images/landing/ — jadi
+//                 background kartu. null = kartu memakai panel warna + ikon.
+//                 Ambil ulang semua: `npm run screenshots` (lihat scripts/).
 //   poster        poster di public/images/projects/ — null jika belum ada
 //   color         warna merek aplikasi (hex) — dipakai kartu & orbit 3D
 //   icon          kunci ikon, lihat src/components/hub/productIcons.js
@@ -24,31 +28,35 @@
 //   technologies  untuk CV & halaman profil
 
 export const audiences = [
-  { id: 'all', name: 'Semua' },
-  { id: 'guru', name: 'Guru' },
-  { id: 'dosen', name: 'Dosen' },
-  { id: 'mahasiswa', name: 'Mahasiswa' },
-  { id: 'komunitas', name: 'Komunitas' },
-  { id: 'pribadi', name: 'Pribadi' },
+  { id: 'all', name: { en: 'All', id: 'Semua' } },
+  { id: 'guru', name: { en: 'Teachers', id: 'Guru' } },
+  { id: 'dosen', name: { en: 'Lecturers', id: 'Dosen' } },
+  { id: 'mahasiswa', name: { en: 'Students', id: 'Mahasiswa' } },
+  { id: 'komunitas', name: { en: 'Communities', id: 'Komunitas' } },
+  { id: 'pribadi', name: { en: 'Personal', id: 'Pribadi' } },
 ];
 
 export const productsData = [
   {
     id: 'gurupintar',
     title: 'GuruPintar',
-    tagline: 'Asisten manajemen guru',
-    pitch: 'Nilai harian tiap minggu otomatis jadi deskripsi rapor Kurikulum Merdeka di akhir semester.',
+    tagline: { en: "Teacher's management assistant", id: 'Asisten manajemen guru' },
+    pitch: {
+      en: "Weekly daily grades turn themselves into Kurikulum Merdeka report-card descriptions at the end of the semester.",
+      id: 'Nilai harian tiap minggu otomatis jadi deskripsi rapor Kurikulum Merdeka di akhir semester.',
+    },
     description:
       "An AI teaching assistant for SMP/SMA teachers built around Kurikulum Merdeka — weekly daily grades turn themselves into report-card descriptions at the end of the semester. Grades answers against the teacher's own rubric, reads handwritten answer sheets from a photo, tracks learning-objective (TP) attainment, and flags students at risk early.",
     audience: 'guru',
-    audienceLabel: 'Guru SMP/SMA',
+    audienceLabel: { en: 'Junior & senior high teachers', id: 'Guru SMP/SMA' },
     features: [
-      'Koreksi jawaban sesuai rubrik Anda',
-      'Jawaban tulis tangan dibaca AI dari foto',
-      'Pantau ketercapaian TP tiap siswa',
-      'Bank soal, kisi-kisi & ekspor Excel',
+      { en: 'Grades answers against your own rubric', id: 'Koreksi jawaban sesuai rubrik Anda' },
+      { en: 'Reads handwritten answers from a photo', id: 'Jawaban tulis tangan dibaca AI dari foto' },
+      { en: "Tracks each student's learning objectives", id: 'Pantau ketercapaian TP tiap siswa' },
+      { en: 'Question bank, blueprint & Excel export', id: 'Bank soal, kisi-kisi & ekspor Excel' },
     ],
     url: 'https://guru.myst-tech.com/',
+    screenshot: null,
     poster: '/images/projects/poster-gurupintar.jpeg',
     color: '#5046E5',
     icon: 'book',
@@ -61,19 +69,23 @@ export const productsData = [
   {
     id: 'skripsipintar',
     title: 'SkripsiPintar',
-    tagline: 'Pendamping skripsi & simulasi sidang',
-    pitch: 'AI yang tidak akan menuliskan skripsimu — tapi membuatmu siap mempertahankannya di hari sidang.',
+    tagline: { en: 'Thesis companion & defense simulator', id: 'Pendamping skripsi & simulasi sidang' },
+    pitch: {
+      en: "An AI that won't write your thesis for you — but gets you ready to defend it on the big day.",
+      id: 'AI yang tidak akan menuliskan skripsimu — tapi membuatmu siap mempertahankannya di hari sidang.',
+    },
     description:
       'A thesis companion and defense simulator for S1/S2 students — an AI that deliberately will not write the thesis for you, but gets you ready to defend it. Runs mock defenses with an AI examiner, reviews sub-chapters with a readiness score, reads supervisor notes from a photo, and detects ghost citations.',
     audience: 'mahasiswa',
-    audienceLabel: 'Mahasiswa S1/S2',
+    audienceLabel: { en: "Bachelor's & master's students", id: 'Mahasiswa S1/S2' },
     features: [
-      'Simulasi sidang: penguji AI serang titik lemah',
-      'Tinjauan per sub-bab dengan skor kesiapan',
-      'Deteksi sitasi hantu & referensi mencurigakan',
-      'Cek konsistensi lintas bab',
+      { en: 'Mock defense: an AI examiner probes weak spots', id: 'Simulasi sidang: penguji AI serang titik lemah' },
+      { en: 'Sub-chapter reviews with a readiness score', id: 'Tinjauan per sub-bab dengan skor kesiapan' },
+      { en: 'Detects ghost citations & suspicious references', id: 'Deteksi sitasi hantu & referensi mencurigakan' },
+      { en: 'Cross-chapter consistency checks', id: 'Cek konsistensi lintas bab' },
     ],
     url: 'https://skripsi.myst-tech.com/',
+    screenshot: null,
     poster: '/images/projects/poster-skripsipintar.jpeg',
     color: '#0F9488',
     icon: 'file-search',
@@ -86,19 +98,23 @@ export const productsData = [
   {
     id: 'asdos-ai',
     title: 'Asdos-AI',
-    tagline: 'Asisten manajemen kelas untuk dosen',
-    pitch: 'Koreksi tugas mingguan sesuai rubrik dosen, peta miskonsepsi kelas, dan deteksi dini mahasiswa yang butuh perhatian.',
+    tagline: { en: 'Class management assistant for lecturers', id: 'Asisten manajemen kelas untuk dosen' },
+    pitch: {
+      en: "Grades weekly assignments against the lecturer's rubric, maps class misconceptions, and flags students who need attention early.",
+      id: 'Koreksi tugas mingguan sesuai rubrik dosen, peta miskonsepsi kelas, dan deteksi dini mahasiswa yang butuh perhatian.',
+    },
     description:
       "An AI teaching-assistant platform for lecturers — grades weekly student answers against the lecturer's own rubric with personalised feedback, transcribes handwritten answer sheets, surfaces class-weakness insights and at-risk student alerts, and generates targeted remedial questions. AI recommends, the lecturer decides.",
     audience: 'dosen',
-    audienceLabel: 'Dosen & asisten dosen',
+    audienceLabel: { en: 'Lecturers & teaching assistants', id: 'Dosen & asisten dosen' },
     features: [
-      'Koreksi otomatis sesuai rubrik Anda',
-      'Wawasan mingguan: peta miskonsepsi kelas',
-      'Draf pesan WhatsApp & soal remedial',
-      'Ekspor rekap nilai ke Excel',
+      { en: 'Automatic grading against your rubric', id: 'Koreksi otomatis sesuai rubrik Anda' },
+      { en: 'Weekly insights: a map of class misconceptions', id: 'Wawasan mingguan: peta miskonsepsi kelas' },
+      { en: 'Draft WhatsApp messages & remedial questions', id: 'Draf pesan WhatsApp & soal remedial' },
+      { en: 'Grade recaps exported to Excel', id: 'Ekspor rekap nilai ke Excel' },
     ],
     url: 'https://asdos.myst-tech.com/',
+    screenshot: null,
     poster: '/images/projects/poster-asdosai.jpg',
     color: '#3B82F6',
     icon: 'graduation',
@@ -111,19 +127,23 @@ export const productsData = [
   {
     id: 'manajemen-rt',
     title: 'Sistem Manajemen RT',
-    tagline: 'Solusi digital untuk RT Indonesia',
-    pitch: 'Surat pengantar, data warga, iuran, dan laporan bulanan RT — rapi dalam satu aplikasi, lengkap dengan mode demo.',
+    tagline: { en: 'Digital tools for Indonesian neighborhoods (RT)', id: 'Solusi digital untuk RT Indonesia' },
+    pitch: {
+      en: 'Resident letters, records, dues, and monthly reports for neighborhood units — tidy in one app, with a demo mode.',
+      id: 'Surat pengantar, data warga, iuran, dan laporan bulanan RT — rapi dalam satu aplikasi, lengkap dengan mode demo.',
+    },
     description:
       'A multi-tenant SaaS platform that digitizes Indonesian neighborhood (RT) administration — automated resident letters with tidy numbering, resident & demographic records, dues collection, and auto-generated monthly reports, with role-based access for administrators and residents.',
     audience: 'komunitas',
-    audienceLabel: 'Pengurus RT & warga',
+    audienceLabel: { en: 'RT officers & residents', id: 'Pengurus RT & warga' },
     features: [
-      'Surat pengantar & nomor surat otomatis',
-      'Data & demografi warga lengkap',
-      'Kelola iuran warga lebih rapi',
-      'Laporan bulanan otomatis',
+      { en: 'Automatic resident letters & numbering', id: 'Surat pengantar & nomor surat otomatis' },
+      { en: 'Complete resident & demographic records', id: 'Data & demografi warga lengkap' },
+      { en: 'Tidier dues collection', id: 'Kelola iuran warga lebih rapi' },
+      { en: 'Automatic monthly reports', id: 'Laporan bulanan otomatis' },
     ],
     url: 'https://rt.myst-tech.com/',
+    screenshot: null,
     poster: '/images/projects/poster-rt.jpeg',
     color: '#5FA32E',
     icon: 'house',
@@ -136,14 +156,22 @@ export const productsData = [
   {
     id: 'jarvis-myst',
     title: 'Jarvis Myst',
-    tagline: 'Asisten AI pribadi',
-    pitch: 'Asisten AI pribadi untuk ekosistem Myst. Detail akan dibagikan menjelang peluncuran.',
+    tagline: { en: 'Personal voice assistant', id: 'Asisten suara pribadi' },
+    pitch: {
+      en: 'Say a command — Jarvis takes reminders, answers questions, and reminds you right on time, in Bahasa Indonesia.',
+      id: 'Katakan perintah — Jarvis mencatat pengingat, menjawab pertanyaan, dan mengingatkanmu tepat waktu, dalam Bahasa Indonesia.',
+    },
     description:
-      'A personal AI assistant platform for the Myst ecosystem, currently in active development. Details will be published as the product approaches launch.',
+      'A personal voice assistant in Bahasa Indonesia — speak a command (push-to-talk or "Hey Jarvis") and it takes reminders, understands natural times like "tomorrow at 7", reminds you on time (including via Telegram), and answers questions by voice.',
     audience: 'pribadi',
-    audienceLabel: 'Pengguna umum',
-    features: [],
+    audienceLabel: { en: 'Everyone', id: 'Pengguna umum' },
+    features: [
+      { en: 'Talk directly — hold the mic or say "Hey Jarvis"', id: 'Bicara langsung — tahan mic atau ucapkan "Hey Jarvis"' },
+      { en: 'Smart reminders, delivered on time (even to Telegram)', id: 'Pengingat pintar, tepat waktu (bisa ke Telegram)' },
+      { en: 'Ask anything, answered by voice', id: 'Tanya apa saja, dijawab dengan suara' },
+    ],
     url: '',
+    screenshot: '/images/landing/jarvis-myst.jpg',
     poster: null,
     color: '#D97706',
     icon: 'bot',
@@ -151,7 +179,7 @@ export const productsData = [
     poweredByCore: true,
     ai: true,
     year: '2026',
-    technologies: ['AI', 'Automation'],
+    technologies: ['Voice AI', 'Myst-Core (LLM)', 'Telegram Bot'],
   },
 ];
 
@@ -164,9 +192,17 @@ export const buildingProducts = () => productsData.filter((p) => p.status === 'b
 export const mystCore = {
   docsUrl: 'https://myst-tech.com/myst-core/',
   tiers: [
-    { id: 'core-text', label: 'Teks', desc: 'koreksi, umpan balik, tinjauan naskah' },
-    { id: 'core-vision', label: 'Visi', desc: 'membaca tulisan tangan dari foto' },
-    { id: 'core-light', label: 'Ringan', desc: 'tugas cepat & hemat' },
+    { id: 'core-text', desc: { en: 'grading, feedback, manuscript review', id: 'koreksi, umpan balik, tinjauan naskah' } },
+    { id: 'core-vision', desc: { en: 'reads handwriting from photos', id: 'membaca tulisan tangan dari foto' } },
+    { id: 'core-light', desc: { en: 'quick, low-cost tasks', id: 'tugas cepat & hemat' } },
   ],
-  capabilities: ['Gateway tunggal', 'Rantai fallback', 'Prompt registry', 'Output JSON terstruktur', 'Streaming', 'Metering pemakaian', 'Mode sandbox'],
+  capabilities: [
+    { en: 'Single gateway', id: 'Gateway tunggal' },
+    { en: 'Fallback chains', id: 'Rantai fallback' },
+    { en: 'Prompt registry', id: 'Prompt registry' },
+    { en: 'Structured JSON output', id: 'Output JSON terstruktur' },
+    { en: 'Streaming', id: 'Streaming' },
+    { en: 'Usage metering', id: 'Metering pemakaian' },
+    { en: 'Sandbox mode', id: 'Mode sandbox' },
+  ],
 };

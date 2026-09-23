@@ -12,8 +12,13 @@ import {
   teaching,
 } from '../../data/research';
 import { productsData } from '../../data/products';
+import { useLang } from '../../i18n/LangContext';
 
-const typeLabel = { journal: 'Journal', conference: 'Conference', community: 'Community service' };
+const typeLabel = {
+  journal: { en: 'Journal', id: 'Jurnal' },
+  conference: { en: 'Conference', id: 'Konferensi' },
+  community: { en: 'Community service', id: 'Pengabdian' },
+};
 const typeTint = {
   journal: 'bg-warmSkySoft text-warmSky',
   conference: 'bg-warmPeachSoft text-warmPeach',
@@ -21,10 +26,10 @@ const typeTint = {
 };
 
 const tabs = [
-  { id: 'pubs', label: 'Publications', Icon: FiFileText, count: publications.length },
-  { id: 'grants', label: 'Research grants', Icon: FiAward, count: researchGrants.length },
-  { id: 'service', label: 'Community service', Icon: FiHeart, count: communityService.length },
-  { id: 'teaching', label: 'Teaching', Icon: FiBookOpen, count: teaching.length },
+  { id: 'pubs', label: { en: 'Publications', id: 'Publikasi' }, Icon: FiFileText, count: publications.length },
+  { id: 'grants', label: { en: 'Research grants', id: 'Hibah penelitian' }, Icon: FiAward, count: researchGrants.length },
+  { id: 'service', label: { en: 'Community service', id: 'Pengabdian' }, Icon: FiHeart, count: communityService.length },
+  { id: 'teaching', label: { en: 'Teaching', id: 'Mengajar' }, Icon: FiBookOpen, count: teaching.length },
 ];
 
 const aiProducts = productsData.filter((p) => p.ai && p.status === 'live');
@@ -53,6 +58,7 @@ function Row({ year, title, sub, tag, tint, url, extra }) {
 }
 
 function ResearchSoft() {
+  const { t } = useLang();
   const [active, setActive] = useState('pubs');
 
   return (
@@ -66,16 +72,20 @@ function ResearchSoft() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7"
           >
-            <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">Research</span>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight md:text-5xl">From sensor networks to AI in the classroom.</h2>
+            <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">{t({ en: 'Research', id: 'Riset' })}</span>
+            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight md:text-5xl">
+              {t({ en: 'From sensor networks to AI in the classroom.', id: 'Dari jaringan sensor ke AI di ruang kelas.' })}
+            </h2>
             <p className="mt-5 font-body text-lg leading-relaxed text-warmMuted">
-              Research that started in wireless sensor networks and IoT — and now continues in applied AI,
-              tested in real classrooms through the products I build.
+              {t({
+                en: 'Research that started in wireless sensor networks and IoT — and now continues in applied AI, tested in real classrooms through the products I build.',
+                id: 'Riset yang berawal dari jaringan sensor nirkabel dan IoT — kini berlanjut ke AI terapan, diuji di kelas nyata lewat produk yang saya bangun.',
+              })}
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {researchInterests.map((r) => (
-                <span key={r} className="rounded-full border border-warmLine bg-warmCard px-3.5 py-1.5 font-body text-sm font-medium">
-                  {r}
+                <span key={t(r)} className="rounded-full border border-warmLine bg-warmCard px-3.5 py-1.5 font-body text-sm font-medium">
+                  {t(r)}
                 </span>
               ))}
             </div>
@@ -89,7 +99,7 @@ function ResearchSoft() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="rounded-3xl border border-warmLine bg-warmCard p-6 shadow-soft lg:col-span-5"
           >
-            <p className="font-body text-xs font-semibold uppercase tracking-widest text-warmMuted">Academic profiles</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest text-warmMuted">{t({ en: 'Academic profiles', id: 'Profil akademik' })}</p>
             <div className="mt-4 grid grid-cols-2 gap-2.5">
               {academicProfiles.map((a) => (
                 <a
@@ -106,9 +116,9 @@ function ResearchSoft() {
             </div>
             <div className="mt-6 grid grid-cols-3 gap-3 border-t border-warmLine pt-5 text-center">
               {[
-                [publications.length, 'publications'],
-                [researchGrants.length, 'grants'],
-                [communityService.length, 'service'],
+                [publications.length, t({ en: 'publications', id: 'publikasi' })],
+                [researchGrants.length, t({ en: 'grants', id: 'hibah' })],
+                [communityService.length, t({ en: 'service', id: 'pengabdian' })],
               ].map(([n, l]) => (
                 <div key={l}>
                   <div className="font-display text-2xl font-bold">
@@ -131,17 +141,18 @@ function ResearchSoft() {
             className="mt-10 flex flex-col gap-3 rounded-3xl bg-warmInk px-6 py-5 text-warmBg sm:flex-row sm:items-center sm:justify-between"
           >
             <p className="font-body text-sm leading-relaxed">
-              <span className="font-semibold text-warmPeach">Now applying:</span> AI-assisted assessment & feedback in real classrooms —{' '}
+              <span className="font-semibold text-warmPeach">{t({ en: 'Now applying:', id: 'Kini diterapkan:' })}</span>{' '}
+              {t({ en: 'AI-assisted assessment & feedback in real classrooms —', id: 'penilaian & umpan balik berbantuan AI di kelas nyata —' })}{' '}
               {aiProducts.map((p) => p.title).join(', ')}.
             </p>
             <a href="/#produk" className="inline-flex shrink-0 items-center gap-1 font-body text-sm font-semibold text-warmPeach hover:underline">
-              See the products <FiArrowUpRight />
+              {t({ en: 'See the products', id: 'Lihat produknya' })} <FiArrowUpRight />
             </a>
           </motion.div>
         )}
 
         {/* Tabs */}
-        <div className="mt-12 flex flex-wrap gap-2" role="tablist" aria-label="Research categories">
+        <div className="mt-12 flex flex-wrap gap-2" role="tablist" aria-label={t({ en: 'Research categories', id: 'Kategori riset' })}>
           {tabs.map(({ id, label, Icon, count }) => {
             const on = active === id;
             return (
@@ -154,7 +165,7 @@ function ResearchSoft() {
               >
                 {on && <motion.span layoutId="researchPill" className="absolute inset-0 rounded-full bg-warmInk" transition={{ type: 'spring', stiffness: 400, damping: 32 }} />}
                 <Icon className="relative z-10" />
-                <span className="relative z-10">{label}</span>
+                <span className="relative z-10">{t(label)}</span>
                 <span className={`relative z-10 rounded-full px-1.5 text-[11px] ${on ? 'bg-warmBg/20' : 'bg-warmCard'}`}>{count}</span>
               </button>
             );
@@ -176,8 +187,8 @@ function ResearchSoft() {
                   key={p.title}
                   year={p.year}
                   title={p.title}
-                  sub={p.venue}
-                  tag={typeLabel[p.type]}
+                  sub={t(p.venue)}
+                  tag={t(typeLabel[p.type])}
                   tint={typeTint[p.type]}
                   url={p.url}
                   extra={
@@ -190,19 +201,19 @@ function ResearchSoft() {
                 />
               ))}
             {active === 'grants' &&
-              researchGrants.map((g) => <Row key={g.title} year={g.year} title={g.title} sub={g.funder} tag="Research" tint={typeTint.journal} url={g.url} />)}
+              researchGrants.map((g) => <Row key={g.title} year={g.year} title={g.title} sub={g.funder} tag={t({ en: 'Research', id: 'Penelitian' })} tint={typeTint.journal} url={g.url} />)}
             {active === 'service' &&
               communityService.map((c) => (
-                <Row key={c.title} year={c.year} title={c.title} sub={c.partner} tag="Pengabdian" tint={typeTint.community} url={c.url} />
+                <Row key={c.partner} year={c.year} title={t(c.title)} sub={c.partner} tag={t({ en: 'Community service', id: 'Pengabdian' })} tint={typeTint.community} url={c.url} />
               ))}
             {active === 'teaching' && (
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {teaching.map((t) => (
-                  <div key={t} className="flex items-center gap-3 rounded-2xl border border-warmLine bg-warmCard px-5 py-4 shadow-soft">
+                {teaching.map((course) => (
+                  <div key={course.en} className="flex items-center gap-3 rounded-2xl border border-warmLine bg-warmCard px-5 py-4 shadow-soft">
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-warmPeachSoft text-warmPeach">
                       <FiBookOpen />
                     </span>
-                    <span className="font-display text-[15px] font-bold">{t}</span>
+                    <span className="font-display text-[15px] font-bold">{t(course)}</span>
                   </div>
                 ))}
               </div>

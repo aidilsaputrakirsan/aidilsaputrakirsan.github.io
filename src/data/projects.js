@@ -1,9 +1,9 @@
 export const categories = [
-    { id: 'all', name: 'All' },
-    { id: 'web', name: 'Web App' },
-    { id: 'mobile', name: 'Mobile App' },
+    { id: 'all', name: { en: 'All', id: 'Semua' } },
+    { id: 'web', name: { en: 'Web App', id: 'Aplikasi Web' } },
+    { id: 'mobile', name: { en: 'Mobile App', id: 'Aplikasi Mobile' } },
     { id: 'iot', name: 'IoT' },
-    { id: 'other', name: 'Other' },
+    { id: 'other', name: { en: 'Other', id: 'Lainnya' } },
   ];
   
   // Karya/sistem yang pernah dibangun (bukan produk Myst Tech).

@@ -10,16 +10,29 @@ System Lecturer, Balikpapan). React + Vite + Tailwind + Framer Motion + three.js
 Deployed to GitHub Pages (`npm run deploy`).
 
 ## Two pages (Vite multi-page, no router)
-| URL | HTML | Entry | Root component | Language |
-|---|---|---|---|---|
-| `/` | [index.html](index.html) | [src/main.jsx](src/main.jsx) | [src/HubApp.jsx](src/HubApp.jsx) — Myst Tech hub | Bahasa Indonesia |
-| `/aidil/` | [aidil/index.html](aidil/index.html) | [src/main-profile.jsx](src/main-profile.jsx) | [src/App.jsx](src/App.jsx) — founder profile + CV | English |
+| URL | HTML | Entry | Root component |
+|---|---|---|---|
+| `/` | [index.html](index.html) | [src/main.jsx](src/main.jsx) | [src/HubApp.jsx](src/HubApp.jsx) — Myst Tech hub |
+| `/aidil/` | [aidil/index.html](aidil/index.html) | [src/main-profile.jsx](src/main-profile.jsx) | [src/App.jsx](src/App.jsx) — founder profile + CV |
 
 Both are listed in `build.rollupOptions.input` in [vite.config.js](vite.config.js);
 GitHub Pages serves `/aidil/index.html` natively. Hub sections live in
 [src/components/hub/](src/components/hub/) (Hero with 3D orbit → Aplikasi launcher →
 Myst-Core → Founder → Kontak). `NavbarSoft`/`FooterSoft` are shared and take props
 (`links`, `brand`, `cta`, `back`, `labels`).
+
+## Two languages: English (default) + Bahasa Indonesia
+- [src/i18n/LangContext.jsx](src/i18n/LangContext.jsx): `LangProvider` (wraps both pages),
+  `useLang()` → `{ lang, setLang, t }`. Choice is saved in `localStorage.lang` and shared
+  by `/` and `/aidil/`. Switch = `LangToggle` (EN | ID) in the navbar.
+- **Any bilingual text is `{ en: '…', id: '…' }`** — in components *and* in `src/data/*`.
+  Render it with `t(value)`; plain strings pass through untouched (brand names, paper
+  titles, `projects.js` descriptions — translate those later by turning them into `{ en, id }`).
+- Never render a data field directly (`{item.title}`) — always `{t(item.title)}`, or React
+  will crash on the object.
+- The CV is always English (`resolve(v, 'en')` in CvDocument); the rollback dark theme too.
+- `experience.js` keeps `period: "... - Present"` (used by `currentRoles()`); the UI shows
+  "Sekarang" in ID.
 
 ## Active design = "Soft / Warm" (light + warm-dark theme)
 The site was redesigned. The current live design is the **Soft/Warm** light theme.
@@ -69,13 +82,25 @@ Add one entry to `productsData` in [src/data/products.js](src/data/products.js) 
 docs are at the top of that file): `id`, `title`, `tagline`, `pitch` (ID), `description`
 (EN, for profile/CV), `audience` (+ `audienceLabel`), `features`, `url`, `poster`,
 `color` (brand hex), `icon` (key from [productIcons.js](src/components/hub/productIcons.js)),
-`status: 'live' | 'building'`, `poweredByCore`, `ai`, `year`, `technologies`.
+`status: 'live' | 'building'`, `poweredByCore`, `ai`, `year`, `technologies`, `screenshot`.
+Bilingual fields (`tagline`, `pitch`, `audienceLabel`, `features[]`) are `{ en, id }`.
 Nothing else to wire: the hub hero badge + quick-launch chips + marquee, the 3D orbit
 (new planet in the app's color; `poweredByCore` adds a beam to the core), the launcher
 cards + audience filter, the Myst-Core diagram, the footer, the profile page's
 "Products I run" strip, Skills "AI Product Engineering" count and the CV all update.
 Put posters in `public/images/projects/` (compress, <~500KB). Not released yet →
 `status: 'building'`, `url: ''`, `poster: null`.
+
+### Landing-page screenshots on the app cards
+- Cards with `screenshot` show the app's real landing page in a browser frame (zoomed to
+  150% width, centred; hover scrolls down the page). `screenshot: null` → brand-colour
+  panel + icon instead.
+- **`npm run screenshots`** (script: [scripts/capture-landings.mjs](scripts/capture-landings.mjs))
+  opens every live app's `url` in the locally installed Chrome/Edge (`playwright-core`, no
+  download; or set `CHROME_PATH`), saves `public/images/landing/<id>.jpg` (1280px wide,
+  ≤1600px tall, ~100–250KB) and sets that product's `screenshot` field automatically.
+  `npm run screenshots -- asdos-ai` captures only the listed ids. Re-run when a landing
+  page changes, then commit the images.
 
 ## HOW TO: add a publication / research / pengabdian
 Add to `publications`, `researchGrants` or `communityService` in

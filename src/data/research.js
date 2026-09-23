@@ -7,6 +7,7 @@
 // checked against SINTA / Google Scholar — fix and remove the flag.
 //
 // type: 'journal' | 'conference' | 'community' (community-service article)
+// Bilingual text is { en, id }; paper titles stay in their original language.
 
 export const academicProfiles = [
   { label: 'SINTA', url: 'https://sinta.kemdiktisaintek.go.id/authors/profile/6760340' },
@@ -19,11 +20,11 @@ export const academicProfiles = [
 ];
 
 export const researchInterests = [
-  'Applied AI & LLM systems',
-  'AI-assisted assessment',
+  { en: 'Applied AI & LLM systems', id: 'AI terapan & sistem LLM' },
+  { en: 'AI-assisted assessment', id: 'Penilaian berbantuan AI' },
   'Internet of Things',
-  'Wireless Sensor Networks',
-  'Software Engineering',
+  { en: 'Wireless Sensor Networks', id: 'Jaringan Sensor Nirkabel' },
+  { en: 'Software Engineering', id: 'Rekayasa Perangkat Lunak' },
 ];
 
 // Newest first.
@@ -37,7 +38,7 @@ export const publications = [
   },
   {
     title: 'Rancang Bangun Sistem Deteksi Dini Kebakaran di Rumah Menggunakan Smart Home Berbasis IoT',
-    venue: 'Journal article',
+    venue: { en: 'Journal article', id: 'Artikel jurnal' },
     year: '2024',
     type: 'journal',
     url: 'https://www.researchgate.net/publication/380561981',
@@ -68,7 +69,7 @@ export const publications = [
   },
   {
     title: 'Efficient Energy for Cluster Head Selection Using New LEACH-Based Routing Protocol in Wireless Sensor Network',
-    venue: 'IEEE conference proceedings',
+    venue: { en: 'IEEE conference proceedings', id: 'Prosiding konferensi IEEE' },
     year: '2019',
     type: 'conference',
     url: 'https://ieeexplore.ieee.org/author/37087083867',
@@ -92,17 +93,28 @@ export const researchGrants = [
 
 export const communityService = [
   {
-    title: 'Mobile SIAKAD notification app for SD Al-Azhar 58 Balikpapan',
+    title: {
+      en: 'Mobile SIAKAD notification app for SD Al-Azhar 58 Balikpapan',
+      id: 'Aplikasi notifikasi SIAKAD mobile untuk SD Al-Azhar 58 Balikpapan',
+    },
     partner: 'SD Al-Azhar 58 Balikpapan',
     year: '2021',
     url: 'https://lppm.itk.ac.id/detail-berita/pengabdian-kepada-masyarakat-optimalisasi-peningkatan-teknologi-dalam-pengembangan-siakad-berbasis-mobile-di-sekolah-balikpapan',
   },
   {
-    title: 'Smart-tourism development for Kampung Warna-warni Teluk Seribu',
+    title: {
+      en: 'Smart-tourism development for Kampung Warna-warni Teluk Seribu',
+      id: 'Pengembangan smart tourism Kampung Warna-warni Teluk Seribu',
+    },
     partner: 'Teluk Seribu, Balikpapan',
     year: '2021',
     url: '',
   },
 ];
 
-export const teaching = ['Cloud Computing', 'Web Programming', 'Database Systems', 'Software Engineering'];
+export const teaching = [
+  { en: 'Cloud Computing', id: 'Komputasi Awan' },
+  { en: 'Web Programming', id: 'Pemrograman Web' },
+  { en: 'Database Systems', id: 'Sistem Basis Data' },
+  { en: 'Software Engineering', id: 'Rekayasa Perangkat Lunak' },
+];

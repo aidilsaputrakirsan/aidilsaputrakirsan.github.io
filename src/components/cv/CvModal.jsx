@@ -4,10 +4,12 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiPrinter } from 'react-icons/fi';
 import CvDocument from './CvDocument';
+import { useLang } from '../../i18n/LangContext';
 
 // Listens for a global `open-cv` event (dispatched by any "Download CV" button),
 // shows the CV in an overlay, and prints to PDF via the browser.
 function CvModal() {
+  const { t } = useLang();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -44,9 +46,9 @@ function CvModal() {
                 onClick={() => window.print()}
                 className="inline-flex items-center gap-2 rounded-full bg-warmPeach px-5 py-2 font-body text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
               >
-                <FiPrinter /> Save as PDF
+                <FiPrinter /> {t({ en: 'Save as PDF', id: 'Simpan sebagai PDF' })}
               </button>
-              <button onClick={() => setOpen(false)} className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-warmBg/30 hover:bg-warmBg/10" aria-label="Close">
+              <button onClick={() => setOpen(false)} className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-warmBg/30 hover:bg-warmBg/10" aria-label={t({ en: 'Close', id: 'Tutup' })}>
                 <FiX />
               </button>
             </div>
