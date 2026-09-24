@@ -23,8 +23,8 @@
 //   poster        poster di public/images/projects/ — null jika belum ada
 //   color         warna merek aplikasi (hex) — dipakai kartu & orbit 3D
 //   icon          kunci ikon, lihat src/components/hub/productIcons.js
-//   status        'live' | 'building'
-//   poweredByCore true jika fitur AI-nya lewat Myst-Core (muncul "sinar" di orbit 3D)
+//   status        'live' | 'building' — live = di orbit 3D terhubung ke core (sinar + bola berjalan)
+//   poweredByCore true jika fitur AI-nya lewat Myst-Core (orbit dalam + diagram Myst-Core)
 //   ai            true jika aplikasi berbasis AI (dihitung di kartu "AI Products")
 //   year          tahun aktif — tahun berjalan = "currently working on"
 //   technologies  untuk CV & halaman profil

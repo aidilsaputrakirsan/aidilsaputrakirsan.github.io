@@ -1,7 +1,8 @@
 // "Myst Orbit" — the hub's 3D hero scene, in plain three.js (no R3F) to keep
 // the lazy chunk small. Myst-Core sits in the middle; every product orbits it.
-// Products whose AI runs through Myst-Core get a beam with request "packets"
-// travelling to the core and back — the real architecture, drawn.
+// Live products are connected: a beam with request "packets" travelling to
+// the core and back. Products still in development show only their planet.
+// (AI apps that run through Myst-Core sit on the inner ring, the rest outside.)
 //
 // Loaded on demand by MystOrbit.jsx. Labels are DOM elements owned by React;
 // this module only moves them (style.transform) every frame.
@@ -161,9 +162,10 @@ export function createOrbitScene(container, { products, labels, coreLabel, reduc
         index: products.indexOf(product),
         scale: 0,
         hoverScale: 1,
+        labelShift: 0, // eased vertical nudge that keeps labels from overlapping
       };
 
-      if (product.poweredByCore) {
+      if (product.status === 'live') {
         const beamGeo = track(new BufferGeometry());
         beamGeo.setAttribute('position', new Float32BufferAttribute(new Float32Array(6), 3));
         const beamMat = track(new LineBasicMaterial({ color, transparent: true, opacity: 0.35 }));
@@ -323,6 +325,7 @@ export function createOrbitScene(container, { products, labels, coreLabel, reduc
 
     const w = container.clientWidth;
     const h = container.clientHeight;
+    const placed = []; // label boxes this frame, resolved for overlaps below
     orbs.forEach((orb, k) => {
       const a = orb.angle0 + orb.ring.angle;
       orb.mesh.position.set(Math.cos(a) * orb.ring.radius, 0, Math.sin(a) * orb.ring.radius);
@@ -360,10 +363,37 @@ export function createOrbitScene(container, { products, labels, coreLabel, reduc
         tmp.project(camera);
         const x = (tmp.x * 0.5 + 0.5) * w;
         const y = (-tmp.y * 0.5 + 0.5) * h;
-        el.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) translate(-50%, -100%)`;
-        el.style.opacity = String(appear * (depth < -0.8 ? 0.55 : 1));
-        el.style.zIndex = String(Math.round(100 + depth * 10));
+        placed.push({ orb, el, x, y, depth, appear, lw: el.offsetWidth, lh: el.offsetHeight });
       }
+    });
+
+    // Keep labels readable: the label nearer the camera keeps its spot, any
+    // label behind it that would overlap is nudged upward (eased, no jumps).
+    placed.sort((a, b) => b.depth - a.depth);
+    // The "Myst-Core" label under the core is a fixed obstacle that never moves
+    if (coreLabel) {
+      tmp.set(0, -1.25 * s, 0).applyMatrix4(root.matrixWorld).project(camera);
+      const ch = coreLabel.offsetHeight;
+      placed.unshift({ core: true, x: (tmp.x * 0.5 + 0.5) * w, y: (-tmp.y * 0.5 + 0.5) * h + ch, lw: coreLabel.offsetWidth, lh: ch, orb: { labelShift: 0 } });
+    }
+    placed.forEach((a, i) => {
+      if (a.core) return;
+      let target = 0;
+      for (let pass = 0; pass < 2; pass++) {
+        for (let j = 0; j < i; j++) {
+          const b = placed[j];
+          const ay = a.y + target;
+          const by = b.y + b.orb.labelShift;
+          if (Math.abs(a.x - b.x) < (a.lw + b.lw) / 2 + 6 && Math.abs(ay - by) < a.lh + 4) {
+            target = by - a.lh - 6 - a.y;
+          }
+        }
+      }
+      a.orb.labelShift = reduceMotion ? target : a.orb.labelShift + (target - a.orb.labelShift) * 0.2;
+      const y = a.y + a.orb.labelShift;
+      a.el.style.transform = `translate(${a.x.toFixed(1)}px, ${y.toFixed(1)}px) translate(-50%, -100%)`;
+      a.el.style.opacity = String(a.appear * (a.depth < -0.8 ? 0.55 : 1));
+      a.el.style.zIndex = String(Math.round(100 + a.depth * 10));
     });
 
     // Core label sits just under the core

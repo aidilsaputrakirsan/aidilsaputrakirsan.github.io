@@ -85,7 +85,7 @@ docs are at the top of that file): `id`, `title`, `tagline`, `pitch` (ID), `desc
 `status: 'live' | 'building'`, `poweredByCore`, `ai`, `year`, `technologies`, `screenshot`.
 Bilingual fields (`tagline`, `pitch`, `audienceLabel`, `features[]`) are `{ en, id }`.
 Nothing else to wire: the hub hero badge + quick-launch chips + marquee, the 3D orbit
-(new planet in the app's color; `poweredByCore` adds a beam to the core), the launcher
+(new planet in the app's color; going `live` adds the beam + packets to the core), the launcher
 cards + audience filter, the Myst-Core diagram, the footer, the profile page's
 "Products I run" strip, Skills "AI Product Engineering" count and the CV all update.
 Put posters in `public/images/projects/` (compress, <~500KB). Not released yet →
@@ -136,8 +136,10 @@ the CV "Selected Projects" (top 8).
   labels, static fallback) lazy-imports
   [createOrbitScene.js](src/components/three/createOrbitScene.js) (plain three.js, no R3F)
   after first paint → separate ~130KB-gzip chunk that never blocks the page.
-- Myst-Core = the core sphere; AI apps (`poweredByCore`) orbit the inner ring with
-  beams + request "packets"; other apps on the outer ring. Colors follow `products.js`
+- Myst-Core = the core sphere. AI apps (`poweredByCore`) orbit the inner ring, others the
+  outer ring. **Live apps (`status: 'live'`) get a beam + travelling request "packets"**;
+  apps in development show only their planet. Overlapping labels are nudged apart
+  automatically (the label nearer the camera keeps its spot). Colors follow `products.js`
   and the light/dark theme (reads the `--warm-*` CSS vars).
 - Pauses off-screen / in hidden tabs; `prefers-reduced-motion` → static, render-on-demand.
   No WebGL → the static CSS fallback stays. Keep it light: no textures/GLB unless
