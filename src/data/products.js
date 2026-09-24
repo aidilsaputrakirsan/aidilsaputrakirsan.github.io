@@ -18,6 +18,8 @@
 //   screenshot    screenshot landing page di public/images/landing/ — jadi
 //                 background kartu. null = kartu memakai panel warna + ikon.
 //                 Ambil ulang semua: `npm run screenshots` (lihat scripts/).
+//   screenshotZoom opsional, mis. 1.5 — perbesar ke tengah jika isi landing page
+//                 berupa kolom sempit di tengah (default 1 = selebar kartu).
 //   poster        poster di public/images/projects/ — null jika belum ada
 //   color         warna merek aplikasi (hex) — dipakai kartu & orbit 3D
 //   icon          kunci ikon, lihat src/components/hub/productIcons.js
@@ -56,7 +58,7 @@ export const productsData = [
       { en: 'Question bank, blueprint & Excel export', id: 'Bank soal, kisi-kisi & ekspor Excel' },
     ],
     url: 'https://guru.myst-tech.com/',
-    screenshot: null,
+    screenshot: '/images/landing/gurupintar.jpg',
     poster: '/images/projects/poster-gurupintar.jpeg',
     color: '#5046E5',
     icon: 'book',
@@ -85,7 +87,7 @@ export const productsData = [
       { en: 'Cross-chapter consistency checks', id: 'Cek konsistensi lintas bab' },
     ],
     url: 'https://skripsi.myst-tech.com/',
-    screenshot: null,
+    screenshot: '/images/landing/skripsipintar.jpg',
     poster: '/images/projects/poster-skripsipintar.jpeg',
     color: '#0F9488',
     icon: 'file-search',
@@ -114,7 +116,7 @@ export const productsData = [
       { en: 'Grade recaps exported to Excel', id: 'Ekspor rekap nilai ke Excel' },
     ],
     url: 'https://asdos.myst-tech.com/',
-    screenshot: null,
+    screenshot: '/images/landing/asdos-ai.jpg',
     poster: '/images/projects/poster-asdosai.jpg',
     color: '#3B82F6',
     icon: 'graduation',
@@ -143,7 +145,7 @@ export const productsData = [
       { en: 'Automatic monthly reports', id: 'Laporan bulanan otomatis' },
     ],
     url: 'https://rt.myst-tech.com/',
-    screenshot: null,
+    screenshot: '/images/landing/manajemen-rt.jpg',
     poster: '/images/projects/poster-rt.jpeg',
     color: '#5FA32E',
     icon: 'house',
@@ -172,6 +174,7 @@ export const productsData = [
     ],
     url: '',
     screenshot: '/images/landing/jarvis-myst.jpg',
+    screenshotZoom: 1.5, // narrow centred landing page → zoom in
     poster: null,
     color: '#D97706',
     icon: 'bot',

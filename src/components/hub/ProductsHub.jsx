@@ -53,14 +53,15 @@ function ScreenshotHeader({ p, live, Icon }) {
             {p.url ? hostOf(p.url) : 'myst-tech.com'}
           </span>
         </div>
-        {/* Landing pages are mostly centred content: zoom in (150% wide, centred)
-            so the text stays readable; hovering scrolls down the page. */}
+        {/* Full-width preview (optional `screenshotZoom` zooms into the centre for
+            pages whose content is a narrow centred column); hover scrolls down. */}
         <div className="relative h-[calc(100%-2rem)] overflow-hidden">
           <img
             src={p.screenshot}
             alt={t({ en: `${p.title} landing page`, id: `Halaman depan ${p.title}` })}
             loading="lazy"
-            className="absolute left-1/2 top-0 w-[150%] max-w-none -translate-x-1/2 transition-transform duration-[2600ms] ease-in-out group-hover:-translate-y-[calc(100%-10rem)]"
+            style={{ width: `${(p.screenshotZoom ?? 1) * 100}%` }}
+            className="absolute left-1/2 top-0 max-w-none -translate-x-1/2 transition-transform duration-[2600ms] ease-in-out group-hover:-translate-y-[calc(100%-10rem)]"
           />
         </div>
         {/* soft fade into the card body */}

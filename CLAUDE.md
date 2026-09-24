@@ -92,8 +92,10 @@ Put posters in `public/images/projects/` (compress, <~500KB). Not released yet �
 `status: 'building'`, `url: ''`, `poster: null`.
 
 ### Landing-page screenshots on the app cards
-- Cards with `screenshot` show the app's real landing page in a browser frame (zoomed to
-  150% width, centred; hover scrolls down the page). `screenshot: null` → brand-colour
+- Cards with `screenshot` show the app's real landing page in a browser frame (full card
+  width; optional `screenshotZoom: 1.5` zooms into the centre for narrow centred pages;
+  hover scrolls down the page). Screenshots from elsewhere: convert to JPEG ≤1280px wide,
+  crop to the top ~1.3 screens, save as `public/images/landing/<id>.jpg`. `screenshot: null` → brand-colour
   panel + icon instead.
 - **`npm run screenshots`** (script: [scripts/capture-landings.mjs](scripts/capture-landings.mjs))
   opens every live app's `url` in the locally installed Chrome/Edge (`playwright-core`, no
