@@ -1,7 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#2B2520"/>
-  <ellipse cx="32" cy="32" rx="23" ry="9" fill="none" stroke="#FAF6F0" stroke-opacity=".55" stroke-width="2.5" transform="rotate(-24 32 32)"/>
-  <circle cx="32" cy="32" r="10" fill="#E8835A"/>
-  <circle cx="50.5" cy="23.5" r="4" fill="#7FA887"/>
-  <circle cx="13.5" cy="40.5" r="3" fill="#7BA7C9"/>
+  <defs>
+    <radialGradient id="c" cx=".36" cy=".32" r=".75">
+      <stop offset="0" stop-color="#F08A6E"/><stop offset=".55" stop-color="#C43D2B"/><stop offset="1" stop-color="#7A2014"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#1E1A15"/>
+  <ellipse cx="32" cy="32" rx="23" ry="9" fill="none" stroke="#F3EEE4" stroke-opacity=".55" stroke-width="2.5" transform="rotate(-24 32 32)"/>
+  <circle cx="32" cy="32" r="10" fill="url(#c)"/>
+  <circle cx="50.5" cy="23.5" r="4" fill="#8FAE6E"/>
+  <circle cx="13.5" cy="40.5" r="3" fill="#7E9CC4"/>
 </svg>
