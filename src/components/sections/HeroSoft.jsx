@@ -1,14 +1,16 @@
 /* eslint-disable no-unused-vars */
 import { motion, useScroll, useTransform, useReducedMotion, useMotionValue, useSpring, useMotionTemplate, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { FiArrowDownRight, FiMail, FiCode, FiBookOpen, FiCpu, FiWifi, FiSearch, FiMonitor, FiUsers, FiZap } from 'react-icons/fi';
+import { FiArrowDownRight, FiCode, FiBookOpen, FiCpu, FiWifi, FiSearch, FiMonitor, FiUsers, FiZap } from 'react-icons/fi';
 import Counter from '../ui/Counter';
 import Marquee from '../ui/Marquee';
-import { projectsData } from '../../data/projects';
-import { yearsOfExperience, currentProjects, currentRoles } from '../../data/site';
+import { liveProducts } from '../../data/products';
+import { yearsOfExperience, currentRoles, publicationCount } from '../../data/site';
+import { useLang } from '../../i18n/LangContext';
 
 // Soft / Warm Hero — light, fast, mobile-friendly, lots of gentle motion.
 function HeroSoft() {
+  const { t } = useLang();
   const ref = useRef(null);
   const reduce = useReducedMotion();
 
@@ -19,12 +21,12 @@ function HeroSoft() {
   const [badgePaused, setBadgePaused] = useState(false);
   useEffect(() => {
     if (reduce || badgePaused || liveRoles.length < 2) return undefined;
-    const t = setInterval(() => setRoleIdx((i) => (i + 1) % liveRoles.length), 3500);
-    return () => clearInterval(t);
+    const timer = setInterval(() => setRoleIdx((i) => (i + 1) % liveRoles.length), 3500);
+    return () => clearInterval(timer);
   }, [reduce, badgePaused, liveRoles.length]);
   const badgeRole = liveRoles[roleIdx % liveRoles.length];
   // Prefer the hand-picked short labels; fall back to trimming the long ones
-  const badgeTitle = badgeRole?.shortTitle ?? badgeRole?.title.split('—').pop().trim();
+  const badgeTitle = t(badgeRole?.shortTitle) ?? t(badgeRole?.title)?.split('—').pop().trim();
   const badgeCompany = badgeRole?.shortCompany ?? badgeRole?.company.split(',')[0].trim();
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
@@ -67,19 +69,20 @@ function HeroSoft() {
   ];
 
   const roles = [
+    { label: 'Founder · Myst Tech', Icon: FiZap },
+    { label: 'AI Product Engineer', Icon: FiCpu },
+    { label: { en: 'Information System Lecturer', id: 'Dosen Sistem Informasi' }, Icon: FiBookOpen },
     { label: 'Full-Stack Developer', Icon: FiCode },
-    { label: 'Information System Lecturer', Icon: FiBookOpen },
-    { label: 'Digital Innovation Lab Head', Icon: FiZap },
-    { label: 'AI Enthusiast', Icon: FiCpu },
+    { label: { en: 'Digital Innovation Lab Head', id: 'Kepala Lab Inovasi Digital' }, Icon: FiZap },
     { label: 'IoT Engineer', Icon: FiWifi },
-    { label: 'Researcher', Icon: FiSearch },
-    { label: 'Tech Educator', Icon: FiMonitor },
+    { label: { en: 'Researcher', id: 'Peneliti' }, Icon: FiSearch },
+    { label: { en: 'Tech Educator', id: 'Pendidik Teknologi' }, Icon: FiMonitor },
     { label: 'Mentor', Icon: FiUsers },
   ];
   const roleItems = roles.map(({ label, Icon }) => (
-    <span key={label} className="inline-flex items-center gap-3">
+    <span key={t(label)} className="inline-flex items-center gap-3">
       <Icon className="text-2xl text-warmPeach" />
-      {label}
+      {t(label)}
     </span>
   ));
 
@@ -126,7 +129,7 @@ function HeroSoft() {
               className="inline-flex items-center gap-2 rounded-full border border-warmLine bg-warmCard/70 px-4 py-1.5 text-sm font-medium text-warmMuted shadow-soft backdrop-blur"
             >
               <span className="h-2 w-2 rounded-full bg-warmSage animate-pulse" />
-              Available for collaboration
+              {t({ en: 'Available for collaboration', id: 'Terbuka untuk kolaborasi' })}
             </motion.span>
 
             <motion.h1 variants={item} className="mt-6 font-display font-extrabold tracking-tight leading-[0.98] text-5xl sm:text-6xl lg:text-7xl">
@@ -144,9 +147,10 @@ function HeroSoft() {
             </motion.h1>
 
             <motion.p variants={item} className="mt-6 max-w-xl font-body text-lg md:text-xl text-warmMuted leading-relaxed">
-              Full-Stack Developer & Information System Lecturer. I build dynamic,
-              intelligent, and scalable digital products — and teach the next
-              generation of IT professionals.
+              {t({
+                en: 'Founder of Myst Tech & Information System Lecturer. I build AI products for Indonesian teachers, lecturers, and students — and teach the next generation of IT professionals.',
+                id: 'Founder Myst Tech & Dosen Sistem Informasi. Saya membangun produk AI untuk guru, dosen, dan mahasiswa Indonesia — sekaligus mendidik generasi profesional TI berikutnya.',
+              })}
             </motion.p>
 
             <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
@@ -156,25 +160,25 @@ function HeroSoft() {
                 whileTap={{ scale: 0.97 }}
                 className="group inline-flex items-center gap-2 rounded-full bg-warmInk px-7 py-3.5 font-body font-semibold text-warmBg shadow-soft hover:shadow-soft-lg"
               >
-                View my work
+                {t({ en: 'View my work', id: 'Lihat karya saya' })}
                 <FiArrowDownRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
               </motion.a>
               <motion.a
-                href="#contact"
+                href="/"
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center gap-2 rounded-full border border-warmLine bg-warmCard px-7 py-3.5 font-body font-semibold text-warmInk hover:border-warmPeach hover:text-warmPeach"
               >
-                <FiMail /> Get in touch
+                <img src="/myst-mark.svg" alt="" className="h-5 w-5" /> {t({ en: 'Myst Tech apps', id: 'Aplikasi Myst Tech' })}
               </motion.a>
             </motion.div>
 
             {/* Mini stats with count-up */}
             <motion.div variants={item} className="mt-12 flex flex-wrap gap-x-10 gap-y-4">
               {[
-                { n: yearsOfExperience(), s: '+', l: 'Years experience' },
-                { n: projectsData.length, s: '+', l: 'Projects shipped' },
-                { n: currentProjects().length, s: '', l: 'Products in build' },
+                { n: yearsOfExperience(), s: '+', l: t({ en: 'Years experience', id: 'Tahun pengalaman' }) },
+                { n: liveProducts().length, s: '', l: t({ en: 'Live AI & SaaS products', id: 'Produk AI & SaaS live' }) },
+                { n: publicationCount(), s: '', l: t({ en: 'Publications', id: 'Publikasi' }) },
               ].map((x) => (
                 <div key={x.l}>
                   <div className="font-display text-3xl font-bold text-warmInk">
@@ -224,7 +228,7 @@ function HeroSoft() {
                   onClick={() => setRoleIdx((i) => (i + 1) % liveRoles.length)}
                   role="button"
                   tabIndex={0}
-                  aria-label="Current roles — click for the next one"
+                  aria-label={t({ en: 'Current roles — click for the next one', id: 'Peran saat ini — klik untuk berikutnya' })}
                   className="absolute -bottom-5 -left-5 w-[250px] cursor-pointer rounded-2xl bg-warmCard px-5 py-3 shadow-soft ring-1 ring-warmLine"
                 >
                   <AnimatePresence mode="wait" initial={false}>
@@ -244,7 +248,7 @@ function HeroSoft() {
                     <div className="mt-2 flex gap-1.5">
                       {liveRoles.map((r, i) => (
                         <span
-                          key={r.title}
+                          key={r.period + r.company}
                           className={`h-1 rounded-full transition-all duration-300 ${
                             i === roleIdx ? 'w-4 bg-warmPeach' : 'w-1.5 bg-warmLine'
                           }`}

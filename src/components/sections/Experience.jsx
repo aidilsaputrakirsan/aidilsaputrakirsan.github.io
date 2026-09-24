@@ -3,6 +3,10 @@ import { useState } from 'react';
 import { experienceData } from '../../data/experience';
 import { educationData } from '../../data/education';
 import { achievementsData } from '../../data/achievements';
+import { resolve } from '../../i18n/LangContext';
+
+// Rollback theme is English-only; bilingual data is resolved to English.
+const en = (v) => resolve(v, 'en');
 import { FaBriefcase, FaGraduationCap, FaTrophy } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -58,9 +62,9 @@ function Experience() {
 
                       <div className="flex flex-col">
                         <span className="font-mono text-xs text-animeRed tracking-widest mb-2">{item.period}</span>
-                        <h3 className="text-2xl font-bold text-textLight mb-1">{item.title}</h3>
+                        <h3 className="text-2xl font-bold text-textLight mb-1">{en(item.title)}</h3>
                         <span className="text-lg text-textMuted mb-4">{item.company}</span>
-                        <p className="text-textMuted leading-relaxed max-w-2xl">{item.description}</p>
+                        <p className="text-textMuted leading-relaxed max-w-2xl">{en(item.description)}</p>
                       </div>
                     </div>
                   ))}
@@ -76,9 +80,9 @@ function Experience() {
 
                       <div className="flex flex-col">
                         <span className="font-mono text-xs text-[#39C0FB] tracking-widest mb-2">{item.period}</span>
-                        <h3 className="text-2xl font-bold text-textLight mb-1">{item.degree}</h3>
+                        <h3 className="text-2xl font-bold text-textLight mb-1">{en(item.degree)}</h3>
                         <span className="text-lg text-textMuted mb-4">{item.institution}</span>
-                        <p className="text-textMuted leading-relaxed max-w-2xl">{item.description}</p>
+                        <p className="text-textMuted leading-relaxed max-w-2xl">{en(item.description)}</p>
                       </div>
                     </div>
                   ))}
@@ -94,9 +98,9 @@ function Experience() {
 
                       <div className="flex flex-col">
                         <span className="font-mono text-xs text-[#F9E858] tracking-widest mb-2">{item.year}</span>
-                        <h3 className="text-2xl font-bold text-textLight mb-1">{item.title}</h3>
+                        <h3 className="text-2xl font-bold text-textLight mb-1">{en(item.title)}</h3>
                         <span className="text-lg text-textMuted mb-4">{item.organization}</span>
-                        <p className="text-textMuted leading-relaxed max-w-2xl">{item.description}</p>
+                        <p className="text-textMuted leading-relaxed max-w-2xl">{en(item.description)}</p>
                       </div>
                     </div>
                   ))}

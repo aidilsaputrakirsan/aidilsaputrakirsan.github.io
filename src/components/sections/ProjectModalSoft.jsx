@@ -3,10 +3,12 @@ import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiGithub, FiExternalLink, FiMapPin, FiCalendar, FiTag, FiLock } from 'react-icons/fi';
 import { categories } from '../../data/projects';
+import { useLang } from '../../i18n/LangContext';
 
 // Case-study overlay for a single project. Opened by clicking a card in
 // ProjectsSoft; closes on backdrop click, the X button, or Escape.
 function ProjectModalSoft({ project, onClose }) {
+  const { t } = useLang();
   useEffect(() => {
     if (!project) return undefined;
     const onKey = (e) => e.key === 'Escape' && onClose();
@@ -48,7 +50,7 @@ function ProjectModalSoft({ project, onClose }) {
           >
             <button
               onClick={onClose}
-              aria-label="Close project details"
+              aria-label={t({ en: 'Close project details', id: 'Tutup detail proyek' })}
               className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-warmBg/90 text-lg text-warmInk shadow-soft backdrop-blur transition-colors hover:bg-warmPeach hover:text-warmBg"
             >
               <FiX />
@@ -68,7 +70,7 @@ function ProjectModalSoft({ project, onClose }) {
               <div className="p-6 sm:p-8">
                 <div className="flex flex-wrap items-center gap-2 font-body text-xs font-semibold text-warmMuted">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-warmPeachSoft px-3 py-1 text-warmPeach">
-                    <FiTag /> {categoryName}
+                    <FiTag /> {t(categoryName)}
                   </span>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-warmBg px-3 py-1">
                     <FiCalendar /> {project.year}
@@ -78,7 +80,7 @@ function ProjectModalSoft({ project, onClose }) {
                   </span>
                   {project.internal && (
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-warmBg px-3 py-1">
-                      <FiLock /> Internal system
+                      <FiLock /> {t({ en: 'Internal system', id: 'Sistem internal' })}
                     </span>
                   )}
                 </div>
@@ -87,20 +89,20 @@ function ProjectModalSoft({ project, onClose }) {
                   {project.title}
                 </h3>
                 <p className="mt-3 font-body leading-relaxed text-warmMuted">
-                  {project.description}
+                  {t(project.description)}
                 </p>
 
                 <div className="mt-6">
                   <div className="font-body text-xs font-semibold uppercase tracking-widest text-warmMuted">
-                    Built with
+                    {t({ en: 'Built with', id: 'Dibangun dengan' })}
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {project.technologies.map((t) => (
+                    {project.technologies.map((tech) => (
                       <span
-                        key={t}
+                        key={tech}
                         className="rounded-full border border-warmLine bg-warmBg px-3 py-1.5 font-body text-sm font-medium text-warmInk"
                       >
-                        {t}
+                        {tech}
                       </span>
                     ))}
                   </div>
@@ -115,7 +117,7 @@ function ProjectModalSoft({ project, onClose }) {
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 rounded-full bg-warmInk px-6 py-3 font-body text-sm font-semibold text-warmBg shadow-soft transition-transform hover:-translate-y-0.5"
                       >
-                        <FiExternalLink /> {project.featured ? 'Visit site' : 'Live demo'}
+                        <FiExternalLink /> {t({ en: 'Live demo', id: 'Demo langsung' })}
                       </a>
                     )}
                     {code && (
@@ -125,7 +127,7 @@ function ProjectModalSoft({ project, onClose }) {
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 rounded-full border border-warmLine bg-warmCard px-6 py-3 font-body text-sm font-semibold text-warmInk transition-colors hover:border-warmPeach hover:text-warmPeach"
                       >
-                        <FiGithub /> Source code
+                        <FiGithub /> {t({ en: 'Source code', id: 'Kode sumber' })}
                       </a>
                     )}
                   </div>

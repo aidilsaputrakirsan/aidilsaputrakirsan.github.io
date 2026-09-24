@@ -1,17 +1,40 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { FiMenu, FiX, FiSun, FiMoon, FiCoffee } from 'react-icons/fi';
+import { FiMenu, FiX, FiSun, FiMoon, FiCoffee, FiArrowLeft } from 'react-icons/fi';
+import LangToggle from '../ui/LangToggle';
+import { useLang } from '../../i18n/LangContext';
 
-const links = [
-  ['About', '#about'],
-  ['Skills', '#skills'],
-  ['Background', '#experience'],
-  ['Work', '#projects'],
-  ['Contact', '#contact'],
+// Defaults = the profile page (/aidil/). The hub passes its own links/brand/cta.
+const defaultLinks = [
+  [{ en: 'About', id: 'Tentang' }, '#about'],
+  [{ en: 'Skills', id: 'Keahlian' }, '#skills'],
+  [{ en: 'Research', id: 'Riset' }, '#research'],
+  [{ en: 'Journey', id: 'Perjalanan' }, '#experience'],
+  [{ en: 'Work', id: 'Karya' }, '#projects'],
+  [{ en: 'Contact', id: 'Kontak' }, '#contact'],
 ];
 
-function NavbarSoft() {
+const defaultBrand = (
+  <span>
+    Aidil<span className="text-warmPeach">.</span>
+  </span>
+);
+
+const defaultCta = { label: { en: 'Download CV', id: 'Unduh CV' }, onClick: () => window.dispatchEvent(new CustomEvent('open-cv')) };
+
+const defaultLabels = {
+  coffee: { en: 'Buy me a coffee', id: 'Traktir kopi' },
+  light: { en: 'Light mode', id: 'Mode terang' },
+  dark: { en: 'Dark mode', id: 'Mode gelap' },
+  menu: 'Menu',
+};
+
+// Every label may be bilingual ({ en, id }) — resolved with the current language.
+// cta: { label, href } (link) or { label, onClick } (button)
+// back: optional { label, href } — small "← Myst Tech" chip on the profile page
+function NavbarSoft({ links = defaultLinks, brand = defaultBrand, cta = defaultCta, back = null, labels = defaultLabels }) {
+  const { t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
@@ -50,7 +73,7 @@ function NavbarSoft() {
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
-  }, []);
+  }, [links]);
 
   return (
     <>
@@ -65,9 +88,19 @@ function NavbarSoft() {
         }`}
       >
         <nav className="container mx-auto flex items-center justify-between px-6 py-4 max-w-[1200px]">
-          <a href="#hero" className="font-display text-xl font-extrabold tracking-tight text-warmInk">
-            Aidil<span className="text-warmPeach">.</span>
-          </a>
+          <div className="flex items-center gap-3">
+            <a href="#hero" className="inline-flex items-center gap-2 font-display text-xl font-extrabold tracking-tight text-warmInk">
+              {brand}
+            </a>
+            {back && (
+              <a
+                href={back.href}
+                className="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-warmLine px-3 py-1 font-body text-xs font-semibold text-warmMuted transition-colors hover:border-warmPeach hover:text-warmPeach"
+              >
+                <FiArrowLeft /> {t(back.label)}
+              </a>
+            )}
+          </div>
 
           <div className="flex items-center gap-1">
             <ul className="hidden md:flex items-center gap-1">
@@ -89,25 +122,38 @@ function NavbarSoft() {
                         transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                       />
                     )}
-                    <span className="relative z-10">{label}</span>
+                    <span className="relative z-10">{t(label)}</span>
                   </a>
                 </li>
               );
             })}
             <li>
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent('open-cv'))}
-                className="ml-2 rounded-full bg-warmInk px-5 py-2 font-body text-sm font-semibold text-warmBg transition-transform hover:-translate-y-0.5"
-              >
-                Download CV
-              </button>
+              {cta.href ? (
+                <a
+                  href={cta.href}
+                  className="ml-2 inline-block rounded-full bg-warmInk px-5 py-2 font-body text-sm font-semibold text-warmBg transition-transform hover:-translate-y-0.5"
+                >
+                  {t(cta.label)}
+                </a>
+              ) : (
+                <button
+                  onClick={cta.onClick}
+                  className="ml-2 rounded-full bg-warmInk px-5 py-2 font-body text-sm font-semibold text-warmBg transition-transform hover:-translate-y-0.5"
+                >
+                  {t(cta.label)}
+                </button>
+              )}
             </li>
             </ul>
 
+            <div className="ml-2 mr-1">
+              <LangToggle />
+            </div>
+
             <button
               onClick={() => window.dispatchEvent(new CustomEvent('open-support'))}
-              aria-label="Buy me a coffee"
-              title="Buy me a coffee"
+              aria-label={t(labels.coffee)}
+              title={t(labels.coffee)}
               className="inline-flex h-10 w-10 items-center justify-center rounded-full text-lg text-warmMuted transition-colors hover:bg-warmPeachSoft hover:text-warmPeach"
             >
               <FiCoffee />
@@ -115,7 +161,7 @@ function NavbarSoft() {
 
             <button
               onClick={toggleTheme}
-              aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+              aria-label={dark ? t(labels.light) : t(labels.dark)}
               className="hidden md:inline-flex h-10 w-10 items-center justify-center rounded-full text-lg text-warmMuted transition-colors hover:bg-warmPeachSoft hover:text-warmPeach md:ml-1"
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -132,7 +178,7 @@ function NavbarSoft() {
               </AnimatePresence>
             </button>
 
-            <button className="md:hidden text-2xl text-warmInk p-2" onClick={() => setOpen((v) => !v)} aria-label="Menu">
+            <button className="md:hidden text-2xl text-warmInk p-2" onClick={() => setOpen((v) => !v)} aria-label={t(labels.menu)}>
               {open ? <FiX /> : <FiMenu />}
             </button>
           </div>
@@ -155,27 +201,40 @@ function NavbarSoft() {
                       active === href.slice(1) ? 'text-warmPeach' : 'text-warmInk'
                     }`}
                   >
-                    {label}
+                    {t(label)}
                   </a>
                 </li>
               ))}
               <li>
-                <button
-                  onClick={() => {
-                    setOpen(false);
-                    window.dispatchEvent(new CustomEvent('open-cv'));
-                  }}
-                  className="block w-full px-6 py-4 text-left font-body font-semibold text-warmPeach"
-                >
-                  Download CV ↗
-                </button>
+                {cta.href ? (
+                  <a href={cta.href} className="block px-6 py-4 font-body font-semibold text-warmPeach border-b border-warmLine/60">
+                    {t(cta.label)} ↗
+                  </a>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setOpen(false);
+                      cta.onClick();
+                    }}
+                    className="block w-full px-6 py-4 text-left font-body font-semibold text-warmPeach border-b border-warmLine/60"
+                  >
+                    {t(cta.label)} ↗
+                  </button>
+                )}
               </li>
+              {back && (
+                <li>
+                  <a href={back.href} className="flex items-center gap-2 px-6 py-4 font-body font-semibold text-warmInk border-b border-warmLine/60">
+                    <FiArrowLeft /> {t(back.label)}
+                  </a>
+                </li>
+              )}
               <li>
                 <button
                   onClick={toggleTheme}
                   className="flex w-full items-center gap-2 px-6 py-4 text-left font-body font-semibold text-warmInk"
                 >
-                  {dark ? <FiSun /> : <FiMoon />} {dark ? 'Light mode' : 'Dark mode'}
+                  {dark ? <FiSun /> : <FiMoon />} {dark ? t(labels.light) : t(labels.dark)}
                 </button>
               </li>
             </motion.ul>

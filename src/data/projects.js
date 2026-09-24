@@ -1,92 +1,16 @@
 export const categories = [
-    { id: 'all', name: 'All' },
-    { id: 'web', name: 'Web App' },
-    { id: 'mobile', name: 'Mobile App' },
+    { id: 'all', name: { en: 'All', id: 'Semua' } },
+    { id: 'web', name: { en: 'Web App', id: 'Aplikasi Web' } },
+    { id: 'mobile', name: { en: 'Mobile App', id: 'Aplikasi Mobile' } },
     { id: 'iot', name: 'IoT' },
-    { id: 'other', name: 'Other' },
+    { id: 'other', name: { en: 'Other', id: 'Lainnya' } },
   ];
   
-  // `featured: true` => rendered as a big "Products" card (poster + live link)
-  // at the top of the Portfolio section instead of the compact works list.
-  // `status`: 'live' | 'building' — powers the badge on featured cards.
+  // Karya/sistem yang pernah dibangun (bukan produk Myst Tech).
+  // Aplikasi Myst Tech (GuruPintar, SkripsiPintar, dst.) ada di products.js.
   // `internal: true` => shows an "Internal system" chip in the works list
   // (explains why there is no public demo link).
   export const projectsData = [
-    {
-      id: 21,
-      title: "GuruPintar",
-      description: "An AI teaching assistant for SMP/SMA teachers built around Kurikulum Merdeka — weekly daily grades turn themselves into report-card descriptions at the end of the semester. Grades student answers against the teacher's own rubric, reads handwritten answer sheets from a photo, tracks each student's learning-objective (TP) attainment, flags students at risk early with draft messages for parents, and ships a question bank with blueprint and Excel export. The final call always stays with the teacher.",
-      image: "/images/projects/poster-gurupintar.jpeg",
-      technologies: ["Laravel", "Livewire", "MySQL", "AI"],
-      category: "web",
-      demoLink: "https://guru.myst-tech.com/",
-      codeLink: "#",
-      year: "2026",
-      location: "Indonesia",
-      featured: true,
-      status: "live",
-      tagline: "Asisten manajemen guru — nilai harian jadi rapor otomatis",
-    },
-    {
-      id: 22,
-      title: "SkripsiPintar",
-      description: "A thesis companion and defense simulator for S1/S2 students — an AI that deliberately will not write the thesis for you, but gets you ready to defend it. Runs a mock defense where an AI examiner attacks the weak points, reviews each sub-chapter with a readiness score, reads the supervisor's handwritten notes from a photo, turns consultation notes into an action checklist, detects ghost citations and suspicious references, and checks consistency across chapters.",
-      image: "/images/projects/poster-skripsipintar.jpeg",
-      technologies: ["Laravel", "Livewire", "MySQL", "AI"],
-      category: "web",
-      demoLink: "https://skripsi.myst-tech.com/",
-      codeLink: "#",
-      year: "2026",
-      location: "Indonesia",
-      featured: true,
-      status: "live",
-      tagline: "Pendamping skripsi & simulasi sidang",
-    },
-    {
-      id: 18,
-      title: "Sistem Manajemen RT",
-      description: "A multi-tenant SaaS platform that digitizes Indonesian neighborhood (RT) administration — automated resident letters with tidy numbering, resident & demographic records, dues collection, and auto-generated monthly reports, with secure role-based access for administrators and residents. Live with a public demo mode.",
-      image: "/images/projects/poster-rt.jpeg",
-      technologies: ["Laravel", "Inertia.js", "Vue.js", "Tailwind CSS", "MySQL"],
-      category: "web",
-      demoLink: "https://rt.myst-tech.com/",
-      codeLink: "#",
-      year: "2026",
-      location: "Indonesia",
-      featured: true,
-      status: "live",
-      tagline: "Solusi digital untuk RT Indonesia",
-    },
-    {
-      id: 19,
-      title: "Asdos-AI",
-      description: "An AI teaching-assistant platform for lecturers — grades weekly student answers against the lecturer's own rubric with personalised feedback, transcribes handwritten answer sheets, surfaces class-weakness insights and at-risk student alerts, generates targeted remedial questions, and exports tidy Excel recaps. AI recommends, the lecturer decides.",
-      image: "/images/projects/poster-asdosai.png",
-      technologies: ["Laravel", "Livewire", "MySQL", "AI"],
-      category: "web",
-      demoLink: "https://asdos.myst-tech.com/",
-      codeLink: "#",
-      year: "2026",
-      location: "Indonesia",
-      featured: true,
-      status: "live",
-      tagline: "Asisten dosen AI untuk koreksi & umpan balik mingguan",
-    },
-    {
-      id: 20,
-      title: "Jarvis Myst",
-      description: "A personal AI assistant platform for the Myst ecosystem, currently in active development. Details will be published as the product approaches launch.",
-      image: null, // poster not ready yet — featured card shows a monogram panel
-      technologies: ["AI", "Automation"],
-      category: "web",
-      demoLink: "#",
-      codeLink: "#",
-      year: "2026",
-      location: "Indonesia",
-      featured: true,
-      status: "building",
-      tagline: "Personal AI assistant — coming soon",
-    },
     {
       id: 17,
       title: "Intersi-ITK",
