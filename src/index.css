@@ -9,31 +9,31 @@
      rgb(var(--…) / <alpha-value>). Light is default; .dark on <html> (set by
      the inline script in index.html + the navbar toggle) flips everything. */
   :root {
-    --warm-bg: 250 246 240;        /* #FAF6F0 cream */
-    --warm-card: 255 255 255;      /* #FFFFFF */
-    --warm-ink: 43 37 32;          /* #2B2520 */
-    --warm-muted: 124 114 104;     /* #7C7268 */
-    --warm-line: 234 225 214;      /* #EAE1D6 */
-    --warm-peach: 232 131 90;      /* #E8835A */
-    --warm-peach-soft: 251 231 220;/* #FBE7DC */
-    --warm-sage: 127 168 135;      /* #7FA887 */
-    --warm-sage-soft: 230 240 230; /* #E6F0E6 */
-    --warm-sky: 123 167 201;       /* #7BA7C9 */
-    --warm-sky-soft: 230 238 244;  /* #E6EEF4 */
+    --warm-bg: 243 238 228;        /* #F3EEE4 washi paper */
+    --warm-card: 251 248 242;      /* #FBF8F2 */
+    --warm-ink: 30 26 21;          /* #1E1A15 sumi ink */
+    --warm-muted: 111 102 90;      /* #6F665A */
+    --warm-line: 227 218 203;      /* #E3DACB */
+    --warm-peach: 196 61 43;       /* #C43D2B vermilion (primary) */
+    --warm-peach-soft: 246 222 214;/* #F6DED6 */
+    --warm-sage: 95 122 69;        /* #5F7A45 matcha */
+    --warm-sage-soft: 228 235 218; /* #E4EBDA */
+    --warm-sky: 47 72 104;         /* #2F4868 indigo */
+    --warm-sky-soft: 222 229 238;  /* #DEE5EE */
   }
 
   .dark {
-    --warm-bg: 32 27 22;           /* #201B16 warm near-black */
-    --warm-card: 42 36 29;         /* #2A241D */
-    --warm-ink: 242 234 224;       /* #F2EAE0 warm cream text */
-    --warm-muted: 164 152 138;     /* #A4988A */
-    --warm-line: 60 52 43;         /* #3C342B */
-    --warm-peach: 238 146 104;     /* #EE9268 brighter for contrast */
-    --warm-peach-soft: 65 46 34;   /* #412E22 */
-    --warm-sage: 146 186 154;      /* #92BA9A */
-    --warm-sage-soft: 39 49 42;    /* #27312A */
-    --warm-sky: 143 180 212;       /* #8FB4D4 */
-    --warm-sky-soft: 40 53 64;     /* #283540 */
+    --warm-bg: 20 18 15;           /* #14120F sumi black */
+    --warm-card: 29 26 22;         /* #1D1A16 */
+    --warm-ink: 236 228 214;       /* #ECE4D6 */
+    --warm-muted: 156 146 132;     /* #9C9284 */
+    --warm-line: 51 46 39;         /* #332E27 */
+    --warm-peach: 226 88 63;       /* #E2583F brighter vermilion */
+    --warm-peach-soft: 61 31 25;   /* #3D1F19 */
+    --warm-sage: 143 174 110;      /* #8FAE6E */
+    --warm-sage-soft: 36 43 29;    /* #242B1D */
+    --warm-sky: 126 156 196;       /* #7E9CC4 */
+    --warm-sky-soft: 28 37 51;     /* #1C2533 */
   }
 
   html {

@@ -10,6 +10,9 @@ import { useLang } from '../../i18n/LangContext';
 // Only show filter pills for audiences that actually have a product
 const usedAudiences = audiences.filter((a) => a.id === 'all' || productsData.some((p) => p.audience === a.id));
 
+// Invitation card ("Got a problem worth solving?") — reuses the screenshot frame.
+const INVITE = { title: 'Myst Lab', url: '', screenshot: '/images/landing/request.jpg', color: '#C43D2B' };
+
 const hostOf = (url) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
 function StatusBadges({ p, live }) {
@@ -31,7 +34,8 @@ function StatusBadges({ p, live }) {
 
 // Header with the app's real landing page inside a browser frame.
 // Hovering the card slowly scrolls the screenshot, like previewing the site.
-function ScreenshotHeader({ p, live }) {
+// `badge` replaces the Live/In-development pill (used by the invitation card).
+function ScreenshotHeader({ p, live, badge }) {
   const { t } = useLang();
   return (
     <div className="relative">
@@ -62,7 +66,7 @@ function ScreenshotHeader({ p, live }) {
         {/* soft fade into the card body */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-warmCard to-transparent" />
         <div className="absolute bottom-3 right-3 z-10">
-          <StatusBadges p={p} live={live} />
+          {badge ?? <StatusBadges p={p} live={live} />}
         </div>
       </div>
     </div>
@@ -232,12 +236,17 @@ function ProductsHub() {
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="group flex min-h-[260px] flex-col justify-between rounded-3xl border border-dashed border-warmLine bg-warmCard/40 p-6 transition-colors hover:border-warmPeach"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-dashed border-warmLine bg-warmCard shadow-soft transition-colors hover:border-warmPeach"
             >
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-warmPeachSoft text-xl text-warmPeach">
-                <FiMessageCircle />
-              </span>
-              <div>
+              <ScreenshotHeader
+                p={INVITE}
+                badge={
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-warmPeachSoft px-2.5 py-1 font-body text-[11px] font-bold text-warmPeach shadow-sm">
+                    <FiMessageCircle /> {t({ en: 'Free consultation', id: 'Konsultasi gratis' })}
+                  </span>
+                }
+              />
+              <div className="flex flex-1 flex-col px-6 pb-6 pt-6">
                 <h3 className="font-display text-xl font-bold">{t({ en: 'Got a problem worth solving?', id: 'Punya masalah yang ingin diselesaikan?' })}</h3>
                 <p className="mt-2 font-body text-sm leading-relaxed text-warmMuted">
                   {t({
@@ -245,7 +254,7 @@ function ProductsHub() {
                     id: 'Sekolah, kampus, atau komunitas Anda butuh alat serupa? Ceritakan — aplikasi berikutnya bisa lahir dari situ.',
                   })}
                 </p>
-                <span className="mt-4 inline-flex items-center gap-1 font-body text-sm font-semibold text-warmPeach">
+                <span className="mt-auto inline-flex items-center gap-1 pt-5 font-body text-sm font-semibold text-warmPeach">
                   {t({ en: 'Get in touch', id: 'Hubungi kami' })}{' '}
                   <FiArrowUpRight className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </span>

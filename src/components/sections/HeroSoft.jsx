@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { FiArrowDownRight, FiCode, FiBookOpen, FiCpu, FiWifi, FiSearch, FiMonitor, FiUsers, FiZap } from 'react-icons/fi';
 import Counter from '../ui/Counter';
 import Marquee from '../ui/Marquee';
+import MystMark from '../ui/MystMark';
 import { liveProducts } from '../../data/products';
 import { yearsOfExperience, currentRoles, publicationCount } from '../../data/site';
 import { useLang } from '../../i18n/LangContext';
@@ -169,7 +170,7 @@ function HeroSoft() {
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center gap-2 rounded-full border border-warmLine bg-warmCard px-7 py-3.5 font-body font-semibold text-warmInk hover:border-warmPeach hover:text-warmPeach"
               >
-                <img src="/myst-mark.svg" alt="" className="h-5 w-5" /> {t({ en: 'Myst Tech apps', id: 'Aplikasi Myst Tech' })}
+                <MystMark className="h-5 w-5" interactive={false} /> {t({ en: 'Myst Tech apps', id: 'Aplikasi Myst Tech' })}
               </motion.a>
             </motion.div>
 

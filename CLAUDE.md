@@ -45,6 +45,11 @@ The original dark theme is **kept for rollback, not used**.
 - **When editing the live site, edit the `*Soft` components**, not the old ones.
 - Palette, fonts (`Sora` display / `Plus Jakarta Sans` body), shadows live in
   [tailwind.config.js](tailwind.config.js) under the `warm*` color keys.
+- Colour scheme = **"Sumi & Vermilion"** (washi paper / sumi ink, vermilion primary, matcha
+  secondary, indigo tertiary). The token names are legacy: `warmPeach` = vermilion,
+  `warmSage` = matcha, `warmSky` = indigo. Values live in [src/index.css](src/index.css).
+- Logo: [MystMark.jsx](src/components/ui/MystMark.jsx) = animated pseudo-3D mark (planets orbit
+  behind/in front of the core, hover tilt). `public/myst-mark.svg` is the static favicon version.
 
 ## Content is data-driven — edit data, not JSX
 All real content lives in [src/data/](src/data/). Change data → UI + CV update together.

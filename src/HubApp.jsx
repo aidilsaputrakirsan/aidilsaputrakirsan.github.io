@@ -9,6 +9,7 @@ import CoreHub from './components/hub/CoreHub';
 import FounderHub from './components/hub/FounderHub';
 import ContactHub from './components/hub/ContactHub';
 import CvModal from './components/cv/CvModal';
+import MystMark from './components/ui/MystMark';
 import SupportModal from './components/support/SupportModal';
 import { liveProducts } from './data/products';
 import { LangProvider, useLang } from './i18n/LangContext';
@@ -22,7 +23,7 @@ const links = [
 
 const brand = (
   <>
-    <img src="/myst-mark.svg" alt="" className="h-7 w-7" />
+    <MystMark className="h-7 w-7" />
     Myst<span className="-ml-1 text-warmPeach">Tech</span>
   </>
 );

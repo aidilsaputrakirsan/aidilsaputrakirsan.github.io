@@ -8,9 +8,9 @@ import { achievementsData } from '../../data/achievements';
 import { useLang } from '../../i18n/LangContext';
 
 const tabs = [
-  { id: 'experience', label: { en: 'Experience', id: 'Pengalaman' }, icon: FiBriefcase, accent: '#E8835A' },
-  { id: 'education', label: { en: 'Education', id: 'Pendidikan' }, icon: FiBookOpen, accent: '#7BA7C9' },
-  { id: 'achievements', label: { en: 'Achievements', id: 'Prestasi' }, icon: FiAward, accent: '#7FA887' },
+  { id: 'experience', label: { en: 'Experience', id: 'Pengalaman' }, icon: FiBriefcase, accent: '#C43D2B' },
+  { id: 'education', label: { en: 'Education', id: 'Pendidikan' }, icon: FiBookOpen, accent: '#2F4868' },
+  { id: 'achievements', label: { en: 'Achievements', id: 'Prestasi' }, icon: FiAward, accent: '#5F7A45' },
 ];
 
 function row(item, type) {

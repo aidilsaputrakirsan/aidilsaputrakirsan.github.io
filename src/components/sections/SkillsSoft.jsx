@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import { FiArrowRight, FiBookOpen } from 'react-icons/fi';
 import Marquee from '../ui/Marquee';
 import {
-  SiReact, SiVuedotjs, SiLaravel, SiNodedotjs, SiExpress, SiPostgresql, SiMysql,
-  SiMongodb, SiDocker, SiPython, SiEspressif, SiMqtt, SiTailwindcss, SiGit,
-  SiThreedotjs, SiArduino, SiFirebase, SiLivewire,
+  SiReact, SiVuedotjs, SiLaravel, SiNodedotjs, SiPostgresql, SiDocker, SiPython,
+  SiEspressif, SiMqtt, SiTailwindcss, SiArduino, SiFirebase, SiLivewire,
+  SiPortainer, SiProxmox, SiVirtualbox, SiLinux, SiClaude,
 } from 'react-icons/si';
 import { LuBrainCircuit, LuScanText } from 'react-icons/lu';
 import { projectsData } from '../../data/projects';
@@ -29,8 +29,8 @@ const domains = [
     wide: true,
     tint: 'bg-warmInk text-warmBg',
     tools: [
-      { name: 'LLM', Icon: LuBrainCircuit, color: '#E8835A' },
-      { name: 'Vision / OCR', Icon: LuScanText, color: '#7BA7C9' },
+      { name: 'LLM', Icon: LuBrainCircuit, color: '#C43D2B' },
+      { name: 'Vision / OCR', Icon: LuScanText, color: '#2F4868' },
       { name: 'Laravel', Icon: SiLaravel, color: '#FF2D20' },
       { name: 'Livewire', Icon: SiLivewire, color: '#FB70A9' },
     ],
@@ -73,23 +73,22 @@ const domains = [
   },
 ];
 
+// Kept short on purpose: only tools used in shipped work. Frameworks are one line;
+// the weight goes to AI, infra and hardware (see the CV skillGroups too).
 const stack = [
   { name: 'Laravel', Icon: SiLaravel, color: '#FF2D20' },
-  { name: 'Livewire', Icon: SiLivewire, color: '#FB70A9' },
   { name: 'React', Icon: SiReact, color: '#61DAFB' },
   { name: 'Vue.js', Icon: SiVuedotjs, color: '#4FC08D' },
   { name: 'Node.js', Icon: SiNodedotjs, color: '#5FA04E' },
-  { name: 'Express', Icon: SiExpress, color: '#2B2520' },
   { name: 'PostgreSQL', Icon: SiPostgresql, color: '#4169E1' },
-  { name: 'MySQL', Icon: SiMysql, color: '#4479A1' },
-  { name: 'MongoDB', Icon: SiMongodb, color: '#47A248' },
   { name: 'Docker', Icon: SiDocker, color: '#2496ED' },
-  { name: 'Python', Icon: SiPython, color: '#3776AB' },
+  { name: 'Portainer', Icon: SiPortainer, color: '#13BEF9' },
+  { name: 'Proxmox', Icon: SiProxmox, color: '#E57000' },
+  { name: 'VirtualBox', Icon: SiVirtualbox, color: '#2F61B4' },
+  { name: 'Linux', Icon: SiLinux, color: 'rgb(var(--warm-ink))' },
   { name: 'ESP32', Icon: SiEspressif, color: '#E7352C' },
-  { name: 'MQTT', Icon: SiMqtt, color: '#660066' },
-  { name: 'Tailwind', Icon: SiTailwindcss, color: '#06B6D4' },
-  { name: 'Git', Icon: SiGit, color: '#F05032' },
-  { name: 'Three.js', Icon: SiThreedotjs, color: '#2B2520' },
+  { name: 'Python', Icon: SiPython, color: '#3776AB' },
+  { name: 'Claude Code', Icon: SiClaude, color: '#D97757' },
 ];
 
 const toolItems = stack.map(({ name, Icon, color }) => (
@@ -239,6 +238,12 @@ function SkillsSoft() {
       <div className="mt-20 border-y border-warmLine bg-warmCard py-5">
         <Marquee items={toolItems} speed={40} />
       </div>
+      <p className="container mx-auto mt-5 max-w-[1100px] px-6 text-center font-body text-sm text-warmMuted">
+        {t({
+          en: 'Built with an AI-assisted workflow (Claude Code) — so the time goes into architecture, infrastructure and the problem itself, not boilerplate.',
+          id: 'Dibangun dengan alur kerja berbantuan AI (Claude Code) — waktunya dipakai untuk arsitektur, infrastruktur, dan masalahnya sendiri, bukan kode berulang.',
+        })}
+      </p>
     </section>
   );
 }

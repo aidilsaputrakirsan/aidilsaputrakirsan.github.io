@@ -214,7 +214,7 @@ export function createOrbitScene(container, { products, labels, coreLabel, reduc
   const hemi = new HemisphereLight(0xfff4ea, 0xd9c8b8, 1.6);
   const key = new DirectionalLight(0xffffff, 1.6);
   key.position.set(4, 6, 6);
-  const glow = new PointLight(0xe8835a, 6, 12, 1.6);
+  const glow = new PointLight(0xc43d2b, 6, 12, 1.6);
   scene.add(hemi, key, glow);
 
   const root = new Group();

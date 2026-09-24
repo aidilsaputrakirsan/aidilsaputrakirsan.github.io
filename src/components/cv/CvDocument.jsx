@@ -15,13 +15,12 @@ const profile =
   `Founder of Myst Tech and Information System Lecturer at Institut Teknologi Kalimantan (Balikpapan, Indonesia) with ${yearsOfExperience()}+ years of experience. Builds and runs AI products for Indonesian education and communities — GuruPintar, SkripsiPintar, and Asdos-AI — on Myst-Core, a self-designed private AI layer (LLM gateway, tier routing with fallback chains, prompt registry, vision/OCR, usage metering). Heads FSTI's Digital Innovation Laboratory; research background in wireless sensor networks and IoT, now applied AI in education.`;
 
 const skillGroups = [
-  { label: 'AI Engineering', items: 'LLM integration & gateways, RAG, prompt design & registries, structured JSON output, vision/OCR, streaming, model routing & fallback, usage metering' },
-  { label: 'Frontend', items: 'React, Vue.js, Livewire, Next.js, Tailwind CSS, Three.js' },
-  { label: 'Backend', items: 'Laravel, PHP, Node.js, Express, Python, REST API' },
-  { label: 'Database', items: 'PostgreSQL, MySQL, MongoDB, Redis' },
-  { label: 'IoT & Networking', items: 'ESP32, Arduino, MQTT, WSN, Network Security' },
-  { label: 'Architecture & Cloud', items: 'Monolith & Microservices, REST APIs, Docker, CI/CD, AWS, Cloud Deployment' },
-  { label: 'Tools', items: 'Git, Linux, Figma, Agile/Scrum' },
+  { label: 'AI Engineering', items: 'LLM gateway (Myst-Core), RAG, model routing & fallback, prompt registries, structured JSON output, vision/OCR, streaming, usage metering' },
+  { label: 'Architecture', items: 'Monolith & microservices, REST API design, data modelling, application security' },
+  { label: 'Cloud & Infra', items: 'Docker, Portainer, Proxmox VE, VirtualBox, Linux server, CI/CD, AWS, cloud deployment' },
+  { label: 'IoT & Networking', items: 'ESP32, Arduino, MQTT, WSN, network security' },
+  { label: 'Core Stack', items: 'Laravel, React, Vue.js, Node.js, Python, PostgreSQL/MySQL, Tailwind CSS' },
+  { label: 'AI-assisted Dev', items: 'Claude Code (agentic development workflow)' },
 ];
 
 const contacts = [
@@ -36,7 +35,7 @@ const contacts = [
 function Section({ title, children }) {
   return (
     <section className="mb-5">
-      <h2 className="mb-2.5 border-b-2 border-[#E8835A] pb-1 text-[13px] font-bold uppercase tracking-widest text-[#2B2520]">
+      <h2 className="mb-2.5 border-b-2 border-[#C43D2B] pb-1 text-[13px] font-bold uppercase tracking-widest text-[#1E1A15]">
         {title}
       </h2>
       {children}
@@ -50,24 +49,24 @@ function CvDocument() {
   const featured = projectsData.slice(0, 8);
 
   return (
-    <div id="cv-print" className="mx-auto bg-white text-[#2B2520]" style={{ width: '210mm', minHeight: '297mm', padding: '16mm 16mm' }}>
+    <div id="cv-print" className="mx-auto bg-white text-[#1E1A15]" style={{ width: '210mm', minHeight: '297mm', padding: '16mm 16mm' }}>
       {/* Header */}
-      <header className="mb-6 flex items-center justify-between gap-6 border-b-2 border-[#2B2520] pb-5">
+      <header className="mb-6 flex items-center justify-between gap-6 border-b-2 border-[#1E1A15] pb-5">
         <div className="flex items-center gap-4">
           <img
             src="/FAidil.png"
             alt="Aidil Saputra Kirsan"
-            className="h-[28mm] w-[24mm] shrink-0 rounded-lg object-cover ring-1 ring-[#E8835A]"
+            className="h-[28mm] w-[24mm] shrink-0 rounded-lg object-cover ring-1 ring-[#C43D2B]"
           />
           <div>
             <h1 className="text-[28px] font-extrabold leading-none tracking-tight">Aidil Saputra Kirsan</h1>
-            <p className="mt-1 text-[13px] font-semibold text-[#E8835A]">Founder of Myst Tech · AI Product Engineer · Information System Lecturer</p>
+            <p className="mt-1 text-[13px] font-semibold text-[#C43D2B]">Founder of Myst Tech · AI Product Engineer · Information System Lecturer</p>
           </div>
         </div>
         <ul className="grid grid-cols-1 gap-y-0.5 text-[10.5px]">
           {contacts.map((c, i) => (
             <li key={i} className="flex items-center justify-end gap-1.5 text-[#444]">
-              <c.Icon className="text-[#E8835A]" size={11} /> {c.text}
+              <c.Icon className="text-[#C43D2B]" size={11} /> {c.text}
             </li>
           ))}
         </ul>
@@ -85,7 +84,7 @@ function CvDocument() {
                 <h3 className="text-[12px] font-bold">{en(e.title)}</h3>
                 <span className="text-[10px] font-semibold text-[#888]">{e.period}</span>
               </div>
-              <p className="text-[11px] font-medium text-[#E8835A]">{e.company}</p>
+              <p className="text-[11px] font-medium text-[#C43D2B]">{e.company}</p>
               <p className="mt-1 text-[11px] leading-relaxed text-[#555]">{en(e.description)}</p>
             </div>
           ))}
@@ -100,7 +99,7 @@ function CvDocument() {
                 <h3 className="text-[12px] font-bold">{en(e.degree)}</h3>
                 <span className="text-[10px] font-semibold text-[#888]">{e.period}</span>
               </div>
-              <p className="text-[11px] font-medium text-[#E8835A]">{e.institution}</p>
+              <p className="text-[11px] font-medium text-[#C43D2B]">{e.institution}</p>
               <p className="mt-1 text-[11px] leading-relaxed text-[#555]">{en(e.description)}</p>
             </div>
           ))}
@@ -113,7 +112,7 @@ function CvDocument() {
             <div key={p.id}>
               <div className="flex items-baseline justify-between gap-3">
                 <h3 className="text-[11.5px] font-bold">
-                  {p.title} <span className="font-medium text-[#E8835A]">— {p.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span>
+                  {p.title} <span className="font-medium text-[#C43D2B]">— {p.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span>
                 </h3>
                 <span className="shrink-0 text-[9.5px] font-semibold text-[#888]">{p.year}</span>
               </div>
