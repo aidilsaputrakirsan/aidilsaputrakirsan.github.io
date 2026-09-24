@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiArrowUpRight, FiCheck, FiImage, FiCpu, FiMessageCircle } from 'react-icons/fi';
+import { FiArrowUpRight, FiCheck, FiImage, FiMessageCircle } from 'react-icons/fi';
 import TiltCard from '../ui/TiltCard';
 import { productIcon } from './productIcons';
 import { productsData, audiences } from '../../data/products';
@@ -25,18 +25,13 @@ function StatusBadges({ p, live }) {
           <span className="h-1.5 w-1.5 rounded-full bg-amber-500" /> {t({ en: 'In development', id: 'Sedang dibangun' })}
         </span>
       )}
-      {p.poweredByCore && (
-        <span className="inline-flex items-center gap-1 rounded-full bg-warmCard/90 px-2.5 py-1 font-body text-[11px] font-semibold text-warmInk shadow-sm ring-1 ring-warmLine backdrop-blur">
-          <FiCpu /> Myst-Core
-        </span>
-      )}
     </div>
   );
 }
 
 // Header with the app's real landing page inside a browser frame.
 // Hovering the card slowly scrolls the screenshot, like previewing the site.
-function ScreenshotHeader({ p, live, Icon }) {
+function ScreenshotHeader({ p, live }) {
   const { t } = useLang();
   return (
     <div className="relative">
@@ -69,16 +64,6 @@ function ScreenshotHeader({ p, live, Icon }) {
         <div className="absolute bottom-3 right-3 z-10">
           <StatusBadges p={p} live={live} />
         </div>
-      </div>
-
-      {/* App icon overlapping the frame edge */}
-      <div
-        style={{ background: p.color, boxShadow: `0 14px 30px -10px ${p.color}` }}
-        className={`absolute -bottom-7 left-6 z-10 flex h-14 w-14 items-center justify-center rounded-2xl text-white ring-4 ring-warmCard transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[-6deg] ${
-          live ? '' : 'opacity-90'
-        }`}
-      >
-        <Icon className="text-2xl" />
       </div>
     </div>
   );
@@ -130,9 +115,9 @@ function ProductCard({ p, i }) {
           live ? 'border-warmLine' : 'border-dashed border-warmLine'
         }`}
       >
-        {p.screenshot ? <ScreenshotHeader p={p} live={live} Icon={Icon} /> : <IconHeader p={p} live={live} Icon={Icon} />}
+        {p.screenshot ? <ScreenshotHeader p={p} live={live} /> : <IconHeader p={p} live={live} Icon={Icon} />}
 
-        <div className={`flex flex-1 flex-col px-6 pb-6 ${p.screenshot ? 'pt-10' : 'pt-6'}`}>
+        <div className="flex flex-1 flex-col px-6 pb-6 pt-6">
           <p className="font-body text-[11px] font-semibold uppercase tracking-widest text-warmMuted">
             {t({ en: 'For', id: 'Untuk' })} {t(p.audienceLabel)}
           </p>
