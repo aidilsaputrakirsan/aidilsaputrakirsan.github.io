@@ -1,111 +1,79 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+// Personal contact strip for /aidil/. Every item is a real, working link — there is
+// deliberately no form (it had no backend). App / Myst Tech enquiries go to the hub.
 import { motion } from 'framer-motion';
-import { FiMail, FiMapPin, FiPhone, FiGithub, FiLinkedin, FiInstagram, FiSend } from 'react-icons/fi';
+import { FiMail, FiLinkedin, FiInstagram, FiGithub, FiArrowUpRight, FiMapPin } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import { useLang } from '../../i18n/LangContext';
 
-const info = [
-  { icon: FiMail, label: 'Email', value: 'aidil@lecturer.itk.ac.id', href: 'mailto:aidil@lecturer.itk.ac.id' },
-  { icon: FiPhone, label: { en: 'Phone', id: 'Telepon' }, value: '+62 853 9895 xxxx', href: 'tel:+6285398950000' },
-  { icon: FiMapPin, label: { en: 'Location', id: 'Lokasi' }, value: 'Balikpapan, Indonesia', href: null },
-  { icon: FiInstagram, label: 'Instagram', value: '@aidilsaputrakirsan', href: 'https://instagram.com/aidilsaputrakirsan' },
-];
-
-const fields = [
-  { name: 'name', label: { en: 'Name', id: 'Nama' }, placeholder: { en: 'Your name', id: 'Nama Anda' } },
-  { name: 'email', label: 'Email', placeholder: { en: 'Your email', id: 'Email Anda' } },
-  { name: 'subject', label: { en: 'Subject', id: 'Subjek' }, placeholder: { en: 'Your subject', id: 'Subjek pesan' } },
+const channels = [
+  { Icon: FiMail, label: 'Email', value: 'aidil@lecturer.itk.ac.id', href: 'mailto:aidil@lecturer.itk.ac.id' },
+  { Icon: FaWhatsapp, label: 'WhatsApp', value: '+62 853 9895 2880', href: 'https://wa.me/6285398952880' },
+  { Icon: FiLinkedin, label: 'LinkedIn', value: 'Aidil Saputra Kirsan', href: 'https://id.linkedin.com/in/aidil-saputra-kirsan-0808911bb' },
+  { Icon: FiInstagram, label: 'Instagram', value: '@aidilsaputrakirsan', href: 'https://instagram.com/aidilsaputrakirsan' },
+  { Icon: FiGithub, label: 'GitHub', value: 'aidilsaputrakirsan', href: 'https://github.com/aidilsaputrakirsan' },
 ];
 
 function ContactSoft() {
   const { t } = useLang();
-  const [sent, setSent] = useState(false);
-  const handle = (e) => {
-    e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 5000);
-  };
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-warmCard py-24 md:py-32 text-warmInk">
-      {/* soft drifting blob */}
-      <motion.div
-        animate={{ scale: [1, 1.15, 1], x: [0, 30, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-        className="pointer-events-none absolute -bottom-32 -left-20 h-[400px] w-[400px] rounded-full bg-warmPeachSoft blur-3xl opacity-60"
-      />
+    <section id="contact" className="relative overflow-hidden bg-warmCard py-24 md:py-28 text-warmInk">
+      <div className="pointer-events-none absolute -bottom-32 -left-20 h-[360px] w-[360px] rounded-full bg-warmPeachSoft opacity-60 blur-3xl" />
 
-      <div className="relative z-10 container mx-auto px-6 max-w-[1100px]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left */}
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.6 }}>
-            <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">{t({ en: 'Contact', id: 'Kontak' })}</span>
-            <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight">{t({ en: "Let's build something together.", id: 'Mari membangun sesuatu bersama.' })}</h2>
-            <p className="mt-5 max-w-md font-body text-lg text-warmMuted leading-relaxed">
-              {t({
-                en: "Open for collaborations, consulting, and speaking. Drop a message and I'll get back to you soon.",
-                id: 'Terbuka untuk kolaborasi, konsultasi, dan menjadi pembicara. Kirim pesan dan saya akan segera membalas.',
-              })}
-            </p>
+      <div className="relative z-10 container mx-auto max-w-[1100px] px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl"
+        >
+          <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">{t({ en: 'Contact', id: 'Kontak' })}</span>
+          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight md:text-5xl">{t({ en: "Let's build something together.", id: 'Mari membangun sesuatu bersama.' })}</h2>
+          <p className="mt-5 font-body text-lg leading-relaxed text-warmMuted">
+            {t({
+              en: 'Open for research collaboration, consulting, and speaking. Reach me directly on any of these.',
+              id: 'Terbuka untuk kolaborasi riset, konsultasi, dan menjadi pembicara. Hubungi saya langsung lewat salah satu di bawah ini.',
+            })}
+          </p>
+        </motion.div>
 
-            <div className="mt-10 space-y-4">
-              {info.map((it) => (
-                <div key={it.value} className="flex items-center gap-4">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-warmPeachSoft text-warmPeach"><it.icon className="text-lg" /></span>
-                  <div>
-                    <div className="font-body text-xs font-semibold uppercase tracking-wider text-warmMuted">{t(it.label)}</div>
-                    {it.href ? (
-                      <a href={it.href} className="font-body font-semibold text-warmInk hover:text-warmPeach">{it.value}</a>
-                    ) : (
-                      <div className="font-body font-semibold text-warmInk">{it.value}</div>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+        <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          {channels.map(({ Icon, label, value, href }, i) => (
+            <motion.a
+              key={label}
+              href={href}
+              target={href.startsWith('mailto:') ? undefined : '_blank'}
+              rel="noreferrer"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.45, delay: i * 0.06 }}
+              whileHover={{ y: -4 }}
+              className="group flex items-center gap-3 rounded-2xl border border-warmLine bg-warmBg p-4 transition-colors hover:border-warmPeach lg:flex-col lg:items-start"
+            >
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-warmPeachSoft text-lg text-warmPeach">
+                <Icon />
+              </span>
+              <span className="min-w-0">
+                <span className="flex items-center gap-1 font-body text-xs font-semibold uppercase tracking-wider text-warmMuted">
+                  {label}
+                  <FiArrowUpRight className="opacity-0 transition-opacity group-hover:opacity-100" />
+                </span>
+                <span className="block truncate font-body text-sm font-semibold text-warmInk group-hover:text-warmPeach">{value}</span>
+              </span>
+            </motion.a>
+          ))}
+        </div>
 
-            <div className="mt-8 flex gap-3">
-              {[
-                [FiGithub, 'https://github.com/aidilsaputrakirsan'],
-                [FiLinkedin, 'https://id.linkedin.com/in/aidil-saputra-kirsan-0808911bb'],
-                [FiInstagram, 'https://instagram.com/aidilsaputrakirsan'],
-              ].map(([Icon, href], i) => (
-                <motion.a key={i} href={href} target="_blank" rel="noreferrer" whileHover={{ y: -4 }} className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-warmLine bg-warmBg text-warmInk hover:border-warmPeach hover:text-warmPeach">
-                  <Icon />
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Form */}
-          <motion.form
-            onSubmit={handle}
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-3xl border border-warmLine bg-warmBg p-7 md:p-8 shadow-soft"
-          >
-            {sent && <div className="mb-5 rounded-2xl bg-warmSageSoft px-4 py-3 font-body text-sm font-semibold text-warmSage">{t({ en: "Message sent! I'll reply soon. ✦", id: 'Pesan terkirim! Saya akan segera membalas. ✦' })}</div>}
-            {fields.map((f) => (
-              <div key={f.name} className="mb-4">
-                <label className="mb-1.5 block font-body text-sm font-semibold capitalize text-warmInk">{t(f.label)}</label>
-                <input
-                  type={f.name === 'email' ? 'email' : 'text'}
-                  required
-                  placeholder={t(f.placeholder)}
-                  className="w-full rounded-2xl border border-warmLine bg-warmCard px-4 py-3 font-body text-warmInk outline-none transition-colors placeholder:text-warmMuted/60 focus:border-warmPeach"
-                />
-              </div>
-            ))}
-            <div className="mb-5">
-              <label className="mb-1.5 block font-body text-sm font-semibold text-warmInk">{t({ en: 'Message', id: 'Pesan' })}</label>
-              <textarea required rows="4" placeholder={t({ en: 'Your message', id: 'Pesan Anda' })} className="w-full resize-none rounded-2xl border border-warmLine bg-warmCard px-4 py-3 font-body text-warmInk outline-none transition-colors placeholder:text-warmMuted/60 focus:border-warmPeach" />
-            </div>
-            <motion.button whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }} type="submit" className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-warmInk px-7 py-3.5 font-body font-semibold text-warmBg shadow-soft hover:shadow-soft-lg">
-              {t({ en: 'Send message', id: 'Kirim pesan' })} <FiSend />
-            </motion.button>
-          </motion.form>
+        <div className="mt-8 flex flex-col gap-3 font-body text-sm text-warmMuted sm:flex-row sm:items-center sm:justify-between">
+          <span className="inline-flex items-center gap-2">
+            <FiMapPin className="text-warmPeach" /> Balikpapan, Indonesia
+          </span>
+          <a href="/#kontak" className="inline-flex items-center gap-1 font-semibold text-warmInk hover:text-warmPeach">
+            {t({ en: 'About a Myst Tech app? Contact Myst Tech', id: 'Soal aplikasi Myst Tech? Hubungi Myst Tech' })} <FiArrowUpRight />
+          </a>
         </div>
       </div>
     </section>
