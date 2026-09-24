@@ -139,7 +139,9 @@ the CV "Selected Projects" (top 8).
 - Myst-Core = the core sphere. AI apps (`poweredByCore`) orbit the inner ring, others the
   outer ring. **Live apps (`status: 'live'`) get a beam + travelling request "packets"**;
   apps in development show only their planet. Overlapping labels are nudged apart
-  automatically (the label nearer the camera keeps its spot). Colors follow `products.js`
+  automatically (the label nearer the camera keeps its spot).
+  Planets wear a procedural globe texture (continents/ice caps/clouds drawn on a canvas in
+  the app's brand colour, seeded by `id` so it's stable) — no image files involved. Colors follow `products.js`
   and the light/dark theme (reads the `--warm-*` CSS vars).
 - Pauses off-screen / in hidden tabs; `prefers-reduced-motion` → static, render-on-demand.
   No WebGL → the static CSS fallback stays. Keep it light: no textures/GLB unless

@@ -34,6 +34,7 @@ import {
   Vector3,
   Raycaster,
   SRGBColorSpace,
+  CanvasTexture,
 } from 'three';
 
 const readVar = (name) => {
@@ -41,6 +42,145 @@ const readVar = (name) => {
   const [r, g, b] = v.split(/\s+/).map(Number);
   return new Color(r / 255, g / 255, b / 255);
 };
+
+// Deterministic RNG so every visit draws the same planet for the same app.
+function seededRandom(key) {
+  let a = 0;
+  for (let i = 0; i < key.length; i++) a = (Math.imul(31, a) + key.charCodeAt(i)) | 0;
+  return () => {
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const mix = (c, target, k) => c.clone().lerp(new Color(target), k).getStyle();
+
+// Procedural globe texture in the app's brand colour: darker "ocean", lighter
+// continents with coastlines, polar caps, faint lat/long grid and thin clouds.
+// Drawn on a small canvas at runtime — no image files to download.
+function globeTexture(hex, key) {
+  const W = 512;
+  const H = 256;
+  const rand = seededRandom(key);
+  const base = new Color(hex);
+  const c = document.createElement('canvas');
+  c.width = W;
+  c.height = H;
+  const g = c.getContext('2d');
+
+  // Ocean with a gentle vertical gradient
+  const ocean = g.createLinearGradient(0, 0, 0, H);
+  ocean.addColorStop(0, mix(base, '#000000', 0.2));
+  ocean.addColorStop(0.5, mix(base, '#000000', 0.05));
+  ocean.addColorStop(1, mix(base, '#000000', 0.25));
+  g.fillStyle = ocean;
+  g.fillRect(0, 0, W, H);
+
+  // Continents: clusters of overlapping blobs (drawn twice across the seam
+  // so they wrap around the sphere without a visible cut)
+  const blob = (x, y, r, fill) => {
+    g.fillStyle = fill;
+    for (const dx of [0, -W, W]) {
+      g.beginPath();
+      g.arc(x + dx, y, r, 0, Math.PI * 2);
+      g.fill();
+    }
+  };
+  const land = mix(base, '#ffffff', 0.45);
+  const shore = mix(base, '#ffffff', 0.25);
+  const highland = mix(base, '#ffffff', 0.62);
+  for (let k = 0; k < 7; k++) {
+    let x = rand() * W;
+    let y = H * (0.2 + rand() * 0.6);
+    const pts = [];
+    const n = 14 + Math.floor(rand() * 18);
+    for (let i = 0; i < n; i++) {
+      x += (rand() - 0.5) * 34;
+      y = Math.min(H * 0.85, Math.max(H * 0.15, y + (rand() - 0.5) * 20));
+      pts.push([x, y, 7 + rand() * 16]);
+    }
+    pts.forEach(([px, py, r]) => blob(px, py, r + 3, shore)); // shallow-water rim
+    pts.forEach(([px, py, r]) => blob(px, py, r, land));
+    pts.filter(() => rand() < 0.35).forEach(([px, py, r]) => blob(px, py, r * 0.45, highland));
+  }
+
+  // Polar caps
+  g.fillStyle = 'rgba(255,255,255,0.85)';
+  g.fillRect(0, 0, W, 9);
+  g.fillRect(0, H - 9, W, 9);
+  for (let i = 0; i < 26; i++) {
+    blob(rand() * W, 8 + rand() * 6, 4 + rand() * 7, 'rgba(255,255,255,0.8)');
+    blob(rand() * W, H - 8 - rand() * 6, 4 + rand() * 7, 'rgba(255,255,255,0.8)');
+  }
+
+  // Latitude / longitude grid
+  g.strokeStyle = 'rgba(255,255,255,0.13)';
+  g.lineWidth = 1;
+  for (let i = 1; i < 6; i++) {
+    g.beginPath();
+    g.moveTo(0, (H / 6) * i);
+    g.lineTo(W, (H / 6) * i);
+    g.stroke();
+  }
+  for (let i = 0; i < 12; i++) {
+    g.beginPath();
+    g.moveTo((W / 12) * i, 0);
+    g.lineTo((W / 12) * i, H);
+    g.stroke();
+  }
+
+  // Thin cloud streaks
+  g.fillStyle = 'rgba(255,255,255,0.18)';
+  for (let i = 0; i < 18; i++) {
+    const y = H * (0.15 + rand() * 0.7);
+    const x = rand() * W;
+    const len = 40 + rand() * 90;
+    for (const dx of [0, -W, W]) {
+      g.beginPath();
+      g.ellipse(x + dx, y, len / 2, 2 + rand() * 3, 0, 0, Math.PI * 2);
+      g.fill();
+    }
+  }
+
+  const tex = new CanvasTexture(c);
+  tex.colorSpace = SRGBColorSpace;
+  tex.anisotropy = 4;
+  return tex;
+}
+
+// Myst-Core surface: soft swirling bands in near-white, tinted by the
+// material colour (so it follows the light/dark theme peach).
+function coreTexture() {
+  const W = 512;
+  const H = 256;
+  const rand = seededRandom('myst-core');
+  const c = document.createElement('canvas');
+  c.width = W;
+  c.height = H;
+  const g = c.getContext('2d');
+  g.fillStyle = '#ffffff';
+  g.fillRect(0, 0, W, H);
+  for (let i = 0; i < 22; i++) {
+    const y = rand() * H;
+    const amp = 4 + rand() * 10;
+    const freq = 1 + Math.floor(rand() * 3);
+    const shade = 200 + Math.floor(rand() * 45);
+    g.strokeStyle = `rgba(${shade},${shade - 12},${shade - 24},0.55)`;
+    g.lineWidth = 3 + rand() * 12;
+    g.beginPath();
+    for (let x = 0; x <= W; x += 8) {
+      const yy = y + Math.sin((x / W) * Math.PI * 2 * freq + i) * amp;
+      if (x === 0) g.moveTo(x, yy);
+      else g.lineTo(x, yy);
+    }
+    g.stroke();
+  }
+  const tex = new CanvasTexture(c);
+  tex.colorSpace = SRGBColorSpace;
+  return tex;
+}
 
 const easeOut = (t) => 1 - Math.pow(1 - Math.min(Math.max(t, 0), 1), 3);
 
@@ -92,6 +232,7 @@ export function createOrbitScene(container, { products, labels, coreLabel, reduc
   const coreMat = track(
     new MeshPhysicalMaterial({
       color: peach,
+      map: track(coreTexture()),
       roughness: 0.28,
       metalness: 0.05,
       clearcoat: 1,
@@ -136,12 +277,13 @@ export function createOrbitScene(container, { products, labels, coreLabel, reduc
       const building = product.status !== 'live';
       const mat = track(
         new MeshPhysicalMaterial({
-          color,
-          roughness: 0.3,
-          clearcoat: 1,
-          clearcoatRoughness: 0.2,
+          color: 0xffffff, // the globe texture carries the brand colour
+          map: track(globeTexture(product.color, product.id)),
+          roughness: 0.45,
+          clearcoat: 0.6,
+          clearcoatRoughness: 0.3,
           emissive: color,
-          emissiveIntensity: 0.12,
+          emissiveIntensity: 0.08,
           transparent: building,
           opacity: building ? 0.55 : 1,
         }),
@@ -151,6 +293,7 @@ export function createOrbitScene(container, { products, labels, coreLabel, reduc
       const orbRing = new Mesh(track(new TorusGeometry(0.56, 0.012, 6, 64)), ringMat);
       orbRing.rotation.x = Math.PI / 2;
       mesh.add(orbRing);
+      mesh.rotation.z = 0.35; // axial tilt, like a real globe
       mesh.userData.index = products.indexOf(product);
       pivot.add(mesh);
 
@@ -332,7 +475,7 @@ export function createOrbitScene(container, { products, labels, coreLabel, reduc
       const appear = reduceMotion ? 1 : easeOut((now - start - 250 - k * 120) / 900);
       orb.hoverScale += ((orb.index === active ? 1.35 : 1) - orb.hoverScale) * 0.15;
       orb.mesh.scale.setScalar(Math.max(appear, 0.001) * orb.hoverScale);
-      orb.mesh.rotation.y = time * 0.8;
+      orb.mesh.rotation.y = time * 0.5;
 
       orb.mesh.getWorldPosition(tmp);
       if (orb.beam) {
