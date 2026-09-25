@@ -12,6 +12,32 @@ export const categories = [
   // (explains why there is no public demo link).
   export const projectsData = [
     {
+      id: 18,
+      title: "SIDATA FSTI",
+      internal: true,
+      description: "SIDATA FSTI (Sistem Informasi dan Digitalisasi Akademik Tugas Akhir) is a faculty-wide final-project (thesis) management system for the Faculty of Science and Information Technology (FSTI) at Institut Teknologi Kalimantan. It extends Sitasi-ITK from a single study program to every program in the faculty, digitizing proposal submission, supervisor assignment, guidance logs, seminar and defense scheduling, and review workflows.",
+      image: "/images/projects/sidata.jpg",
+      technologies: ["Laravel", "Inertia.js", "Vue.js", "MySQL", "Tailwind CSS"],
+      category: "web",
+      demoLink: "#",
+      codeLink: "#",
+      year: "2026",
+      location: "Balikpapan, Indonesia"
+    },
+    {
+      id: 19,
+      title: "SIMLAB ITK",
+      internal: true,
+      description: "A laboratory management information system for the Integrated Laboratory Center (Laboratorium Terpadu) of Institut Teknologi Kalimantan, the unit that runs every lab on campus. It supports student practicums, lecturer research, and testing & research services for industry and the public.",
+      image: "/images/projects/simlab.jpg",
+      technologies: ["Laravel", "Inertia.js", "Vue.js", "MySQL", "Tailwind CSS"],
+      category: "web",
+      demoLink: "#",
+      codeLink: "#",
+      year: "2026",
+      location: "Balikpapan, Indonesia"
+    },
+    {
       id: 17,
       title: "Intersi-ITK",
       internal: true,
@@ -57,30 +83,6 @@ export const categories = [
       description: "A comprehensive thesis management system for Information Systems program at Institut Teknologi Kalimantan, featuring automated administrative processes, plagiarism detection, thesis submission workflow, and review management for streamlined academic operations.",
       image: "/images/projects/sitasi-itk.png",
       technologies: ["Laravel", "Inertia.js", "Vue.js", "MySQL", "Tailwind CSS"],
-      category: "web",
-      demoLink: "#",
-      codeLink: "#",
-      year: "2025",
-      location: "Balikpapan, Indonesia"
-    },
-    {
-      id: 2,
-      title: "StudyVerse",
-      description: "A personal Learning Management System (LMS) with a unique feature for reviewing Markdown files. Provides comprehensive course management, interactive learning materials, and integrated Markdown editor for enhanced educational content creation and review.",
-      image: "https://i.imgur.com/LuVguqt.png",
-      technologies: ["React", "Node.js", "Express", "MongoDB", "Markdown Parser"],
-      category: "web",
-      demoLink: "#",
-      codeLink: "#",
-      year: "2025",
-      location: "Balikpapan, Indonesia"
-    },
-    {
-      id: 3,
-      title: "BrainVerse",
-      description: "An interactive quiz application inspired by Kahoot, designed for engaging educational experiences. Features real-time multiplayer quizzes, live leaderboards, customizable question sets, and gamification elements to enhance student participation and learning.",
-      image: "https://i.imgur.com/qrLTBth.png",
-      technologies: ["React", "Socket.io", "Node.js", "PostgreSQL", "WebSocket"],
       category: "web",
       demoLink: "#",
       codeLink: "#",

@@ -55,13 +55,23 @@ function ScreenshotHeader({ p, live, badge }) {
         {/* Full-width preview (optional `screenshotZoom` zooms into the centre for
             pages whose content is a narrow centred column); hover scrolls down. */}
         <div className="relative h-[calc(100%-2rem)] overflow-hidden">
-          <img
-            src={p.screenshot}
-            alt={t({ en: `${p.title} landing page`, id: `Halaman depan ${p.title}` })}
-            loading="lazy"
-            style={{ width: `${(p.screenshotZoom ?? 1) * 100}%` }}
-            className="absolute left-1/2 top-0 max-w-none -translate-x-1/2 transition-transform duration-[2600ms] ease-in-out group-hover:-translate-y-[calc(100%-10rem)]"
-          />
+          {/* With `screenshotDark`, the dark-mode landing page swaps in under the
+              `dark` theme (pure CSS; lazy images hidden via display:none aren't fetched). */}
+          {[
+            [p.screenshot, p.screenshotDark ? 'dark:hidden' : ''],
+            p.screenshotDark && [p.screenshotDark, 'hidden dark:block'],
+          ]
+            .filter(Boolean)
+            .map(([src, vis]) => (
+              <img
+                key={src}
+                src={src}
+                alt={t({ en: `${p.title} landing page`, id: `Halaman depan ${p.title}` })}
+                loading="lazy"
+                style={{ width: `${(p.screenshotZoom ?? 1) * 100}%` }}
+                className={`absolute left-1/2 top-0 max-w-none -translate-x-1/2 transition-transform duration-[2600ms] ease-in-out group-hover:-translate-y-[calc(100%-10rem)] ${vis}`}
+              />
+            ))}
         </div>
         {/* soft fade into the card body */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-warmCard to-transparent" />

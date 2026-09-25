@@ -19,7 +19,7 @@ const skillGroups = [
   { label: 'Architecture', items: 'Monolith & microservices, REST API design, data modelling, application security' },
   { label: 'Cloud & Infra', items: 'Docker, Portainer, Proxmox VE, VirtualBox, Linux server, CI/CD, AWS, cloud deployment' },
   { label: 'IoT & Networking', items: 'ESP32, Arduino, MQTT, WSN, network security' },
-  { label: 'Core Stack', items: 'Laravel, React, Vue.js, Node.js, Python, PostgreSQL/MySQL, Tailwind CSS' },
+  { label: 'Core Stack', items: 'Laravel, Svelte, React, Vue.js, Bun, Node.js, Python, PostgreSQL/MySQL, Tailwind CSS' },
   { label: 'AI-assisted Dev', items: 'Claude Code (agentic development workflow)' },
 ];
 

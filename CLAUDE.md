@@ -102,6 +102,9 @@ Put posters in `public/images/projects/` (compress, <~500KB). Not released yet �
   hover scrolls down the page). Screenshots from elsewhere: convert to JPEG ≤1280px wide,
   crop to the top ~1.3 screens, save as `public/images/landing/<id>.jpg`. `screenshot: null` → brand-colour
   panel + icon instead.
+- Optional `screenshotDark: '/images/landing/<id>-dark.jpg'` = the app's dark-mode landing page,
+  shown when the site is in dark theme (CSS `dark:` swap, no JS). Crop it to the same aspect
+  ratio as the light one. Without it, the light screenshot is used in both themes.
 - **`npm run screenshots`** (script: [scripts/capture-landings.mjs](scripts/capture-landings.mjs))
   opens every live app's `url` in the locally installed Chrome/Edge (`playwright-core`, no
   download; or set `CHROME_PATH`), saves `public/images/landing/<id>.jpg` (1280px wide,

@@ -59,7 +59,7 @@ function About() {
 
           <p className="text-lg md:text-xl text-center max-w-4xl leading-relaxed opacity-75 font-mono">
             Based in Balikpapan, Indonesia. I combine teaching and development — with over 5 years of experience building software while inspiring the next generation of IT professionals.
-            Currently working on <span className="text-[#ff4c4c] font-bold">Sitasi-ITK</span>, <span className="text-[#39C0FB] font-bold">StudyVerse</span>, and <span className="text-[#F46GR5S] font-bold">BrainVerse</span>.
+            Currently working on <span className="text-[#ff4c4c] font-bold">Sitasi-ITK</span>, <span className="text-[#39C0FB] font-bold">SIDATA FSTI</span>, and <span className="text-[#F46GR5S] font-bold">SIMLAB ITK</span>.
           </p>
 
           <a href="mailto:aidil@lecturer.itk.ac.id" className="mt-8 font-mono text-sm tracking-widest uppercase border border-[#111111] px-8 py-4 hover:bg-[#111111] hover:text-[#e4e2dd] transition-colors duration-300">

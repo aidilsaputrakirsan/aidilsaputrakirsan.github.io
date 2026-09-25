@@ -18,6 +18,9 @@
 //   screenshot    screenshot landing page di public/images/landing/ — jadi
 //                 background kartu. null = kartu memakai panel warna + ikon.
 //                 Ambil ulang semua: `npm run screenshots` (lihat scripts/).
+//   screenshotDark opsional — versi mode gelap landing page (mis.
+//                 '/images/landing/<id>-dark.jpg'); tampil saat situs dalam
+//                 tema gelap. Kosong = gambar terang dipakai di kedua tema.
 //   screenshotZoom opsional, mis. 1.5 — perbesar ke tengah jika isi landing page
 //                 berupa kolom sempit di tengah (default 1 = selebar kartu).
 //   poster        poster di public/images/projects/ — null jika belum ada
@@ -59,6 +62,7 @@ export const productsData = [
     ],
     url: 'https://guru.myst-tech.com/',
     screenshot: '/images/landing/gurupintar.jpg',
+    screenshotDark: '/images/landing/gurupintar-dark.jpg',
     poster: '/images/projects/poster-gurupintar.jpeg',
     color: '#5046E5',
     icon: 'book',
@@ -88,6 +92,7 @@ export const productsData = [
     ],
     url: 'https://skripsi.myst-tech.com/',
     screenshot: '/images/landing/skripsipintar.jpg',
+    screenshotDark: '/images/landing/skripsipintar-dark.jpg',
     poster: '/images/projects/poster-skripsipintar.jpeg',
     color: '#0F9488',
     icon: 'file-search',
@@ -117,6 +122,7 @@ export const productsData = [
     ],
     url: 'https://asdos.myst-tech.com/',
     screenshot: '/images/landing/asdos-ai.jpg',
+    screenshotDark: '/images/landing/asdos-ai-dark.jpg',
     poster: '/images/projects/poster-asdosai.jpg',
     color: '#3B82F6',
     icon: 'graduation',
@@ -174,6 +180,7 @@ export const productsData = [
     ],
     url: '',
     screenshot: '/images/landing/jarvis-myst.jpg',
+    screenshotDark: '/images/landing/jarvis-myst-dark.jpg',
     screenshotZoom: 1.5, // narrow centred landing page → zoom in
     poster: null,
     color: '#D97706',

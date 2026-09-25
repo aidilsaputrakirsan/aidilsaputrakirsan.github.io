@@ -5,7 +5,7 @@ import Marquee from '../ui/Marquee';
 import {
   SiReact, SiVuedotjs, SiLaravel, SiNodedotjs, SiPostgresql, SiDocker, SiPython,
   SiEspressif, SiMqtt, SiTailwindcss, SiArduino, SiFirebase, SiLivewire,
-  SiPortainer, SiProxmox, SiVirtualbox, SiLinux, SiClaude,
+  SiPortainer, SiProxmox, SiVirtualbox, SiLinux, SiClaude, SiSvelte, SiBun,
 } from 'react-icons/si';
 import { LuBrainCircuit, LuScanText } from 'react-icons/lu';
 import { projectsData } from '../../data/projects';
@@ -42,9 +42,12 @@ const domains = [
     tint: 'bg-warmPeachSoft text-warmPeach',
     tools: [
       { name: 'Laravel', Icon: SiLaravel, color: '#FF2D20' },
+      { name: 'Svelte', Icon: SiSvelte, color: '#FF3E00' },
       { name: 'Vue.js', Icon: SiVuedotjs, color: '#4FC08D' },
       { name: 'React', Icon: SiReact, color: '#61DAFB' },
+      { name: 'Bun', Icon: SiBun, color: 'rgb(var(--warm-ink))' },
       { name: 'Node.js', Icon: SiNodedotjs, color: '#5FA04E' },
+      { name: 'PostgreSQL', Icon: SiPostgresql, color: '#4169E1' },
       { name: 'Tailwind', Icon: SiTailwindcss, color: '#06B6D4' },
     ],
   },
@@ -77,8 +80,10 @@ const domains = [
 // the weight goes to AI, infra and hardware (see the CV skillGroups too).
 const stack = [
   { name: 'Laravel', Icon: SiLaravel, color: '#FF2D20' },
+  { name: 'Svelte', Icon: SiSvelte, color: '#FF3E00' },
   { name: 'React', Icon: SiReact, color: '#61DAFB' },
   { name: 'Vue.js', Icon: SiVuedotjs, color: '#4FC08D' },
+  { name: 'Bun', Icon: SiBun, color: 'rgb(var(--warm-ink))' },
   { name: 'Node.js', Icon: SiNodedotjs, color: '#5FA04E' },
   { name: 'PostgreSQL', Icon: SiPostgresql, color: '#4169E1' },
   { name: 'Docker', Icon: SiDocker, color: '#2496ED' },
