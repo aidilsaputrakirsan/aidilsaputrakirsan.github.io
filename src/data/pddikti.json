@@ -1,0 +1,105 @@
+{
+  "source": "https://pddikti.kemdiktisaintek.go.id/detail-dosen/IoSReu3bNE8rzmlkYrqfc14bBpHS_uOaRK6Z9ZaoLKvhph-ffRox5Ttp7BblMlTtwFkFHw==",
+  "rank": "Asisten Ahli",
+  "program": "Sistem Informasi",
+  "latestSemester": "2025/2026 Genap",
+  "totalClasses": 42,
+  "courses": [
+    {
+      "name": "Komputasi Awan",
+      "semesters": 8,
+      "classes": 11,
+      "first": "2020/2021 Genap",
+      "last": "2025/2026 Genap",
+      "current": true
+    },
+    {
+      "name": "Struktur Data",
+      "semesters": 1,
+      "classes": 2,
+      "first": "2025/2026 Genap",
+      "last": "2025/2026 Genap",
+      "current": true
+    },
+    {
+      "name": "Pemrograman Web",
+      "semesters": 5,
+      "classes": 6,
+      "first": "2020/2021 Genap",
+      "last": "2024/2025 Genap",
+      "current": false
+    },
+    {
+      "name": "Matematika Diskrit",
+      "semesters": 5,
+      "classes": 5,
+      "first": "2020/2021 Ganjil",
+      "last": "2024/2025 Ganjil",
+      "current": false
+    },
+    {
+      "name": "Desain dan Manajemen Jaringan Komputer",
+      "semesters": 4,
+      "classes": 4,
+      "first": "2022/2023 Genap",
+      "last": "2025/2026 Ganjil",
+      "current": false
+    },
+    {
+      "name": "Pemrograman Berorientasi Objek",
+      "semesters": 4,
+      "classes": 5,
+      "first": "2021/2022 Ganjil",
+      "last": "2024/2025 Ganjil",
+      "current": false
+    },
+    {
+      "name": "Algoritme Pemrograman",
+      "semesters": 2,
+      "classes": 2,
+      "first": "2023/2024 Genap",
+      "last": "2024/2025 Ganjil",
+      "current": false
+    },
+    {
+      "name": "Pemrograman Terstruktur",
+      "semesters": 2,
+      "classes": 2,
+      "first": "2020/2021 Genap",
+      "last": "2021/2022 Genap",
+      "current": false
+    },
+    {
+      "name": "Pemrograman Mobile",
+      "semesters": 1,
+      "classes": 1,
+      "first": "2025/2026 Ganjil",
+      "last": "2025/2026 Ganjil",
+      "current": false
+    },
+    {
+      "name": "Proposal Tugas Akhir",
+      "semesters": 1,
+      "classes": 2,
+      "first": "2021/2022 Genap",
+      "last": "2021/2022 Genap",
+      "current": false
+    },
+    {
+      "name": "Manajemen Pusat Data",
+      "semesters": 1,
+      "classes": 1,
+      "first": "2020/2021 Ganjil",
+      "last": "2020/2021 Ganjil",
+      "current": false
+    },
+    {
+      "name": "Basis Data",
+      "semesters": 1,
+      "classes": 1,
+      "first": "2020/2021 Ganjil",
+      "last": "2020/2021 Ganjil",
+      "current": false
+    }
+  ]
+}

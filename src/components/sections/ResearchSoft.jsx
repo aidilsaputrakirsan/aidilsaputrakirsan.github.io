@@ -201,19 +201,27 @@ function ResearchSoft() {
                 />
               ))}
             {active === 'grants' &&
-              researchGrants.map((g) => <Row key={g.title} year={g.year} title={g.title} sub={g.funder} tag={t({ en: 'Research', id: 'Penelitian' })} tint={typeTint.journal} url={g.url} />)}
+              researchGrants.map((g) => <Row key={t(g.title)} year={g.year} title={t(g.title)} sub={t(g.sub)} tag={t({ en: 'Research', id: 'Penelitian' })} tint={typeTint.journal} url={g.url} />)}
             {active === 'service' &&
               communityService.map((c) => (
-                <Row key={c.partner} year={c.year} title={t(c.title)} sub={c.partner} tag={t({ en: 'Community service', id: 'Pengabdian' })} tint={typeTint.community} url={c.url} />
+                <Row key={t(c.title)} year={c.year} title={t(c.title)} sub={t(c.sub)} tag={t({ en: 'Community service', id: 'Pengabdian' })} tint={typeTint.community} url={c.url} />
               ))}
             {active === 'teaching' && (
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {teaching.map((course) => (
-                  <div key={course.en} className="flex items-center gap-3 rounded-2xl border border-warmLine bg-warmCard px-5 py-4 shadow-soft">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-warmPeachSoft text-warmPeach">
+                  <div key={course.name.id} className="flex items-center gap-3 rounded-2xl border border-warmLine bg-warmCard px-5 py-4 shadow-soft">
+                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-warmPeachSoft text-warmPeach">
                       <FiBookOpen />
                     </span>
-                    <span className="font-display text-[15px] font-bold">{t(course)}</span>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-display text-[15px] font-bold leading-snug">{t(course.name)}</p>
+                      <p className="mt-0.5 font-body text-xs text-warmMuted">{t(course.detail)}</p>
+                    </div>
+                    {course.current && (
+                      <span className="shrink-0 rounded-full bg-warmSageSoft px-2.5 py-0.5 font-body text-[11px] font-semibold text-warmSage">
+                        {t({ en: 'Current', id: 'Semester ini' })}
+                      </span>
+                    )}
                   </div>
                 ))}
               </div>

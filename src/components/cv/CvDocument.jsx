@@ -10,6 +10,8 @@ import { resolve } from '../../i18n/LangContext';
 
 // The CV is always English — bilingual data is resolved to `en`.
 const en = (v) => resolve(v, 'en');
+// Newest N publications on the CV; the full list lives on the profile page.
+const CV_PUBLICATIONS = 10;
 
 const profile =
   `Founder of Myst Tech and Information System Lecturer at Institut Teknologi Kalimantan (Balikpapan, Indonesia) with ${yearsOfExperience()}+ years of experience. Builds and runs AI products for Indonesian education and communities — GuruPintar, SkripsiPintar, and Asdos-AI — on Myst-Core, a self-designed private AI layer (LLM gateway, tier routing with fallback chains, prompt registry, vision/OCR, usage metering). Heads FSTI's Digital Innovation Laboratory; research background in wireless sensor networks and IoT, now applied AI in education.`;
@@ -136,9 +138,9 @@ function CvDocument() {
         </div>
       </Section>
 
-      <Section title="Publications">
+      <Section title="Selected Publications">
         <div className="flex flex-col gap-1.5">
-          {publications.map((p) => (
+          {publications.slice(0, CV_PUBLICATIONS).map((p) => (
             <div key={p.title} className="flex items-baseline justify-between gap-3">
               <p className="text-[10.5px]">
                 <span className="font-bold">{p.title}</span>
@@ -147,6 +149,11 @@ function CvDocument() {
               <span className="shrink-0 text-[10px] font-semibold text-[#888]">{p.year}</span>
             </div>
           ))}
+          {publications.length > CV_PUBLICATIONS && (
+            <p className="text-[10px] italic text-[#888]">
+              {publications.length - CV_PUBLICATIONS} more — full list ({publications.length}) at myst-tech.com/aidil
+            </p>
+          )}
         </div>
       </Section>
 

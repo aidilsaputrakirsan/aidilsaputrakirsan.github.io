@@ -1,0 +1,177 @@
+{
+  "source": "https://sinta.kemdiktisaintek.go.id/authors/profile/6760340",
+  "research": [
+    {
+      "id": "pengembangan-sistem-informasi-klinik-kampus-berbasis-web",
+      "title": "Pengembangan Sistem Informasi Klinik Kampus Berbasis Web untuk Meningkatkan Efektivitas Pelayanan Kesehatan di Institut Teknologi Kalimantan",
+      "year": "2026",
+      "role": "member",
+      "leader": "Hendy Indrawan Sunardi",
+      "scheme": "RKS",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "pengembangan-sistem-smart-library-berbasis-rfid",
+      "title": "Pengembangan Sistem Smart Library Berbasis RFID Terintegrasi Cloud sebagai Platform Manajemen Digital Perpustakaan ITK",
+      "year": "2026",
+      "role": "member",
+      "leader": "Adi Mahmud Jaya Marindra",
+      "scheme": "RKS",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "rancang-bangun-sistem-informasi-profil-fakultas-sains-dan",
+      "title": "Rancang Bangun Sistem Informasi Profil Fakultas Sains dan Teknologi Informasi Institut Teknologi Kalimantan Berbasis Website Menggunakan Metode Prototyping",
+      "year": "2026",
+      "role": "lead",
+      "leader": "Aidil Saputra Kirsan",
+      "scheme": "RKS",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "pengembangan-sistem-informasi-manajemen-tugas-akhir-pada",
+      "title": "Pengembangan Sistem Informasi Manajemen Tugas Akhir pada Jurusan Teknik Elektro, Informatika, dan Bisnis Institut Teknologi Kalimantan Menggunakan Metode Personal Extreme Programming (PXP)",
+      "year": "2025",
+      "role": "member",
+      "leader": "Sri Rahayu Natasia",
+      "scheme": "RKS",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "implementasi-metode-scrumban-untuk-perancangan-ulang-sistem",
+      "title": "Implementasi Metode Scrumban untuk Perancangan Ulang Sistem Informasi dan Manajemen Laboratorium (SIMLAB) Institut Teknologi Kalimantan",
+      "year": "2025",
+      "role": "lead",
+      "leader": "Aidil Saputra Kirsan",
+      "scheme": "RKS",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "optimalisasi-pengelolaan-sistem-monitoring-data-energi",
+      "title": "Optimalisasi Pengelolaan Sistem Monitoring Data Energi Listrik pada Smart Home System untuk Saklar Listrik Menggunakan Metode Extreme Programming",
+      "year": "2025",
+      "role": "member",
+      "leader": "Hendy Indrawan Sunardi",
+      "scheme": "RPI",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "rancangan-dan-implementasi-smart-home-system-untuk",
+      "title": "Rancangan dan Implementasi Smart Home System untuk Pengendalian Sakelar Listrik Berbasis IoT",
+      "year": "2024",
+      "role": "member",
+      "leader": "Hendy Maulana Jaya Saputra",
+      "scheme": "RPIKN",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "implementasi-metaverse-pada-pengenalan-lab-terpadu-kampus",
+      "title": "Implementasi Metaverse pada Pengenalan Lab Terpadu Kampus Institut Teknologi Kalimantan (ITK)",
+      "year": "2024",
+      "role": "lead",
+      "leader": "Aidil Saputra Kirsan",
+      "scheme": "RKST",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "rancang-bangun-sistem-deteksi-dini-kebakaran-di-rumah",
+      "title": "Rancang Bangun Sistem Deteksi Dini Kebakaran di Rumah Menggunakan Smart Home Berbasis IoT",
+      "year": "2023",
+      "role": "member",
+      "leader": "Hendy Indrawan Sunardi",
+      "scheme": "PPI",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "peningkatan-efisiensi-dan-efektivitas-proses-belajar",
+      "title": "Peningkatan Efisiensi dan Efektivitas Proses Belajar Mengajar dengan Pemanfaatan Teknologi IoT pada Sistem Bel Sekolah Pintar",
+      "year": "2023",
+      "role": "lead",
+      "leader": "Aidil Saputra Kirsan",
+      "scheme": "PAI",
+      "selfFunded": false,
+      "status": "Approved"
+    }
+  ],
+  "service": [
+    {
+      "id": "digitalisasi-sistem-pendataan-pembayaran-gedung-seluruh",
+      "title": "Digitalisasi Sistem Pendataan Pembayaran Gedung Seluruh Tenant Plaza Kebun Sayur Balikpapan",
+      "year": "2026",
+      "role": "member",
+      "leader": "Hendy Indrawan Sunardi",
+      "scheme": "PMMD",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "pengembangan-wisata-tanjung-gading-melalui-digitalisasi-di",
+      "title": "Pengembangan Wisata Tanjung Gading melalui Digitalisasi di RT 17 Kelurahan Karang Joang",
+      "year": "2025",
+      "role": "member",
+      "leader": "Hendy Indrawan Sunardi",
+      "scheme": "PMMD",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "pengembangan-website-dan-peningkatan-kenyamanan-pengunjung",
+      "title": "Pengembangan Website dan Peningkatan Kenyamanan Pengunjung di Wisata Meranti Balikpapan",
+      "year": "2024",
+      "role": "member",
+      "leader": "Hendy Indrawan Sunardi",
+      "scheme": "PMMD",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "digitalisasi-pembangunan-website-dashboard-sebagai-sarana",
+      "title": "Digitalisasi Pembangunan Website Dashboard sebagai Sarana Informasi dan Pengelolaan Data Masyarakat",
+      "year": "2024",
+      "role": "lead",
+      "leader": "Aidil Saputra Kirsan",
+      "scheme": "PMMD",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "digitalisasi-pengelolaan-bank-sampah-borneo-38-dan",
+      "title": "Digitalisasi Pengelolaan Bank Sampah Borneo 38 dan Pengembangan Rumah Kreatif RT. 38 Kelurahan Baru Tengah Balikpapan Barat",
+      "year": "2023",
+      "role": "lead",
+      "leader": "Aidil Saputra Kirsan",
+      "scheme": "PMMD",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "pengembangan-kawasan-wisata-kuliner-kelurahan-damai",
+      "title": "Pengembangan Kawasan Wisata Kuliner Kelurahan Damai Balikpapan",
+      "year": "2022",
+      "role": "lead",
+      "leader": "Aidil Saputra Kirsan",
+      "scheme": "PMMD",
+      "selfFunded": false,
+      "status": "Approved"
+    },
+    {
+      "id": "sosialisasi-pemanfaatan-teknologi-ict-dalam-pembelajaran",
+      "title": "Sosialisasi Pemanfaatan Teknologi ICT dalam Pembelajaran Daring di Sekolah Dasar Al Azhar 58 Balikpapan",
+      "year": "2020",
+      "role": "lead",
+      "leader": "Aidil Saputra Kirsan",
+      "scheme": "MANDIRI",
+      "selfFunded": true,
+      "status": "Approved"
+    }
+  ]
+}

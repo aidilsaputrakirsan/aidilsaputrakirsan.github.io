@@ -113,10 +113,29 @@ Put posters in `public/images/projects/` (compress, <~500KB). Not released yet �
   page changes, then commit the images.
 
 ## HOW TO: add a publication / research / pengabdian
-Add to `publications`, `researchGrants` or `communityService` in
-[src/data/research.js](src/data/research.js). Newest first. The profile Research
-section, counters and the CV "Publications" list update automatically. Entries with
-`verify: true` were collected from public indexes and still need checking.
+- **Publications are automatic**: [scripts/sync-publications.mjs](scripts/sync-publications.mjs)
+  (`npm run publications`) pulls every work of OpenAlex author `A5056587617` (linked to
+  ORCID) into `src/data/publications.openalex.json` (generated, don't hand-edit).
+  [.github/workflows/sync-publications.yml](.github/workflows/sync-publications.yml) runs it
+  on the 1st of each month (+ manual "Run workflow"), commits changes and triggers deploy
+  (deploy.yml has `workflow_dispatch` for this — GITHUB_TOKEN pushes don't fire `push`).
+- In [src/data/research.js](src/data/research.js): `publicationFixes` (by DOI: fix venue/title,
+  add `indexing`), `manualPublications` (papers OpenAlex lacks), `hiddenPublications`
+  (DOI/title to drop). `publications` = merged + sorted newest first.
+- **Research grants & community service are automatic too**: [scripts/sync-sinta.mjs](scripts/sync-sinta.mjs)
+  (`npm run sinta`) reads the public SINTA profile HTML (no API; needs a browser User-Agent)
+  into `src/data/sinta.json` (generated). Same workflow, monthly. If SINTA blocks it or
+  changes markup, the script fails without touching the JSON (last good data stays).
+  In research.js: `sintaLinks` (item id → URL), `manualResearchGrants` /
+  `manualCommunityService` (activities SINTA lacks), `hiddenSinta` (ids to drop).
+- **Teaching is automatic too**: [scripts/sync-pddikti.mjs](scripts/sync-pddikti.mjs) (`npm run pddikti`)
+  calls the JSON backend of pddikti.kemdiktisaintek.go.id (`/dosen/teaching-history/<id>`,
+  needs browser-like Origin/Referer headers) → `src/data/pddikti.json` (generated), one entry
+  per course with semesters taught. Same monthly workflow. Add English names for new courses
+  to `courseNames` in research.js.
+- The CV lists only the newest 10 publications (`CV_PUBLICATIONS` in CvDocument.jsx).
+- The profile Research section, counters and the CV "Publications" list update automatically.
+  Entries with `verify: true` still need checking.
 
 ## HOW TO: add a work / project (non-Myst system)
 1. Optional image in [public/images/projects/](public/images/projects/) (only shown in the detail modal).

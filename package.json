@@ -11,7 +11,10 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "screenshots": "node scripts/capture-landings.mjs"
+    "screenshots": "node scripts/capture-landings.mjs",
+    "publications": "node scripts/sync-publications.mjs",
+    "sinta": "node scripts/sync-sinta.mjs",
+    "pddikti": "node scripts/sync-pddikti.mjs"
   },
   "dependencies": {
     "animejs": "^4.3.6",
