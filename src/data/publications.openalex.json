@@ -2,6 +2,15 @@
   "source": "https://openalex.org/A5056587617",
   "items": [
     {
+      "title": "Performance Optimization of Single Page Applications Using Hybrid Lazy Loading and Code Splitting Based on System Complexity Level",
+      "venue": "IEEE conference proceedings",
+      "year": "2026",
+      "type": "conference",
+      "url": "https://doi.org/10.1109/tic68483.2026.11702994",
+      "doi": "10.1109/tic68483.2026.11702994",
+      "openalex": "https://openalex.org/W7214804888"
+    },
+    {
       "title": "Optimization of Electrical Energy Data Monitoring System Management in Smart Home System for Electrical Switches Using Extreme Programming Method",
       "venue": "Jurnal Teknik Elektro dan Komputer TRIAC, Vol. 12 No. 1",
       "year": "2025",
