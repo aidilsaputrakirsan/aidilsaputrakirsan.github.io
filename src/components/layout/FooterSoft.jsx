@@ -1,6 +1,7 @@
-import { FiGithub, FiLinkedin, FiArrowUp, FiCoffee } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiInstagram, FiArrowUp, FiCoffee } from 'react-icons/fi';
 import VisitorCounter from '../ui/VisitorCounter';
 import { useLang } from '../../i18n/LangContext';
+import { instagram } from '../../data/social';
 
 const defaultBrand = (
   <span>
@@ -27,7 +28,7 @@ function FooterSoft({
             <p className="mt-1 font-body text-sm text-warmMuted">{t(tagline)}</p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <VisitorCounter />
             <button
               onClick={() => window.dispatchEvent(new CustomEvent('open-support'))}
@@ -37,6 +38,7 @@ function FooterSoft({
             >
               <FiCoffee />
             </button>
+            <a href={instagram.url} target="_blank" rel="noreferrer" aria-label="Instagram" title={`@${instagram.handle}`} className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-warmLine hover:border-warmPeach hover:text-warmPeach"><FiInstagram /></a>
             <a href="https://github.com/aidilsaputrakirsan" target="_blank" rel="noreferrer" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-warmLine hover:border-warmPeach hover:text-warmPeach"><FiGithub /></a>
             <a href="https://id.linkedin.com/in/aidil-saputra-kirsan-0808911bb" target="_blank" rel="noreferrer" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-warmLine hover:border-warmPeach hover:text-warmPeach"><FiLinkedin /></a>
             <a href="#hero" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-warmInk text-warmBg hover:-translate-y-0.5 transition-transform"><FiArrowUp /></a>

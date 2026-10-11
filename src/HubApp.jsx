@@ -8,6 +8,7 @@ import ProductsHub from './components/hub/ProductsHub';
 import CoreHub from './components/hub/CoreHub';
 import FounderHub from './components/hub/FounderHub';
 import ContactHub from './components/hub/ContactHub';
+import InstagramSoft from './components/sections/InstagramSoft';
 import CvModal from './components/cv/CvModal';
 import MystMark from './components/ui/MystMark';
 import SupportModal from './components/support/SupportModal';
@@ -18,6 +19,7 @@ const links = [
   [{ en: 'Apps', id: 'Aplikasi' }, '#produk'],
   ['Myst-Core', '#core'],
   ['Founder', '#founder'],
+  [{ en: 'Learn', id: 'Belajar' }, '#instagram'],
   [{ en: 'Contact', id: 'Kontak' }, '#kontak'],
 ];
 
@@ -40,6 +42,7 @@ function Hub() {
         <ProductsHub />
         <CoreHub />
         <FounderHub />
+        <InstagramSoft />
         <ContactHub />
       </main>
       <FooterSoft

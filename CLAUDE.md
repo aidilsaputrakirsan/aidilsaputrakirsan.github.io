@@ -158,6 +158,15 @@ Put posters in `public/images/projects/` (compress, <~500KB). Not released yet �
 It shows in the profile's "Selected works" list (+ filter), Skills domain counts and
 the CV "Selected Projects" (top 8).
 
+## Instagram highlight ("Learn" / "Belajar")
+- IG = free IT lessons (Information Systems courses + AI). Data in [src/data/social.js](src/data/social.js):
+  `handle`, `url`, optional `followers`, `aiTopics`, optional `posts` (thumbnail grid, hidden while empty;
+  images in `public/images/instagram/`, square ≤600px). Course chips come from the PDDikti `teaching` data.
+- Section [InstagramSoft.jsx](src/components/sections/InstagramSoft.jsx) (`#instagram`) sits after Founder on
+  the hub and after Works on `/aidil/`; also a hero link on `/aidil/`, a footer icon and a "Learn" nav link.
+- QR code = static SVG path in [InstagramQr.jsx](src/components/ui/InstagramQr.jsx) (always dark-on-light);
+  regenerate it only if the handle changes. No Instagram embed script — too heavy.
+
 ## 3D orbit (hub hero)
 - [src/components/three/MystOrbit.jsx](src/components/three/MystOrbit.jsx) (React wrapper, DOM
   labels, static fallback) lazy-imports

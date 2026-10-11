@@ -1,0 +1,25 @@
+// Static QR code for https://www.instagram.com/aidilsaputrakirsan/ (33×33 modules,
+// error correction M). Generated once with the `qrcode` package — no runtime
+// dependency. If the Instagram handle ever changes, regenerate this path.
+// Always dark-on-light (inverted QR codes scan unreliably), so it ignores the theme.
+const SIZE = 33;
+const PATH =
+  'M0 0h7v1h-7zM10 0h1v1h-1zM16 0h1v1h-1zM18 0h2v1h-2zM23 0h1v1h-1zM26 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM11 1h1v1h-1zM15 1h1v1h-1zM18 1h1v1h-1zM20 1h1v1h-1zM22 1h1v1h-1zM26 1h1v1h-1zM32 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h1v1h-1zM10 2h2v1h-2zM14 2h3v1h-3zM20 2h3v1h-3zM24 2h1v1h-1zM26 2h1v1h-1zM28 2h3v1h-3zM32 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h4v1h-4zM15 3h1v1h-1zM18 3h2v1h-2zM21 3h1v1h-1zM23 3h2v1h-2zM26 3h1v1h-1zM28 3h3v1h-3zM32 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h2v1h-2zM12 4h6v1h-6zM20 4h1v1h-1zM23 4h2v1h-2zM26 4h1v1h-1zM28 4h3v1h-3zM32 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM17 5h1v1h-1zM19 5h1v1h-1zM22 5h1v1h-1zM24 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h7v1h-7zM8 7h1v1h-1zM10 7h2v1h-2zM14 7h1v1h-1zM16 7h1v1h-1zM18 7h4v1h-4zM23 7h1v1h-1zM0 8h1v1h-1zM2 8h5v1h-5zM11 8h1v1h-1zM13 8h2v1h-2zM17 8h1v1h-1zM19 8h1v1h-1zM22 8h3v1h-3zM26 8h5v1h-5zM1 9h5v1h-5zM8 9h1v1h-1zM10 9h2v1h-2zM13 9h1v1h-1zM16 9h5v1h-5zM22 9h2v1h-2zM26 9h2v1h-2zM29 9h4v1h-4zM2 10h1v1h-1zM6 10h2v1h-2zM12 10h6v1h-6zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM30 10h2v1h-2zM0 11h2v1h-2zM3 11h2v1h-2zM7 11h3v1h-3zM12 11h2v1h-2zM15 11h1v1h-1zM17 11h2v1h-2zM23 11h1v1h-1zM25 11h2v1h-2zM28 11h4v1h-4zM1 12h2v1h-2zM6 12h1v1h-1zM8 12h3v1h-3zM14 12h1v1h-1zM16 12h1v1h-1zM20 12h6v1h-6zM27 12h3v1h-3zM1 13h1v1h-1zM4 13h1v1h-1zM7 13h1v1h-1zM9 13h1v1h-1zM11 13h1v1h-1zM15 13h1v1h-1zM18 13h1v1h-1zM21 13h1v1h-1zM23 13h1v1h-1zM26 13h1v1h-1zM30 13h3v1h-3zM1 14h2v1h-2zM5 14h3v1h-3zM9 14h1v1h-1zM12 14h2v1h-2zM15 14h4v1h-4zM20 14h1v1h-1zM25 14h2v1h-2zM30 14h2v1h-2zM0 15h2v1h-2zM7 15h5v1h-5zM15 15h1v1h-1zM21 15h2v1h-2zM24 15h4v1h-4zM29 15h2v1h-2zM3 16h1v1h-1zM5 16h2v1h-2zM12 16h1v1h-1zM15 16h1v1h-1zM17 16h1v1h-1zM22 16h1v1h-1zM24 16h2v1h-2zM27 16h3v1h-3zM32 16h1v1h-1zM2 17h3v1h-3zM10 17h1v1h-1zM12 17h2v1h-2zM16 17h1v1h-1zM18 17h10v1h-10zM29 17h2v1h-2zM32 17h1v1h-1zM1 18h4v1h-4zM6 18h1v1h-1zM9 18h1v1h-1zM13 18h1v1h-1zM15 18h2v1h-2zM18 18h1v1h-1zM21 18h1v1h-1zM26 18h3v1h-3zM30 18h2v1h-2zM0 19h2v1h-2zM5 19h1v1h-1zM7 19h1v1h-1zM9 19h2v1h-2zM14 19h2v1h-2zM19 19h1v1h-1zM21 19h3v1h-3zM25 19h1v1h-1zM27 19h6v1h-6zM2 20h1v1h-1zM4 20h3v1h-3zM8 20h6v1h-6zM15 20h1v1h-1zM18 20h1v1h-1zM21 20h1v1h-1zM24 20h2v1h-2zM27 20h3v1h-3zM0 21h1v1h-1zM3 21h1v1h-1zM8 21h1v1h-1zM10 21h4v1h-4zM15 21h3v1h-3zM20 21h4v1h-4zM25 21h2v1h-2zM29 21h2v1h-2zM32 21h1v1h-1zM0 22h1v1h-1zM2 22h3v1h-3zM6 22h1v1h-1zM9 22h2v1h-2zM12 22h3v1h-3zM17 22h1v1h-1zM19 22h1v1h-1zM21 22h2v1h-2zM25 22h1v1h-1zM27 22h5v1h-5zM0 23h1v1h-1zM4 23h1v1h-1zM7 23h5v1h-5zM14 23h1v1h-1zM16 23h1v1h-1zM19 23h3v1h-3zM23 23h5v1h-5zM29 23h3v1h-3zM0 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM14 24h1v1h-1zM17 24h1v1h-1zM19 24h2v1h-2zM22 24h1v1h-1zM24 24h6v1h-6zM31 24h2v1h-2zM8 25h1v1h-1zM12 25h3v1h-3zM16 25h5v1h-5zM23 25h2v1h-2zM28 25h1v1h-1zM30 25h3v1h-3zM0 26h7v1h-7zM9 26h1v1h-1zM11 26h2v1h-2zM14 26h4v1h-4zM20 26h1v1h-1zM22 26h3v1h-3zM26 26h1v1h-1zM28 26h1v1h-1zM30 26h2v1h-2zM0 27h1v1h-1zM6 27h1v1h-1zM8 27h1v1h-1zM11 27h1v1h-1zM13 27h2v1h-2zM16 27h5v1h-5zM23 27h2v1h-2zM28 27h3v1h-3zM0 28h1v1h-1zM2 28h3v1h-3zM6 28h1v1h-1zM8 28h1v1h-1zM12 28h2v1h-2zM16 28h1v1h-1zM20 28h3v1h-3zM24 28h6v1h-6zM31 28h2v1h-2zM0 29h1v1h-1zM2 29h3v1h-3zM6 29h1v1h-1zM8 29h1v1h-1zM10 29h3v1h-3zM15 29h1v1h-1zM17 29h2v1h-2zM21 29h1v1h-1zM23 29h1v1h-1zM25 29h1v1h-1zM28 29h3v1h-3zM32 29h1v1h-1zM0 30h1v1h-1zM2 30h3v1h-3zM6 30h1v1h-1zM8 30h1v1h-1zM10 30h1v1h-1zM12 30h1v1h-1zM14 30h3v1h-3zM20 30h2v1h-2zM23 30h5v1h-5zM30 30h1v1h-1zM0 31h1v1h-1zM6 31h1v1h-1zM11 31h1v1h-1zM15 31h1v1h-1zM21 31h3v1h-3zM28 31h3v1h-3zM0 32h7v1h-7zM8 32h1v1h-1zM11 32h1v1h-1zM13 32h1v1h-1zM15 32h1v1h-1zM17 32h2v1h-2zM22 32h3v1h-3zM26 32h2v1h-2zM29 32h1v1h-1zM31 32h1v1h-1z';
+
+function InstagramQr({ className = '', title = 'Instagram QR code' }) {
+  const q = 2; // quiet zone, in modules
+  return (
+    <svg
+      viewBox={`${-q} ${-q} ${SIZE + q * 2} ${SIZE + q * 2}`}
+      role="img"
+      aria-label={title}
+      shapeRendering="crispEdges"
+      className={className}
+    >
+      <rect x={-q} y={-q} width={SIZE + q * 2} height={SIZE + q * 2} fill="#FBF8F2" />
+      <path d={PATH} fill="#1E1A15" />
+    </svg>
+  );
+}
+
+export default InstagramQr;

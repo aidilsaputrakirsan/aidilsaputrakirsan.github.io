@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { motion, useScroll, useTransform, useReducedMotion, useMotionValue, useSpring, useMotionTemplate, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { FiArrowDownRight, FiCode, FiBookOpen, FiCpu, FiWifi, FiSearch, FiMonitor, FiUsers, FiZap } from 'react-icons/fi';
+import { FiArrowDownRight, FiCode, FiBookOpen, FiCpu, FiWifi, FiSearch, FiMonitor, FiUsers, FiZap, FiInstagram, FiArrowUpRight } from 'react-icons/fi';
 import Counter from '../ui/Counter';
 import Marquee from '../ui/Marquee';
 import MystMark from '../ui/MystMark';
 import { liveProducts } from '../../data/products';
 import { yearsOfExperience, currentRoles, publicationCount } from '../../data/site';
+import { instagram } from '../../data/social';
 import { useLang } from '../../i18n/LangContext';
 
 // Soft / Warm Hero — light, fast, mobile-friendly, lots of gentle motion.
@@ -173,6 +174,19 @@ function HeroSoft() {
                 <MystMark className="h-5 w-5" interactive={false} /> {t({ en: 'Myst Tech apps', id: 'Aplikasi Myst Tech' })}
               </motion.a>
             </motion.div>
+
+            <motion.a
+              variants={item}
+              href={instagram.url}
+              target="_blank"
+              rel="noreferrer"
+              className="group mt-5 inline-flex flex-wrap items-center gap-x-2 gap-y-0.5 font-body text-sm font-medium text-warmMuted hover:text-warmPeach"
+            >
+              <FiInstagram className="text-base text-warmPeach" />
+              {t({ en: 'Free Information Systems & AI lessons on Instagram', id: 'Materi Sistem Informasi & AI gratis di Instagram' })}
+              <span className="font-semibold text-warmInk group-hover:text-warmPeach">@{instagram.handle}</span>
+              <FiArrowUpRight className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </motion.a>
 
             {/* Mini stats with count-up */}
             <motion.div variants={item} className="mt-12 flex flex-wrap gap-x-10 gap-y-4">

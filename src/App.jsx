@@ -20,6 +20,7 @@ import ExperienceSoft from './components/sections/ExperienceSoft';
 import ProjectsSoft from './components/sections/ProjectsSoft';
 import ResearchSoft from './components/sections/ResearchSoft';
 import ContactSoft from './components/sections/ContactSoft';
+import InstagramSoft from './components/sections/InstagramSoft';
 import FooterSoft from './components/layout/FooterSoft';
 import CvModal from './components/cv/CvModal';
 import SupportModal from './components/support/SupportModal';
@@ -50,6 +51,7 @@ function App() {
             <ResearchSoft />
             <ExperienceSoft />
             <ProjectsSoft />
+            <InstagramSoft />
             <ContactSoft />
           </main>
           <FooterSoft />

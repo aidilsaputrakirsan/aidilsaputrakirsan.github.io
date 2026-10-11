@@ -12,6 +12,7 @@ const defaultLinks = [
   [{ en: 'Research', id: 'Riset' }, '#research'],
   [{ en: 'Journey', id: 'Perjalanan' }, '#experience'],
   [{ en: 'Work', id: 'Karya' }, '#projects'],
+  [{ en: 'Learn', id: 'Belajar' }, '#instagram'],
   [{ en: 'Contact', id: 'Kontak' }, '#contact'],
 ];
 
