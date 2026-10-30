@@ -2,6 +2,7 @@ import { FiGithub, FiLinkedin, FiInstagram, FiArrowUp, FiCoffee } from 'react-ic
 import VisitorCounter from '../ui/VisitorCounter';
 import { useLang } from '../../i18n/LangContext';
 import { instagram } from '../../data/social';
+import { company, registrationLine } from '../../data/company';
 
 const defaultBrand = (
   <span>
@@ -49,6 +50,12 @@ function FooterSoft({
 
         <div className="mt-8 border-t border-warmLine pt-6 text-center font-body text-sm text-warmMuted">
           © {new Date().getFullYear()} {t(copyright)}
+          <p className="mt-1 text-xs">
+            {t({ en: `${company.brand} is operated by`, id: `${company.brand} dikelola oleh` })}{' '}
+            <span className="font-semibold text-warmInk">{company.legalName}</span>
+            {registrationLine() && ` · ${registrationLine()}`}
+            {company.address && ` · ${company.address}`}
+          </p>
         </div>
       </div>
     </footer>

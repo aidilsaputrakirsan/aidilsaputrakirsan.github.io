@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { FiMail, FiMessageCircle, FiInstagram } from 'react-icons/fi';
 import { useLang } from '../../i18n/LangContext';
+import { company, registrationLine } from '../../data/company';
 
 // Phone number is the one already printed on every product poster.
 const WHATSAPP = 'https://wa.me/6285398952880';
@@ -34,6 +35,12 @@ function ContactHub() {
                   id: 'Demo gratis dan pendampingan awal. Hubungi langsung — biasanya dibalas di hari yang sama.',
                 })}
               </p>
+              <div className="mt-6 inline-flex flex-col gap-0.5 rounded-2xl border border-warmBg/15 px-4 py-3 font-body text-sm">
+                <span className="font-semibold">{company.legalName}</span>
+                <span className="opacity-70">
+                  {[registrationLine(), company.address || company.city].filter(Boolean).join(' · ')}
+                </span>
+              </div>
             </div>
             <div className="flex flex-col gap-3 md:col-span-2">
               <a

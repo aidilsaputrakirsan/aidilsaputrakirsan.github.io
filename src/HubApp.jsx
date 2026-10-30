@@ -13,6 +13,7 @@ import CvModal from './components/cv/CvModal';
 import MystMark from './components/ui/MystMark';
 import SupportModal from './components/support/SupportModal';
 import { liveProducts } from './data/products';
+import { company } from './data/company';
 import { LangProvider, useLang } from './i18n/LangContext';
 
 const links = [
@@ -51,7 +52,7 @@ function Hub() {
           en: 'AI apps for education & communities · Balikpapan, Indonesia',
           id: 'Aplikasi AI untuk pendidikan & komunitas · Balikpapan, Indonesia',
         }}
-        copyright="Myst Tech · Aidil Saputra Kirsan."
+        copyright={`${company.legalName}. ${t({ en: 'All rights reserved.', id: 'Hak cipta dilindungi.' })}`}
         coffeeLabel={coffee}
       >
         <nav aria-label={t({ en: 'All apps', id: 'Semua aplikasi' })} className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 md:justify-start">

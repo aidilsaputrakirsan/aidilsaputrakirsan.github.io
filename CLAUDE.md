@@ -63,6 +63,7 @@ All real content lives in [src/data/](src/data/). Change data → UI + CV update
 | Education | [src/data/education.js](src/data/education.js) |
 | Achievements/certs | [src/data/achievements.js](src/data/achievements.js) |
 | Time-based values (years, current projects) | [src/data/site.js](src/data/site.js) |
+| Legal entity (PT Myst Tech Core: NIB, SK AHU, address) | [src/data/company.js](src/data/company.js) — shown in footer + hub Kontak; mirror changes in the JSON-LD in [index.html](index.html) |
 
 ## Auto-updating values — single source of truth
 [src/data/site.js](src/data/site.js) drives everything time-based. **Never hardcode "5+ years"
@@ -179,6 +180,10 @@ the CV "Selected Projects" (top 8).
   Planets wear a procedural globe texture (continents/ice caps/clouds drawn on a canvas in
   the app's brand colour, seeded by `id` so it's stable) — no image files involved. Colors follow `products.js`
   and the light/dark theme (reads the `--warm-*` CSS vars).
+- three.js starts downloading on mount; the scene is built on idle (capped at 400ms). Until then a
+  static CSS preview (`fallbackLayout()` in MystOrbit.jsx) mirrors the scene's first frame — same
+  rings/tilts/start angles — so the swap is a cross-fade. If you change ring radius/tilt/camera in
+  createOrbitScene.js, retune `FRAMING` there too.
 - Pauses off-screen / in hidden tabs; `prefers-reduced-motion` → static, render-on-demand.
   No WebGL → the static CSS fallback stays. Keep it light: no textures/GLB unless
   compressed and small.

@@ -195,7 +195,10 @@ function circlePoints(radius, segments = 160) {
   return g;
 }
 
-export function createOrbitScene(container, { products, labels, coreLabel, reduceMotion, onHover, onSelect }) {
+// `animateIn: false` skips the grow-in intro — used when a static preview of the
+// same layout is already on screen, so the 3D scene simply cross-fades over it.
+export function createOrbitScene(container, { products, labels, coreLabel, reduceMotion, animateIn = true, onHover, onSelect }) {
+  const skipIntro = reduceMotion || !animateIn;
   const small = container.clientWidth < 520;
 
   const renderer = new WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
@@ -440,7 +443,7 @@ export function createOrbitScene(container, { products, labels, coreLabel, reduc
     raf = 0;
     const dt = Math.min((now - last) / 1000, 0.05);
     last = now;
-    const intro = reduceMotion ? 1 : easeOut((now - start) / 1400);
+    const intro = skipIntro ? 1 : easeOut((now - start) / 1400);
     const active = hovered >= 0 ? hovered : external;
     const slow = active >= 0 ? 0.25 : 1;
     if (!reduceMotion) time += dt * slow;
@@ -472,7 +475,7 @@ export function createOrbitScene(container, { products, labels, coreLabel, reduc
     orbs.forEach((orb, k) => {
       const a = orb.angle0 + orb.ring.angle;
       orb.mesh.position.set(Math.cos(a) * orb.ring.radius, 0, Math.sin(a) * orb.ring.radius);
-      const appear = reduceMotion ? 1 : easeOut((now - start - 250 - k * 120) / 900);
+      const appear = skipIntro ? 1 : easeOut((now - start - 250 - k * 120) / 900);
       orb.hoverScale += ((orb.index === active ? 1.35 : 1) - orb.hoverScale) * 0.15;
       orb.mesh.scale.setScalar(Math.max(appear, 0.001) * orb.hoverScale);
       orb.mesh.rotation.y = time * 0.5;

@@ -21,7 +21,7 @@ export const experienceData = [
       title: { en: "Founder & AI Product Engineer", id: "Founder & AI Product Engineer" },
       shortTitle: { en: "Founder & AI Product Engineer", id: "Founder & AI Product Engineer" },
       shortCompany: "Myst Tech · Balikpapan 🇮🇩",
-      company: "Myst Tech",
+      company: "PT Myst Tech Core (Myst Tech)",
       period: "2021 - Present",
       description: {
         en: "Founded Myst Tech and build its AI products for Indonesian education and communities — GuruPintar (teachers), SkripsiPintar (students), Asdos-AI (lecturers), and Sistem Manajemen RT. Designed Myst-Core, the private AI layer every product calls: an LLM gateway with tier-based model routing and fallback chains, a prompt registry, streaming and structured JSON output, vision/OCR for handwritten work, usage metering, and an offline sandbox. Built end to end with Laravel, Livewire, and MySQL.",
