@@ -14,7 +14,7 @@ const en = (v) => resolve(v, 'en');
 const CV_PUBLICATIONS = 10;
 
 const profile =
-  `Founder of Myst Tech and Information System Lecturer at Institut Teknologi Kalimantan (Balikpapan, Indonesia) with ${yearsOfExperience()}+ years of experience. Builds and runs AI products for Indonesian education and communities — GuruPintar, SkripsiPintar, and Asdos-AI — on Myst-Core, a self-designed private AI layer (LLM gateway, tier routing with fallback chains, prompt registry, vision/OCR, usage metering). Heads FSTI's Digital Innovation Laboratory; research background in wireless sensor networks and IoT, now applied AI in education.`;
+  `Founder of Myst Tech and Information System Lecturer at Institut Teknologi Kalimantan (Balikpapan, Indonesia) with ${yearsOfExperience()}+ years of experience. Builds and runs AI products for Indonesian education and communities — GuruPintar, SkripsiPintar, and AsdosPintar — on Myst-Core, a self-designed private AI layer (LLM gateway, tier routing with fallback chains, prompt registry, vision/OCR, usage metering). Heads FSTI's Digital Innovation Laboratory; research background in wireless sensor networks and IoT, now applied AI in education.`;
 
 const skillGroups = [
   { label: 'AI Engineering', items: 'LLM gateway (Myst-Core), RAG, model routing & fallback, prompt registries, structured JSON output, vision/OCR, streaming, usage metering' },

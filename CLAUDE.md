@@ -4,7 +4,7 @@ Guidance for any AI/new chat working on this repo. Read this first.
 
 ## What this is
 **myst-tech.com** — the "one gate" hub for every Myst Tech app (GuruPintar,
-SkripsiPintar, Asdos-AI, Sistem Manajemen RT, …) plus the founder profile of
+SkripsiPintar, AsdosPintar, Sistem Manajemen RT, …) plus the founder profile of
 **Aidil Saputra Kirsan** (Founder of Myst Tech, AI product engineer & Information
 System Lecturer, Balikpapan). React + Vite + Tailwind + Framer Motion + three.js.
 Deployed to GitHub Pages (`npm run deploy`).
@@ -110,7 +110,7 @@ Put posters in `public/images/projects/` (compress, <~500KB). Not released yet �
   opens every live app's `url` in the locally installed Chrome/Edge (`playwright-core`, no
   download; or set `CHROME_PATH`), saves `public/images/landing/<id>.jpg` (1280px wide,
   ≤1600px tall, ~100–250KB) and sets that product's `screenshot` field automatically.
-  `npm run screenshots -- asdos-ai` captures only the listed ids. Re-run when a landing
+  `npm run screenshots -- asdospintar` captures only the listed ids. Re-run when a landing
   page changes, then commit the images.
 
 ## HOW TO: add a publication / research / pengabdian

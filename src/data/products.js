@@ -103,8 +103,8 @@ export const productsData = [
     technologies: ['Laravel', 'Livewire', 'MySQL', 'Myst-Core (LLM)', 'Vision/OCR'],
   },
   {
-    id: 'asdos-ai',
-    title: 'Asdos-AI',
+    id: 'asdospintar',
+    title: 'AsdosPintar',
     tagline: { en: 'Class management assistant for lecturers', id: 'Asisten manajemen kelas untuk dosen' },
     pitch: {
       en: "Grades weekly assignments against the lecturer's rubric, maps class misconceptions, and flags students who need attention early.",
@@ -121,9 +121,9 @@ export const productsData = [
       { en: 'Grade recaps exported to Excel', id: 'Ekspor rekap nilai ke Excel' },
     ],
     url: 'https://asdos.myst-tech.com/',
-    screenshot: '/images/landing/asdos-ai.jpg',
-    screenshotDark: '/images/landing/asdos-ai-dark.jpg',
-    poster: '/images/projects/poster-asdosai.jpg',
+    screenshot: '/images/landing/asdospintar.jpg',
+    screenshotDark: '/images/landing/asdospintar-dark.jpg',
+    poster: '/images/projects/poster-asdospintar.jpg',
     color: '#3B82F6',
     icon: 'graduation',
     status: 'live',

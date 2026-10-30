@@ -3,7 +3,7 @@
 // show the real landing page as their background.
 //
 //   npm run screenshots              # every live app with a url
-//   npm run screenshots -- asdos-ai  # only the ids you list
+//   npm run screenshots -- asdospintar  # only the ids you list
 //
 // Uses the Chrome (or Edge) already installed on your computer — nothing to
 // download. Re-run whenever a landing page changes, then commit the images.

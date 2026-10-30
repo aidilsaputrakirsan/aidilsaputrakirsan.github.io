@@ -56,8 +56,8 @@ function FounderHub() {
             </p>
             <p className="mt-4 font-body leading-relaxed text-warmMuted">
               {t({
-                en: 'Grading hundreds of answers every week gave birth to Asdos-AI. Supervising theses gave birth to SkripsiPintar. Running neighborhood admin gave birth to Sistem Manajemen RT.',
-                id: 'Mengoreksi ratusan jawaban tiap minggu melahirkan Asdos-AI. Membimbing skripsi melahirkan SkripsiPintar. Mengurus administrasi warga melahirkan Sistem Manajemen RT.',
+                en: 'Grading hundreds of answers every week gave birth to AsdosPintar. Supervising theses gave birth to SkripsiPintar. Running neighborhood admin gave birth to Sistem Manajemen RT.',
+                id: 'Mengoreksi ratusan jawaban tiap minggu melahirkan AsdosPintar. Membimbing skripsi melahirkan SkripsiPintar. Mengurus administrasi warga melahirkan Sistem Manajemen RT.',
               })}
             </p>
 
