@@ -3,7 +3,7 @@
   "items": [
     {
       "title": "Performance Optimization of Single Page Applications Using Hybrid Lazy Loading and Code Splitting Based on System Complexity Level",
-      "venue": "IEEE conference proceedings",
+      "venue": "Technology and Innovation Conference (TIC)",
       "year": "2026",
       "type": "conference",
       "url": "https://doi.org/10.1109/tic68483.2026.11702994",
@@ -27,6 +27,15 @@
       "url": "https://doi.org/10.21107/triac.v12i1.29849",
       "doi": "10.21107/triac.v12i1.29849",
       "openalex": "https://openalex.org/W4410932961"
+    },
+    {
+      "title": "Rancang Bangun Sistem Informasi PTSP Layanan Ijin Mendirikan Bangunan IMB Mushola dan Layanan Hibah/Bantuan Mushola Berbasis Website Menggunakan Metode ICONIX Process",
+      "venue": "Indonesian Research Journal On Education",
+      "year": "2025",
+      "type": "journal",
+      "url": "https://irje.org/irje/article/view/2120",
+      "doi": "",
+      "openalex": "https://openalex.org/W7217202709"
     },
     {
       "title": "Rancangan Smart Home System untuk Pengendalian Saklar Listrik",
@@ -66,7 +75,7 @@
     },
     {
       "title": "E-Readiness of North Penajam Paser Regency Regional Apparatus as Supporting City of Indonesian New Capital City",
-      "venue": "IEEE conference proceedings",
+      "venue": "International Conference on Informatics and Computing (ICIC), Vol. 7",
       "year": "2023",
       "type": "conference",
       "url": "https://doi.org/10.1109/icic60109.2023.10382090",
@@ -147,7 +156,7 @@
     },
     {
       "title": "Analysis of Factors on Continuance Intention in Mobile Payment DANA Using Structural Equation Modeling",
-      "venue": "2021 4th International Seminar on Research of Information Technology and Intelligent Systems (ISRITI), Vol. 26",
+      "venue": "International Seminar on Research of Information Technology and Intelligent Systems (ISRITI), Vol. 26",
       "year": "2021",
       "type": "conference",
       "url": "https://doi.org/10.1109/isriti54043.2021.9702790",
@@ -162,6 +171,15 @@
       "url": "https://doi.org/10.24198/dharmakarya.v10i4.34869",
       "doi": "10.24198/dharmakarya.v10i4.34869",
       "openalex": "https://openalex.org/W4200425054"
+    },
+    {
+      "title": "Implementasi Aplikasi Sistem Informasi Akademik Berbasis Android Untuk Pelaporan Siswa Di Sekolah Al-Azhar 58 Balikpapan",
+      "venue": "Seminar Nasional Pengabdian Kepada Masyarakat (SEPAKAT)",
+      "year": "2021",
+      "type": "community",
+      "url": "https://journal.itk.ac.id/index.php/sepakat/article/view/522",
+      "doi": "",
+      "openalex": "https://openalex.org/W7217764405"
     },
     {
       "title": "Optimasi Efisiensi Energi untuk Pemilihan Intermediate Cluster Head menggunakan MI-C LEACH: Multi-hop Inter-Cluster pada Jaringan Sensor Nirkabel",
@@ -183,7 +201,7 @@
     },
     {
       "title": "Efficient Energy for Cluster Head Selection using New LEACH-based routing protocol in Wireless Sensor Network",
-      "venue": "IEEE conference proceedings",
+      "venue": "International Electronics Symposium (IES)",
       "year": "2019",
       "type": "conference",
       "url": "https://doi.org/10.1109/elecsym.2019.8901669",
