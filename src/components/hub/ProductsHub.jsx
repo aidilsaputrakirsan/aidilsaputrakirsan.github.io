@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowUpRight, FiCheck, FiImage, FiMessageCircle } from 'react-icons/fi';
 import TiltCard from '../ui/TiltCard';
+import SpotlightCard from '../reactbits/SpotlightCard';
 import { productIcon } from './productIcons';
 import { productsData, audiences } from '../../data/products';
 import { useLang } from '../../i18n/LangContext';
@@ -123,12 +124,17 @@ function ProductCard({ p, i }) {
       exit={{ opacity: 0, scale: 0.97 }}
       transition={{ duration: 0.45, delay: Math.min(i, 5) * 0.06 }}
     >
-      <TiltCard
-        max={5}
-        className={`flex flex-col overflow-hidden rounded-3xl border bg-warmCard shadow-soft transition-shadow duration-300 hover:shadow-soft-lg ${
-          live ? 'border-warmLine' : 'border-dashed border-warmLine'
-        }`}
-      >
+      <TiltCard max={5} className="rounded-3xl">
+        {/* React Bits SpotlightCard: a glow in the app's brand colour follows the cursor */}
+        <SpotlightCard
+          theme="warm"
+          spotlightColor={p.color}
+          spotlightSize={320}
+          proximity={60}
+          className={`flex h-full flex-col border bg-warmCard shadow-soft transition-shadow duration-300 hover:shadow-soft-lg ${
+            live ? 'border-warmLine' : 'border-dashed border-warmLine'
+          }`}
+        >
         {p.screenshot ? <ScreenshotHeader p={p} live={live} /> : <IconHeader p={p} live={live} Icon={Icon} />}
 
         <div className="flex flex-1 flex-col px-6 pb-6 pt-6">
@@ -179,6 +185,7 @@ function ProductCard({ p, i }) {
             )}
           </div>
         </div>
+        </SpotlightCard>
       </TiltCard>
     </motion.div>
   );

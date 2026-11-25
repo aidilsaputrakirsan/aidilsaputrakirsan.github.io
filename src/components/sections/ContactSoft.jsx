@@ -2,12 +2,14 @@
 // Personal contact strip for /aidil/. Every item is a real, working link — there is
 // deliberately no form (it had no backend). App / Myst Tech enquiries go to the hub.
 import { motion } from 'framer-motion';
-import { FiMail, FiLinkedin, FiInstagram, FiGithub, FiArrowUpRight, FiMapPin } from 'react-icons/fi';
+import { FiMail, FiBriefcase, FiLinkedin, FiInstagram, FiGithub, FiArrowUpRight, FiMapPin } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { useLang } from '../../i18n/LangContext';
+import { company } from '../../data/company';
 
 const channels = [
   { Icon: FiMail, label: 'Email', value: 'aidil@lecturer.itk.ac.id', href: 'mailto:aidil@lecturer.itk.ac.id' },
+  { Icon: FiBriefcase, label: 'Myst Tech', value: company.email, href: `mailto:${company.email}` },
   { Icon: FaWhatsapp, label: 'WhatsApp', value: '+62 853 9895 2880', href: 'https://wa.me/6285398952880' },
   { Icon: FiLinkedin, label: 'LinkedIn', value: 'Aidil Saputra Kirsan', href: 'https://id.linkedin.com/in/aidil-saputra-kirsan-0808911bb' },
   { Icon: FiInstagram, label: 'Instagram', value: '@aidilsaputrakirsan', href: 'https://instagram.com/aidilsaputrakirsan' },
@@ -39,7 +41,7 @@ function ContactSoft() {
           </p>
         </motion.div>
 
-        <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {channels.map(({ Icon, label, value, href }, i) => (
             <motion.a
               key={label}
@@ -51,7 +53,7 @@ function ContactSoft() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.45, delay: i * 0.06 }}
               whileHover={{ y: -4 }}
-              className="group flex items-center gap-3 rounded-2xl border border-warmLine bg-warmBg p-4 transition-colors hover:border-warmPeach lg:flex-col lg:items-start"
+              className="group flex items-center gap-3 rounded-2xl border border-warmLine bg-warmBg p-4 transition-colors hover:border-warmPeach"
             >
               <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-warmPeachSoft text-lg text-warmPeach">
                 <Icon />

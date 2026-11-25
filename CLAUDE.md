@@ -63,7 +63,7 @@ All real content lives in [src/data/](src/data/). Change data → UI + CV update
 | Education | [src/data/education.js](src/data/education.js) |
 | Achievements/certs | [src/data/achievements.js](src/data/achievements.js) |
 | Time-based values (years, current projects) | [src/data/site.js](src/data/site.js) |
-| Legal entity (PT Myst Tech Core: NIB, SK AHU, address) | [src/data/company.js](src/data/company.js) — shown in footer + hub Kontak; mirror changes in the JSON-LD in [index.html](index.html) |
+| Legal entity (PT Myst Tech Core: NIB, SK AHU, address, email `admin@myst-tech.com`) | [src/data/company.js](src/data/company.js) — shown in footer + hub Kontak; mirror changes in the JSON-LD in [index.html](index.html) |
 
 ## Auto-updating values — single source of truth
 [src/data/site.js](src/data/site.js) drives everything time-based. **Never hardcode "5+ years"
@@ -202,10 +202,36 @@ the CV "Selected Projects" (top 8).
 
 ## Marquees (the moving text strips)
 - Hero (first): **roles** with Feather icons — text identity. In [HeroSoft.jsx](src/components/sections/HeroSoft.jsx).
-- Skills (second): **brand logos + names** via `react-icons/si` (bundled, no CDN).
+- Skills (second): **brand logos + names** via `react-icons/si` (bundled, no CDN), shown with
+  React Bits **ScrollVelocity** (follows scroll speed/direction, drag, pauses on hover/off-screen) —
+  the only strip using it; the others stay on the zero-JS CSS `Marquee`.
   In [SkillsSoft.jsx](src/components/sections/SkillsSoft.jsx). Add tech by adding a
   `{ name, Icon, color }` entry (verify the `Si*` icon exists in `react-icons/si`).
 - Component: [src/components/ui/Marquee.jsx](src/components/ui/Marquee.jsx) (accepts strings or JSX nodes).
+
+## React Bits components ([src/components/reactbits/](src/components/reactbits/))
+- Copied from [reactbits.dev](https://reactbits.dev) (JS + Tailwind variant, MIT + Commons Clause).
+  Files stay close to upstream; local edits are marked `[myst]`. They import `motion/react`,
+  which [vite.config.js](vite.config.js) aliases to our `framer-motion` (v12) — don't install `motion`.
+- Add another one: `curl` `https://raw.githubusercontent.com/DavidHDev/react-bits/main/src/tailwind/<Category>/<Name>/<Name>.jsx`
+  (categories: `TextAnimations`, `Animations`, `Components`, `Backgrounds`), drop `'use client'`,
+  add the header comment. Skip ones needing gsap/ogl/three-fiber unless lazy-loaded (performance rules).
+- In use: `ClickSpark` (page-wide, via [MystSparks.jsx](src/components/ui/MystSparks.jsx)), `BlurText`
+  (hero headlines, `as="span"`), `ShinyText` (hero badges), `RotatingText` (hub audiences),
+  `Magnet` (primary hero CTAs), `DecryptedText` ("Myst-Core" heading), `SpotlightCard`
+  (`theme="warm"`; app cards glow in the app's `color`, Skills cards via `as={motion.button}`),
+  `ScrollVelocity` (Skills tools strip; `[myst]` tweak pauses it off-screen).
+  `GooeyNav` (desktop nav in [NavbarSoft.jsx](src/components/layout/NavbarSoft.jsx), driven by the
+  scroll-spy; `[myst]` tweak: `activeIndex={-1}` = nothing lit while the hero is in view; mounted only
+  ≥768px because it uses WebGL), `SplitFlapText` (Myst-Core "operating rules" board in CoreHub —
+  keywords live in `principles[].key`, ≤7 letters).
+- Mobile menu = full-screen staggered panel (StaggeredMenu-style) written with framer-motion in
+  NavbarSoft — React Bits' own StaggeredMenu needs gsap, so it isn't copied.
+- Avoid the "icon in a rounded square + title + text" card grid — it reads as an AI template.
+  Prefer editorial rows/boards like the Myst-Core rules.
+- Colours parsed on a canvas (ShinyText, ClickSpark) can't take `rgb(var(--…))` — use
+  [useWarmColor](src/components/ui/useWarmColor.js)`('warm-muted')`, which follows the light/dark toggle.
+- Text animations keep their state; give them `key={lang}` so they re-run on EN/ID switch.
 
 ## Animation conventions
 - Framer Motion everywhere. Prefer `whileInView` + transforms (`scaleX`, `x/y`, `scale`)

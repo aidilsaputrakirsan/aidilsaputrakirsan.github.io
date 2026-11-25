@@ -3,6 +3,10 @@ import { motion, useScroll, useTransform, useReducedMotion, useMotionValue, useS
 import { useEffect, useRef, useState } from 'react';
 import { FiArrowDownRight, FiCode, FiBookOpen, FiCpu, FiWifi, FiSearch, FiMonitor, FiUsers, FiZap, FiInstagram, FiArrowUpRight } from 'react-icons/fi';
 import Counter from '../ui/Counter';
+import BlurText from '../reactbits/BlurText';
+import ShinyText from '../reactbits/ShinyText';
+import Magnet from '../reactbits/Magnet';
+import useWarmColor from '../ui/useWarmColor';
 import Marquee from '../ui/Marquee';
 import MystMark from '../ui/MystMark';
 import { liveProducts } from '../../data/products';
@@ -12,7 +16,9 @@ import { useLang } from '../../i18n/LangContext';
 
 // Soft / Warm Hero — light, fast, mobile-friendly, lots of gentle motion.
 function HeroSoft() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const muted = useWarmColor('warm-muted');
+  const ink = useWarmColor('warm-ink');
   const ref = useRef(null);
   const reduce = useReducedMotion();
 
@@ -131,11 +137,19 @@ function HeroSoft() {
               className="inline-flex items-center gap-2 rounded-full border border-warmLine bg-warmCard/70 px-4 py-1.5 text-sm font-medium text-warmMuted shadow-soft backdrop-blur"
             >
               <span className="h-2 w-2 rounded-full bg-warmSage animate-pulse" />
-              {t({ en: 'Available for collaboration', id: 'Terbuka untuk kolaborasi' })}
+              <ShinyText
+                key={`${lang}-${muted}`}
+                color={muted || '#6F665A'}
+                shineColor={ink || '#1E1A15'}
+                speed={3}
+                delay={2}
+                text={t({ en: 'Available for collaboration', id: 'Terbuka untuk kolaborasi' })}
+              />
             </motion.span>
 
-            <motion.h1 variants={item} className="mt-6 font-display font-extrabold tracking-tight leading-[0.98] text-5xl sm:text-6xl lg:text-7xl">
-              Aidil Saputra{' '}
+            {/* React Bits BlurText: the name blurs in word by word */}
+            <h1 className="mt-6 font-display font-extrabold tracking-tight leading-[0.98] text-5xl sm:text-6xl lg:text-7xl">
+              <BlurText as="span" text="Aidil Saputra" delay={140} stepDuration={0.4} className="inline-flex" />{' '}
               <span className="relative inline-block">
                 <span className="relative z-10">Kirsan</span>
                 <motion.span
@@ -146,7 +160,7 @@ function HeroSoft() {
                   className="absolute inset-x-0 bottom-1 z-0 h-3 bg-warmPeach/30 -rotate-1"
                 />
               </span>
-            </motion.h1>
+            </h1>
 
             <motion.p variants={item} className="mt-6 max-w-xl font-body text-lg md:text-xl text-warmMuted leading-relaxed">
               {t({
@@ -156,15 +170,16 @@ function HeroSoft() {
             </motion.p>
 
             <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
-              <motion.a
-                href="#projects"
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.97 }}
-                className="group inline-flex items-center gap-2 rounded-full bg-warmInk px-7 py-3.5 font-body font-semibold text-warmBg shadow-soft hover:shadow-soft-lg"
-              >
-                {t({ en: 'View my work', id: 'Lihat karya saya' })}
-                <FiArrowDownRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
-              </motion.a>
+              <Magnet padding={60} magnetStrength={4}>
+                <motion.a
+                  href="#projects"
+                  whileTap={{ scale: 0.97 }}
+                  className="group inline-flex items-center gap-2 rounded-full bg-warmInk px-7 py-3.5 font-body font-semibold text-warmBg shadow-soft hover:shadow-soft-lg"
+                >
+                  {t({ en: 'View my work', id: 'Lihat karya saya' })}
+                  <FiArrowDownRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
+                </motion.a>
+              </Magnet>
               <motion.a
                 href="/"
                 whileHover={{ y: -3 }}

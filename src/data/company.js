@@ -12,6 +12,7 @@ export const company = {
   ahu: '', // Nomor SK pengesahan Kemenkumham, mis. 'AHU-0012345.AH.01.01.Tahun 2026'
   address: '', // alamat kantor / domisili usaha
   city: 'Balikpapan, Kalimantan Timur, Indonesia',
+  email: 'admin@myst-tech.com', // email resmi perusahaan (kontak hub, footer, JSON-LD)
 };
 
 // Baris registrasi untuk footer/kontak, mis. "NIB 123… · AHU-…" (kosong bila belum diisi)

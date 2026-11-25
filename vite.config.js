@@ -9,6 +9,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/', // domain utama (myst-tech.com)
+  resolve: {
+    // React Bits components import from 'motion/react' (the new name of
+    // framer-motion). Point it at our framer-motion so there's one copy only.
+    alias: { 'motion/react': 'framer-motion' },
+  },
   build: {
     // The only big chunk is three.js for the hub's 3D orbit — lazy-loaded
     // after first paint, so it never blocks the page.

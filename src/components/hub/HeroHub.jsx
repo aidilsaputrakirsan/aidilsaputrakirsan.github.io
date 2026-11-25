@@ -6,12 +6,27 @@ import Marquee from '../ui/Marquee';
 import MystOrbit from '../three/MystOrbit';
 import { productIcon } from './productIcons';
 import { productsData, liveProducts, buildingProducts } from '../../data/products';
+import BlurText from '../reactbits/BlurText';
+import ShinyText from '../reactbits/ShinyText';
+import RotatingText from '../reactbits/RotatingText';
+import Magnet from '../reactbits/Magnet';
+import useWarmColor from '../ui/useWarmColor';
 import { useLang } from '../../i18n/LangContext';
+
+// Who the apps serve — the hero subtitle rotates through these.
+const rotatingAudiences = [
+  { en: 'teachers', id: 'guru' },
+  { en: 'lecturers', id: 'dosen' },
+  { en: 'students', id: 'mahasiswa' },
+  { en: 'neighborhood officers', id: 'pengurus RT' },
+];
 
 // Hub hero: headline + quick launcher on the left, 3D Myst Orbit on the right.
 function HeroHub() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const ref = useRef(null);
+  const muted = useWarmColor('warm-muted');
+  const ink = useWarmColor('warm-ink');
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   const yBlobA = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -100]);
@@ -65,15 +80,30 @@ function HeroHub() {
               className="inline-flex items-center gap-2 rounded-full border border-warmLine bg-warmCard/70 px-4 py-1.5 font-body text-sm font-medium text-warmMuted shadow-soft backdrop-blur"
             >
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-              {t({ en: `${live.length} live apps`, id: `${live.length} aplikasi live` })}
-              {building.length > 0 && t({ en: ` · ${building.length} coming soon`, id: ` · ${building.length} segera hadir` })}
+              {/* React Bits ShinyText: a light sweep across the status line */}
+              <ShinyText
+                key={`${lang}-${muted}`}
+                color={muted || '#6F665A'}
+                shineColor={ink || '#1E1A15'}
+                speed={3}
+                delay={2}
+                text={
+                  t({ en: `${live.length} live apps`, id: `${live.length} aplikasi live` }) +
+                  (building.length > 0 ? t({ en: ` · ${building.length} coming soon`, id: ` · ${building.length} segera hadir` }) : '')
+                }
+              />
             </motion.span>
 
-            <motion.h1
-              variants={item}
-              className="mt-6 font-display text-[2.6rem] font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.1rem]"
-            >
-              {t({ en: 'One gate to all', id: 'Satu pintu ke semua aplikasi' })}{' '}
+            {/* React Bits BlurText: words blur in one by one */}
+            <h1 className="mt-6 font-display text-[2.6rem] font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.1rem]">
+              <BlurText
+                key={lang}
+                as="span"
+                text={t({ en: 'One gate to all', id: 'Satu pintu ke semua aplikasi' })}
+                delay={110}
+                stepDuration={0.4}
+                className="inline-flex"
+              />{' '}
               <span className="relative inline-block">
                 <span className="relative z-10">{t({ en: 'Myst Tech apps.', id: 'Myst Tech.' })}</span>
                 <motion.span
@@ -84,27 +114,39 @@ function HeroHub() {
                   className="absolute inset-x-0 bottom-1 z-0 h-3 -rotate-1 bg-warmPeach/30"
                 />
               </span>
-            </motion.h1>
+            </h1>
 
             <motion.p variants={item} className="mt-6 max-w-xl font-body text-lg leading-relaxed text-warmMuted md:text-xl">
+              {t({ en: 'AI assistants for', id: 'Asisten AI untuk' })}{' '}
+              {/* React Bits RotatingText: cycles through who the apps serve */}
+              <RotatingText
+                key={lang}
+                texts={rotatingAudiences.map((a) => t(a))}
+                splitBy="characters"
+                staggerDuration={0.02}
+                rotationInterval={2400}
+                mainClassName="inline-flex overflow-hidden rounded-lg bg-warmPeachSoft px-2 align-bottom font-semibold text-warmPeach"
+              />{' '}
               {t({
-                en: 'AI assistants for teachers, lecturers, students, and neighborhood officers — built in Balikpapan, powered by one shared AI layer:',
-                id: 'Asisten AI untuk guru, dosen, mahasiswa, dan pengurus RT — dibangun di Balikpapan, ditenagai satu lapisan AI yang sama:',
+                en: '— built in Balikpapan, powered by one shared AI layer:',
+                id: '— dibangun di Balikpapan, ditenagai satu lapisan AI yang sama:',
               })}{' '}
               <span className="font-semibold text-warmInk">Myst-Core</span>.{' '}
               {t({ en: 'AI drafts, you decide.', id: 'AI menyiapkan draf, keputusan tetap di tangan Anda.' })}
             </motion.p>
 
             <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-4">
-              <motion.a
-                href="#produk"
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.97 }}
-                className="group inline-flex items-center gap-2 rounded-full bg-warmInk px-7 py-3.5 font-body font-semibold text-warmBg shadow-soft hover:shadow-soft-lg"
-              >
-                {t({ en: 'Explore the apps', id: 'Jelajahi aplikasi' })}
-                <FiArrowDownRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
-              </motion.a>
+              {/* React Bits Magnet: the main CTA leans toward the cursor */}
+              <Magnet padding={60} magnetStrength={4}>
+                <motion.a
+                  href="#produk"
+                  whileTap={{ scale: 0.97 }}
+                  className="group inline-flex items-center gap-2 rounded-full bg-warmInk px-7 py-3.5 font-body font-semibold text-warmBg shadow-soft hover:shadow-soft-lg"
+                >
+                  {t({ en: 'Explore the apps', id: 'Jelajahi aplikasi' })}
+                  <FiArrowDownRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
+                </motion.a>
+              </Magnet>
               <motion.a
                 href="#core"
                 whileHover={{ y: -3 }}

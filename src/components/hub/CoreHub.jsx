@@ -1,17 +1,20 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useInView, useReducedMotion } from 'framer-motion';
-import { FiArrowUpRight, FiLayers, FiUserCheck, FiActivity, FiShield, FiInfo } from 'react-icons/fi';
+import { FiArrowUpRight, FiInfo } from 'react-icons/fi';
 import { productIcon } from './productIcons';
 import { productsData, mystCore } from '../../data/products';
 import { useLang } from '../../i18n/LangContext';
+import DecryptedText from '../reactbits/DecryptedText';
+import SplitFlapText from '../reactbits/SplitFlapText';
 import MystMark from '../ui/MystMark';
 
 const coreApps = productsData.filter((p) => p.poweredByCore);
 
+// Operating rules, shown as a split-flap "departures board" (no icon tiles).
 const principles = [
   {
-    Icon: FiLayers,
+    key: { en: 'TIER', id: 'TIER' }, // split-flap keyword (≤7 letters)
     title: { en: 'Apps ask for a tier, not a model name', id: 'Aplikasi meminta tier, bukan nama model' },
     desc: {
       en: 'Swapping the model behind the scenes never touches a single line of feature code.',
@@ -19,7 +22,7 @@ const principles = [
     },
   },
   {
-    Icon: FiUserCheck,
+    key: { en: 'DRAFT', id: 'DRAF' }, // split-flap keyword (≤7 letters)
     title: { en: 'Every output is a draft', id: 'Setiap output adalah draf' },
     desc: {
       en: "There is no path from an AI answer to a final decision without a human in between.",
@@ -27,7 +30,7 @@ const principles = [
     },
   },
   {
-    Icon: FiActivity,
+    key: { en: 'METER', id: 'METER' }, // split-flap keyword (≤7 letters)
     title: { en: 'Usage is metered, never in the way', id: 'Pemakaian tercatat, tanpa mengganggu' },
     desc: {
       en: 'Every call is logged per feature — and a failed log never fails the answer.',
@@ -35,7 +38,7 @@ const principles = [
     },
   },
   {
-    Icon: FiShield,
+    key: { en: 'SANDBOX', id: 'SANDBOX' }, // split-flap keyword (≤7 letters)
     title: { en: 'Offline sandbox', id: 'Sandbox tanpa jaringan' },
     desc: {
       en: 'A test mode that never touches an AI engine — for safe development.',
@@ -117,6 +120,50 @@ function useCoreSimulation(running) {
   };
 }
 
+// One rule on the board. The split-flap mounts when the row is in view (plus a small
+// per-row delay), so the flip plays where people can see it — not off-screen on load.
+function PrincipleRow({ n, word, title, desc, delay }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const [go, setGo] = useState(false);
+  useEffect(() => {
+    if (!inView) return undefined;
+    const id = setTimeout(() => setGo(true), delay);
+    return () => clearTimeout(id);
+  }, [inView, delay]);
+
+  return (
+    <li
+      ref={ref}
+      className="group grid grid-cols-[auto_1fr] items-start gap-x-5 gap-y-3 border-b border-warmLine px-6 py-6 last:border-b-0 md:grid-cols-[3rem_14rem_1fr_1.2fr] md:items-center md:gap-x-8 md:px-8"
+    >
+      <span className="font-body text-xs font-semibold tabular-nums text-warmMuted md:text-sm">{String(n).padStart(2, '0')}</span>
+      <div className="h-9">
+        {go && (
+          <SplitFlapText
+            key={word}
+            text={word}
+            padTo={7}
+            loop={false}
+            fontSize={24}
+            gap={3}
+            tileRadius={5}
+            flipsPerChar={6}
+            stagger={0.05}
+            charset="alpha"
+            depth={0.4}
+            tileColor="rgb(var(--warm-ink))"
+            textColor="rgb(var(--warm-card))"
+            className="font-display font-bold"
+          />
+        )}
+      </div>
+      <h3 className="col-span-2 font-display text-lg font-bold leading-snug transition-colors group-hover:text-warmPeach md:col-span-1 md:text-xl">{title}</h3>
+      <p className="col-span-2 font-body text-sm leading-relaxed text-warmMuted md:col-span-1 md:text-[15px]">{desc}</p>
+    </li>
+  );
+}
+
 const reveal = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
@@ -157,7 +204,17 @@ function CoreHub() {
         <motion.div {...reveal} transition={{ duration: 0.6 }} className="max-w-2xl">
           <span className="font-body text-sm font-semibold uppercase tracking-widest text-warmPeach">{t({ en: 'Behind the scenes', id: 'Di balik layar' })}</span>
           <h2 className="mt-3 font-display text-4xl font-bold tracking-tight md:text-5xl">
-            {t({ en: 'Myst-Core: one AI layer for every app.', id: 'Myst-Core: satu lapisan AI untuk semua aplikasi.' })}
+            {/* React Bits DecryptedText: the name "decrypts" when it scrolls in / on hover */}
+            <DecryptedText
+              text="Myst-Core"
+              animateOn="inViewHover"
+              sequential
+              speed={45}
+              characters="01<>/{}#$%&*ABCDEFXYZ"
+              className="text-warmPeach"
+              encryptedClassName="text-warmPeach/60"
+            />
+            {t({ en: ': one AI layer for every app.', id: ': satu lapisan AI untuk semua aplikasi.' })}
           </h2>
           <p className="mt-5 font-body text-lg leading-relaxed text-warmMuted">
             {t({
@@ -358,23 +415,19 @@ function CoreHub() {
           </motion.div>
         </div>
 
-        {/* Principles */}
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {principles.map(({ Icon, title, desc }, i) => (
-            <motion.div
-              key={title.en}
-              {...reveal}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
-              className="rounded-3xl border border-warmLine bg-warmBg p-6"
-            >
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-warmPeachSoft text-lg text-warmPeach">
-                <Icon />
-              </span>
-              <h3 className="mt-4 font-display text-base font-bold leading-snug">{t(title)}</h3>
-              <p className="mt-2 font-body text-sm leading-relaxed text-warmMuted">{t(desc)}</p>
-            </motion.div>
-          ))}
-        </div>
+        {/* Principles — one board, one row per rule. The keyword flips in like a
+            departures board (React Bits SplitFlapText) when its row scrolls into view. */}
+        <motion.div {...reveal} transition={{ duration: 0.5 }} className="mt-14 overflow-hidden rounded-3xl border border-warmLine bg-warmBg">
+          <div className="flex items-center justify-between border-b border-warmLine px-6 py-3 font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-warmMuted md:px-8">
+            <span>{t({ en: 'Myst-Core · operating rules', id: 'Myst-Core · aturan operasional' })}</span>
+            <span className="hidden sm:inline">{t({ en: 'Status: enforced', id: 'Status: berlaku' })}</span>
+          </div>
+          <ol>
+            {principles.map(({ key, title, desc }, i) => (
+              <PrincipleRow key={title.en} n={i + 1} word={t(key)} title={t(title)} desc={t(desc)} delay={i * 180} />
+            ))}
+          </ol>
+        </motion.div>
 
         <motion.div
           {...reveal}

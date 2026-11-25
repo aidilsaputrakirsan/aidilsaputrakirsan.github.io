@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion';
 import { FiArrowRight, FiBookOpen } from 'react-icons/fi';
-import Marquee from '../ui/Marquee';
 import {
   SiReact, SiVuedotjs, SiLaravel, SiNodedotjs, SiPostgresql, SiDocker, SiPython,
   SiEspressif, SiMqtt, SiTailwindcss, SiArduino, SiFirebase, SiLivewire,
@@ -12,6 +11,8 @@ import { projectsData } from '../../data/projects';
 import { productsData } from '../../data/products';
 import { useLang } from '../../i18n/LangContext';
 import { yearsOfExperience, CAREER_START_YEAR } from '../../data/site';
+import SpotlightCard from '../reactbits/SpotlightCard';
+import ScrollVelocity from '../reactbits/ScrollVelocity';
 
 // Skill domains tied to real project categories — counts and "since" years are
 // computed from projectsData, so they stay honest and auto-update.
@@ -96,12 +97,20 @@ const stack = [
   { name: 'Claude Code', Icon: SiClaude, color: '#D97757' },
 ];
 
-const toolItems = stack.map(({ name, Icon, color }) => (
-  <span key={name} className="inline-flex items-center gap-3">
-    <Icon style={{ color }} className="text-3xl" />
-    {name}
+// One row of logos for the ScrollVelocity strip (it repeats the row itself).
+const toolRow = (
+  <span className="inline-flex items-center gap-8">
+    {stack.map(({ name, Icon, color }, i) => (
+      <span key={name} className="inline-flex items-center gap-8">
+        {i > 0 && <span className="text-warmPeach">✦</span>}
+        <span className="inline-flex items-center gap-3">
+          <Icon style={{ color }} className="text-3xl" />
+          {name}
+        </span>
+      </span>
+    ))}
   </span>
-));
+);
 
 function domainStats(category) {
   if (category === 'ai') {
@@ -153,7 +162,11 @@ function SkillsSoft() {
           {domains.map((d, i) => {
             const { count, since, label } = domainStats(d.category);
             return (
-              <motion.button
+              // React Bits SpotlightCard (rendered as the motion.button itself)
+              <SpotlightCard
+                as={motion.button}
+                theme="warm"
+                spotlightSize={280}
                 key={d.category}
                 type="button"
                 custom={i}
@@ -203,12 +216,15 @@ function SkillsSoft() {
                     {d.href ? t({ en: 'See products', id: 'Lihat produk' }) : t({ en: 'Explore', id: 'Jelajahi' })} <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-0.5" />
                   </span>
                 </div>
-              </motion.button>
+              </SpotlightCard>
             );
           })}
 
           {/* Teaching has no project category — it points to the research section */}
-          <motion.a
+          <SpotlightCard
+            as={motion.a}
+            theme="warm"
+            spotlightSize={280}
             href="#research"
             custom={domains.length}
             variants={fadeUp}
@@ -235,13 +251,28 @@ function SkillsSoft() {
                 {t({ en: 'Research', id: 'Riset' })} <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-0.5" />
               </span>
             </div>
-          </motion.a>
+          </SpotlightCard>
         </div>
       </div>
 
-      {/* Moving tools marquee */}
+      {/* React Bits ScrollVelocity: the tools strip speeds up / reverses with your
+          scroll, pauses on hover and can be dragged. Static under reduced motion. */}
       <div className="mt-20 border-y border-warmLine bg-warmCard py-5">
-        <Marquee items={toolItems} speed={40} />
+        <ScrollVelocity
+          texts={[toolRow]}
+          className="inline-flex items-center"
+          velocity={45}
+          numCopies={3}
+          separator={<span className="text-warmPeach">✦</span>}
+          gap={32}
+          fadeEdges
+          pauseOnHover
+          draggable
+          parallaxClassName=""
+          scrollerClassName="font-display"
+          fontSize="clamp(1.5rem, 1.2rem + 1vw, 1.875rem)"
+          scrollerStyle={{ lineHeight: 1.25, filter: 'none' }}
+        />
       </div>
       <p className="container mx-auto mt-5 max-w-[1100px] px-6 text-center font-body text-sm text-warmMuted">
         {t({

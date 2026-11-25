@@ -55,6 +55,14 @@ function FooterSoft({
             <span className="font-semibold text-warmInk">{company.legalName}</span>
             {registrationLine() && ` · ${registrationLine()}`}
             {company.address && ` · ${company.address}`}
+            {company.email && (
+              <>
+                {' · '}
+                <a href={`mailto:${company.email}`} className="hover:text-warmPeach">
+                  {company.email}
+                </a>
+              </>
+            )}
           </p>
         </div>
       </div>

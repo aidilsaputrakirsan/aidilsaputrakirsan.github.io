@@ -12,6 +12,7 @@ import InstagramSoft from './components/sections/InstagramSoft';
 import CvModal from './components/cv/CvModal';
 import MystMark from './components/ui/MystMark';
 import SupportModal from './components/support/SupportModal';
+import MystSparks from './components/ui/MystSparks';
 import { liveProducts } from './data/products';
 import { company } from './data/company';
 import { LangProvider, useLang } from './i18n/LangContext';
@@ -36,6 +37,7 @@ const coffee = { en: 'Buy me a coffee', id: 'Traktir kopi' };
 function Hub() {
   const { t } = useLang();
   return (
+    <MystSparks>
     <div className="bg-warmBg font-body text-warmInk">
       <NavbarSoft links={links} brand={brand} cta={{ label: { en: "Aidil's profile", id: 'Profil Aidil' }, href: '/aidil/' }} />
       <main>
@@ -72,6 +74,7 @@ function Hub() {
       <CvModal />
       <SupportModal />
     </div>
+    </MystSparks>
   );
 }
 

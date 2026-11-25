@@ -6,7 +6,6 @@ import { company, registrationLine } from '../../data/company';
 
 // Phone number is the one already printed on every product poster.
 const WHATSAPP = 'https://wa.me/6285398952880';
-const EMAIL = 'aidil@lecturer.itk.ac.id';
 
 function ContactHub() {
   const { t } = useLang();
@@ -52,10 +51,10 @@ function ContactHub() {
                 <FiMessageCircle /> WhatsApp 0853-9895-2880
               </a>
               <a
-                href={`mailto:${EMAIL}`}
+                href={`mailto:${company.email}`}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-warmBg/25 px-6 py-3.5 font-body font-semibold transition-colors hover:bg-warmBg/10"
               >
-                <FiMail /> {EMAIL}
+                <FiMail /> {company.email}
               </a>
               <a
                 href="https://instagram.com/aidilsaputrakirsan"

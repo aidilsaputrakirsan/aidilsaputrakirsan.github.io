@@ -24,6 +24,7 @@ import InstagramSoft from './components/sections/InstagramSoft';
 import FooterSoft from './components/layout/FooterSoft';
 import CvModal from './components/cv/CvModal';
 import SupportModal from './components/support/SupportModal';
+import MystSparks from './components/ui/MystSparks';
 import { LangProvider } from './i18n/LangContext';
 
 // Toggle: true = new Soft/Warm site, false = original dark site
@@ -42,6 +43,7 @@ function App() {
   if (USE_SOFT) {
     return (
       <LangProvider>
+        <MystSparks>
         <div className="bg-warmBg font-body text-warmInk">
           <NavbarSoft back={{ label: 'Myst Tech', href: '/' }} />
           <main>
@@ -58,6 +60,7 @@ function App() {
           <CvModal />
           <SupportModal />
         </div>
+        </MystSparks>
       </LangProvider>
     );
   }
